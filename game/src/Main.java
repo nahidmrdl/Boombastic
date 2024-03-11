@@ -1,7 +1,11 @@
+import gui.GameGUI;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.printf("Bombastic game");
+        System.out.print("Bombastic game");
+        GameGUI game = new GameGUI();
+
     }
 }
