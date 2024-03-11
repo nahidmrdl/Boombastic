@@ -4,31 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="clean project created">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/wall/WallCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/GameItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/Curse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/detonator/Detonator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/ghost/Ghost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/increasedblastrange/IncreasedBlastRange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/invincibility/Invincibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/placeobstacle/PlaceObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/rollerskate/RollerSkate.java" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="folder structure for power up, curse ,cell, entity added">
+      <change afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GameGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/Map.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/mapname1/Map1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/mapname2/Map2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/mapname3/Map3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +68,15 @@
       <recent name="G:\boombastic\game\src\entity" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -96,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710185004978</updated>
-      <workItem from="1710185006035" duration="1551000" />
+      <workItem from="1710185006035" duration="2873000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -106,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710185096556</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="folder structure for power up, curse ,cell, entity added">
+      <option name="closed" value="true" />
+      <created>1710186653117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710186653117</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +118,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="clean project created" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean project created" />
+    <MESSAGE value="folder structure for power up, curse ,cell, entity added" />
+    <option name="LAST_COMMIT_MESSAGE" value="folder structure for power up, curse ,cell, entity added" />
   </component>
 </project>
