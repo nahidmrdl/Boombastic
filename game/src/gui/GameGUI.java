@@ -9,17 +9,18 @@ public class GameGUI {
     private GameEngine model;
 
     public GameGUI() {
-        this.frame = new JFrame("Bombastic initial screen");
-        this.frame.setSize(400, 300);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.model = new GameEngine();
+            this.frame = new JFrame("Bombastic initial screen");
+            this.frame.setSize(1000, 600);
+            this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        GameInitialScreenGUI initialScreen = new GameInitialScreenGUI();
-        this.frame.add(initialScreen);
+            this.model = new GameEngine();
 
-        this.frame.setLocationRelativeTo(null);
+            GameInitialScreenGUI initialScreen = new GameInitialScreenGUI();
+            this.frame.add(initialScreen);
 
-        this.frame.setVisible(true);
+            this.frame.setLocationRelativeTo(null);
+
+            this.frame.setVisible(true);
     }
 }
