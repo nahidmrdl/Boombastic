@@ -4,7 +4,7 @@ import gui.GameGUI;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.print("Bombastic game");
+        System.out.print("Bombastic game\n");
         GameGUI game = new GameGUI();
     }
 }
