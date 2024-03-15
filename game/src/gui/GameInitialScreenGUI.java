@@ -281,6 +281,7 @@ public class GameInitialScreenGUI extends JPanel {
         playersAndRounds.add(roundsAndStart, constraints);
         add(playersAndRounds);
     }
+    private int mapIndex;
     private void startGame(){
         for (int i = 0; i < playerNameFields.size(); i++) {
             String playerName = playerNameFields.get(i).getText();
@@ -310,11 +311,11 @@ public class GameInitialScreenGUI extends JPanel {
             }
 
             if (imagePanel != null) {
-                int mapIndex = imagePanel.getImgIndex();
-                System.out.println("Map index: " + mapIndex);
+                mapIndex = imagePanel.getImgIndex();
+                //System.out.println("Map index IN: " + mapIndex);
             }
             // Start the game
-            gameEngine.startGame();    // This window needs to be closed after this line
+            gameEngine.startGame(this);    // This window needs to be closed after this line
             System.out.println(players);
         }
         else {
@@ -328,7 +329,11 @@ public class GameInitialScreenGUI extends JPanel {
             noMapSelected.setVisible(true);
         }
     }
+    public int getMapIndex(){
+        return mapIndex;
+    }
 }
+
 class ImagePanel extends JPanel {
     private Image image;
     private int imgIndex;

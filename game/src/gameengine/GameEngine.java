@@ -2,9 +2,9 @@ package gameengine;
 import gui.GameInitialScreenGUI;
 
 public class GameEngine {
-    public void startGame() {
+    public void startGame(GameInitialScreenGUI initGUI) {
         System.out.println("Game started");
-        GameInitialScreenGUI initGUI = new GameInitialScreenGUI();
         System.out.println("Round Count: " + initGUI.getRoundCount());
+        System.out.println("Map index: " + initGUI.getMapIndex());
     }
 }
