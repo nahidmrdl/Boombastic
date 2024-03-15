@@ -6,16 +6,18 @@ import entity.player.Player;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameInitialScreenGUI extends JPanel {
     private final GameEngine gameEngine = new GameEngine();
     private final List<Player> players = new ArrayList<>();
+    private final List<JTextField> playerNameFields = new ArrayList<>();
+    private final List<ImagePanel> imagePanels = new ArrayList<>();
+    private JRadioButton selectedMapRadioButton;
     public GameInitialScreenGUI() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -26,28 +28,9 @@ public class GameInitialScreenGUI extends JPanel {
 
         add(Box.createRigidArea(new Dimension(0, 10)));
         addMaps();
-        //add(Box.createRigidArea(new Dimension(0, 5))); // Add space
         addPlayers();
     }
-
     private final ButtonGroup mapGroup = new ButtonGroup();
-
-    private void addMaps() {
-        JPanel maps = new JPanel();
-        maps.setPreferredSize(new Dimension(900, 400));
-        maps.setLayout(new BoxLayout(maps, BoxLayout.X_AXIS));
-
-        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
-        maps.add(createMapPanel(10));
-        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
-        maps.add(createMapPanel(11));
-        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
-        maps.add(createMapPanel(12));
-        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
-
-        add(maps);
-    }
-
     private JLayeredPane createMapPanel(int imgIndex) {
         JLayeredPane mapPanel = new JLayeredPane() {
             @Override
@@ -77,62 +60,26 @@ public class GameInitialScreenGUI extends JPanel {
         mapGroup.add(mapRadioButton);
         mapPanel.add(mapRadioButton, JLayeredPane.PALETTE_LAYER);
 
+        mapRadioButton.addActionListener(e -> selectedMapRadioButton = mapRadioButton);
+
         return mapPanel;
     }
+    private void addMaps() {
+        JPanel maps = new JPanel();
+        maps.setPreferredSize(new Dimension(900, 400));
+        maps.setLayout(new BoxLayout(maps, BoxLayout.X_AXIS));
 
-    private void addPlayers() {
-        JPanel playersAndRounds = new JPanel();
-        playersAndRounds.setLayout(new GridBagLayout());
-        playersAndRounds.setPreferredSize(new Dimension(1000, 200));
+        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
+        maps.add(createMapPanel(10));
+        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
+        maps.add(createMapPanel(11));
+        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
+        maps.add(createMapPanel(12));
+        maps.add(Box.createRigidArea(new Dimension(10, 0))); // Add space
 
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        // Player 1 Panel
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 0.25;
-        constraints.fill = GridBagConstraints.BOTH;
-        playersAndRounds.add(createPlayerPanel("Player 1", 0), constraints);
-
-        // Player 2 Panel
-        constraints.gridx = 1;
-        playersAndRounds.add(createPlayerPanel("Player 2", 1), constraints);
-
-        // Empty Panel to take up the remaining space
-        constraints.gridx = 2;
-        playersAndRounds.add(createPlayerPanel("Player 3", 2), constraints);
-        playersAndRounds.add(new JPanel(), constraints);
-
-        // Rounds and Start Panel
-        JPanel roundsAndStart = new JPanel();
-        roundsAndStart.setLayout(new BoxLayout(roundsAndStart, BoxLayout.Y_AXIS));
-        roundsAndStart.setPreferredSize(new Dimension(250, 150));
-
-        JLabel roundCountLabel = new JLabel("Round count");
-        roundCountLabel.setFont(new Font(roundCountLabel.getFont().getName(), Font.BOLD, 15));
-        roundCountLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JButton startButton = new JButton("Start");
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startButton.setPreferredSize(new Dimension(250, 150)); // Set preferred size
-        startButton.setMaximumSize(new Dimension(200, 150)); // Set maximum size
-
-        startButton.addActionListener(e -> {
-            // May be replaced with the actual game engine
-            gameEngine.startGame();
-            //System.out.println("\n" + playerNames);
-        });
-
-        roundsAndStart.add(roundCountLabel);
-        roundsAndStart.add(createRoundCountPanel());
-        roundsAndStart.add(startButton);
-
-        constraints.gridx = 3;
-        playersAndRounds.add(roundsAndStart, constraints);
-        add(playersAndRounds);
+        add(maps);
     }
-
-    //private List<String> playerNames = new ArrayList<>();
+    private JButton addPlayerButton;
     private JPanel createPlayerPanel(String playerName, int imgIndex) {
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
@@ -141,10 +88,10 @@ public class GameInitialScreenGUI extends JPanel {
         JPanel playerCharacter = new JPanel();
         playerCharacter.setPreferredSize(new Dimension(250, 200));
         playerCharacter.setLayout(new BoxLayout(playerCharacter, BoxLayout.X_AXIS));
-        //int charImgIndex = 0;
 
         ImagePanel imagePanel = new ImagePanel(imgIndex);
         imagePanel.setMaximumSize(new Dimension(100, 100));
+        imagePanels.add(imagePanel);
 
         JButton leftArrow = new JButton("<-");
 
@@ -186,23 +133,66 @@ public class GameInitialScreenGUI extends JPanel {
         JTextField playerNameField = new JTextField(playerName);
         playerNameField.setMaximumSize(new Dimension
                 (playerNameField.getPreferredSize().width + 40, playerNameField.getPreferredSize().height));
+        playerNameFields.add(playerNameField);
 
         JButton playerControls = new JButton("W");
+        playerControls.setActionCommand(playerName);
+        playerControls.addActionListener(e -> {
+            String actionCommand = e.getActionCommand();
 
-        playerNamePanel.add(playerNameField);
-        playerNamePanel.add(playerControls);
-        playerPanel.add(playerNamePanel);
+            switch (actionCommand) {
+                case "Player 1":
+                    showPlayerControls("Player 1 controls: W, A, S, D");
+                    break;
+                case "Player 2":
+                    showPlayerControls("Player 2 controls: Arrow keys");
+                    break;
+                case "Player 3":
+                    showPlayerControls("Player 3 controls: I, J, K, L");
+                    break;
+            }
+        });
+
+        if (playerName.equals("Player 3")) {
+            JButton removePlayerButton = new JButton("Remove");
+
+            removePlayerButton.setForeground(Color.RED);
+
+            removePlayerButton.addActionListener(e -> {
+                playerPanel.setVisible(false);
+                playerPanel.getParent().remove(playerPanel);
+                addPlayerButton.setVisible(true);
+                playerPanel.repaint();
+            });
+
+            playerNamePanel.add(playerNameField);
+            playerNamePanel.add(playerControls);
+            playerNamePanel.add(removePlayerButton);
+            playerPanel.add(playerNamePanel);
+        } else{
+            playerNamePanel.add(playerNameField);
+            playerNamePanel.add(playerControls);
+            playerPanel.add(playerNamePanel);
+        }
 
         return playerPanel;
     }
-
+    private void showPlayerControls(String controls) {
+        JDialog playerControlsDialog = new JDialog();
+        playerControlsDialog.setPreferredSize(new Dimension(250, 100));
+        JLabel playerControlsLabel = new JLabel(controls);
+        playerControlsDialog.add(playerControlsLabel);
+        playerControlsDialog.pack();
+        playerControlsDialog.setLocationRelativeTo(null);
+        playerControlsDialog.setVisible(true);
+    }
+    final int[] roundCountValueHolder = {5};
     private JPanel createRoundCountPanel() {
         JPanel roundCount = new JPanel();
         roundCount.setPreferredSize(new Dimension(250, 150));
         roundCount.setLayout(new BoxLayout(roundCount, BoxLayout.X_AXIS));
 
-        final int[] roundCountValueHolder = {5};
-        final int maxRoundCount = 10;
+        final int maxRoundCount = 9;
         final int minRoundCount = 1;
 
         JTextArea roundCountArea = new JTextArea(String.valueOf(roundCountValueHolder[0]));
@@ -234,49 +224,141 @@ public class GameInitialScreenGUI extends JPanel {
 
         return roundCount;
     }
+    public int getRoundCount() {return roundCountValueHolder[0];}
+    private void addPlayers() {
+        JPanel playersAndRounds = new JPanel();
+        playersAndRounds.setLayout(new GridBagLayout());
+        playersAndRounds.setPreferredSize(new Dimension(1000, 200));
+
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        // Player 1 Panel
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+
+        constraints.weightx = 0.25;
+        constraints.fill = GridBagConstraints.BOTH;
+        playersAndRounds.add(createPlayerPanel("Player 1", 0), constraints);
+
+        // Player 2 Panel
+        constraints.gridx = 1;
+        playersAndRounds.add(createPlayerPanel("Player 2", 1), constraints);
+
+        // Empty Panel to take up the remaining space
+        constraints.gridx = 2;
+        addPlayerButton = new JButton("+");
+        addPlayerButton.setPreferredSize(new Dimension(50, 50));
+        playersAndRounds.add(addPlayerButton);
+
+        addPlayerButton.addActionListener(e -> {
+            constraints.gridx = 2;
+            addPlayerButton.setVisible(false);
+            playersAndRounds.add(createPlayerPanel("Player 3", 2), constraints);
+            playersAndRounds.repaint();
+        });
+
+        // Rounds and Start Panel
+        JPanel roundsAndStart = new JPanel();
+        roundsAndStart.setLayout(new BoxLayout(roundsAndStart, BoxLayout.Y_AXIS));
+        roundsAndStart.setPreferredSize(new Dimension(250, 150));
+
+        JLabel roundCountLabel = new JLabel("Round count");
+        roundCountLabel.setFont(new Font(roundCountLabel.getFont().getName(), Font.BOLD, 15));
+        roundCountLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JButton startButton = new JButton("Start");
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startButton.setPreferredSize(new Dimension(250, 150)); // Set preferred size
+        startButton.setMaximumSize(new Dimension(200, 150)); // Set maximum size
+
+        startButton.addActionListener(e -> startGame());
+
+        roundsAndStart.add(roundCountLabel);
+        roundsAndStart.add(createRoundCountPanel());
+        roundsAndStart.add(startButton);
+
+        constraints.gridx = 3;
+        playersAndRounds.add(roundsAndStart, constraints);
+        add(playersAndRounds);
+    }
+    private void startGame(){
+        for (int i = 0; i < playerNameFields.size(); i++) {
+            String playerName = playerNameFields.get(i).getText();
+            //System.out.println("Player name: " + playerName);
+
+            int imageIndex = imagePanels.get(i).getImgIndex();
+            //System.out.println("Image index: " + imageIndex);
+
+            players.add(new Player(playerName, imageIndex));
+            System.out.println("Player added");
+            System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
+        }
+
+        if (selectedMapRadioButton != null) {
+            // Get the parent of the selected JRadioButton, which is the JLayeredPane
+            JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
+            // Initialize a variable to hold the ImagePanel
+            ImagePanel imagePanel = null;
+            // Iterate over the components in the JLayeredPane
+            for (Component component : mapPanel.getComponents()) {
+                // Check if the component is an ImagePanel
+                if (component instanceof ImagePanel) {
+                    // Cast the component to ImagePanel
+                    imagePanel = (ImagePanel) component;
+                    break;
+                }
+            }
+
+            if (imagePanel != null) {
+                int mapIndex = imagePanel.getImgIndex();
+                System.out.println("Map index: " + mapIndex);
+            }
+            // Start the game
+            gameEngine.startGame();    // This window needs to be closed after this line
+            System.out.println(players);
+        }
+        else {
+            JDialog noMapSelected = new JDialog();
+            JLabel noMapLabel = new JLabel("Please select a map");
+            noMapLabel.setFont(new Font(noMapLabel.getFont().getName(), Font.BOLD, 15));
+            noMapSelected.add(noMapLabel);
+            noMapSelected.setSize(170, 100);
+            noMapSelected.setBackground(Color.RED);
+            noMapSelected.setLocationRelativeTo(null);
+            noMapSelected.setVisible(true);
+        }
+    }
 }
 class ImagePanel extends JPanel {
+    private Image image;
+    private int imgIndex;
     private final String[] characters = {
             "/assets/nahid.jpg",
             "/assets/mike.jpg",
             "/assets/gosha.jpg",
             "/assets/jamil.jpg"
     };
-
-    private Image image;
+    private final String[] maps = {
+            "/assets/dnipro.jpg",
+            "/assets/sumy.jpg",
+            "/assets/azer.jpg",
+    };
     public ImagePanel(int img) {
+        this.imgIndex = img;
         try {
             BufferedImage originalImage;
-            String[] maps = {
-                    "/assets/dnipro.jpg",
-                    "/assets/sumy.jpg",
-                    "/assets/azer.jpg",
+
+            originalImage = switch (img) {
+                case 0 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[0])));
+                case 1 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[1])));
+                case 2 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[2])));
+                case 3 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[3])));
+
+                case 10 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[0])));
+                case 11 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[1])));
+                case 12 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[2])));
+                default -> throw new IllegalArgumentException("Invalid image name: " + img);
             };
-            switch (img) {
-                case 0:
-                    originalImage = ImageIO.read(getClass().getResource(characters[0]));
-                    break;
-                case 1:
-                    originalImage = ImageIO.read(getClass().getResource(characters[1]));
-                    break;
-                case 2:
-                    originalImage = ImageIO.read(getClass().getResource(characters[2]));
-                    break;
-                case 3:
-                    originalImage = ImageIO.read(getClass().getResource(characters[3]));
-                    break;
-                case 10:
-                    originalImage = ImageIO.read(getClass().getResource(maps[0]));
-                    break;
-                case 11:
-                    originalImage = ImageIO.read(getClass().getResource(maps[1]));
-                    break;
-                case 12:
-                    originalImage = ImageIO.read(getClass().getResource(maps[2]));
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid image name: " + img);
-            }
             image = originalImage;
         } catch (IOException e) {
             e.printStackTrace();
@@ -284,12 +366,15 @@ class ImagePanel extends JPanel {
     }
 
     public void updateImage(int imgIndex) {
+        this.imgIndex = imgIndex;
         try {
-            BufferedImage originalImage = ImageIO.read(getClass().getResource(characters[imgIndex]));
-            image = originalImage;
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[imgIndex])));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public int getImgIndex() {
+        return imgIndex; // This method returns the current image index
     }
     @Override
     public Dimension getPreferredSize() {
