@@ -157,6 +157,9 @@ public class GameInitialScreenGUI extends JPanel {
             JButton removePlayerButton = new JButton("Remove");
 
             removePlayerButton.setForeground(Color.RED);
+            if ( playerNameFields.size()== 3) {
+                playerNameFields.remove(2);
+            }
 
             removePlayerButton.addActionListener(e -> {
                 playerPanel.setVisible(false);
@@ -283,19 +286,20 @@ public class GameInitialScreenGUI extends JPanel {
     }
     private int mapIndex;
     private void startGame(){
-        for (int i = 0; i < playerNameFields.size(); i++) {
-            String playerName = playerNameFields.get(i).getText();
-            //System.out.println("Player name: " + playerName);
 
-            int imageIndex = imagePanels.get(i).getImgIndex();
-            //System.out.println("Image index: " + imageIndex);
-
-            players.add(new Player(playerName, imageIndex));
-            System.out.println("Player added");
-            System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
-        }
 
         if (selectedMapRadioButton != null) {
+            for (int i = 0; i < playerNameFields.size(); i++) {
+                String playerName = playerNameFields.get(i).getText();
+                //System.out.println("Player name: " + playerName);
+
+                int imageIndex = imagePanels.get(i).getImgIndex();
+                //System.out.println("Image index: " + imageIndex);
+
+                players.add(new Player(playerName, imageIndex));
+                System.out.println("Player added");
+                System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
+            }
             // Get the parent of the selected JRadioButton, which is the JLayeredPane
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
             // Initialize a variable to hold the ImagePanel
