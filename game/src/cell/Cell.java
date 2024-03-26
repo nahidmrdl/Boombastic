@@ -49,4 +49,8 @@ public abstract class Cell {
         this.item = item;
     }
 
+    public Image getImage(){
+        return this.image;
+    }
+
 }
