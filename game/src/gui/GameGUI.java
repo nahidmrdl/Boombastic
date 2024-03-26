@@ -22,5 +22,11 @@ public class GameGUI {
             this.frame.setLocationRelativeTo(null);
 
             this.frame.setVisible(true);
+
+
+    }
+
+    public JFrame getMainFrame() {
+        return this.frame;
     }
 }
