@@ -24,6 +24,7 @@ public abstract class Cell {
         this.owner = owner;
         this.visitors = new ArrayList<>();
 
+
     }
 
     public int getX(){
