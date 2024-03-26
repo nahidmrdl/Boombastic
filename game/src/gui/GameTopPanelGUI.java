@@ -1,4 +1,13 @@
+
 package gui;
 
-public class GameTopPanelGUI {
+import javax.swing.*;
+import java.awt.*;
+
+public class GameTopPanelGUI extends JPanel {
+
+    public GameTopPanelGUI() {
+        super();
+
+    }
 }
