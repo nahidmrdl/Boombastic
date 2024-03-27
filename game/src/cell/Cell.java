@@ -16,14 +16,14 @@ public abstract class Cell {
     private String type;
     private GameItem item;
 
-    private ArrayList<Entity> visitors;
+    private Entity[] visitors;
     private Image image;
 
     public Cell(int row, int col, String type,  Player owner) {
         this.row = row;
         this.col = col;
         this.owner = owner;
-        this.visitors = new ArrayList<>();
+        this.visitors = new Entity[7];
         this.type = type;
 
     }
@@ -35,7 +35,7 @@ public abstract class Cell {
         return this.col;
     }
 
-    public ArrayList<Entity> getVisitors(){
+    public Entity[] getVisitors(){
         return this.visitors;
     }
 
@@ -43,7 +43,7 @@ public abstract class Cell {
         return this.item;
     }
 
-    public void setVisitor(ArrayList<Entity> visitors){
+    public void setVisitor( Entity[] visitors){
         this.visitors = visitors;
     }
 
@@ -55,8 +55,20 @@ public abstract class Cell {
         return this.image;
     }
 
-    public boolean isPlayerAndMonsterOnCell(){
-        return (this.visitors.contains("Player") && this.visitors.contains("Monster"));
-    }
+//    public boolean isPlayerAndMonsterOnCell() {
+//        boolean playerFound = false;
+//        boolean monsterFound = false;
+//
+//        for (Entity visitor : visitors) {
+//            if(visitor.type.equals("Player")){
+//                playerFound = true;
+//            }
+//            if(visitor.type.equals("Monster")){
+//                monsterFound = true;
+//            }
+//        }
+//
+//        return playerFound && monsterFound;
+//    }
 
 }
