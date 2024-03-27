@@ -8,10 +8,9 @@ import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public abstract class Cell {
+public class Cell {
     private final int row;
     private final int col;
-    private Player owner;
 
     private String type;
     private GameItem item;
@@ -19,10 +18,9 @@ public abstract class Cell {
     private Entity[] visitors;
     private Image image;
 
-    public Cell(int row, int col, String type,  Player owner) {
+    public Cell(int row, int col, String type) {
         this.row = row;
         this.col = col;
-        this.owner = owner;
         this.visitors = new Entity[7];
         this.type = type;
 
