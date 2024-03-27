@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added GameItem abstract class">
-      <change afterPath="$PROJECT_DIR$/src/levels/LevelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/map3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/readme.txt" afterDir="false" />
-    </list>
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added GameItem abstract class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711568654044</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added GameItem abstract class">
+      <option name="closed" value="true" />
+      <created>1711570474350</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711570474350</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
