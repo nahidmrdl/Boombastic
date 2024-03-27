@@ -13,17 +13,18 @@ public abstract class Cell {
     private final int col;
     private Player owner;
 
+    private String type;
     private GameItem item;
 
     private ArrayList<Entity> visitors;
     private Image image;
 
-    public Cell(int row, int col, Player owner) {
+    public Cell(int row, int col, String type,  Player owner) {
         this.row = row;
         this.col = col;
         this.owner = owner;
         this.visitors = new ArrayList<>();
-
+        this.type = type;
 
     }
 
@@ -52,6 +53,10 @@ public abstract class Cell {
 
     public Image getImage(){
         return this.image;
+    }
+
+    public boolean isPlayerAndMonsterOnCell(){
+        return (this.visitors.contains("Player") && this.visitors.contains("Monster"));
     }
 
 }
