@@ -10,6 +10,7 @@ public class BoxCell extends Cell {
     public BoxCell(int row, int col,String type, Player owner, Image image) {
         super(row, col, type, owner);
         this.image = image;
+
     }
 
 }
