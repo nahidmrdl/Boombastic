@@ -19,8 +19,10 @@ public abstract class Entity {
     }
 
     public Cell getCellPositioned(){
-        return this.map.map[x][y];
+        return this.map.getCell(x,y);
     }
+
+//    public boolean move(){}
 
     public Image getImage(){
         return this.image;
