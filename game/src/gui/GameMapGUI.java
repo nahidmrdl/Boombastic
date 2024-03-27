@@ -9,10 +9,10 @@ public class GameMapGUI extends JPanel {
 
     public GameMapGUI(int mapIndex) {
         this.mapIndex = mapIndex;
-        initializeUI();
+        updateGUI();
     }
 
-    private void initializeUI() {
+    private void updateGUI() {
         this.setLayout(new BorderLayout());
         JLabel mapLabel = new JLabel("Map " + mapIndex + " Displayed Here", SwingConstants.CENTER);
         this.add(mapLabel, BorderLayout.CENTER);
