@@ -282,7 +282,13 @@ public class GameInitialScreenGUI extends JPanel {
         startButton.setPreferredSize(new Dimension(250, 150)); // Set preferred size
         startButton.setMaximumSize(new Dimension(200, 150)); // Set maximum size
 
-        startButton.addActionListener(e -> startGame());
+        startButton.addActionListener(e -> {
+            try {
+                startGame();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         roundsAndStart.add(roundCountLabel);
         roundsAndStart.add(createRoundCountPanel());
@@ -293,7 +299,7 @@ public class GameInitialScreenGUI extends JPanel {
         add(playersAndRounds);
     }
     private int mapIndex;
-    private void startGame(){
+    private void startGame() throws IOException {
 
 
         if (selectedMapRadioButton != null) {

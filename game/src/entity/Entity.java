@@ -9,8 +9,8 @@ public abstract class Entity {
     private Map map;
     private Image baseImage;
     private Image image;
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
 
     public Entity(int x, int y, Map map){
         this.x = x;

@@ -16,7 +16,7 @@ public class GameGUI {
     public GameGUI() {
 
             this.frame = new JFrame("Bombastic initial screen");
-            this.frame.setSize(1000, 600);
+            this.frame.setSize(1007, 582);
             this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 

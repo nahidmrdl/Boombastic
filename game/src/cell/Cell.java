@@ -49,6 +49,9 @@ public class Cell {
         this.item = item;
     }
 
+    public String getType(){
+        return this.type;
+    }
     public Image getImage(){
         return this.image;
     }

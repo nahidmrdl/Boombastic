@@ -32,7 +32,7 @@ public class GameEngine {
         }
     }
 
-    public void startGame() {
+    public void startGame() throws IOException {
         System.out.println("Game started");
         System.out.println("Round Count: " + this.roundCount);
         System.out.println("Map index: " + this.mapIndex);
@@ -41,7 +41,7 @@ public class GameEngine {
         this.frame.getContentPane().removeAll();
 
         // Create and add the game map GUI to the frame
-        GameMapGUI gameMapGUI = new GameMapGUI(this.roundCount, this.map, this.playerCount);
+        GameMapGUI gameMapGUI = new GameMapGUI(this.roundCount, this.map, this.playerCount, frame);
         this.frame.add(gameMapGUI);
         this.frame.validate();
         this.frame.repaint();

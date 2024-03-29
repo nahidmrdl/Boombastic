@@ -31,6 +31,15 @@ public class Player extends Entity {
         return imageIndex;
     }
 
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY(){
+        return this.y;
+    }
+
+
     public void setImageIndex(int imageIndex) {
         this.imageIndex = imageIndex;
     }
