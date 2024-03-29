@@ -2,13 +2,15 @@ package item;
 
 import cell.Cell;
 
-import java.awt.*;
 
 public abstract class GameItem {
     private Image baseImage;
     private Image image;
     private long finishTime;
     private Cell cell;
+
+    public GameItem(Image baseImage) {
+    }
 
     public void setCell(Cell c){
         this.cell = c;

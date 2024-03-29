@@ -299,17 +299,6 @@ public class GameInitialScreenGUI extends JPanel {
                 players.add(new Player(playerName, imageIndex));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
-
-                // Assuming 'frame' is a reference to the JFrame containing this panel
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
-
-                // Create the game map GUI with the selected map index
-                GameMapGUI gameMapGUI = new GameMapGUI(mapIndex);
-                frame.add(gameMapGUI); // Add the game map GUI to the frame
-
-                frame.validate();
-                frame.repaint();
             }
             // Get the parent of the selected JRadioButton, which is the JLayeredPane
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
