@@ -1,5 +1,6 @@
 package item.powerup;
 
+import entity.player.Player;
 import item.GameItem;
 
 import java.awt.*;
