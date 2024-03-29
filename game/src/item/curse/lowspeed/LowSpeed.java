@@ -1,7 +1,7 @@
 package item.curse.lowspeed;
 
-import item.curse.Curse;
-
-public class LowSpeed extends Curse {
-
-}
+//import item.curse.Curse;
+//
+//public class LowSpeed extends Curse {
+//
+//}

@@ -1,6 +1,6 @@
 package item.powerup.increasedblastrange;
 
-import item.powerup.PowerUp;
-
-public class IncreasedBlastRange extends PowerUp {
-}
+//import item.powerup.PowerUp;
+//
+//public class IncreasedBlastRange extends PowerUp {
+//}

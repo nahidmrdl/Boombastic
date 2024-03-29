@@ -30,6 +30,7 @@ public class GameMapGUI extends JPanel {
         JLabel mapLabel = new JLabel("Map " + map.getName() + " Displayed Here", SwingConstants.CENTER);
         this.add(mapLabel, BorderLayout.CENTER);
 
+
 //        GameTopPanelGUI topPanel = new GameTopPanelGUI();
 //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel
     }

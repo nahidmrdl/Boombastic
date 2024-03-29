@@ -2,6 +2,8 @@ package item;
 
 import cell.Cell;
 
+import java.awt.*;
+
 
 public abstract class GameItem {
     private Image baseImage;
