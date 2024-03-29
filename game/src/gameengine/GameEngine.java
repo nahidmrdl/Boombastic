@@ -7,6 +7,7 @@ import levels.LevelReader;
 import map.Map;
 
 import javax.swing.JFrame;
+import java.io.File;
 import java.io.IOException;
 
 public class GameEngine {
@@ -25,12 +26,13 @@ public class GameEngine {
         this.frame = frame; // Store the frame for later
 
         try {
-            Cell mapCell[][] = LevelReader.readLevelFromFile(STR."src/levels/\{this.mapIndex}.txt");
-            this.map = new Map(mapCell, null, STR."\{this.mapIndex}");
+            Cell mapCell[][] = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
+            this.map = new Map(mapCell, null, String.valueOf(this.mapIndex));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public void startGame() throws IOException {
         System.out.println("Game started");

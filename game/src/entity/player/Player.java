@@ -1,5 +1,6 @@
 package entity.player;
 
+import cell.Cell;
 import entity.Entity;
 import map.Map;
 
@@ -43,6 +44,34 @@ public class Player extends Entity {
     public void setImageIndex(int imageIndex) {
         this.imageIndex = imageIndex;
     }
+
+    public void Move(String keyNumber, Cell[][] level) {
+        int newX = this.x; // Assuming x is horizontal (columns)
+        int newY = this.y; // Assuming y is vertical (rows)
+
+        switch (keyNumber) {
+            case "87": // Move up
+                newY = this.y - 1;
+                break;
+            case "83": // Move down
+                newY = this.y + 1;
+                break;
+            case "65": // Move left
+                newX = this.x - 1;
+                break;
+            case "68": // Move right
+                newX = this.x + 1;
+                break;
+        }
+
+        if (newX >= 0 && newX < level[0].length && newY >= 0 && newY < level.length && !level[newY][newX].getType().equals("#") && !level[newY][newX].getType().equals("X")) {
+            this.x = newX;
+            this.y = newY;
+        }
+    }
+
+
+
 
     @Override
     public String toString() {

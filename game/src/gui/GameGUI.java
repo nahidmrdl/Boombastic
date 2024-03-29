@@ -5,7 +5,7 @@ import levels.LevelReader;
 
 import javax.swing.*;
 
-import static java.lang.StringTemplate.STR;
+
 
 public class GameGUI {
     public JFrame frame;
@@ -24,9 +24,7 @@ public class GameGUI {
             this.model = new GameEngine(initialScreen, frame);
 
             this.frame.add(initialScreen);
-
             this.frame.setLocationRelativeTo(null);
-
             this.frame.setVisible(true);
 
 
