@@ -4,10 +4,11 @@ import cell.Cell;
 
 import java.awt.*;
 
-public abstract class Map {
+public class Map {
     private Cell[][] map;
     private Image image;
     private String name;
+
 
     public Map(Cell[][] map, Image image, String name){
         this.map = map;

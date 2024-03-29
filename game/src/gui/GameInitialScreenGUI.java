@@ -13,14 +13,19 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class GameInitialScreenGUI extends JPanel {
-    private final GameEngine gameEngine = new GameEngine();
-    private final List<Player> players = new ArrayList<>();
+    final int[] roundCountValueHolder = {5};
+    private JFrame frame;
+
+    private GameEngine gameEngine;
+
+    //= new GameEngine(this, this.frame); // 1 player for testing for now
+    public final List<Player> players = new ArrayList<>();
     private final List<JTextField> playerNameFields = new ArrayList<>();
     private final List<ImagePanel> imagePanels = new ArrayList<>();
     private JRadioButton selectedMapRadioButton;
-    public GameInitialScreenGUI() {
+    public GameInitialScreenGUI(JFrame frame) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
+        this.frame = frame;
         JLabel greetingLabel = new JLabel("Welcome to BOOMberman Game!");
         greetingLabel.setFont(new Font(greetingLabel.getFont().getName(), Font.BOLD, 30));
         greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -29,6 +34,10 @@ public class GameInitialScreenGUI extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 10)));
         addMaps();
         addPlayers();
+    }
+
+    public void setGameEngine(JFrame frame){
+        this.gameEngine = new GameEngine(this, frame);
     }
     private final ButtonGroup mapGroup = new ButtonGroup();
     private JLayeredPane createMapPanel(int imgIndex) {
@@ -189,7 +198,6 @@ public class GameInitialScreenGUI extends JPanel {
         playerControlsDialog.setLocationRelativeTo(null);
         playerControlsDialog.setVisible(true);
     }
-    final int[] roundCountValueHolder = {5};
     private JPanel createRoundCountPanel() {
         JPanel roundCount = new JPanel();
         roundCount.setPreferredSize(new Dimension(250, 150));
@@ -296,20 +304,21 @@ public class GameInitialScreenGUI extends JPanel {
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 //System.out.println("Image index: " + imageIndex);
 
-                players.add(new Player(playerName, imageIndex));
+                players.add(new Player(0, 0, null, playerName, imageIndex));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
 
-                // Assuming 'frame' is a reference to the JFrame containing this panel
+//                 Assuming 'frame' is a reference to the JFrame containing this panel
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
+//                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
 
-                // Create the game map GUI with the selected map index
-                GameMapGUI gameMapGUI = new GameMapGUI(mapIndex);
-                frame.add(gameMapGUI); // Add the game map GUI to the frame
+//                 Create the game map GUI with the selected map index
+                setGameEngine(frame);
+//                GameMapGUI gameMapGUI = new GameMapGUI(getRoundCount(), getMapIndex(), 1);
+//                frame.add(gameMapGUI); // Add the game map GUI to the frame
 
-                frame.validate();
-                frame.repaint();
+//                frame.validate();
+//                frame.repaint();
             }
             // Get the parent of the selected JRadioButton, which is the JLayeredPane
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
@@ -330,7 +339,7 @@ public class GameInitialScreenGUI extends JPanel {
                 //System.out.println("Map index IN: " + mapIndex);
             }
             // Start the game
-            gameEngine.startGame(this);    // This window needs to be closed after this line
+            gameEngine.startGame();    // This window needs to be closed after this line
             System.out.println(players);
         }
         else {

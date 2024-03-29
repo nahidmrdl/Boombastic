@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class WallCell extends Cell {
     private Image image;
-    public WallCell(int row, int col, String type, Player owner, Image image) {
-        super(row, col, type, owner);
+    public WallCell(int row, int col, String type, Image image) {
+        super(row, col, type);
         this.image = image;
 
     }

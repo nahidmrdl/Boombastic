@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class NormalCell extends Cell {
     private Image image;
-    public NormalCell(int row, int col, String type, Player owner, Image image) {
-        super(row, col, type, owner);
+    public NormalCell(int row, int col, String type, Image image) {
+        super(row, col, type);
         this.image = image;
 
     }

@@ -1,12 +1,17 @@
 package gui;
 
 import gameengine.GameEngine;
+import levels.LevelReader;
 
 import javax.swing.*;
+
+import static java.lang.StringTemplate.STR;
 
 public class GameGUI {
     public JFrame frame;
     private GameEngine model;
+
+
 
     public GameGUI() {
 
@@ -14,9 +19,10 @@ public class GameGUI {
             this.frame.setSize(1000, 600);
             this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            this.model = new GameEngine();
 
-            GameInitialScreenGUI initialScreen = new GameInitialScreenGUI();
+            GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame);
+            this.model = new GameEngine(initialScreen, frame);
+
             this.frame.add(initialScreen);
 
             this.frame.setLocationRelativeTo(null);
