@@ -15,6 +15,14 @@ public abstract class GameItem {
         this.image = image;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setFinishTime(long finishTime) {
+        this.finishTime = finishTime;
+    }
+
     public void setCell(Cell c){
         this.cell = c;
     }

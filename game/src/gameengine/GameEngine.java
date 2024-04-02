@@ -4,11 +4,13 @@ import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
 import gui.GameMapGUI;
+import item.GameItem;
 import levels.LevelReader;
 import map.GameMap;
 
 import javax.swing.JFrame;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameEngine {
@@ -62,6 +64,32 @@ public class GameEngine {
 
         for (Player player : players) {
             player.setGameMap(this.gameMap);
+        }
+    }
+
+    public void runGameUnit() {
+        for (Cell[] row : this.gameMap.getMap()) {
+            for (Cell cell : row) {
+                if (cell instanceof NormalCell) {
+                    // Temporary list to hold items that need to be removed
+                    List<GameItem> itemsToRemove = new ArrayList<>();
+
+                    // First, determine which items need to be removed
+                    for (GameItem item : cell.getItems()) {
+                        System.out.println("Item finish time: " + item.getFinishTime());
+                        System.out.println("Current time: " + System.currentTimeMillis());
+                        if (item.getFinishTime() < System.currentTimeMillis()) {
+                            itemsToRemove.add(item);
+                        }
+                    }
+
+                    // Now, remove the items outside of the original loop to avoid ConcurrentModificationException
+                    for (GameItem item : itemsToRemove) {
+                        cell.getItems().remove(item);
+                        System.out.println("Item removed");
+                    }
+                }
+            }
         }
     }
 

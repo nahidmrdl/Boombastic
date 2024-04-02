@@ -4,6 +4,7 @@
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
+    import item.bomb.Bomb;
     import levels.LevelReader;
     import map.GameMap;
 
@@ -42,7 +43,17 @@
             updateGUI();
             System.out.println(model.getPlayers());
 
+            int delay = 1000 / 24; // Approximately 41 milliseconds
 
+            Timer timer = new Timer(delay, e -> {
+                // Your repeated task here.
+                // For example, you might want to call repaint() on your component to trigger paintComponent.
+                //System.out.println("Repainting...");
+                this.model.runGameUnit();
+                this.repaint();
+            });
+
+            timer.start();
         }
 
 
@@ -201,11 +212,16 @@
             for(int i = 0; i < this.model.getMap().getMap().length; i++){
                 for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
                     if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
-                        try {
-                            g.drawImage(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
+                            if (item instanceof Bomb) {
+                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                            }
                         }
+//                        try {
+//                            g.drawImage(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
                     }
                 }
             }
