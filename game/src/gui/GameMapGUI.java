@@ -2,6 +2,7 @@
 
     import cell.Cell;
     import entity.player.Player;
+    import gameengine.GameEngine;
     import levels.LevelReader;
     import map.Map;
 
@@ -19,17 +20,15 @@
         private JFrame frame;
         private Player player; // Add a player reference here
         private Map map;
-        private int playerCount;
-        private int roundCount;
+
+        private GameEngine model;
         public Image wallImage;
         public Image walkableImage;
         public Image boxImage;
         public Image playerImage;
         private LevelReader lr = new LevelReader();
-        public GameMapGUI(int roundCount, Map map, int playerCount, JFrame frame) throws IOException {
-            this.map = map;
-            this.roundCount = roundCount;
-            this.playerCount = playerCount;
+        public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
+            this.model = model;
             this.frame = frame;
             this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
             this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
@@ -62,16 +61,16 @@
                     System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_W: // W key
-                            player.Move("87", map.getMap());
+                            player.Move("87", model.getMap().getMap());
                             break;
                         case KeyEvent.VK_S: // S key
-                            player.Move("83", map.getMap());
+                            player.Move("83", model.getMap().getMap());
                             break;
                         case KeyEvent.VK_A: // A key
-                            player.Move("65", map.getMap());
+                            player.Move("65", model.getMap().getMap());
                             break;
                         case KeyEvent.VK_D: // D key
-                            player.Move("68", map.getMap());
+                            player.Move("68", model.getMap().getMap());
                             break;
                     }
                     repaint();
@@ -105,8 +104,8 @@
         }
         @Override
         protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Cell[][] mapCell = this.map.getMap();
+            super.paintComponents(g);
+            Cell[][] mapCell = this.model.getMap().getMap();
 
             int cellSize = 32;
             for(int i = 0; i < mapCell.length; i++){

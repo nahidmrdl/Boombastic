@@ -22,10 +22,13 @@ public class GameInitialScreenGUI extends JPanel {
     public final List<Player> players = new ArrayList<>();
     private final List<JTextField> playerNameFields = new ArrayList<>();
     private final List<ImagePanel> imagePanels = new ArrayList<>();
+
+    private GameGUI gameGui;
     private JRadioButton selectedMapRadioButton;
-    public GameInitialScreenGUI(JFrame frame) {
+    public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.frame = frame;
+        this.gameGui = gameGui;
         JLabel greetingLabel = new JLabel("Welcome to BOOMberman Game!");
         greetingLabel.setFont(new Font(greetingLabel.getFont().getName(), Font.BOLD, 30));
         greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -36,8 +39,8 @@ public class GameInitialScreenGUI extends JPanel {
         addPlayers();
     }
 
-    public void setGameEngine(JFrame frame){
-        this.gameEngine = new GameEngine(this, frame);
+    public void setGameEngine(List<Player> players){
+        this.gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
     }
     private final ButtonGroup mapGroup = new ButtonGroup();
     private JLayeredPane createMapPanel(int imgIndex) {
@@ -319,7 +322,7 @@ public class GameInitialScreenGUI extends JPanel {
 //                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
 
 //                 Create the game map GUI with the selected map index
-                setGameEngine(frame);
+                //setGameEngine(frame);
 //                GameMapGUI gameMapGUI = new GameMapGUI(getRoundCount(), getMapIndex(), 1);
 //                frame.add(gameMapGUI); // Add the game map GUI to the frame
 
@@ -345,7 +348,11 @@ public class GameInitialScreenGUI extends JPanel {
                 //System.out.println("Map index IN: " + mapIndex);
             }
             // Start the game
-            gameEngine.startGame();    // This window needs to be closed after this line
+            //gameEngine.startGame();
+            // This window needs to be closed after this line
+            System.out.println(getMapIndex());
+            gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
+            gameGui.startGame();
             System.out.println(players);
         }
         else {
