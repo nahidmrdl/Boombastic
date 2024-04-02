@@ -7,6 +7,7 @@ import item.GameItem;
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cell {
     private final int row;
@@ -15,13 +16,13 @@ public class Cell {
     private String type;
     private GameItem item;
 
-    private Entity[] visitors;
+    private List<Entity> visitors;
     private Image image;
 
     public Cell(int row, int col, String type) {
         this.row = row;
         this.col = col;
-        this.visitors = new Entity[7];
+        this.visitors = new ArrayList<>();
         this.type = type;
 
     }
@@ -33,7 +34,7 @@ public class Cell {
         return this.col;
     }
 
-    public Entity[] getVisitors(){
+    public List<Entity> getVisitors(){
         return this.visitors;
     }
 
@@ -41,7 +42,7 @@ public class Cell {
         return this.item;
     }
 
-    public void setVisitor( Entity[] visitors){
+    public void setVisitor( List<Entity> visitors){
         this.visitors = visitors;
     }
 

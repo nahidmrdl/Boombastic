@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="game started after start game with proper map">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="game setup for 2 players added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/box/BoxCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/wall/WallCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/wall/WallCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/levels/10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/10.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/levels/11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/11.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/levels/12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/12.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/mapname1/Map1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/mapname1/Map1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/mapname2/Map2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/mapname2/Map2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/mapname3/Map3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/mapname3/Map3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/LevelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/LevelReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712087271456</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="game setup for 2 players added">
+      <option name="closed" value="true" />
+      <created>1712090900903</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712090900903</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +230,8 @@
     <MESSAGE value="LevelReader file and minor change to cell class" />
     <MESSAGE value="Redid some parts of initialscreenGUI as well as GameGUI, map, gameEngine.. Had to comment child classes of powerups to avoid conflicts between classes. Some changes to GameMapGUI as well." />
     <MESSAGE value="game started after start game with proper map" />
-    <option name="LAST_COMMIT_MESSAGE" value="game started after start game with proper map" />
+    <MESSAGE value="game setup for 2 players added" />
+    <option name="LAST_COMMIT_MESSAGE" value="game setup for 2 players added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

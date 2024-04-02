@@ -1,6 +1,7 @@
 package gameengine;
 
 import cell.Cell;
+import cell.normalCell.NormalCell;
 import entity.player.Player;
 import gui.GameMapGUI;
 import levels.LevelReader;
@@ -30,11 +31,38 @@ public class GameEngine {
         //this.frame = frame; // Store the frame for later
 
         try {
-            Cell mapCell[][] = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
+            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
             this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        int playerCount = 0;
+
+        System.out.println(players.size());
+
+        for (Cell[] row : this.gameMap.getMap()) {
+            for (Cell cell : row) {
+                if(playerCount < players.size()) {
+                    System.out.println(cell.getVisitors());
+                    if(cell instanceof NormalCell) {
+                        if(((NormalCell) cell).isStartingPoint()) {
+                            System.out.println("Player " + playerCount + " is at starting point");
+                            // Inverse for some reason
+                            players.get(playerCount).setX(cell.getY());
+                            players.get(playerCount).setY(cell.getX());
+                            playerCount++;
+                        }
+                    }
+                }
+
+            }
+            System.out.println();
+        }
+    }
+
+    private void setPlayersPositions() {
+
     }
 
     public int getRoundCount() {

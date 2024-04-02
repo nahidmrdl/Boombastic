@@ -52,15 +52,15 @@
             int x = 3;
             int y = 2;
 
-            this.players = model.getPlayers();
-            this.players.get(0).setX(x);
-            this.players.get(0).setY(y);
-            this.players.get(0).setGameMap(model.getMap());
-
-
-            this.players.get(1).setX(4);
-            this.players.get(1).setY(10);
-            this.players.get(1).setGameMap(model.getMap());
+//            this.players = model.getPlayers();
+//            this.players.get(0).setX(x);
+//            this.players.get(0).setY(y);
+//            this.players.get(0).setGameMap(model.getMap());
+//
+//
+//            this.players.get(1).setX(4);
+//            this.players.get(1).setY(10);
+//            this.players.get(1).setGameMap(model.getMap());
 
 
 
@@ -81,42 +81,42 @@
                     System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_W: // W key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("87", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_S: // S key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("83", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_A: // A key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("65", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_D: // D key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("68", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_UP: // Up arrow key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("38", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_DOWN: // Down arrow key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("40", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_LEFT: // Left arrow key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("37", model.getMap().getMap());
                             }
                             break;
                         case KeyEvent.VK_RIGHT: // Right arrow key
-                            for (Player player : players) {
+                            for (Player player : model.getPlayers()) {
                                 player.Move("39", model.getMap().getMap());
                             }
                             break;
@@ -174,7 +174,7 @@
             }
 
             // Use the player instance to draw the player's current position
-            for (Player player : players) {
+            for (Player player : model.getPlayers()) {
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
 
             }

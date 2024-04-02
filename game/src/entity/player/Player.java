@@ -164,6 +164,6 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return "Player name: " + name + ", Image index: " + imageIndex;
+        return "Player name: " + name + ", Image index: " + imageIndex + ", Controls: " + Controls + ", X: " + x + ", Y: " + y;
     }
 }
