@@ -1,7 +1,7 @@
 package entity.monster;
 
 import entity.Entity;
-import map.Map;
+import map.GameMap;
 
 import java.awt.*;
 
@@ -11,8 +11,8 @@ public class Monster extends Entity {
     private String direction;
     private int speed;
 
-    public Monster(int x, int y, Map map, int speed) {
-        super(x, y, map);
+    public Monster(int x, int y, GameMap gameMap, int speed) {
+        super(x, y, gameMap);
         this.speed = speed;
 
     }

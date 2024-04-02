@@ -4,12 +4,11 @@ import cell.Cell;
 import entity.player.Player;
 import gui.GameMapGUI;
 import levels.LevelReader;
-import map.Map;
+import map.GameMap;
 
 import javax.swing.JFrame;
 import java.io.IOException;
 import java.util.List;
-import java.util.SequencedCollection;
 
 public class GameEngine {
     private int roundCount;
@@ -21,7 +20,7 @@ public class GameEngine {
     private JFrame frame; // Store the frame
 
     private LevelReader lr = new LevelReader();
-    private Map map;
+    private GameMap gameMap;
 
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
@@ -32,7 +31,7 @@ public class GameEngine {
 
         try {
             Cell mapCell[][] = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
-            this.map = new Map(mapCell, null, String.valueOf(this.mapIndex));
+            this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,8 +45,8 @@ public class GameEngine {
         return this.mapIndex;
     }
 
-    public Map getMap() {
-        return this.map;
+    public GameMap getMap() {
+        return this.gameMap;
     }
 
     public int getPlayerCount() {

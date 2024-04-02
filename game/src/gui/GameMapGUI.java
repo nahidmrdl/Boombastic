@@ -4,7 +4,7 @@
     import entity.player.Player;
     import gameengine.GameEngine;
     import levels.LevelReader;
-    import map.Map;
+    import map.GameMap;
 
     import javax.imageio.ImageIO;
     import javax.swing.*;
@@ -18,8 +18,8 @@
     // Simple example to demonstrate the GameMapGUI structure.
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-        private Player player; // Add a player reference here
-        private Map map;
+        private java.util.List<Player> players; // Add a player reference here
+        private GameMap gameMap;
 
         private GameEngine model;
         public Image wallImage;
@@ -39,6 +39,7 @@
             initializePlayer();
             setupKeyListener();
             updateGUI();
+            System.out.println(model.getPlayers());
 
 
         }
@@ -51,26 +52,76 @@
             int x = 3;
             int y = 2;
 
-            this.player = new Player(x, y, this.map, "Jamshud", 0); // Use the actual x and y values found
+            this.players = model.getPlayers();
+            this.players.get(0).setX(x);
+            this.players.get(0).setY(y);
+            this.players.get(0).setGameMap(model.getMap());
+
+
+            this.players.get(1).setX(4);
+            this.players.get(1).setY(10);
+            this.players.get(1).setGameMap(model.getMap());
+
+
+
+            // Use the actual x and y values found
         }
 
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
+
+//                @Override
+//                public void keyPressed(KeyEvent e) {
+//                    Integer key = e.getKeyCode(); // Get the action based on key code
+//                    player.Move(key, model.getMap().getMap());
+//                    repaint();
+//                }
                 @Override
                 public void keyPressed(KeyEvent e) {
                     System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_W: // W key
-                            player.Move("87", model.getMap().getMap());
+                            for (Player player : players) {
+                                player.Move("87", model.getMap().getMap());
+                            }
                             break;
                         case KeyEvent.VK_S: // S key
-                            player.Move("83", model.getMap().getMap());
+                            for (Player player : players) {
+                                player.Move("83", model.getMap().getMap());
+                            }
                             break;
                         case KeyEvent.VK_A: // A key
-                            player.Move("65", model.getMap().getMap());
+                            for (Player player : players) {
+                                player.Move("65", model.getMap().getMap());
+                            }
                             break;
                         case KeyEvent.VK_D: // D key
-                            player.Move("68", model.getMap().getMap());
+                            for (Player player : players) {
+                                player.Move("68", model.getMap().getMap());
+                            }
+                            break;
+                        case KeyEvent.VK_UP: // Up arrow key
+                            for (Player player : players) {
+                                player.Move("38", model.getMap().getMap());
+                            }
+                            break;
+                        case KeyEvent.VK_DOWN: // Down arrow key
+                            for (Player player : players) {
+                                player.Move("40", model.getMap().getMap());
+                            }
+                            break;
+                        case KeyEvent.VK_LEFT: // Left arrow key
+                            for (Player player : players) {
+                                player.Move("37", model.getMap().getMap());
+                            }
+                            break;
+                        case KeyEvent.VK_RIGHT: // Right arrow key
+                            for (Player player : players) {
+                                player.Move("39", model.getMap().getMap());
+                            }
+                            break;
+                        case KeyEvent.VK_ESCAPE: // Escape key
+                            frame.dispose();
                             break;
                     }
                     repaint();
@@ -123,7 +174,11 @@
             }
 
             // Use the player instance to draw the player's current position
-            g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+            for (Player player : players) {
+                g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+
+            }
+            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
         }}
 
 

@@ -8,9 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GameInitialScreenGUI extends JPanel {
     final int[] roundCountValueHolder = {5};
@@ -21,6 +24,8 @@ public class GameInitialScreenGUI extends JPanel {
     //= new GameEngine(this, this.frame); // 1 player for testing for now
     public final List<Player> players = new ArrayList<>();
     private final List<JTextField> playerNameFields = new ArrayList<>();
+
+    private List<HashMap<String, String>> controls;
     private final List<ImagePanel> imagePanels = new ArrayList<>();
 
     private GameGUI gameGui;
@@ -34,9 +39,34 @@ public class GameInitialScreenGUI extends JPanel {
         greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(greetingLabel);
 
+        this.controls = new ArrayList<>();
+        setupControls();
+
         add(Box.createRigidArea(new Dimension(0, 10)));
         addMaps();
         addPlayers();
+    }
+
+    public void setupControls() {
+        // Player 1 controls
+        HashMap<String, String> player1Controls = new HashMap<>();
+        player1Controls.put("UP", "87"); // Up
+        player1Controls.put("LEFT", "65"); // Left
+        player1Controls.put("DOWN", "83"); // Down
+        player1Controls.put("RIGHT", "68"); // Right
+        player1Controls.put("BOMB", "66"); // Place bomb / B
+
+        // Player 2 controls
+        HashMap<String, String> player2Controls = new HashMap<>();
+        player2Controls.put("UP", "38"); // Up arrow key
+        player2Controls.put("LEFT", "37"); // Left arrow key
+        player2Controls.put("DOWN", "40"); // Down arrow key
+        player2Controls.put("RIGHT", "39"); // Right arrow key
+        player2Controls.put("BOMB", "10"); // Place bomb // ENTER
+
+        // Add the control maps to the controls list
+        controls.add(player1Controls);
+        controls.add(player2Controls);
     }
 
     public void setGameEngine(List<Player> players){
@@ -304,6 +334,11 @@ public class GameInitialScreenGUI extends JPanel {
     private int mapIndex;
     private void startGame() throws IOException {
 
+        Image[] images = new Image[4];
+        images[0] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/nahid.jpg")));
+        images[1] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/mike.jpg")));
+        images[2] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/gosha.jpg")));
+
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
@@ -313,7 +348,7 @@ public class GameInitialScreenGUI extends JPanel {
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 //System.out.println("Image index: " + imageIndex);
 
-                players.add(new Player(0, 0, null, playerName, imageIndex));
+                players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
 

@@ -4,13 +4,13 @@ import cell.Cell;
 
 import java.awt.*;
 
-public class Map {
+public class GameMap {
     private Cell[][] map;
     private Image image;
     private String name;
 
 
-    public Map(Cell[][] map, Image image, String name){
+    public GameMap(Cell[][] map, Image image, String name){
         this.map = map;
         this.image = image;
         this.name = name;

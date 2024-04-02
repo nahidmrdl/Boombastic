@@ -1,25 +1,25 @@
 package entity;
 
 import cell.Cell;
-import map.Map;
+import map.GameMap;
 
 import java.awt.*;
 
 public abstract class Entity {
-    private Map map;
+    private GameMap gameMap;
     private Image baseImage;
     private Image image;
     protected int x;
     protected int y;
 
-    public Entity(int x, int y, Map map){
+    public Entity(int x, int y, GameMap gameMap){
         this.x = x;
         this.y = y;
-        this.map = map;
+        this.gameMap = gameMap;
     }
 
     public Cell getCellPositioned(){
-        return this.map.getCell(x,y);
+        return this.gameMap.getCell(x,y);
     }
 
 //    public boolean move(){}
