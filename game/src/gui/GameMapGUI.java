@@ -121,14 +121,15 @@
                                 for (Player player : model.getPlayers()) {
                                     player.HandleAction("39", model.getMap().getMap());
                                 }
+                                break;
                             case KeyEvent.VK_B: // B key for Player 1 action
-                                // Assuming Player 1 is the first player in the list
+
                                 for (Player player : model.getPlayers()) {
                                     player.HandleAction("66", model.getMap().getMap());
                                 }
                                 break;
                             case KeyEvent.VK_ENTER: // Enter (Return) key for Player 2 action
-                                // Assuming Player 2 is the second player in the list
+
                                 for (Player player : model.getPlayers()) {
                                     player.HandleAction("10", model.getMap().getMap());
                                 }
