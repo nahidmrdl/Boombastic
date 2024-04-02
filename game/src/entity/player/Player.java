@@ -136,7 +136,9 @@ public class Player extends Entity {
     }
 
     public void placeBomb() throws IOException {
-        this.gameMap.getMap()[this.y][this.x].addItem(new Bomb());
+        Bomb bomb = new Bomb();
+        bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
+        this.gameMap.getMap()[this.y][this.x].addItem(bomb);
     }
 
 

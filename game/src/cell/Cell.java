@@ -3,11 +3,13 @@ package cell;
 import entity.Entity;
 import entity.player.Player;
 import item.GameItem;
+import map.GameMap;
 
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Cell {
     private final int row;
@@ -18,8 +20,12 @@ public class Cell {
 
 
 
+    private GameMap map;
+
     private List<Entity> visitors;
     private Image image;
+
+    private Image foregroundImage;
 
     public Cell(int row, int col, String type) {
         this.row = row;
@@ -32,6 +38,22 @@ public class Cell {
 
     public void addItem(GameItem item){
         this.items.add(item);
+    }
+
+    public void setMap(GameMap map){
+        this.map = map;
+    }
+
+    public GameMap getMap(){
+        return this.map;
+    }
+
+    public void setForegroundImage(Image image) {
+        this.foregroundImage = image;
+    }
+
+    public Image getForegroundImage() {
+        return this.foregroundImage;
     }
 
     public int getX(){

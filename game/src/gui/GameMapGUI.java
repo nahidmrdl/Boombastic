@@ -217,11 +217,16 @@
                                 g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
                         }
-//                        try {
-//                            g.drawImage(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
+                    }
+                }
+            }
+
+            // Draw foregrownd
+
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
+                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
                 }
             }

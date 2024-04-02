@@ -8,7 +8,12 @@ import item.GameItem;
 import levels.LevelReader;
 import map.GameMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,9 +88,23 @@ public class GameEngine {
                         }
                     }
 
+
+
                     // Now, remove the items outside of the original loop to avoid ConcurrentModificationException
                     for (GameItem item : itemsToRemove) {
                         cell.getItems().remove(item);
+                        for (int i = 0; i < 5; i++) {
+                            for (int j = 0; j < 5; j++) {
+                                if (i == 2 && j == 2) {
+                                    continue;
+                                }
+                                if (i == 2 || j == 2) {
+                                    if (this.gameMap.getMap()[cell.getX() + i - 2][cell.getY() + j - 2] != null) {
+                                        this.gameMap.getMap()[cell.getX() + i - 2][cell.getY() + j - 2].setForegroundImage(null);
+                                    }
+                                }
+                            }
+                        }
                         System.out.println("Item removed");
                     }
                 }
