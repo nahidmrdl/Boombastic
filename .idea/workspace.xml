@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="licence ADA" />
+    <list default="true" id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="licence ADA">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/game/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/src/cell/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/cell/Cell.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +51,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "InitScreenGUIActions",
+    "git-widget-placeholder": "mapInitialScreen",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "G:/boombastic/game",
     "node.js.detected.package.eslint": "true",
@@ -73,6 +78,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="" />

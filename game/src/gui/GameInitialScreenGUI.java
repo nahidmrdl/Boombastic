@@ -8,27 +8,69 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GameInitialScreenGUI extends JPanel {
-    private final GameEngine gameEngine = new GameEngine();
-    private final List<Player> players = new ArrayList<>();
-    private final List<JTextField> playerNameFields = new ArrayList<>();
-    private final List<ImagePanel> imagePanels = new ArrayList<>();
-    private JRadioButton selectedMapRadioButton;
-    public GameInitialScreenGUI() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    final int[] roundCountValueHolder = {5};
+    private JFrame frame;
 
+    private GameEngine gameEngine;
+
+    //= new GameEngine(this, this.frame); // 1 player for testing for now
+    public final List<Player> players = new ArrayList<>();
+    private final List<JTextField> playerNameFields = new ArrayList<>();
+
+    private List<HashMap<String, String>> controls;
+    private final List<ImagePanel> imagePanels = new ArrayList<>();
+
+    private GameGUI gameGui;
+    private JRadioButton selectedMapRadioButton;
+    public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.frame = frame;
+        this.gameGui = gameGui;
         JLabel greetingLabel = new JLabel("Welcome to BOOMberman Game!");
         greetingLabel.setFont(new Font(greetingLabel.getFont().getName(), Font.BOLD, 30));
         greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(greetingLabel);
 
+        this.controls = new ArrayList<>();
+        setupControls();
+
         add(Box.createRigidArea(new Dimension(0, 10)));
         addMaps();
         addPlayers();
+    }
+
+    public void setupControls() {
+        // Player 1 controls
+        HashMap<String, String> player1Controls = new HashMap<>();
+        player1Controls.put("UP", "87"); // Up
+        player1Controls.put("LEFT", "65"); // Left
+        player1Controls.put("DOWN", "83"); // Down
+        player1Controls.put("RIGHT", "68"); // Right
+        player1Controls.put("BOMB", "66"); // Place bomb / B
+
+        // Player 2 controls
+        HashMap<String, String> player2Controls = new HashMap<>();
+        player2Controls.put("UP", "38"); // Up arrow key
+        player2Controls.put("LEFT", "37"); // Left arrow key
+        player2Controls.put("DOWN", "40"); // Down arrow key
+        player2Controls.put("RIGHT", "39"); // Right arrow key
+        player2Controls.put("BOMB", "10"); // Place bomb // ENTER
+
+        // Add the control maps to the controls list
+        controls.add(player1Controls);
+        controls.add(player2Controls);
+    }
+
+    public void setGameEngine(List<Player> players){
+        this.gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
     }
     private final ButtonGroup mapGroup = new ButtonGroup();
     private JLayeredPane createMapPanel(int imgIndex) {
@@ -189,7 +231,6 @@ public class GameInitialScreenGUI extends JPanel {
         playerControlsDialog.setLocationRelativeTo(null);
         playerControlsDialog.setVisible(true);
     }
-    final int[] roundCountValueHolder = {5};
     private JPanel createRoundCountPanel() {
         JPanel roundCount = new JPanel();
         roundCount.setPreferredSize(new Dimension(250, 150));
@@ -274,7 +315,13 @@ public class GameInitialScreenGUI extends JPanel {
         startButton.setPreferredSize(new Dimension(250, 150)); // Set preferred size
         startButton.setMaximumSize(new Dimension(200, 150)); // Set maximum size
 
-        startButton.addActionListener(e -> startGame());
+        startButton.addActionListener(e -> {
+            try {
+                startGame();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         roundsAndStart.add(roundCountLabel);
         roundsAndStart.add(createRoundCountPanel());
@@ -285,7 +332,12 @@ public class GameInitialScreenGUI extends JPanel {
         add(playersAndRounds);
     }
     private int mapIndex;
-    private void startGame(){
+    private void startGame() throws IOException {
+
+        Image[] images = new Image[4];
+        images[0] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/nahid.jpg")));
+        images[1] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/mike.jpg")));
+        images[2] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/gosha.jpg")));
 
 
         if (selectedMapRadioButton != null) {
@@ -296,9 +348,21 @@ public class GameInitialScreenGUI extends JPanel {
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 //System.out.println("Image index: " + imageIndex);
 
-                players.add(new Player(playerName, imageIndex));
+                players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
+
+//                 Assuming 'frame' is a reference to the JFrame containing this panel
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+//                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
+
+//                 Create the game map GUI with the selected map index
+                //setGameEngine(frame);
+//                GameMapGUI gameMapGUI = new GameMapGUI(getRoundCount(), getMapIndex(), 1);
+//                frame.add(gameMapGUI); // Add the game map GUI to the frame
+
+//                frame.validate();
+//                frame.repaint();
             }
             // Get the parent of the selected JRadioButton, which is the JLayeredPane
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
@@ -319,7 +383,11 @@ public class GameInitialScreenGUI extends JPanel {
                 //System.out.println("Map index IN: " + mapIndex);
             }
             // Start the game
-            gameEngine.startGame(this);    // This window needs to be closed after this line
+            //gameEngine.startGame();
+            // This window needs to be closed after this line
+            System.out.println(getMapIndex());
+            gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
+            gameGui.startGame();
             System.out.println(players);
         }
         else {
