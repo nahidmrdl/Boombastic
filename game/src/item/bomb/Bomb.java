@@ -1,6 +1,8 @@
 package item.bomb;
 
 import cell.Cell;
+import cell.box.BoxCell;
+import cell.normalCell.NormalCell;
 import item.GameItem;
 
 import javax.imageio.ImageIO;
@@ -48,6 +50,10 @@ public class Bomb extends GameItem {
                             if (i == 2 || j == 2) {
                                 if (gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] != null) {
                                     try {
+                                        if(gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] instanceof BoxCell) {
+                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] = new NormalCell(this.getCell().getX() + i - 2, this.getCell().getY() + j - 2, ".");
+                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setMap(this.getCell().getMap());
+                                        }
                                         gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setForegroundImage(ImageIO.read(new File("src\\assets\\icons\\blast.png")));
                                     } catch (IOException ex) {
                                         throw new RuntimeException(ex);

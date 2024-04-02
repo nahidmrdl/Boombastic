@@ -1,6 +1,7 @@
 package gameengine;
 
 import cell.Cell;
+import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
 import gui.GameMapGUI;
@@ -72,7 +73,7 @@ public class GameEngine {
         }
     }
 
-    public void runGameUnit() {
+    public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if (cell instanceof NormalCell) {

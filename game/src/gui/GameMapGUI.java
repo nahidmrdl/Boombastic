@@ -49,7 +49,11 @@
                 // Your repeated task here.
                 // For example, you might want to call repaint() on your component to trigger paintComponent.
                 //System.out.println("Repainting...");
-                this.model.runGameUnit();
+                try {
+                    this.model.runGameUnit();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.repaint();
             });
 
