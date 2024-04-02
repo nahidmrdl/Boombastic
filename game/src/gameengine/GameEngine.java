@@ -59,6 +59,10 @@ public class GameEngine {
             }
             System.out.println();
         }
+
+        for (Player player : players) {
+            player.setGameMap(this.gameMap);
+        }
     }
 
     private void setPlayersPositions() {

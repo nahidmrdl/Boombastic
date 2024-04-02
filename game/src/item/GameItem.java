@@ -11,7 +11,8 @@ public abstract class GameItem {
     private long finishTime;
     private Cell cell;
 
-    public GameItem(Image baseImage) {
+    public GameItem(Image image) {
+        this.image = image;
     }
 
     public void setCell(Cell c){

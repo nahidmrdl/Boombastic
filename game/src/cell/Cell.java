@@ -14,7 +14,9 @@ public class Cell {
     private final int col;
 
     private String type;
-    private GameItem item;
+    private List<GameItem> items;
+
+
 
     private List<Entity> visitors;
     private Image image;
@@ -24,7 +26,12 @@ public class Cell {
         this.col = col;
         this.visitors = new ArrayList<>();
         this.type = type;
+        this.items = new ArrayList<>();
 
+    }
+
+    public void addItem(GameItem item){
+        this.items.add(item);
     }
 
     public int getX(){
@@ -38,16 +45,12 @@ public class Cell {
         return this.visitors;
     }
 
-    public GameItem getItems(){
-        return this.item;
+    public List<GameItem> getItems(){
+        return this.items;
     }
 
     public void setVisitor( List<Entity> visitors){
         this.visitors = visitors;
-    }
-
-    public void setItem(GameItem item){
-        this.item = item;
     }
 
     public String getType(){

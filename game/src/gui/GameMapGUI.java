@@ -3,6 +3,7 @@
     import cell.Cell;
     import entity.player.Player;
     import gameengine.GameEngine;
+    import item.GameItem;
     import levels.LevelReader;
     import map.GameMap;
 
@@ -79,51 +80,67 @@
                 @Override
                 public void keyPressed(KeyEvent e) {
                     System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_W: // W key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("87", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_S: // S key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("83", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_A: // A key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("65", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_D: // D key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("68", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_UP: // Up arrow key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("38", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_DOWN: // Down arrow key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("40", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_LEFT: // Left arrow key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("37", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_RIGHT: // Right arrow key
-                            for (Player player : model.getPlayers()) {
-                                player.Move("39", model.getMap().getMap());
-                            }
-                            break;
-                        case KeyEvent.VK_ESCAPE: // Escape key
-                            frame.dispose();
-                            break;
+                    try {
+                        switch (e.getKeyCode()) {
+                            case KeyEvent.VK_W: // W key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("87", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_S: // S key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("83", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_A: // A key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("65", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_D: // D key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("68", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_UP: // Up arrow key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("38", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_DOWN: // Down arrow key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("40", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_LEFT: // Left arrow key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("37", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_RIGHT: // Right arrow key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("39", model.getMap().getMap());
+                                }
+                            case KeyEvent.VK_B: // B key for Player 1 action
+                                // Assuming Player 1 is the first player in the list
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("66", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_ENTER: // Enter (Return) key for Player 2 action
+                                // Assuming Player 2 is the second player in the list
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("10", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_ESCAPE: // Escape key
+                                frame.dispose();
+                                break;
+                        }
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
                     }
+
                     repaint();
                 }
             });
@@ -170,6 +187,7 @@
                     if(Objects.equals(mapCell[i][j].getType(), "X")){
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
+
                 }
             }
 
@@ -178,6 +196,19 @@
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
 
             }
+
+            for(int i = 0; i < this.model.getMap().getMap().length; i++){
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
+                        try {
+                            g.drawImage(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }
+
             //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
         }}
 

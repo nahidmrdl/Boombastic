@@ -2,9 +2,11 @@ package entity.player;
 
 import cell.Cell;
 import entity.Entity;
+import item.bomb.Bomb;
 import map.GameMap;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,7 +88,7 @@ public class Player extends Entity {
         return Controls;
     }
 
-    public void Move(String keyCode, Cell[][] level ) {
+    public void HandleAction(String keyCode, Cell[][] level ) throws IOException {
         int newX = this.x; // Assuming 'x' is horizontal (columns)
         int newY = this.y; // Assuming 'y' is vertical (rows)
 
@@ -94,21 +96,6 @@ public class Player extends Entity {
 
         System.out.println(playerControls);
         System.out.println(keyCode);
-
-//        switch (keyNumber) {
-//            case (playerControls): // Move up
-//                newY = this.y - 1;
-//                break;
-//            case "83": // Move down
-//                newY = this.y + 1;
-//                break;
-//            case "65": // Move left
-//                newX = this.x - 1;
-//                break;
-//            case "68": // Move right
-//                newX = this.x + 1;
-//                break;
-//        }
 
         String action = getKeyActionFromKeyCode(keyCode, playerControls);
 
@@ -132,7 +119,7 @@ public class Player extends Entity {
                     break;
                 case "BOMB":
                     // Place bomb action
-                    //placeBomb();
+                    placeBomb();
                     break;
                 // Add more cases as needed for other actions
             }
@@ -146,6 +133,10 @@ public class Player extends Entity {
 
 
 
+    }
+
+    public void placeBomb() throws IOException {
+        this.gameMap.getMap()[this.y][this.x].addItem(new Bomb());
     }
 
 
