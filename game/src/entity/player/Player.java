@@ -21,19 +21,12 @@ public class Player extends Entity {
     private HashMap<String, String> Controls;
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
-
-
         super(x, y, gameMap);
         this.name = name;
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
-
     }
-    //private HashMap<String, String> Controls;
-
-
-
     // getters and setters
     public String getName() {
         return name;
@@ -79,14 +72,11 @@ public class Player extends Entity {
         return this.y;
     }
 
-
     public void setImageIndex(int imageIndex) {
         this.imageIndex = imageIndex;
     }
 
-    public HashMap<String, String> getControls() {
-        return Controls;
-    }
+    public HashMap<String, String> getControls() {return Controls;}
 
     public void HandleAction(String keyCode, Cell[][] level ) throws IOException {
         int newX = this.x; // Assuming 'x' is horizontal (columns)
@@ -130,15 +120,11 @@ public class Player extends Entity {
                 this.y = newY;
             }
         }
-
-
-
     }
 
     public void placeBomb() throws IOException {
         this.gameMap.getMap()[this.y][this.x].addItem(new Bomb());
     }
-
 
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
         for (Map.Entry<String, String> entry : playerControls.entrySet()) {
@@ -148,10 +134,6 @@ public class Player extends Entity {
         }
         return null; // No action found for this keyCode
     }
-
-
-
-
 
     @Override
     public String toString() {

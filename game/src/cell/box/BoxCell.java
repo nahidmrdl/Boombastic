@@ -13,7 +13,7 @@ public class BoxCell extends Cell {
     private Player owner;
     public BoxCell(int row, int col,String type) throws IOException {
         super(row, col, type);
-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));;
+        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));;
         this.owner = owner;
 
     }

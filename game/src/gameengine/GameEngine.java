@@ -46,7 +46,7 @@ public class GameEngine {
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if(playerCount < players.size()) {
-                    System.out.println(cell.getVisitors());
+                    //System.out.println(cell.getVisitors());
                     if(cell instanceof NormalCell) {
                         if(((NormalCell) cell).isStartingPoint()) {
                             System.out.println("Player " + playerCount + " is at starting point");
@@ -59,7 +59,7 @@ public class GameEngine {
                 }
 
             }
-            System.out.println();
+            //System.out.println();
         }
 
         for (Player player : players) {

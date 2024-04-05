@@ -24,23 +24,23 @@
         private GameMap gameMap;
 
         private GameEngine model;
-        public Image wallImage;
-        public Image walkableImage;
-        public Image boxImage;
-        public Image playerImage;
+        public Image wallImage, walkableImage, boxImage, playerImage;
         private LevelReader lr = new LevelReader();
+
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;
             this.frame = frame;
-            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
-            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
-            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));
-            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
+            this.wallImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
+            this.walkableImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
+            this.boxImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));
+            this.playerImage = ImageIO.read(new File("src/assets/jamil.jpg"));
             this.setFocusable(true);
             this.frame.setLocationRelativeTo(null);
+
             initializePlayer();
             setupKeyListener();
             updateGUI();
+
             System.out.println(model.getPlayers());
 
             int delay = 1000 / 24; // Approximately 41 milliseconds
@@ -56,11 +56,8 @@
             timer.start();
         }
 
-
-
         private void initializePlayer() {
             // Initialize your player object here instead of in paintComponent
-
             int x = 3;
             int y = 2;
 
@@ -73,15 +70,11 @@
 //            this.players.get(1).setX(4);
 //            this.players.get(1).setY(10);
 //            this.players.get(1).setGameMap(model.getMap());
-
-
-
             // Use the actual x and y values found
         }
 
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
-
 //                @Override
 //                public void keyPressed(KeyEvent e) {
 //                    Integer key = e.getKeyCode(); // Get the action based on key code
@@ -145,6 +138,33 @@
                                     player.HandleAction("10", model.getMap().getMap());
                                 }
                                 break;
+
+                            case KeyEvent.VK_I: // I key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("73", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_J: // J key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("74", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_K: // K key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("75", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_L: // L key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("76", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_SPACE: // Spacebar for placing bomb
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("32", model.getMap().getMap());
+                                }
+                                break;
+
                             case KeyEvent.VK_ESCAPE: // Escape key
                                 frame.dispose();
                                 break;
@@ -218,7 +238,7 @@
                             }
                         }
 //                        try {
-//                            g.drawImage(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
+//                            g.drawImage(ImageIO.read(new File("src/assets/icons/bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
 //                        } catch (IOException e) {
 //                            throw new RuntimeException(e);
 //                        }
