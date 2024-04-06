@@ -17,86 +17,83 @@ public class GameEngine {
     private int roundCount;
     private int mapIndex;
     private int playerCount;
-
-
     private List<Player> players;
     private JFrame frame; // Store the frame
-
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
 
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
-        this.playerCount = players.size(); // Assuming you set this up based on the selected players
+        this.playerCount = players.size();
         this.players = players;
-        //this.frame = frame; // Store the frame for later
 
-        try {
-            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
-            this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.defineMap();
 
-        int playerCount = 0;
-
-        System.out.println(players.size());
-
-        for (Cell[] row : this.gameMap.getMap()) {
-            for (Cell cell : row) {
-                if(playerCount < players.size()) {
-                    //System.out.println(cell.getVisitors());
-                    if(cell instanceof NormalCell) {
-                        if(((NormalCell) cell).isStartingPoint()) {
-                            System.out.println("Player " + playerCount + " is at starting point");
-                            // Inverse for some reason
-                            players.get(playerCount).setX(cell.getY());
-                            players.get(playerCount).setY(cell.getX());
-                            playerCount++;
-                        }
-                    }
-                }
-
-            }
-            //System.out.println();
-        }
+        this.positionPlayersOnStartingPoint();
 
         for (Player player : players) {
             player.setGameMap(this.gameMap);
         }
     }
 
-    public void runGameUnit() {
+    /**
+     * Read the map from the file and create the game map
+     */
+    private void defineMap() {
+        try {
+            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
+            this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+        * Position players on the starting point of the map
+     */
+    private void positionPlayersOnStartingPoint() {
+        int playerCount = 0;
+
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
-                if (cell instanceof NormalCell) {
-                    // Temporary list to hold items that need to be removed
-                    List<GameItem> itemsToRemove = new ArrayList<>();
-
-                    // First, determine which items need to be removed
-                    for (GameItem item : cell.getItems()) {
-                        System.out.println("Item finish time: " + item.getFinishTime());
-                        System.out.println("Current time: " + System.currentTimeMillis());
-                        if (item.getFinishTime() < System.currentTimeMillis()) {
-                            itemsToRemove.add(item);
+                if(playerCount < players.size()) {
+                    if(cell instanceof NormalCell) {
+                        if(((NormalCell) cell).isStartingPoint()) {
+                            // inverse x and y because of the way the map is read
+                            players.get(playerCount).setX(cell.getY());
+                            players.get(playerCount).setY(cell.getX());
+                            playerCount++;
                         }
-                    }
-
-                    // Now, remove the items outside of the original loop to avoid ConcurrentModificationException
-                    for (GameItem item : itemsToRemove) {
-                        cell.getItems().remove(item);
-                        System.out.println("Item removed");
                     }
                 }
             }
         }
     }
 
-    private void setPlayersPositions() {
-
+    /**
+     * Run calculations for the game to get new state
+     */
+    public void runGameUnit() {
+        for (Cell[] row : this.gameMap.getMap()) {
+            for (Cell cell : row) {
+                if (cell instanceof NormalCell) {
+                    ((NormalCell) cell).removeFinishedItems();
+                }
+            }
+        }
     }
 
+    public List<Player> getPlayers() {
+        return this.players;
+    }
+
+    public GameMap getMap() {
+        return this.gameMap;
+    }
+
+
+    // Functions needed for Top Bar
     public int getRoundCount() {
         return this.roundCount;
     }
@@ -105,31 +102,7 @@ public class GameEngine {
         return this.mapIndex;
     }
 
-    public GameMap getMap() {
-        return this.gameMap;
-    }
-
     public int getPlayerCount() {
         return this.playerCount;
-    }
-
-    public List<Player> getPlayers() {
-        return this.players;
-    }
-
-
-    public void startGame() throws IOException {
-        System.out.println("Game started");
-        System.out.println("Round Count: " + this.roundCount);
-        System.out.println("Map index: " + this.mapIndex);
-
-        // Remove the initial GUI
-        this.frame.getContentPane().removeAll();
-
-        // Create and add the game map GUI to the frame
-        GameMapGUI gameMapGUI = new GameMapGUI(this, frame);
-        this.frame.add(gameMapGUI);
-        this.frame.validate();
-        this.frame.repaint();
     }
 }

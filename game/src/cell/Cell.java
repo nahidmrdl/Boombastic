@@ -12,17 +12,15 @@ import java.util.List;
 public class Cell {
     private final int row;
     private final int col;
-    private String type;
-    private List<GameItem> items;
+    protected List<GameItem> items;
 
     private List<Entity> visitors;
     protected Image image;
 
-    public Cell(int row, int col, String type) {
+    public Cell(int row, int col) {
         this.row = row;
         this.col = col;
         this.visitors = new ArrayList<>();
-        this.type = type;
         this.items = new ArrayList<>();
 
     }
@@ -46,12 +44,8 @@ public class Cell {
         return this.items;
     }
 
-    public void setVisitor( List<Entity> visitors){
+    protected void setVisitor( List<Entity> visitors){
         this.visitors = visitors;
-    }
-
-    public String getType(){
-        return this.type;
     }
     public Image getImage(){
         return this.image;

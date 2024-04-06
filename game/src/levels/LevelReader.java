@@ -38,34 +38,26 @@ public class LevelReader {
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < maxColCount; j++) {
                 if (j < mapRows[i].length()) {
-//                    if(mapRows[i].charAt(j) == 'S') {
-//                        System.out.println("S");
-//                        map[i][j] = new Cell(i, j, String.valueOf(mapRows[i].charAt(j)));
-//                    }
-                     //else {map[i][j] = new Cell(i,j, String.valueOf(mapRows[i].charAt(j)));
-//
-//
                     if(mapRows[i].charAt(j) == 'X') {
-                        map[i][j] = new BoxCell(i,j, String.valueOf(mapRows[i].charAt(j)));
+                        map[i][j] = new BoxCell(i,j);
                     }
                     if(mapRows[i].charAt(j) == '.') {
-                        map[i][j] = new NormalCell(i,j, String.valueOf(mapRows[i].charAt(j)));
+                        map[i][j] = new NormalCell(i,j);
                     }
                     if(mapRows[i].charAt(j) == '#') {
-                        map[i][j] = new WallCell(i,j, String.valueOf(mapRows[i].charAt(j)));
+                        map[i][j] = new WallCell(i,j);
                     }
 
                     if(mapRows[i].charAt(j) == 'S') {
-                        map[i][j] = new NormalCell(i,j, String.valueOf(mapRows[i].charAt(j)));
+                        map[i][j] = new NormalCell(i,j);
                         if(map[i][j] instanceof NormalCell) {
                             ((NormalCell) map[i][j]).setStartingPoint(true);
-                            System.out.println("Starting point at " + i + " " + j);
                         }
                     }
 
 
                 } else {
-                    map[i][j] = new Cell(i,j, " ");
+                    map[i][j] = new Cell(i,j);
                 }
             }
         }
