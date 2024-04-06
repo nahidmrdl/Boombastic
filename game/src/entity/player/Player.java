@@ -106,17 +106,25 @@ public class Player extends Entity {
             }
 
             // Check if the new position is valid
-            if (
-                    newX >= 0
-                    && newY >= 0
-                    && newX < level[0].length
-                    && newY < level.length
-                    && !(level[newY][newX] instanceof WallCell)
-                    && !(level[newY][newX] instanceof BoxCell)
-            ) {
-                this.x = newX;
-                this.y = newY;
-            }
+
+            this.move(newX, newY);
+        }
+    }
+
+    protected void move(int newX, int newY){
+
+        Cell[][] level = this.gameMap.getMap();
+
+        if (
+                        newX >= 0
+                        && newY >= 0
+                        && newX < level[0].length
+                        && newY < level.length
+                        && !(level[newY][newX] instanceof WallCell)
+                        && !(level[newY][newX] instanceof BoxCell)
+        ) {
+            this.x = newX;
+            this.y = newY;
         }
     }
 

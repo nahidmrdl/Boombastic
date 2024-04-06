@@ -22,7 +22,7 @@ public abstract class Entity {
         return this.gameMap.getCell(x,y);
     }
 
-//    public boolean move(){}
+    protected abstract void move(int x, int y);
 
     public Image getImage(){
         return this.image;
