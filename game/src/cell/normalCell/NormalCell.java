@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class NormalCell extends Cell {
-    private Image image;
 
     boolean isStartingPoint = false;
 

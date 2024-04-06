@@ -12,14 +12,11 @@ import java.util.List;
 public class Cell {
     private final int row;
     private final int col;
-
     private String type;
     private List<GameItem> items;
 
-
-
     private List<Entity> visitors;
-    private Image image;
+    protected Image image;
 
     public Cell(int row, int col, String type) {
         this.row = row;
