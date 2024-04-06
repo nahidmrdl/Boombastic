@@ -1,6 +1,9 @@
     package gui;
 
     import cell.Cell;
+    import cell.box.BoxCell;
+    import cell.normalCell.NormalCell;
+    import cell.wall.WallCell;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -15,6 +18,7 @@
     import java.awt.event.KeyEvent;
     import java.io.File;
     import java.io.IOException;
+    import java.util.Map;
     import java.util.Objects;
 
     // Simple example to demonstrate the GameMapGUI structure.
@@ -202,51 +206,76 @@
             repaint();
             });
         }
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponents(g);
+
+        /**
+         * Paints the map onto the graphics context.
+         * @param g The graphics context to paint on.
+         * @param cellSize The size of each cell in pixels.
+         */
+        private void paintMap(Graphics g, int cellSize) {
             Cell[][] mapCell = this.model.getMap().getMap();
 
-            int cellSize = 32;
             for(int i = 0; i < mapCell.length; i++){
                 for (int j = 0; j < mapCell[0].length; j++) {
-                    if(Objects.equals(mapCell[i][j].getType(), "#")){
+
+                    Cell cell = mapCell[i][j];
+
+                    if(cell instanceof WallCell){
                         g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
-                    if(Objects.equals(mapCell[i][j].getType(), ".") || Objects.equals(mapCell[i][j].getType(), "S")){
+                    if(cell instanceof NormalCell){
                         g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
-                    if(Objects.equals(mapCell[i][j].getType(), "X")){
+                    if(cell instanceof BoxCell){
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
-
                 }
             }
+        }
 
-            // Use the player instance to draw the player's current position
+        /**
+         * Paints the players onto the graphics context.
+         * @param g The graphics context to paint on.
+         * @param cellSize The size of each cell in pixels.
+         */
+        private void paintPlayer(Graphics g, int cellSize) {
             for (Player player : model.getPlayers()) {
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
-
             }
+        }
 
-            for(int i = 0; i < this.model.getMap().getMap().length; i++){
-                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
-                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
-                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
+        /**
+         * Paints the bombs onto the graphics context.
+         * @param g The graphics context to paint on.
+         * @param cellSize The size of each cell in pixels.
+         */
+        private void paintBombs(Graphics g, int cellSize) {
+            Cell [][] mapCell = this.model.getMap().getMap();
+
+            for(int i = 0; i < mapCell.length; i++){
+                for (int j = 0; j < mapCell[0].length; j++) {
+                    if (!mapCell[i][j].getItems().isEmpty()) {
+                        for (GameItem item : mapCell[i][j].getItems()) {
                             if (item instanceof Bomb) {
                                 g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
                         }
-//                        try {
-//                            g.drawImage(ImageIO.read(new File("src/assets/icons/bombfirststate.png")), j * cellSize, i * cellSize, cellSize, cellSize, this);
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
                     }
                 }
             }
+        }
 
-            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponents(g);
+
+            int cellSize = 32;
+
+            this.paintMap(g, cellSize);
+
+            this.paintPlayer(g, cellSize);
+
+            this.paintBombs(g, cellSize);
         }}
 
 
