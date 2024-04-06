@@ -24,9 +24,6 @@
     // Simple example to demonstrate the GameMapGUI structure.
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-        private java.util.List<Player> players; // Add a player reference here
-        private GameMap gameMap;
-
         private GameEngine model;
         public Image wallImage, walkableImage, boxImage, playerImage;
         private LevelReader lr = new LevelReader();
@@ -41,42 +38,25 @@
             this.setFocusable(true);
             this.frame.setLocationRelativeTo(null);
 
-            initializePlayer();
-            setupKeyListener();
-            updateGUI();
+            this.setupKeyListener();
+            this.startGameTimer();
+        }
 
-            System.out.println(model.getPlayers());
-
-            int delay = 1000 / 24; // Approximately 41 milliseconds
-
+        /**
+         * Initializes and starts the game timer.
+         */
+        private void startGameTimer() {
+            int delay = 1000 / 24;
             Timer timer = new Timer(delay, e -> {
-                // Your repeated task here.
-                // For example, you might want to call repaint() on your component to trigger paintComponent.
-                //System.out.println("Repainting...");
                 this.model.runGameUnit();
                 this.repaint();
             });
-
             timer.start();
         }
 
-        private void initializePlayer() {
-            // Initialize your player object here instead of in paintComponent
-            int x = 3;
-            int y = 2;
-
-//            this.players = model.getPlayers();
-//            this.players.get(0).setX(x);
-//            this.players.get(0).setY(y);
-//            this.players.get(0).setGameMap(model.getMap());
-//
-//
-//            this.players.get(1).setX(4);
-//            this.players.get(1).setY(10);
-//            this.players.get(1).setGameMap(model.getMap());
-            // Use the actual x and y values found
-        }
-
+        /**
+         * Sets up the key listener for the game.
+         */
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
 //                @Override
@@ -184,29 +164,6 @@
             SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
         }
 
-
-
-        private void updateGUI() {
-    //        this.setLayout(new BorderLayout());
-    //        JLabel mapLabel = new JLabel("Map " + map.getName() + " Displayed Here", SwingConstants.CENTER);
-    //        this.add(mapLabel, BorderLayout.CENTER);
-
-
-
-    //        GameTopPanelGUI topPanel = new GameTopPanelGUI();
-    //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel
-            initializeLevel();
-        }
-
-        public void initializeLevel(){
-            Timer moveTimer = new Timer(300, e -> repaint());
-            moveTimer.start();
-
-            moveTimer = new Timer(300, e -> {
-            repaint();
-            });
-        }
-
         /**
          * Paints the map onto the graphics context.
          * @param g The graphics context to paint on.
@@ -265,6 +222,10 @@
             }
         }
 
+        /**
+         * Paints the components onto the graphics context.
+         * @param g The graphics context to paint on.
+         */
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponents(g);
