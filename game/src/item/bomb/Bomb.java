@@ -15,7 +15,7 @@ public class Bomb extends GameItem {
 
 
     public Bomb() throws IOException {
-        super(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")));
+        super(ImageIO.read(new File("src/assets/icons/bombfirststate.png")));
 
         this.setFinishTime(System.currentTimeMillis() + 3000);
 

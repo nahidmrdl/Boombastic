@@ -12,7 +12,7 @@ public class WallCell extends Cell {
     private Image image;
     public WallCell(int row, int col, String type) throws IOException {
         super(row, col, type);
-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
 
     }
 }
