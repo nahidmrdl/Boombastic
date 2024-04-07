@@ -9,12 +9,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class NormalCell extends Cell {
-    private Image image;
 
     boolean isStartingPoint = false;
 
-    public NormalCell(int row, int col, String type) throws IOException {
-        super(row, col, type);
+    public NormalCell(int row, int col) throws IOException {
+        super(row, col);
         this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
     }
 
@@ -24,5 +23,9 @@ public class NormalCell extends Cell {
 
     public boolean isStartingPoint() {
         return isStartingPoint;
+    }
+
+    public void removeFinishedItems() {
+        this.items.removeIf(item -> item.getFinishTime() < System.currentTimeMillis());
     }
 }
