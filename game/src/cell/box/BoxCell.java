@@ -2,6 +2,7 @@ package cell.box;
 
 import cell.Cell;
 import entity.player.Player;
+import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class BoxCell extends Cell {
         super(row, col, type);
         // this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));;
         this.owner = owner;
-        this.powerUpImage = ImageIO.read(new File("src/assets/icons/powerupicon.png"));
+        this.powerUpImage = ResourceCollection.Images.POWERUP_ICON.getImage();
         this.hasPowerUp = new Random().nextDouble() < 0.5;
     }
 
