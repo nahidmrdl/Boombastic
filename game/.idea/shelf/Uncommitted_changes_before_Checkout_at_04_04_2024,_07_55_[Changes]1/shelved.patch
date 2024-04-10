@@ -1,0 +1,110 @@
+Index: src/cell/box/BoxCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.box;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\n\npublic class BoxCell extends Cell {\n    private Image image;\n    private Player owner;\n    public BoxCell(int row, int col,String type) throws IOException {\n        super(row, col, type);\n        this.image = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1box.png\"));;\n        this.owner = owner;\n\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/box/BoxCell.java b/src/cell/box/BoxCell.java
+--- a/src/cell/box/BoxCell.java	
++++ b/src/cell/box/BoxCell.java	
+@@ -13,7 +13,7 @@
+     private Player owner;
+     public BoxCell(int row, int col,String type) throws IOException {
+         super(row, col, type);
+-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));;
++        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));;
+         this.owner = owner;
+ 
+     }
+Index: src/cell/normalCell/NormalCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.normalCell;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\n\npublic class NormalCell extends Cell {\n    private Image image;\n\n    boolean isStartingPoint = false;\n\n    public NormalCell(int row, int col, String type) throws IOException {\n        super(row, col, type);\n        this.image = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1walkable.png\"));\n    }\n\n    public void setStartingPoint(boolean isStartingPoint) {\n        this.isStartingPoint = isStartingPoint;\n    }\n\n    public boolean isStartingPoint() {\n        return isStartingPoint;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/normalCell/NormalCell.java b/src/cell/normalCell/NormalCell.java
+--- a/src/cell/normalCell/NormalCell.java	
++++ b/src/cell/normalCell/NormalCell.java	
+@@ -15,7 +15,7 @@
+ 
+     public NormalCell(int row, int col, String type) throws IOException {
+         super(row, col, type);
+-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
++        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
+     }
+ 
+     public void setStartingPoint(boolean isStartingPoint) {
+Index: src/cell/wall/WallCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.wall;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\n\npublic class WallCell extends Cell {\n    private Image image;\n    public WallCell(int row, int col, String type) throws IOException {\n        super(row, col, type);\n        this.image = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1wall.png\"));\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/wall/WallCell.java b/src/cell/wall/WallCell.java
+--- a/src/cell/wall/WallCell.java	
++++ b/src/cell/wall/WallCell.java	
+@@ -12,7 +12,7 @@
+     private Image image;
+     public WallCell(int row, int col, String type) throws IOException {
+         super(row, col, type);
+-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
++        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
+ 
+     }
+ }
+Index: src/gui/GameMapGUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>    package gui;\n\n    import cell.Cell;\n    import entity.player.Player;\n    import gameengine.GameEngine;\n    import item.GameItem;\n    import item.bomb.Bomb;\n    import levels.LevelReader;\n    import map.GameMap;\n\n    import javax.imageio.ImageIO;\n    import javax.swing.*;\n    import java.awt.*;\n    import java.awt.event.KeyAdapter;\n    import java.awt.event.KeyEvent;\n    import java.io.File;\n    import java.io.IOException;\n    import java.util.Objects;\n\n    // Simple example to demonstrate the GameMapGUI structure.\n    public class GameMapGUI extends JPanel {\n        private JFrame frame;\n        private java.util.List<Player> players; // Add a player reference here\n        private GameMap gameMap;\n\n        private GameEngine model;\n        public Image wallImage;\n        public Image walkableImage;\n        public Image boxImage;\n        public Image playerImage;\n        private LevelReader lr = new LevelReader();\n        public GameMapGUI( GameEngine model, JFrame frame) throws IOException {\n            this.model = model;\n            this.frame = frame;\n            this.wallImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1wall.png\"));\n            this.walkableImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1walkable.png\"));\n            this.boxImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1box.png\"));\n            this.playerImage = ImageIO.read(new File(\"src\\\\assets\\\\jamil.jpg\"));\n            this.setFocusable(true);\n            this.frame.setLocationRelativeTo(null);\n            initializePlayer();\n            setupKeyListener();\n            updateGUI();\n            System.out.println(model.getPlayers());\n\n            int delay = 1000 / 24; // Approximately 41 milliseconds\n\n            Timer timer = new Timer(delay, e -> {\n                // Your repeated task here.\n                // For example, you might want to call repaint() on your component to trigger paintComponent.\n                //System.out.println(\"Repainting...\");\n                try {\n                    this.model.runGameUnit();\n                } catch (IOException ex) {\n                    throw new RuntimeException(ex);\n                }\n                this.repaint();\n            });\n\n            timer.start();\n        }\n\n\n\n        private void initializePlayer() {\n            // Initialize your player object here instead of in paintComponent\n\n            int x = 3;\n            int y = 2;\n\n//            this.players = model.getPlayers();\n//            this.players.get(0).setX(x);\n//            this.players.get(0).setY(y);\n//            this.players.get(0).setGameMap(model.getMap());\n//\n//\n//            this.players.get(1).setX(4);\n//            this.players.get(1).setY(10);\n//            this.players.get(1).setGameMap(model.getMap());\n\n\n\n            // Use the actual x and y values found\n        }\n\n        private void setupKeyListener() {\n            this.addKeyListener(new KeyAdapter() {\n\n//                @Override\n//                public void keyPressed(KeyEvent e) {\n//                    Integer key = e.getKeyCode(); // Get the action based on key code\n//                    player.Move(key, model.getMap().getMap());\n//                    repaint();\n//                }\n                @Override\n                public void keyPressed(KeyEvent e) {\n                    System.out.println(\"Key pressed: \" + e.getKeyCode()); // Debugging\n                    try {\n                        switch (e.getKeyCode()) {\n                            case KeyEvent.VK_W: // W key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"87\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_S: // S key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"83\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_A: // A key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"65\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_D: // D key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"68\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_UP: // Up arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"38\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_DOWN: // Down arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"40\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_LEFT: // Left arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"37\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_RIGHT: // Right arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"39\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_B: // B key for Player 1 action\n\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"66\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_ENTER: // Enter (Return) key for Player 2 action\n\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"10\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_ESCAPE: // Escape key\n                                frame.dispose();\n                                break;\n                        }\n                    } catch (IOException ex) {\n                        throw new RuntimeException(ex);\n                    }\n\n                    repaint();\n                }\n            });\n            frame.setVisible(true);\n            SwingUtilities.invokeLater(() -> this.requestFocusInWindow());\n        }\n\n\n\n        private void updateGUI() {\n    //        this.setLayout(new BorderLayout());\n    //        JLabel mapLabel = new JLabel(\"Map \" + map.getName() + \" Displayed Here\", SwingConstants.CENTER);\n    //        this.add(mapLabel, BorderLayout.CENTER);\n\n\n\n    //        GameTopPanelGUI topPanel = new GameTopPanelGUI();\n    //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel\n            initializeLevel();\n        }\n\n        public void initializeLevel(){\n            Timer moveTimer = new Timer(300, e -> repaint());\n            moveTimer.start();\n\n            moveTimer = new Timer(300, e -> {\n            repaint();\n            });\n        }\n        @Override\n        protected void paintComponent(Graphics g) {\n            super.paintComponents(g);\n            Cell[][] mapCell = this.model.getMap().getMap();\n\n            int cellSize = 32;\n            for(int i = 0; i < mapCell.length; i++){\n                for (int j = 0; j < mapCell[0].length; j++) {\n                    if(Objects.equals(mapCell[i][j].getType(), \"#\")){\n                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    }\n                    if(Objects.equals(mapCell[i][j].getType(), \".\") || Objects.equals(mapCell[i][j].getType(), \"S\")){\n                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    }\n                    if(Objects.equals(mapCell[i][j].getType(), \"X\")){\n                        g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    }\n\n                }\n            }\n\n            // Use the player instance to draw the player's current position\n            for (Player player : model.getPlayers()) {\n                g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);\n\n            }\n\n            for(int i = 0; i < this.model.getMap().getMap().length; i++){\n                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {\n                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {\n                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {\n                            if (item instanceof Bomb) {\n                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);\n                            }\n                        }\n                    }\n                }\n            }\n\n            // Draw foregrownd\n\n            for (int i = 0; i < this.model.getMap().getMap().length; i++) {\n                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {\n                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {\n                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    }\n                }\n            }\n\n            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);\n        }}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/GameMapGUI.java b/src/gui/GameMapGUI.java
+--- a/src/gui/GameMapGUI.java	
++++ b/src/gui/GameMapGUI.java	
+@@ -32,10 +32,10 @@
+         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
+             this.model = model;
+             this.frame = frame;
+-            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+-            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
+-            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));
+-            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
++            this.wallImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
++            this.walkableImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
++            this.boxImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));
++            this.playerImage = ImageIO.read(new File("src/assets/jamil.jpg"));
+             this.setFocusable(true);
+             this.frame.setLocationRelativeTo(null);
+             initializePlayer();
+Index: src/item/bomb/Bomb.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package item.bomb;\n\nimport cell.Cell;\nimport cell.box.BoxCell;\nimport cell.normalCell.NormalCell;\nimport item.GameItem;\n\nimport javax.imageio.ImageIO;\nimport javax.swing.*;\nimport java.io.File;\nimport java.io.IOException;\nimport java.util.Map;\n\npublic class Bomb extends GameItem {\n\n    private Timer timer;\n    private int state = 0;\n\n\n\n    public Bomb() throws IOException {\n        super(ImageIO.read(new File(\"src\\\\assets\\\\icons\\\\bombfirststate.png\")));\n\n        this.setFinishTime(System.currentTimeMillis() + 3000);\n\n        timer = new Timer(500, e -> {\n            state++; // Increment the state to transition through the bomb's lifecycle\n            switch (state) {\n                case 1:\n                    // Transition to the second state\n                    changeImage(\"src/assets/icons/bombsecondstate.png\");\n                    break;\n                case 2:\n                    // Transition to the third state\n                    changeImage(\"src/assets/icons/bombthirdstate.png\");\n                    break;\n                case 3:\n                    // Trigger the blast\n                    changeImage(\"src/assets/icons/blast.png\");\n\n                    // change image in range\n\n                    Cell[][] gameMap =  this.getCell().getMap().getMap();\n\n                    for (int i = 0; i < 5; i++) {\n                        for (int j = 0; j < 5; j++) {\n                            if (i == 2 && j == 2) {\n                                continue;\n                            }\n                            if (i == 2 || j == 2) {\n                                if (gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] != null) {\n                                    try {\n                                        if(gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] instanceof BoxCell) {\n                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] = new NormalCell(this.getCell().getX() + i - 2, this.getCell().getY() + j - 2, \".\");\n                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setMap(this.getCell().getMap());\n                                        }\n                                        gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setForegroundImage(ImageIO.read(new File(\"src\\\\assets\\\\icons\\\\blast.png\")));\n                                    } catch (IOException ex) {\n                                        throw new RuntimeException(ex);\n                                    }\n                                }\n                            }\n                        }\n                    }\n\n                    // After the blast, perform any necessary cleanup\n                    break;\n                case 4:\n                    // Final state - stop the timer and potentially remove the bomb from the game\n                    timer.stop();\n                    break;\n            }\n        });\n        // Ensure the timer only runs once\n        timer.setRepeats(true);\n        // Start the timer\n        timer.start();\n    }\n\n    private void changeImage(String imagePath) {\n        try {\n            this.setImage(ImageIO.read(new File(imagePath)));\n        } catch (IOException ioException) {\n            ioException.printStackTrace();\n            // Consider more robust error handling or fallback behavior\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/item/bomb/Bomb.java b/src/item/bomb/Bomb.java
+--- a/src/item/bomb/Bomb.java	
++++ b/src/item/bomb/Bomb.java	
+@@ -19,7 +19,7 @@
+ 
+ 
+     public Bomb() throws IOException {
+-        super(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")));
++        super(ImageIO.read(new File("src/assets/icons/bombfirststate.png")));
+ 
+         this.setFinishTime(System.currentTimeMillis() + 3000);
+ 
+@@ -54,7 +54,7 @@
+                                             gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] = new NormalCell(this.getCell().getX() + i - 2, this.getCell().getY() + j - 2, ".");
+                                             gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setMap(this.getCell().getMap());
+                                         }
+-                                        gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setForegroundImage(ImageIO.read(new File("src\\assets\\icons\\blast.png")));
++                                        gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setForegroundImage(ImageIO.read(new File("src/assets/icons/blast.png")));
+                                     } catch (IOException ex) {
+                                         throw new RuntimeException(ex);
+                                     }

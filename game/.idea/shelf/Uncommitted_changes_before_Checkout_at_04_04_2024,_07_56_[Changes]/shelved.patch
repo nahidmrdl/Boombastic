@@ -1,0 +1,353 @@
+Index: src/cell/box/BoxCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.box;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\nimport java.util.Random;\n\npublic class BoxCell extends Cell {\n    private Image image;\n    private Image powerUpImage;\n    private Player owner;\n    private boolean hasPowerUp;\n    public BoxCell(int row, int col,String type) throws IOException {\n        super(row, col, type);\n        // this.image = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1box.png\"));;\n        this.owner = owner;\n        this.powerUpImage = ImageIO.read(new File(\"src/assets/icons/powerupicon.png\"));\n        this.hasPowerUp = new Random().nextDouble() < 0.5;\n    }\n\n    public boolean hasPowerUp() {\n        return hasPowerUp;\n    }\n\n    public Image getPowerUpImage() {\n        return powerUpImage;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/box/BoxCell.java b/src/cell/box/BoxCell.java
+--- a/src/cell/box/BoxCell.java	(revision 683594ef3825b6f704f39cb64c4d4c9dbe617b6d)
++++ b/src/cell/box/BoxCell.java	(date 1712210119239)
+@@ -7,27 +7,15 @@
+ import java.awt.*;
+ import java.io.File;
+ import java.io.IOException;
+-import java.util.Random;
+ 
+ public class BoxCell extends Cell {
+     private Image image;
+-    private Image powerUpImage;
+     private Player owner;
+-    private boolean hasPowerUp;
+     public BoxCell(int row, int col,String type) throws IOException {
+         super(row, col, type);
+-        // this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));;
++        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));;
+         this.owner = owner;
+-        this.powerUpImage = ImageIO.read(new File("src/assets/icons/powerupicon.png"));
+-        this.hasPowerUp = new Random().nextDouble() < 0.5;
+-    }
+ 
+-    public boolean hasPowerUp() {
+-        return hasPowerUp;
+-    }
+-
+-    public Image getPowerUpImage() {
+-        return powerUpImage;
+     }
+ 
+ }
+Index: src/cell/normalCell/NormalCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.normalCell;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\n\n\n\npublic class NormalCell extends Cell {\n    private Image image;\n    private Image powerUpImage; // New attribute for the power-up image\n    private boolean hasPowerUp; // Flag to indicate presence of a power-up\n\n    boolean isStartingPoint = false;\n\n    public NormalCell(int row, int col, String type) throws IOException {\n        super(row, col, type);\n    }\n\n    // Getter and setter for the power-up image\n    public Image getPowerUpImage() {\n        return powerUpImage;\n    }\n\n    public void setPowerUpImage(Image powerUpImage) {\n        this.powerUpImage = powerUpImage;\n    }\n\n    // Getter and setter for the hasPowerUp flag\n    public boolean hasPowerUp() {\n        return hasPowerUp;\n    }\n\n    public void setHasPowerUp(boolean hasPowerUp) {\n        this.hasPowerUp = hasPowerUp;\n    }\n\n    public void setStartingPoint(boolean isStartingPoint) {\n        this.isStartingPoint = isStartingPoint;\n    }\n\n    public boolean isStartingPoint() {\n        return isStartingPoint;\n    }\n}\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/normalCell/NormalCell.java b/src/cell/normalCell/NormalCell.java
+--- a/src/cell/normalCell/NormalCell.java	(revision 683594ef3825b6f704f39cb64c4d4c9dbe617b6d)
++++ b/src/cell/normalCell/NormalCell.java	(date 1712210123114)
+@@ -8,35 +8,14 @@
+ import java.io.File;
+ import java.io.IOException;
+ 
+-
+-
+ public class NormalCell extends Cell {
+     private Image image;
+-    private Image powerUpImage; // New attribute for the power-up image
+-    private boolean hasPowerUp; // Flag to indicate presence of a power-up
+ 
+     boolean isStartingPoint = false;
+ 
+     public NormalCell(int row, int col, String type) throws IOException {
+         super(row, col, type);
+-    }
+-
+-    // Getter and setter for the power-up image
+-    public Image getPowerUpImage() {
+-        return powerUpImage;
+-    }
+-
+-    public void setPowerUpImage(Image powerUpImage) {
+-        this.powerUpImage = powerUpImage;
+-    }
+-
+-    // Getter and setter for the hasPowerUp flag
+-    public boolean hasPowerUp() {
+-        return hasPowerUp;
+-    }
+-
+-    public void setHasPowerUp(boolean hasPowerUp) {
+-        this.hasPowerUp = hasPowerUp;
++        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
+     }
+ 
+     public void setStartingPoint(boolean isStartingPoint) {
+@@ -47,6 +26,3 @@
+         return isStartingPoint;
+     }
+ }
+-
+-
+-
+Index: src/cell/wall/WallCell.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cell.wall;\n\nimport cell.Cell;\nimport entity.player.Player;\n\nimport javax.imageio.ImageIO;\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\n\npublic class WallCell extends Cell {\n    private Image image;\n    public WallCell(int row, int col, String type) throws IOException {\n        super(row, col, type);\n       //\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/cell/wall/WallCell.java b/src/cell/wall/WallCell.java
+--- a/src/cell/wall/WallCell.java	(revision 683594ef3825b6f704f39cb64c4d4c9dbe617b6d)
++++ b/src/cell/wall/WallCell.java	(date 1712210125764)
+@@ -12,7 +12,7 @@
+     private Image image;
+     public WallCell(int row, int col, String type) throws IOException {
+         super(row, col, type);
+-       //
++        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+ 
+     }
+ }
+Index: src/gui/GameMapGUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>    package gui;\n\n    import cell.Cell;\n    import cell.box.BoxCell;\n    import cell.normalCell.NormalCell;\n    import entity.player.Player;\n    import gameengine.GameEngine;\n    import item.GameItem;\n    import item.bomb.Bomb;\n    import levels.LevelReader;\n    import map.GameMap;\n\n    import javax.imageio.ImageIO;\n    import javax.swing.*;\n    import java.awt.*;\n    import java.awt.event.KeyAdapter;\n    import java.awt.event.KeyEvent;\n    import java.io.File;\n    import java.io.IOException;\n    import java.util.Objects;\n    import java.util.Random;\n\n    // Simple example to demonstrate the GameMapGUI structure.\n    public class GameMapGUI extends JPanel {\n        private JFrame frame;\n        private java.util.List<Player> players; // Add a player reference here\n        private GameMap gameMap;\n\n        private GameEngine model;\n        public Image wallImage;\n        public Image walkableImage;\n        public Image boxImage;\n        public Image playerImage;\n        public Image powerUpImage;\n        private LevelReader lr = new LevelReader();\n        public GameMapGUI( GameEngine model, JFrame frame) throws IOException {\n            this.model = model;\n            this.frame = frame;\n            loadMapAssetsRandomly();\n\n//            this.wallImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map1\\\\map1wall.png\"));\n//            this.walkableImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map3\\\\map3walkable.png\"));\n//            this.boxImage = ImageIO.read(new File(\"src\\\\assets\\\\mapAssets\\\\map3\\\\map3box.png\"));\n//            this.playerImage = ImageIO.read(new File(\"src\\\\assets\\\\jamil.jpg\"));\n\n            this.setFocusable(true);\n            this.frame.setLocationRelativeTo(null);\n            initializePlayer();\n            setupKeyListener();\n            updateGUI();\n            System.out.println(model.getPlayers());\n\n            int delay = 1000 / 24; // Approximately 41 milliseconds\n\n            Timer timer = new Timer(delay, e -> {\n                // Your repeated task here.\n                // For example, you might want to call repaint() on your component to trigger paintComponent.\n                //System.out.println(\"Repainting...\");\n                try {\n                    this.model.runGameUnit();\n                } catch (IOException ex) {\n                    throw new RuntimeException(ex);\n                }\n                this.repaint();\n            });\n\n            timer.start();\n        }\n\n        private void loadMapAssetsRandomly() throws IOException {\n            Random random = new Random();\n\n            // Define arrays of possible asset paths for each type\n            String[] wallPaths = {\n                    \"src/assets/mapAssets/map1/map1wall.png\",\n                    \"src/assets/mapAssets/map2/map2wall.png\",\n                    \"src/assets/mapAssets/map3/map3wall.png\"\n            };\n\n            String[] walkablePaths = {\n                    \"src/assets/mapAssets/map1/map1walkable.png\",\n                    \"src/assets/mapAssets/map2/map2walkable.png\",\n                    \"src/assets/mapAssets/map3/map3walkable.png\"\n            };\n\n            String[] boxPaths = {\n                    \"src/assets/mapAssets/map1/map1box.png\",\n                    \"src/assets/mapAssets/map2/map2box.png\",\n                    \"src/assets/mapAssets/map3/map3box.png\"\n            };\n\n            // Randomly select an asset for each type\n            wallImage = ImageIO.read(new File(wallPaths[random.nextInt(wallPaths.length)]));\n            walkableImage = ImageIO.read(new File(walkablePaths[random.nextInt(walkablePaths.length)]));\n            boxImage = ImageIO.read(new File(boxPaths[random.nextInt(boxPaths.length)]));\n\n        }\n\n\n        private void initializePlayer() {\n            // Initialize your player object here instead of in paintComponent\n\n            int x = 3;\n            int y = 2;\n\n//            this.players = model.getPlayers();\n//            this.players.get(0).setX(x);\n//            this.players.get(0).setY(y);\n//            this.players.get(0).setGameMap(model.getMap());\n//\n//\n//            this.players.get(1).setX(4);\n//            this.players.get(1).setY(10);\n//            this.players.get(1).setGameMap(model.getMap());\n\n\n\n            // Use the actual x and y values found\n        }\n\n        private void setupKeyListener() {\n            this.addKeyListener(new KeyAdapter() {\n\n//                @Override\n//                public void keyPressed(KeyEvent e) {\n//                    Integer key = e.getKeyCode(); // Get the action based on key code\n//                    player.Move(key, model.getMap().getMap());\n//                    repaint();\n//                }\n                @Override\n                public void keyPressed(KeyEvent e) {\n                    System.out.println(\"Key pressed: \" + e.getKeyCode()); // Debugging\n                    try {\n                        switch (e.getKeyCode()) {\n                            case KeyEvent.VK_W: // W key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"87\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_S: // S key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"83\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_A: // A key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"65\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_D: // D key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"68\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_UP: // Up arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"38\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_DOWN: // Down arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"40\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_LEFT: // Left arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"37\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_RIGHT: // Right arrow key\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"39\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_B: // B key for Player 1 action\n\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"66\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_ENTER: // Enter (Return) key for Player 2 action\n\n                                for (Player player : model.getPlayers()) {\n                                    player.HandleAction(\"10\", model.getMap().getMap());\n                                }\n                                break;\n                            case KeyEvent.VK_ESCAPE: // Escape key\n                                frame.dispose();\n                                break;\n                        }\n                    } catch (IOException ex) {\n                        throw new RuntimeException(ex);\n                    }\n\n                    repaint();\n                }\n            });\n            frame.setVisible(true);\n            SwingUtilities.invokeLater(() -> this.requestFocusInWindow());\n        }\n\n\n\n        private void updateGUI() {\n    //        this.setLayout(new BorderLayout());\n    //        JLabel mapLabel = new JLabel(\"Map \" + map.getName() + \" Displayed Here\", SwingConstants.CENTER);\n    //        this.add(mapLabel, BorderLayout.CENTER);\n\n\n\n    //        GameTopPanelGUI topPanel = new GameTopPanelGUI();\n    //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel\n            initializeLevel();\n        }\n\n        public void initializeLevel(){\n            Timer moveTimer = new Timer(300, e -> repaint());\n            moveTimer.start();\n\n            moveTimer = new Timer(300, e -> {\n            repaint();\n            });\n        }\n        @Override\n        protected void paintComponent(Graphics g) {\n            super.paintComponent(g); // Call the superclass method to ensure proper component painting\n\n            Cell[][] mapCell = this.model.getMap().getMap();\n            int cellSize = 32; // Size of each cell for drawing purposes\n\n            // Loop through each cell in the map to determine what to draw\n            for (int i = 0; i < mapCell.length; i++) {\n                for (int j = 0; j < mapCell[i].length; j++) {\n                    Cell cell = mapCell[i][j];\n\n                    // Check and draw the base type of each cell (wall, walkable, box)\n                    if (cell instanceof NormalCell) {\n                        NormalCell normalCell = (NormalCell) cell;\n                        if (normalCell.isStartingPoint()) {\n                            // Optionally handle starting points differently\n                        }\n                        // Draw the walkable path or the power-up if the normal cell contains one\n                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                        if (normalCell.hasPowerUp()) {\n                            g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);\n                        }\n                    } else if (cell.getType().equals(\"#\")) { // Assuming '#' represents walls\n                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    } else if (cell instanceof BoxCell) {\n                        BoxCell boxCell = (BoxCell) cell;\n                        g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);\n                        if (boxCell.hasPowerUp()) {\n                            // Optionally, indicate there's a power-up inside the box without showing what it is\n                        }\n                    }\n                }\n            }\n\n            // Use the player instance to draw the player's current position\n            for (Player player : model.getPlayers()) {\n                g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);\n\n            }\n\n            for(int i = 0; i < this.model.getMap().getMap().length; i++){\n                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {\n                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {\n                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {\n                            if (item instanceof Bomb) {\n                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);\n                            }\n                        }\n                    }\n                }\n            }\n\n            // Draw foregrownd\n\n            for (int i = 0; i < this.model.getMap().getMap().length; i++) {\n                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {\n                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {\n                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);\n                    }\n                }\n            }\n\n            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);\n        }}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/GameMapGUI.java b/src/gui/GameMapGUI.java
+--- a/src/gui/GameMapGUI.java	(revision 683594ef3825b6f704f39cb64c4d4c9dbe617b6d)
++++ b/src/gui/GameMapGUI.java	(date 1712210128229)
+@@ -1,8 +1,6 @@
+     package gui;
+ 
+     import cell.Cell;
+-    import cell.box.BoxCell;
+-    import cell.normalCell.NormalCell;
+     import entity.player.Player;
+     import gameengine.GameEngine;
+     import item.GameItem;
+@@ -18,7 +16,6 @@
+     import java.io.File;
+     import java.io.IOException;
+     import java.util.Objects;
+-    import java.util.Random;
+ 
+     // Simple example to demonstrate the GameMapGUI structure.
+     public class GameMapGUI extends JPanel {
+@@ -31,18 +28,14 @@
+         public Image walkableImage;
+         public Image boxImage;
+         public Image playerImage;
+-        public Image powerUpImage;
+         private LevelReader lr = new LevelReader();
+         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
+             this.model = model;
+             this.frame = frame;
+-            loadMapAssetsRandomly();
+-
+-//            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+-//            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3walkable.png"));
+-//            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3box.png"));
+-//            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
+-
++            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
++            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1walkable.png"));
++            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1box.png"));
++            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
+             this.setFocusable(true);
+             this.frame.setLocationRelativeTo(null);
+             initializePlayer();
+@@ -67,34 +60,6 @@
+             timer.start();
+         }
+ 
+-        private void loadMapAssetsRandomly() throws IOException {
+-            Random random = new Random();
+-
+-            // Define arrays of possible asset paths for each type
+-            String[] wallPaths = {
+-                    "src/assets/mapAssets/map1/map1wall.png",
+-                    "src/assets/mapAssets/map2/map2wall.png",
+-                    "src/assets/mapAssets/map3/map3wall.png"
+-            };
+-
+-            String[] walkablePaths = {
+-                    "src/assets/mapAssets/map1/map1walkable.png",
+-                    "src/assets/mapAssets/map2/map2walkable.png",
+-                    "src/assets/mapAssets/map3/map3walkable.png"
+-            };
+-
+-            String[] boxPaths = {
+-                    "src/assets/mapAssets/map1/map1box.png",
+-                    "src/assets/mapAssets/map2/map2box.png",
+-                    "src/assets/mapAssets/map3/map3box.png"
+-            };
+-
+-            // Randomly select an asset for each type
+-            wallImage = ImageIO.read(new File(wallPaths[random.nextInt(wallPaths.length)]));
+-            walkableImage = ImageIO.read(new File(walkablePaths[random.nextInt(walkablePaths.length)]));
+-            boxImage = ImageIO.read(new File(boxPaths[random.nextInt(boxPaths.length)]));
+-
+-        }
+ 
+ 
+         private void initializePlayer() {
+@@ -223,36 +188,22 @@
+         }
+         @Override
+         protected void paintComponent(Graphics g) {
+-            super.paintComponent(g); // Call the superclass method to ensure proper component painting
+-
++            super.paintComponents(g);
+             Cell[][] mapCell = this.model.getMap().getMap();
+-            int cellSize = 32; // Size of each cell for drawing purposes
+ 
+-            // Loop through each cell in the map to determine what to draw
+-            for (int i = 0; i < mapCell.length; i++) {
+-                for (int j = 0; j < mapCell[i].length; j++) {
+-                    Cell cell = mapCell[i][j];
+-
+-                    // Check and draw the base type of each cell (wall, walkable, box)
+-                    if (cell instanceof NormalCell) {
+-                        NormalCell normalCell = (NormalCell) cell;
+-                        if (normalCell.isStartingPoint()) {
+-                            // Optionally handle starting points differently
+-                        }
+-                        // Draw the walkable path or the power-up if the normal cell contains one
+-                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+-                        if (normalCell.hasPowerUp()) {
+-                            g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+-                        }
+-                    } else if (cell.getType().equals("#")) { // Assuming '#' represents walls
++            int cellSize = 32;
++            for(int i = 0; i < mapCell.length; i++){
++                for (int j = 0; j < mapCell[0].length; j++) {
++                    if(Objects.equals(mapCell[i][j].getType(), "#")){
+                         g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+-                    } else if (cell instanceof BoxCell) {
+-                        BoxCell boxCell = (BoxCell) cell;
++                    }
++                    if(Objects.equals(mapCell[i][j].getType(), ".") || Objects.equals(mapCell[i][j].getType(), "S")){
++                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
++                    }
++                    if(Objects.equals(mapCell[i][j].getType(), "X")){
+                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+-                        if (boxCell.hasPowerUp()) {
+-                            // Optionally, indicate there's a power-up inside the box without showing what it is
+-                        }
+                     }
++
+                 }
+             }
+ 
+Index: src/item/bomb/Bomb.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package item.bomb;\n\nimport cell.Cell;\nimport cell.box.BoxCell;\nimport cell.normalCell.NormalCell;\nimport item.GameItem;\n\nimport javax.imageio.ImageIO;\nimport javax.swing.*;\nimport java.io.File;\nimport java.io.IOException;\nimport java.util.Map;\n\npublic class Bomb extends GameItem {\n\n    private Timer timer;\n    private int state = 0;\n\n    public int getBlastRadius() {\n        return blastRadius;\n    }\n\n    private final int blastRadius = 2; // Default blast radius of the bomb\n\n\n\n    public Bomb() throws IOException {\n        super(ImageIO.read(new File(\"src\\\\assets\\\\icons\\\\bombfirststate.png\")));\n\n        this.setFinishTime(System.currentTimeMillis() + 3000);\n\n        timer = new Timer(500, e -> {\n            state++; // Increment the state to transition through the bomb's lifecycle\n            switch (state) {\n                case 1:\n                    // Transition to the second state\n                    changeImage(\"src/assets/icons/bombsecondstate.png\");\n                    break;\n                case 2:\n                    // Transition to the third state\n                    changeImage(\"src/assets/icons/bombthirdstate.png\");\n                    break;\n                case 3:\n                    // Trigger the blast\n                    changeImage(\"src/assets/icons/blast.png\");\n\n                    // change image in range\n                    Cell[][] gameMap = this.getCell().getMap().getMap();\n                    int x = this.getCell().getX();\n                    int y = this.getCell().getY();\n                    // The blast extends this far in each direction unless blocked by a wall\n\n// Define directions: up, down, left, right\n                    int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n\n                    for (int[] direction : directions) {\n                        for (int i = 1; i <= blastRadius; i++) {\n                            int targetX = x + i * direction[0];\n                            int targetY = y + i * direction[1];\n\n                            // Ensure target coordinates are within map bounds\n                            if (targetX < 0 || targetX >= gameMap.length || targetY < 0 || targetY >= gameMap[0].length) {\n                                System.out.println(\"Target X: \" + targetX + \", Target Y: \" + targetY);\n\n                                continue; // Skip this iteration if target is out of bounds\n                            }\n\n                            Cell targetCell = gameMap[targetX][targetY];\n                            // Stop the blast if it hits a wall\n                            if (targetCell.getType().equals(\"#\")) { // Assuming '#' represents a wall\n                                break; // Stops extending the blast in this direction\n                            }\n\n                            // If it's a BoxCell, replace it with a NormalCell, possibly carrying over a power-up\n                            if (targetCell instanceof BoxCell) {\n                                BoxCell boxCell = (BoxCell) targetCell;\n                                try {\n                                    NormalCell newCell = new NormalCell(targetX, targetY, \".\");\n                                    newCell.setMap(this.getCell().getMap());\n                                    if (boxCell.hasPowerUp()) {\n                                        newCell.setHasPowerUp(true);\n                                        newCell.setPowerUpImage(boxCell.getPowerUpImage());\n                                    }\n                                    gameMap[targetX][targetY] = newCell;\n                                    newCell.setForegroundImage(ImageIO.read(new File(\"src/assets/icons/blast.png\")));\n                                } catch (IOException ex) {\n                                    throw new RuntimeException(ex);\n                                }\n                            } else if (!(targetCell instanceof BoxCell) && targetCell != null) {\n                                // Optionally, apply a visual effect for the blast on non-BoxCells (excluding walls)\n                                try {\n                                    targetCell.setForegroundImage(ImageIO.read(new File(\"src/assets/icons/blast.png\")));\n                                } catch (IOException ex) {\n                                    throw new RuntimeException(ex);\n                                }\n                            }\n                        }\n                    }\n\n\n                    // After the blast, perform any necessary cleanup\n                    break;\n                case 4:\n                    // Final state - stop the timer and potentially remove the bomb from the game\n                    timer.stop();\n                    break;\n            }\n        });\n        // Ensure the timer only runs once\n        timer.setRepeats(true);\n        // Start the timer\n        timer.start();\n    }\n\n\n\n    private void changeImage(String imagePath) {\n        try {\n            this.setImage(ImageIO.read(new File(imagePath)));\n        } catch (IOException ioException) {\n            ioException.printStackTrace();\n            // Consider more robust error handling or fallback behavior\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/item/bomb/Bomb.java b/src/item/bomb/Bomb.java
+--- a/src/item/bomb/Bomb.java	(revision 683594ef3825b6f704f39cb64c4d4c9dbe617b6d)
++++ b/src/item/bomb/Bomb.java	(date 1712210131341)
+@@ -16,12 +16,6 @@
+     private Timer timer;
+     private int state = 0;
+ 
+-    public int getBlastRadius() {
+-        return blastRadius;
+-    }
+-
+-    private final int blastRadius = 2; // Default blast radius of the bomb
+-
+ 
+ 
+     public Bomb() throws IOException {
+@@ -45,58 +39,29 @@
+                     changeImage("src/assets/icons/blast.png");
+ 
+                     // change image in range
+-                    Cell[][] gameMap = this.getCell().getMap().getMap();
+-                    int x = this.getCell().getX();
+-                    int y = this.getCell().getY();
+-                    // The blast extends this far in each direction unless blocked by a wall
+-
+-// Define directions: up, down, left, right
+-                    int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+-
+-                    for (int[] direction : directions) {
+-                        for (int i = 1; i <= blastRadius; i++) {
+-                            int targetX = x + i * direction[0];
+-                            int targetY = y + i * direction[1];
+-
+-                            // Ensure target coordinates are within map bounds
+-                            if (targetX < 0 || targetX >= gameMap.length || targetY < 0 || targetY >= gameMap[0].length) {
+-                                System.out.println("Target X: " + targetX + ", Target Y: " + targetY);
+-
+-                                continue; // Skip this iteration if target is out of bounds
+-                            }
++
++                    Cell[][] gameMap =  this.getCell().getMap().getMap();
+ 
+-                            Cell targetCell = gameMap[targetX][targetY];
+-                            // Stop the blast if it hits a wall
+-                            if (targetCell.getType().equals("#")) { // Assuming '#' represents a wall
+-                                break; // Stops extending the blast in this direction
++                    for (int i = 0; i < 5; i++) {
++                        for (int j = 0; j < 5; j++) {
++                            if (i == 2 && j == 2) {
++                                continue;
+                             }
+-
+-                            // If it's a BoxCell, replace it with a NormalCell, possibly carrying over a power-up
+-                            if (targetCell instanceof BoxCell) {
+-                                BoxCell boxCell = (BoxCell) targetCell;
+-                                try {
+-                                    NormalCell newCell = new NormalCell(targetX, targetY, ".");
+-                                    newCell.setMap(this.getCell().getMap());
+-                                    if (boxCell.hasPowerUp()) {
+-                                        newCell.setHasPowerUp(true);
+-                                        newCell.setPowerUpImage(boxCell.getPowerUpImage());
+-                                    }
+-                                    gameMap[targetX][targetY] = newCell;
+-                                    newCell.setForegroundImage(ImageIO.read(new File("src/assets/icons/blast.png")));
+-                                } catch (IOException ex) {
+-                                    throw new RuntimeException(ex);
+-                                }
+-                            } else if (!(targetCell instanceof BoxCell) && targetCell != null) {
+-                                // Optionally, apply a visual effect for the blast on non-BoxCells (excluding walls)
+-                                try {
+-                                    targetCell.setForegroundImage(ImageIO.read(new File("src/assets/icons/blast.png")));
+-                                } catch (IOException ex) {
+-                                    throw new RuntimeException(ex);
++                            if (i == 2 || j == 2) {
++                                if (gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] != null) {
++                                    try {
++                                        if(gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] instanceof BoxCell) {
++                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2] = new NormalCell(this.getCell().getX() + i - 2, this.getCell().getY() + j - 2, ".");
++                                            gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setMap(this.getCell().getMap());
++                                        }
++                                        gameMap[this.getCell().getX() + i - 2][this.getCell().getY() + j - 2].setForegroundImage(ImageIO.read(new File("src\\assets\\icons\\blast.png")));
++                                    } catch (IOException ex) {
++                                        throw new RuntimeException(ex);
++                                    }
+                                 }
+                             }
+                         }
+                     }
+-
+ 
+                     // After the blast, perform any necessary cleanup
+                     break;
+@@ -112,8 +77,6 @@
+         timer.start();
+     }
+ 
+-
+-
+     private void changeImage(String imagePath) {
+         try {
+             this.setImage(ImageIO.read(new File(imagePath)));

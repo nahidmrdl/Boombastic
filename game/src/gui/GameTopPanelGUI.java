@@ -20,7 +20,7 @@ public class GameTopPanelGUI {
         this.topPanel.setMinimumSize(new Dimension(990, 130));
         this.topPanel.setBounds(0, 0, 990, 130);
 
-        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
+        addContent();
     }
 
     public JPanel getTopPanel() {
@@ -29,6 +29,69 @@ public class GameTopPanelGUI {
 
     public void setColor(Color color) {
         this.topPanel.setBackground(color);
+    }
+
+    private void addContent() {
+        this.topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.weightx = 0.25;
+
+        //Player 1
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+
+        this.topPanel.add(createPlayerPanel(0), constraints);
+
+        //Player 2
+        constraints.gridx = 1;
+        this.topPanel.add(createPlayerPanel(1), constraints);
+
+        //Player 3
+        constraints.gridx = 2;
+        this.topPanel.add(createPlayerPanel(3), constraints);
+
+        //Timer
+        constraints.gridx = 3;
+        this.topPanel.add(addTimerAndPause(), constraints);
+
+    }
+
+    private JPanel createPlayerPanel(int playerIndex){
+        JPanel playerPanel = new JPanel();
+        playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
+
+        JPanel playerInfo = new JPanel();
+        playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.X_AXIS));
+
+        JPanel pwUpsCurses = new JPanel();
+        pwUpsCurses.setLayout(new BoxLayout(pwUpsCurses, BoxLayout.X_AXIS));
+
+
+        JPanel bombsAndVictories = new JPanel();
+        bombsAndVictories.setLayout(new BoxLayout(bombsAndVictories, BoxLayout.Y_AXIS));
+
+        JPanel bombs = new JPanel();
+        bombs.setLayout(new BoxLayout(bombs, BoxLayout.X_AXIS));
+
+        JPanel victories = new JPanel();
+        victories.setLayout(new BoxLayout(victories, BoxLayout.X_AXIS));
+
+        bombsAndVictories.add(bombs);
+        bombsAndVictories.add(victories);
+
+        playerInfo.add(bombsAndVictories);
+
+        playerPanel.add(playerInfo);
+        playerPanel.add(pwUpsCurses);
+        return playerPanel;
+    }
+
+    private JPanel addTimerAndPause(){
+        JPanel timerPanel = new JPanel();
+        timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.X_AXIS));
+
+
+        return timerPanel;
     }
 
 }

@@ -293,6 +293,7 @@ public class GameInitialScreenGUI extends JPanel {
 
         constraints.weightx = 0.25;
         constraints.fill = GridBagConstraints.BOTH;
+
         playersAndRounds.add(createPlayerPanel("Player 1", 0), constraints);
 
         // Player 2 Panel
