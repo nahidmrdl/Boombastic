@@ -9,6 +9,7 @@
     import item.bomb.Bomb;
     import levels.LevelReader;
     import map.GameMap;
+    import util.ResourceCollection;
 
     import javax.imageio.ImageIO;
     import javax.swing.*;
@@ -67,28 +68,28 @@
             Random random = new Random();
 
             // Define arrays of possible asset paths for each type
-            String[] wallPaths = {
-                    "src/assets/mapAssets/map1/map1wall.png",
-                    "src/assets/mapAssets/map2/map2wall.png",
-                    "src/assets/mapAssets/map3/map3wall.png"
+            Image[] wallPaths = {
+                    ResourceCollection.Images.WALLMAP1.getImage(),
+                    ResourceCollection.Images.WALLMAP2.getImage(),
+                    ResourceCollection.Images.WALLMAP3.getImage()
             };
 
-            String[] walkablePaths = {
-                    "src/assets/mapAssets/map1/map1walkable.png",
-                    "src/assets/mapAssets/map2/map2walkable.png",
-                    "src/assets/mapAssets/map3/map3walkable.png"
+            Image[] walkablePaths = {
+                    ResourceCollection.Images.GROUNDMAP1.getImage(),
+                    ResourceCollection.Images.GROUNDMAP2.getImage(),
+                    ResourceCollection.Images.GROUNDMAP3.getImage()
             };
 
-            String[] boxPaths = {
-                    "src/assets/mapAssets/map1/map1box.png",
-                    "src/assets/mapAssets/map2/map2box.png",
-                    "src/assets/mapAssets/map3/map3box.png"
+            Image[] boxPaths = {
+                    ResourceCollection.Images.BOXMAP1.getImage(),
+                    ResourceCollection.Images.BOXMAP2.getImage(),
+                    ResourceCollection.Images.BOXMAP3.getImage()
             };
 
             // Randomly select an asset for each type
-            wallImage = ImageIO.read(new File(wallPaths[random.nextInt(wallPaths.length)]));
-            walkableImage = ImageIO.read(new File(walkablePaths[random.nextInt(walkablePaths.length)]));
-            boxImage = ImageIO.read(new File(boxPaths[random.nextInt(boxPaths.length)]));
+            wallImage = wallPaths[random.nextInt(wallPaths.length)];
+            walkableImage = walkablePaths[random.nextInt(walkablePaths.length)];
+            boxImage = boxPaths[random.nextInt(boxPaths.length)];
 
         }
 

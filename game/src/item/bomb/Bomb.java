@@ -4,6 +4,7 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import item.GameItem;
+import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class Bomb extends GameItem {
 
 
     public Bomb() throws IOException {
-        super(ImageIO.read(new File("src\\assets\\icons\\bombfirststate.png")));
+        super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
 
         this.setFinishTime(System.currentTimeMillis() + 3000);
 
@@ -34,15 +35,17 @@ public class Bomb extends GameItem {
             switch (state) {
                 case 1:
                     // Transition to the second state
-                    changeImage("src/assets/icons/bombsecondstate.png");
+                    this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE2.getImage());
                     break;
                 case 2:
                     // Transition to the third state
-                    changeImage("src/assets/icons/bombthirdstate.png");
+                    this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE3.getImage());
+
                     break;
                 case 3:
                     // Trigger the blast
-                    changeImage("src/assets/icons/blast.png");
+                    this.setImage(ResourceCollection.Images.BLAST.getImage());
+
 
                     // change image in range
                     Cell[][] gameMap = this.getCell().getMap().getMap();
@@ -82,16 +85,12 @@ public class Bomb extends GameItem {
                                         newCell.setPowerUpImage(boxCell.getPowerUpImage());
                                     }
                                     gameMap[targetX][targetY] = newCell;
-                                    newCell.setForegroundImage(ImageIO.read(new File("src/assets/icons/blast.png")));
+                                    newCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
                                 } catch (IOException ex) {
                                     throw new RuntimeException(ex);
                                 }
                             } else if (!(targetCell instanceof BoxCell) && targetCell != null) {
-                                try {
-                                    targetCell.setForegroundImage(ImageIO.read(new File("src/assets/icons/blast.png")));
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
+                                targetCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
                             }
                         }
                     }
