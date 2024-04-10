@@ -14,10 +14,6 @@ public class Monster extends Entity {
     public Monster(int x, int y, GameMap gameMap, int speed) {
         super(x, y, gameMap);
         this.speed = speed;
-    }
 
-    protected void move(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 }

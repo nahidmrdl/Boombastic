@@ -3,7 +3,6 @@
     import cell.Cell;
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
-    import cell.wall.WallCell;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -18,47 +17,106 @@
     import java.awt.event.KeyEvent;
     import java.io.File;
     import java.io.IOException;
-    import java.util.Map;
     import java.util.Objects;
+    import java.util.Random;
 
-    // Simple example to demonstrate the GameMapGUI structure.
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-        private GameEngine model;
-        public Image wallImage, walkableImage, boxImage, playerImage;
-        private LevelReader lr = new LevelReader();
+        private java.util.List<Player> players;
+        private GameMap gameMap;
 
+        private GameEngine model;
+        public Image wallImage;
+        public Image walkableImage;
+        public Image boxImage;
+        public Image playerImage;
+        public Image powerUpImage;
+        private LevelReader lr = new LevelReader();
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;
             this.frame = frame;
-            this.wallImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
-            this.walkableImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
-            this.boxImage = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));
-            this.playerImage = ImageIO.read(new File("src/assets/jamil.jpg"));
+            loadMapAssetsRandomly();
+
+//            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+//            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3walkable.png"));
+//            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3box.png"));
+//            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
+
             this.setFocusable(true);
             this.frame.setLocationRelativeTo(null);
+            initializePlayer();
+            setupKeyListener();
+            updateGUI();
+            System.out.println(model.getPlayers());
 
-            this.setupKeyListener();
-            this.startGameTimer();
-        }
+            int delay = 1000 / 24; // Approximately 41 milliseconds
 
-        /**
-         * Initializes and starts the game timer.
-         */
-        private void startGameTimer() {
-            int delay = 1000 / 24;
             Timer timer = new Timer(delay, e -> {
-                this.model.runGameUnit();
+                try {
+                    this.model.runGameUnit();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.repaint();
             });
+
             timer.start();
         }
 
-        /**
-         * Sets up the key listener for the game.
-         */
+        private void loadMapAssetsRandomly() throws IOException {
+            Random random = new Random();
+
+            // Define arrays of possible asset paths for each type
+            String[] wallPaths = {
+                    "src/assets/mapAssets/map1/map1wall.png",
+                    "src/assets/mapAssets/map2/map2wall.png",
+                    "src/assets/mapAssets/map3/map3wall.png"
+            };
+
+            String[] walkablePaths = {
+                    "src/assets/mapAssets/map1/map1walkable.png",
+                    "src/assets/mapAssets/map2/map2walkable.png",
+                    "src/assets/mapAssets/map3/map3walkable.png"
+            };
+
+            String[] boxPaths = {
+                    "src/assets/mapAssets/map1/map1box.png",
+                    "src/assets/mapAssets/map2/map2box.png",
+                    "src/assets/mapAssets/map3/map3box.png"
+            };
+
+            // Randomly select an asset for each type
+            wallImage = ImageIO.read(new File(wallPaths[random.nextInt(wallPaths.length)]));
+            walkableImage = ImageIO.read(new File(walkablePaths[random.nextInt(walkablePaths.length)]));
+            boxImage = ImageIO.read(new File(boxPaths[random.nextInt(boxPaths.length)]));
+
+        }
+
+
+        private void initializePlayer() {
+            // Initialize your player object here instead of in paintComponent
+
+            int x = 3;
+            int y = 2;
+
+//            this.players = model.getPlayers();
+//            this.players.get(0).setX(x);
+//            this.players.get(0).setY(y);
+//            this.players.get(0).setGameMap(model.getMap());
+//
+//
+//            this.players.get(1).setX(4);
+//            this.players.get(1).setY(10);
+//            this.players.get(1).setGameMap(model.getMap());
+
+
+
+            // Use the actual x and y values found
+        }
+
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
+
 //                @Override
 //                public void keyPressed(KeyEvent e) {
 //                    Integer key = e.getKeyCode(); // Get the action based on key code
@@ -122,33 +180,6 @@
                                     player.HandleAction("10", model.getMap().getMap());
                                 }
                                 break;
-
-                            case KeyEvent.VK_I: // I key
-                                for (Player player : model.getPlayers()) {
-                                    player.HandleAction("73", model.getMap().getMap());
-                                }
-                                break;
-                            case KeyEvent.VK_J: // J key
-                                for (Player player : model.getPlayers()) {
-                                    player.HandleAction("74", model.getMap().getMap());
-                                }
-                                break;
-                            case KeyEvent.VK_K: // K key
-                                for (Player player : model.getPlayers()) {
-                                    player.HandleAction("75", model.getMap().getMap());
-                                }
-                                break;
-                            case KeyEvent.VK_L: // L key
-                                for (Player player : model.getPlayers()) {
-                                    player.HandleAction("76", model.getMap().getMap());
-                                }
-                                break;
-                            case KeyEvent.VK_SPACE: // Spacebar for placing bomb
-                                for (Player player : model.getPlayers()) {
-                                    player.HandleAction("32", model.getMap().getMap());
-                                }
-                                break;
-
                             case KeyEvent.VK_ESCAPE: // Escape key
                                 frame.dispose();
                                 break;
@@ -164,55 +195,73 @@
             SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
         }
 
-        /**
-         * Paints the map onto the graphics context.
-         * @param g The graphics context to paint on.
-         * @param cellSize The size of each cell in pixels.
-         */
-        private void paintMap(Graphics g, int cellSize) {
+
+
+        private void updateGUI() {
+    //        this.setLayout(new BorderLayout());
+    //        JLabel mapLabel = new JLabel("Map " + map.getName() + " Displayed Here", SwingConstants.CENTER);
+    //        this.add(mapLabel, BorderLayout.CENTER);
+
+
+
+    //        GameTopPanelGUI topPanel = new GameTopPanelGUI();
+    //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel
+            initializeLevel();
+        }
+
+        public void initializeLevel(){
+            Timer moveTimer = new Timer(300, e -> repaint());
+            moveTimer.start();
+
+            moveTimer = new Timer(300, e -> {
+            repaint();
+            });
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g); // Call the superclass method to ensure proper component painting
+
             Cell[][] mapCell = this.model.getMap().getMap();
+            int cellSize = 32; // Size of each cell for drawing purposes
 
-            for(int i = 0; i < mapCell.length; i++){
-                for (int j = 0; j < mapCell[0].length; j++) {
-
+            // Loop through each cell in the map to determine what to draw
+            for (int i = 0; i < mapCell.length; i++) {
+                for (int j = 0; j < mapCell[i].length; j++) {
                     Cell cell = mapCell[i][j];
 
-                    if(cell instanceof WallCell){
-                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                    }
-                    if(cell instanceof NormalCell){
+                    // Check and draw the base type of each cell (wall, walkable, box)
+                    if (cell instanceof NormalCell) {
+                        NormalCell normalCell = (NormalCell) cell;
+                        if (normalCell.isStartingPoint()) {
+                            // Optionally handle starting points differently
+                        }
+                        // Draw the walkable path or the power-up if the normal cell contains one
                         g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                    }
-                    if(cell instanceof BoxCell){
+                        if (normalCell.hasPowerUp()) {
+                            g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                        }
+                    } else if (cell.getType().equals("#")) { // Assuming '#' represents walls
+                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    } else if (cell instanceof BoxCell) {
+                        BoxCell boxCell = (BoxCell) cell;
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+                        if (boxCell.hasPowerUp()) {
+                            // Optionally, indicate there's a power-up inside the box without showing what it is
+                        }
                     }
                 }
             }
-        }
 
-        /**
-         * Paints the players onto the graphics context.
-         * @param g The graphics context to paint on.
-         * @param cellSize The size of each cell in pixels.
-         */
-        private void paintPlayer(Graphics g, int cellSize) {
+            // Use the player instance to draw the player's current position
             for (Player player : model.getPlayers()) {
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+
             }
-        }
 
-        /**
-         * Paints the bombs onto the graphics context.
-         * @param g The graphics context to paint on.
-         * @param cellSize The size of each cell in pixels.
-         */
-        private void paintBombs(Graphics g, int cellSize) {
-            Cell [][] mapCell = this.model.getMap().getMap();
-
-            for(int i = 0; i < mapCell.length; i++){
-                for (int j = 0; j < mapCell[0].length; j++) {
-                    if (!mapCell[i][j].getItems().isEmpty()) {
-                        for (GameItem item : mapCell[i][j].getItems()) {
+            for(int i = 0; i < this.model.getMap().getMap().length; i++){
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
+                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
                             if (item instanceof Bomb) {
                                 g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
@@ -220,23 +269,18 @@
                     }
                 }
             }
-        }
 
-        /**
-         * Paints the components onto the graphics context.
-         * @param g The graphics context to paint on.
-         */
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponents(g);
+            // Draw foregrownd
 
-            int cellSize = 32;
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
+                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    }
+                }
+            }
 
-            this.paintMap(g, cellSize);
-
-            this.paintPlayer(g, cellSize);
-
-            this.paintBombs(g, cellSize);
+            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
         }}
 
 

@@ -21,8 +21,9 @@ public class GameInitialScreenGUI extends JPanel {
 
     private GameEngine gameEngine;
 
+    //= new GameEngine(this, this.frame); // 1 player for testing for now
     public final List<Player> players = new ArrayList<>();
-    private List<JTextField> playerNameFields = new ArrayList<>();
+    private final List<JTextField> playerNameFields = new ArrayList<>();
 
     private List<HashMap<String, String>> controls;
     private final List<ImagePanel> imagePanels = new ArrayList<>();
@@ -63,30 +64,21 @@ public class GameInitialScreenGUI extends JPanel {
         player2Controls.put("RIGHT", "39"); // Right arrow key
         player2Controls.put("BOMB", "10"); // Place bomb // ENTER
 
-        // Player 3 controls
-        HashMap<String, String> player3Controls = new HashMap<>();
-        player3Controls.put("UP", "73"); // I
-        player3Controls.put("LEFT", "74"); // J
-        player3Controls.put("DOWN", "75"); // K
-        player3Controls.put("RIGHT", "76"); // L
-        player3Controls.put("BOMB", "32"); // Space
-
         // Add the control maps to the controls list
         controls.add(player1Controls);
         controls.add(player2Controls);
-        controls.add(player3Controls);
     }
 
     public void setGameEngine(List<Player> players){
         this.gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
     }
-
     private final ButtonGroup mapGroup = new ButtonGroup();
     private JLayeredPane createMapPanel(int imgIndex) {
         JLayeredPane mapPanel = new JLayeredPane() {
             @Override
             public void doLayout() {
                 super.doLayout();
+
                 // Calculate the position of the checkbox after the layout
                 int radioButtonPosition = 70;
                 int x = getWidth() - radioButtonPosition + 25;
@@ -129,7 +121,6 @@ public class GameInitialScreenGUI extends JPanel {
 
         add(maps);
     }
-
     private JButton addPlayerButton;
     private JPanel createPlayerPanel(String playerName, int imgIndex) {
         JPanel playerPanel = new JPanel();
@@ -208,11 +199,11 @@ public class GameInitialScreenGUI extends JPanel {
             JButton removePlayerButton = new JButton("Remove");
 
             removePlayerButton.setForeground(Color.RED);
+            if ( playerNameFields.size()== 3) {
+                playerNameFields.remove(2);
+            }
 
             removePlayerButton.addActionListener(e -> {
-                if ( playerNameFields.size()== 3) {
-                    playerNameFields.remove(2);
-                }
                 playerPanel.setVisible(false);
                 playerPanel.getParent().remove(playerPanel);
                 addPlayerButton.setVisible(true);
@@ -301,6 +292,8 @@ public class GameInitialScreenGUI extends JPanel {
         constraints.gridx = 2;
         addPlayerButton = new JButton("+");
         addPlayerButton.setPreferredSize(new Dimension(50, 50));
+
+
         playersAndRounds.add(addPlayerButton);
 
         addPlayerButton.addActionListener(e -> {
@@ -341,30 +334,39 @@ public class GameInitialScreenGUI extends JPanel {
         add(playersAndRounds);
     }
     private int mapIndex;
-
     private void startGame() throws IOException {
 
         Image[] images = new Image[4];
         images[0] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/nahid.jpg")));
         images[1] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/mike.jpg")));
         images[2] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/gosha.jpg")));
+        images[3] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/jamil.jpg")));
 
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
-                //System.out.println("player name fields size: " + playerNameFields.size());
                 String playerName = playerNameFields.get(i).getText();
                 //System.out.println("Player name: " + playerName);
+
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 //System.out.println("Image index: " + imageIndex);
+
                 players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
 
-                //Assuming 'frame' is a reference to the JFrame containing this panel
+//                 Assuming 'frame' is a reference to the JFrame containing this panel
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-            }
+//                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
 
+//                 Create the game map GUI with the selected map index
+                //setGameEngine(frame);
+//                GameMapGUI gameMapGUI = new GameMapGUI(getRoundCount(), getMapIndex(), 1);
+//                frame.add(gameMapGUI); // Add the game map GUI to the frame
+
+//                frame.validate();
+//                frame.repaint();
+            }
             // Get the parent of the selected JRadioButton, which is the JLayeredPane
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
             // Initialize a variable to hold the ImagePanel
@@ -379,10 +381,14 @@ public class GameInitialScreenGUI extends JPanel {
                 }
             }
 
-            if (imagePanel != null) {mapIndex = imagePanel.getImgIndex();}
-
+            if (imagePanel != null) {
+                mapIndex = imagePanel.getImgIndex();
+                //System.out.println("Map index IN: " + mapIndex);
+            }
+            // Start the game
+            //gameEngine.startGame();
+            // This window needs to be closed after this line
             System.out.println(getMapIndex());
-
             gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
             gameGui.startGame();
             System.out.println(players);
@@ -398,8 +404,9 @@ public class GameInitialScreenGUI extends JPanel {
             noMapSelected.setVisible(true);
         }
     }
-
-    public int getMapIndex(){return mapIndex;}
+    public int getMapIndex(){
+        return mapIndex;
+    }
 }
 
 class ImagePanel extends JPanel {
@@ -409,7 +416,7 @@ class ImagePanel extends JPanel {
             "/assets/nahid.jpg",
             "/assets/mike.jpg",
             "/assets/gosha.jpg",
-            "/assets/jamil.jpg"
+            "/assets/jamil.jpg",
     };
     private final String[] maps = {
             "/assets/dnipro.jpg",

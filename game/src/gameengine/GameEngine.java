@@ -1,14 +1,21 @@
 package gameengine;
 
 import cell.Cell;
+import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
 import gui.GameMapGUI;
 import item.GameItem;
 import levels.LevelReader;
 import map.GameMap;
+import item.bomb.Bomb;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,83 +24,119 @@ public class GameEngine {
     private int roundCount;
     private int mapIndex;
     private int playerCount;
+
+
     private List<Player> players;
     private JFrame frame; // Store the frame
+
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
 
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
-        this.playerCount = players.size();
+        this.playerCount = players.size(); // Assuming you set this up based on the selected players
         this.players = players;
+        //this.frame = frame; // Store the frame for later
 
-        this.defineMap();
-
-        this.positionPlayersOnStartingPoint();
-
-        for (Player player : players) {
-            player.setGameMap(this.gameMap);
-        }
-    }
-
-    /**
-     * Read the map from the file and create the game map
-     */
-    private void defineMap() {
         try {
             Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
             this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
 
-    /**
-        * Position players on the starting point of the map
-     */
-    private void positionPlayersOnStartingPoint() {
         int playerCount = 0;
+
+        System.out.println(players.size());
 
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if(playerCount < players.size()) {
+                    System.out.println(cell.getVisitors());
                     if(cell instanceof NormalCell) {
                         if(((NormalCell) cell).isStartingPoint()) {
-                            // inverse x and y because of the way the map is read
+                            System.out.println("Player " + playerCount + " is at starting point");
+                            // Inverse for some reason
                             players.get(playerCount).setX(cell.getY());
                             players.get(playerCount).setY(cell.getX());
                             playerCount++;
                         }
                     }
                 }
+
             }
+            System.out.println();
+        }
+
+        for (Player player : players) {
+            player.setGameMap(this.gameMap);
         }
     }
 
-    /**
-     * Run calculations for the game to get new state
-     */
-    public void runGameUnit() {
+    public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if (cell instanceof NormalCell) {
-                    ((NormalCell) cell).removeFinishedItems();
+                    // Temporary list to hold items that need to be removed
+                    List<GameItem> itemsToRemove = new ArrayList<>();
+
+                    // First, determine which items need to be removed
+                    for (GameItem item : cell.getItems()) {
+                        System.out.println("Item finish time: " + item.getFinishTime());
+                        System.out.println("Current time: " + System.currentTimeMillis());
+                        if (item.getFinishTime() < System.currentTimeMillis()) {
+                            itemsToRemove.add(item);
+                        }
+                    }
+
+
+                    // Loop over items to remove
+                    for (GameItem item : itemsToRemove) {
+                        cell = item.getCell();
+                        this.gameMap.getMap()[cell.getX()][cell.getY()].getItems().remove(item); // Remove the item from its current cell
+
+                        // Assuming getBlastRadius() is a method that returns the blast radius
+                        int blastRadius =  ((Bomb) item).getBlastRadius();
+
+                        // Define directions for the blast pattern: up, down, left, right
+                        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+                        // Loop through each direction to clear the foregroundImage
+                        for (int[] direction : directions) {
+                            for (int i = 1; i <= blastRadius; i++) {
+                                int targetX = cell.getX() + i * direction[0];
+                                int targetY = cell.getY() + i * direction[1];
+
+                                // Ensure target coordinates are within map bounds
+                                if (targetX >= 0 && targetX < this.gameMap.getMap().length && targetY >= 0 && targetY < this.gameMap.getMap()[0].length) {
+                                    // Check if the cell is not null and then clear the foregroundImage
+                                    if (this.gameMap.getMap()[targetX][targetY] != null) {
+                                        this.gameMap.getMap()[targetX][targetY].setForegroundImage(null);
+                                    }
+                                } else {
+                                    // If target is out of bounds, break out of the loop for the current direction
+                                    break;
+                                }
+                            }
+                        }
+
+                        System.out.println("Item removed");
+                    }
                 }
             }
         }
     }
 
-    public List<Player> getPlayers() {
-        return this.players;
+
+
+
+
+
+    private void setPlayersPositions() {
+
     }
 
-    public GameMap getMap() {
-        return this.gameMap;
-    }
-
-
-    // Functions needed for Top Bar
     public int getRoundCount() {
         return this.roundCount;
     }
@@ -102,7 +145,32 @@ public class GameEngine {
         return this.mapIndex;
     }
 
+
+    public GameMap getMap() {
+        return this.gameMap;
+    }
+
     public int getPlayerCount() {
         return this.playerCount;
+    }
+
+    public List<Player> getPlayers() {
+        return this.players;
+    }
+
+
+    public void startGame() throws IOException {
+        System.out.println("Game started");
+        System.out.println("Round Count: " + this.roundCount);
+        System.out.println("Map index: " + this.mapIndex);
+
+        // Remove the initial GUI
+        this.frame.getContentPane().removeAll();
+
+        // Create and add the game map GUI to the frame
+        GameMapGUI gameMapGUI = new GameMapGUI(this, frame);
+        this.frame.add(gameMapGUI);
+        this.frame.validate();
+        this.frame.repaint();
     }
 }
