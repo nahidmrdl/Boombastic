@@ -17,11 +17,6 @@ public class GameMap {
 
     public GameMap(Cell[][] map, Image image, String name){
         this.map = map;
-        for (Cell[] cells : map) {
-            for (Cell cell : cells) {
-                cell.setMap(this);
-            }
-        }
         this.image = image;
         this.name = name;
 
