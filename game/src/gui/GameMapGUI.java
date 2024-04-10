@@ -9,7 +9,6 @@
     import item.GameItem;
     import item.bomb.Bomb;
     import levels.LevelReader;
-    import map.GameMap;
 
     import javax.imageio.ImageIO;
     import javax.swing.*;
@@ -18,15 +17,12 @@
     import java.awt.event.KeyEvent;
     import java.io.File;
     import java.io.IOException;
-    import java.util.Map;
-    import java.util.Objects;
 
     // Simple example to demonstrate the GameMapGUI structure.
     public class GameMapGUI extends JPanel {
         private JFrame frame;
         private GameEngine model;
         public Image wallImage, walkableImage, boxImage, playerImage;
-        private LevelReader lr = new LevelReader();
 
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;

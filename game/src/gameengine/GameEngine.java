@@ -92,7 +92,6 @@ public class GameEngine {
         return this.gameMap;
     }
 
-
     // Functions needed for Top Bar
     public int getRoundCount() {
         return this.roundCount;

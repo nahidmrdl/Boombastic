@@ -29,10 +29,12 @@ public class GameInitialScreenGUI extends JPanel {
 
     private GameGUI gameGui;
     private JRadioButton selectedMapRadioButton;
+
     public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.frame = frame;
         this.gameGui = gameGui;
+
         JLabel greetingLabel = new JLabel("Welcome to BOOMberman Game!");
         greetingLabel.setFont(new Font(greetingLabel.getFont().getName(), Font.BOLD, 30));
         greetingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -385,6 +387,8 @@ public class GameInitialScreenGUI extends JPanel {
 
             gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
             gameGui.startGame();
+            this.frame.setSize(990, 700);
+            this.frame.setLocationRelativeTo(null);
             System.out.println(players);
         }
         else {

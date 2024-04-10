@@ -21,6 +21,7 @@ public class Player extends Entity {
     private Image Image;
 
     private HashMap<String, String> Controls;
+    //private list curses
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
         super(x, y, gameMap);
@@ -28,6 +29,7 @@ public class Player extends Entity {
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
+        //this.curses = new list();
     }
     // getters and setters
     public String getName() {
