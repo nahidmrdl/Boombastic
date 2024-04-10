@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="blast range removed withthe blast">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="folder structure for power up, curse ,cell, entity added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/box/BoxCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/wall/WallCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/wall/WallCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
@@ -44,8 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "box-destruction",
+    "git-widget-placeholder": "thirdPlayerIssue",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "G:/boombastic/game/src/entity",
@@ -106,111 +110,7 @@
       <option name="project" value="LOCAL" />
       <updated>1710186653117</updated>
     </task>
-    <task id="LOCAL-00003" summary="Added a comment">
-      <option name="closed" value="true" />
-      <created>1711494821693</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1711494821693</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added a comment">
-      <option name="closed" value="true" />
-      <created>1711496885526</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1711496885527</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Modified some gui elements">
-      <option name="closed" value="true" />
-      <created>1711496979930</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1711496979930</updated>
-    </task>
-    <task id="LOCAL-00006" summary="LevelReader file and minor change to cell class">
-      <option name="closed" value="true" />
-      <created>1711571565561</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1711571565561</updated>
-    </task>
-    <task id="LOCAL-00007" summary="LevelReader file and minor change to cell class">
-      <option name="closed" value="true" />
-      <created>1711571782204</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1711571782204</updated>
-    </task>
-    <task id="LOCAL-00008" summary="LevelReader file and minor change to cell class">
-      <option name="closed" value="true" />
-      <created>1711572025298</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1711572025298</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Redid some parts of initialscreenGUI as well as GameGUI, map, gameEngine.. Had to comment child classes of powerups to avoid conflicts between classes. Some changes to GameMapGUI as well.">
-      <option name="closed" value="true" />
-      <created>1711727023465</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1711727023465</updated>
-    </task>
-    <task id="LOCAL-00010" summary="game started after start game with proper map">
-      <option name="closed" value="true" />
-      <created>1712087271456</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1712087271456</updated>
-    </task>
-    <task id="LOCAL-00011" summary="game setup for 2 players added">
-      <option name="closed" value="true" />
-      <created>1712090900903</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1712090900903</updated>
-    </task>
-    <task id="LOCAL-00012" summary="game started with 2 players properly">
-      <option name="closed" value="true" />
-      <created>1712093995323</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1712093995323</updated>
-    </task>
-    <task id="LOCAL-00013" summary="bomb placement logic added">
-      <option name="closed" value="true" />
-      <created>1712096541472</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1712096541472</updated>
-    </task>
-    <task id="LOCAL-00014" summary="break issue fixed">
-      <option name="closed" value="true" />
-      <created>1712097256669</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1712097256669</updated>
-    </task>
-    <task id="LOCAL-00015" summary="blast range removed withthe blast">
-      <option name="closed" value="true" />
-      <created>1712100547503</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1712100547503</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,31 +130,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="clean project created" />
     <MESSAGE value="folder structure for power up, curse ,cell, entity added" />
-    <MESSAGE value="Added a comment" />
-    <MESSAGE value="Modified some gui elements" />
-    <MESSAGE value="LevelReader file and minor change to cell class" />
-    <MESSAGE value="Redid some parts of initialscreenGUI as well as GameGUI, map, gameEngine.. Had to comment child classes of powerups to avoid conflicts between classes. Some changes to GameMapGUI as well." />
-    <MESSAGE value="game started after start game with proper map" />
-    <MESSAGE value="game setup for 2 players added" />
-    <MESSAGE value="game started with 2 players properly" />
-    <MESSAGE value="bomb placement logic added" />
-    <MESSAGE value="break issue fixed" />
-    <MESSAGE value="blast range removed withthe blast" />
-    <option name="LAST_COMMIT_MESSAGE" value="blast range removed withthe blast" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java</url>
-          <line>342</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="folder structure for power up, curse ,cell, entity added" />
   </component>
 </project>
