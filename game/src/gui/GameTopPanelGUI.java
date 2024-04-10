@@ -1,13 +1,15 @@
 package gui;
 
+import entity.player.Player;
 import gameengine.GameEngine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 
 public class GameTopPanelGUI {
-    //private GameEngine gameEngine = new GameEngine();
+    private GameEngine gameEngine;
     private JPanel topPanel;
     private JFrame frame;
 
@@ -47,8 +49,10 @@ public class GameTopPanelGUI {
         this.topPanel.add(createPlayerPanel(1), constraints);
 
         //Player 3
-        constraints.gridx = 2;
-        this.topPanel.add(createPlayerPanel(3), constraints);
+        if(gameEngine.getPlayerCount() == 3) {
+            constraints.gridx = 2;
+            this.topPanel.add(createPlayerPanel(3), constraints);
+        }
 
         //Timer
         constraints.gridx = 3;
@@ -57,6 +61,8 @@ public class GameTopPanelGUI {
     }
 
     private JPanel createPlayerPanel(int playerIndex){
+        List<Player> players = gameEngine.getPlayers();
+
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
 

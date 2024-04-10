@@ -417,9 +417,9 @@ class ImagePanel extends JPanel {
             "/assets/jamil.jpg"
     };
     private final String[] maps = {
-            "/assets/dnipro.jpg",
-            "/assets/sumy.jpg",
-            "/assets/azer.jpg",
+            "/assets/mapAssets/map1/map1.png",
+            "/assets/mapAssets/map2/map2.png",
+            "/assets/mapAssets/map3/map3.png",
     };
     public ImagePanel(int img) {
         this.imgIndex = img;
