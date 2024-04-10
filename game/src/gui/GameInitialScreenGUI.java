@@ -23,13 +23,14 @@ public class GameInitialScreenGUI extends JPanel {
 
     //= new GameEngine(this, this.frame); // 1 player for testing for now
     public final List<Player> players = new ArrayList<>();
-    private final List<JTextField> playerNameFields = new ArrayList<>();
+    private List<JTextField> playerNameFields = new ArrayList<>();
 
     private List<HashMap<String, String>> controls;
     private final List<ImagePanel> imagePanels = new ArrayList<>();
 
     private GameGUI gameGui;
     private JRadioButton selectedMapRadioButton;
+
     public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.frame = frame;
@@ -64,15 +65,27 @@ public class GameInitialScreenGUI extends JPanel {
         player2Controls.put("RIGHT", "39"); // Right arrow key
         player2Controls.put("BOMB", "10"); // Place bomb // ENTER
 
+        // Player 3 controls
+        HashMap<String, String> player3Controls = new HashMap<>();
+        player3Controls.put("UP", "73"); // I
+        player3Controls.put("LEFT", "74"); // J
+        player3Controls.put("DOWN", "75"); // K
+        player3Controls.put("RIGHT", "76"); // L
+        player3Controls.put("BOMB", "32"); // Space
+
+
         // Add the control maps to the controls list
         controls.add(player1Controls);
         controls.add(player2Controls);
+        controls.add(player3Controls);
     }
 
-    public void setGameEngine(List<Player> players){
+    public void setGameEngine(List<Player> players) {
         this.gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
     }
+
     private final ButtonGroup mapGroup = new ButtonGroup();
+
     private JLayeredPane createMapPanel(int imgIndex) {
         JLayeredPane mapPanel = new JLayeredPane() {
             @Override
@@ -106,6 +119,7 @@ public class GameInitialScreenGUI extends JPanel {
 
         return mapPanel;
     }
+
     private void addMaps() {
         JPanel maps = new JPanel();
         maps.setPreferredSize(new Dimension(900, 400));
@@ -121,7 +135,9 @@ public class GameInitialScreenGUI extends JPanel {
 
         add(maps);
     }
+
     private JButton addPlayerButton;
+
     private JPanel createPlayerPanel(String playerName, int imgIndex) {
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
@@ -199,22 +215,24 @@ public class GameInitialScreenGUI extends JPanel {
             JButton removePlayerButton = new JButton("Remove");
 
             removePlayerButton.setForeground(Color.RED);
-            if ( playerNameFields.size()== 3) {
-                playerNameFields.remove(2);
-            }
+
 
             removePlayerButton.addActionListener(e -> {
+                if (playerNameFields.size() == 3) {
+                    playerNameFields.remove(2);
+                }
                 playerPanel.setVisible(false);
                 playerPanel.getParent().remove(playerPanel);
                 addPlayerButton.setVisible(true);
                 playerPanel.repaint();
             });
 
+
             playerNamePanel.add(playerNameField);
             playerNamePanel.add(playerControls);
             playerNamePanel.add(removePlayerButton);
             playerPanel.add(playerNamePanel);
-        } else{
+        } else {
             playerNamePanel.add(playerNameField);
             playerNamePanel.add(playerControls);
             playerPanel.add(playerNamePanel);
@@ -222,6 +240,7 @@ public class GameInitialScreenGUI extends JPanel {
 
         return playerPanel;
     }
+
     private void showPlayerControls(String controls) {
         JDialog playerControlsDialog = new JDialog();
         playerControlsDialog.setPreferredSize(new Dimension(250, 100));
@@ -231,6 +250,7 @@ public class GameInitialScreenGUI extends JPanel {
         playerControlsDialog.setLocationRelativeTo(null);
         playerControlsDialog.setVisible(true);
     }
+
     private JPanel createRoundCountPanel() {
         JPanel roundCount = new JPanel();
         roundCount.setPreferredSize(new Dimension(250, 150));
@@ -256,7 +276,7 @@ public class GameInitialScreenGUI extends JPanel {
         });
 
         increaseRoundCount.addActionListener(e -> {
-            if(roundCountValueHolder[0] < maxRoundCount) {
+            if (roundCountValueHolder[0] < maxRoundCount) {
                 roundCountValueHolder[0]++;
                 roundCountArea.setText(String.valueOf(roundCountValueHolder[0]));
             }
@@ -268,7 +288,11 @@ public class GameInitialScreenGUI extends JPanel {
 
         return roundCount;
     }
-    public int getRoundCount() {return roundCountValueHolder[0];}
+
+    public int getRoundCount() {
+        return roundCountValueHolder[0];
+    }
+
     private void addPlayers() {
         JPanel playersAndRounds = new JPanel();
         playersAndRounds.setLayout(new GridBagLayout());
@@ -333,7 +357,9 @@ public class GameInitialScreenGUI extends JPanel {
         playersAndRounds.add(roundsAndStart, constraints);
         add(playersAndRounds);
     }
+
     private int mapIndex;
+
     private void startGame() throws IOException {
 
         Image[] images = new Image[4];
@@ -388,12 +414,15 @@ public class GameInitialScreenGUI extends JPanel {
             // Start the game
             //gameEngine.startGame();
             // This window needs to be closed after this line
+            if (imagePanel != null) {
+                mapIndex = imagePanel.getImgIndex();
+            }
             System.out.println(getMapIndex());
+
             gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
             gameGui.startGame();
             System.out.println(players);
-        }
-        else {
+        } else {
             JDialog noMapSelected = new JDialog();
             JLabel noMapLabel = new JLabel("Please select a map");
             noMapLabel.setFont(new Font(noMapLabel.getFont().getName(), Font.BOLD, 15));
@@ -404,7 +433,8 @@ public class GameInitialScreenGUI extends JPanel {
             noMapSelected.setVisible(true);
         }
     }
-    public int getMapIndex(){
+
+    public int getMapIndex() {
         return mapIndex;
     }
 }

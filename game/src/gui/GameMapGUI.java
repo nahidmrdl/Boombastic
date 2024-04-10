@@ -180,6 +180,32 @@
                                     player.HandleAction("10", model.getMap().getMap());
                                 }
                                 break;
+                            case KeyEvent.VK_I: // I key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("73", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_J: // J key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("74", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_K: // K key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("75", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_L: // L key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("76", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_SPACE: // Spacebar for placing bomb
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("32", model.getMap().getMap());
+                                }
+                                break;
+
                             case KeyEvent.VK_ESCAPE: // Escape key
                                 frame.dispose();
                                 break;
