@@ -1,6 +1,7 @@
 package gameengine;
 
 import cell.Cell;
+import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
 import gui.GameMapGUI;
@@ -8,7 +9,12 @@ import item.GameItem;
 import levels.LevelReader;
 import map.GameMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,24 +43,7 @@ public class GameEngine {
         }
     }
 
-    /**
-     * Read the map from the file and create the game map
-     */
-    private void defineMap() {
-        try {
-            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
-            this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-        * Position players on the starting point of the map
-     */
-    private void positionPlayersOnStartingPoint() {
-        int playerCount = 0;
-
+    public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if(playerCount < players.size()) {
@@ -65,6 +54,26 @@ public class GameEngine {
                             players.get(playerCount).setY(cell.getX());
                             playerCount++;
                         }
+                    }
+
+
+
+                    // Now, remove the items outside of the original loop to avoid ConcurrentModificationException
+                    for (GameItem item : itemsToRemove) {
+                        cell.getItems().remove(item);
+                        for (int i = 0; i < 5; i++) {
+                            for (int j = 0; j < 5; j++) {
+                                if (i == 2 && j == 2) {
+                                    continue;
+                                }
+                                if (i == 2 || j == 2) {
+                                    if (this.gameMap.getMap()[cell.getX() + i - 2][cell.getY() + j - 2] != null) {
+                                        this.gameMap.getMap()[cell.getX() + i - 2][cell.getY() + j - 2].setForegroundImage(null);
+                                    }
+                                }
+                            }
+                        }
+                        System.out.println("Item removed");
                     }
                 }
             }

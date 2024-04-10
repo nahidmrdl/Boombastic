@@ -48,7 +48,14 @@
         private void startGameTimer() {
             int delay = 1000 / 24;
             Timer timer = new Timer(delay, e -> {
-                this.model.runGameUnit();
+                // Your repeated task here.
+                // For example, you might want to call repaint() on your component to trigger paintComponent.
+                //System.out.println("Repainting...");
+                try {
+                    this.model.runGameUnit();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.repaint();
             });
             timer.start();
@@ -217,6 +224,16 @@
                                 g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
                         }
+                    }
+                }
+            }
+
+            // Draw foregrownd
+
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
+                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
                 }
             }
