@@ -9,10 +9,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class WallCell extends Cell {
-    private Image image;
-    public WallCell(int row, int col, String type) throws IOException {
-        super(row, col, type);
-        this.image = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
+    public WallCell(int row, int col) throws IOException {
+        super(row, col);
+        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1wall.png"));
 
     }
 }

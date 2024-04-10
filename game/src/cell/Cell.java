@@ -14,16 +14,12 @@ import java.util.Map;
 public class Cell {
     private final int row;
     private final int col;
-
-    private String type;
-    private List<GameItem> items;
-
-
+    protected List<GameItem> items;
 
     private GameMap map;
 
     private List<Entity> visitors;
-    private Image image;
+    protected Image image;
 
     private Image foregroundImage;
 
@@ -31,7 +27,6 @@ public class Cell {
         this.row = row;
         this.col = col;
         this.visitors = new ArrayList<>();
-        this.type = type;
         this.items = new ArrayList<>();
 
     }
@@ -71,12 +66,8 @@ public class Cell {
         return this.items;
     }
 
-    public void setVisitor( List<Entity> visitors){
+    protected void setVisitor( List<Entity> visitors){
         this.visitors = visitors;
-    }
-
-    public String getType(){
-        return this.type;
     }
     public Image getImage(){
         return this.image;
