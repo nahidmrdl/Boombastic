@@ -33,21 +33,21 @@ public class GameGUI {
     public void startGame() throws IOException {
         this.frame.getContentPane().removeAll();
 
-        // Create the top panel and add it to the frame
         final GameTopPanelGUI gameTopPanelGUI = new GameTopPanelGUI(frame, model);
+
         if(model.getMapIndex() == 10 || model.getMapIndex() == 11) {
             gameTopPanelGUI.setColor(darkGreen);
         }
         else {
             gameTopPanelGUI.setColor(customOrange);
         }
-        this.frame.add(gameTopPanelGUI.getTopPanel(), BorderLayout.NORTH);
 
-        // Create the map panel and add it to the frame
+        this.frame.add(gameTopPanelGUI.getTopPanel(), BorderLayout.NORTH);
+        System.out.println("topPan added");
+
         this.mapPanel = new GameMapGUI(this.model, this.frame);
         this.frame.add(this.mapPanel, BorderLayout.CENTER);
 
-        // Revalidate and repaint the frame
         this.frame.revalidate();
         this.frame.repaint();
     }

@@ -469,9 +469,11 @@ class ImagePanel extends JPanel {
             e.printStackTrace();
         }
     }
+
     public int getImgIndex() {
         return imgIndex; // This method returns the current image index
     }
+
     @Override
     public Dimension getPreferredSize() {
         return getParent().getSize();
