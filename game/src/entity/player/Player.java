@@ -12,32 +12,23 @@ import java.util.Map;
 import cell.box.BoxCell;
 import cell.wall.WallCell;
 
-
 public class Player extends Entity {
     private String name;
     private int imageIndex;
-
     private GameMap gameMap;
-
     private Image Image;
-
     private HashMap<String, String> Controls;
+    private List powerUps;
+    private List curses;
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
-
-
         super(x, y, gameMap);
         this.name = name;
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
-
     }
-    //private HashMap<String, String> Controls;
 
-
-
-    // getters and setters
     public String getName() {
         return name;
     }
@@ -49,7 +40,6 @@ public class Player extends Entity {
     public Image getImage() {
         return Image;
     }
-
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
@@ -63,7 +53,6 @@ public class Player extends Entity {
         this.y = y;
     }
 
-
     public int getX(){
         return this.x;
     }
@@ -71,7 +60,6 @@ public class Player extends Entity {
     public int getY(){
         return this.y;
     }
-
 
     public HashMap<String, String> getControls() {
         return Controls;
@@ -118,9 +106,7 @@ public class Player extends Entity {
     }
 
     protected void move(int newX, int newY){
-
         Cell[][] level = this.gameMap.getMap();
-
         if (
                 newX >= 0
                         && newY >= 0
@@ -134,15 +120,11 @@ public class Player extends Entity {
         }
     }
 
-
-
-
     public void placeBomb() throws IOException {
         Bomb bomb = new Bomb();
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
     }
-
 
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
         for (Map.Entry<String, String> entry : playerControls.entrySet()) {

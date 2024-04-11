@@ -59,7 +59,6 @@ public class GameTopPanelGUI {
         //Timer
         constraints.gridx = 3;
         this.topPanel.add(addTimerAndPause(), constraints);
-
     }
 
     private JPanel createPlayerPanel(int playerIndex){
@@ -72,7 +71,11 @@ public class GameTopPanelGUI {
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.X_AXIS));
 
         ImagePanel imagePanel = new ImagePanel(playerIndex);
+        imagePanel.setLayout(new BoxLayout(imagePanel, BoxLayout.X_AXIS));
+
         imagePanel.setPreferredSize(new Dimension(100, 100));
+        imagePanel.setMaximumSize(new Dimension(100, 100));
+        imagePanel.setMinimumSize(new Dimension(100, 100));
 
         JPanel pwUpsCurses = new JPanel();
         pwUpsCurses.setLayout(new BoxLayout(pwUpsCurses, BoxLayout.X_AXIS));
