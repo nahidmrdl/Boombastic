@@ -9,13 +9,14 @@ import java.util.List;
 
 
 public class GameTopPanelGUI {
-    private GameEngine gameEngine;
+    private GameEngine model;
     private JPanel topPanel;
     private JFrame frame;
 
-    public GameTopPanelGUI(JFrame frame) {
+    public GameTopPanelGUI(JFrame frame, GameEngine gameEngine) {
         this.frame = frame;
         this.topPanel = new JPanel();
+        this.model = gameEngine;
 
         this.topPanel.setPreferredSize(new Dimension(990, 130));
         this.topPanel.setMaximumSize(new Dimension(990, 130));
@@ -49,7 +50,7 @@ public class GameTopPanelGUI {
         this.topPanel.add(createPlayerPanel(1), constraints);
 
         //Player 3
-        if(gameEngine.getPlayerCount() == 3) {
+        if(model.getPlayerCount() == 3) {
             constraints.gridx = 2;
             this.topPanel.add(createPlayerPanel(3), constraints);
         }
@@ -61,7 +62,7 @@ public class GameTopPanelGUI {
     }
 
     private JPanel createPlayerPanel(int playerIndex){
-        List<Player> players = gameEngine.getPlayers();
+        List<Player> players = model.getPlayers();
 
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
