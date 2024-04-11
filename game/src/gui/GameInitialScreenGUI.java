@@ -2,33 +2,30 @@ package gui;
 
 import gameengine.GameEngine;
 import entity.player.Player;
+import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class GameInitialScreenGUI extends JPanel {
     final int[] roundCountValueHolder = {5};
-    private JFrame frame;
-
-    private GameEngine gameEngine;
+    private final JFrame frame;
 
     //= new GameEngine(this, this.frame); // 1 player for testing for now
     public final List<Player> players = new ArrayList<>();
-    private List<JTextField> playerNameFields = new ArrayList<>();
+    private final List<JTextField> playerNameFields = new ArrayList<>();
 
-    private List<HashMap<String, String>> controls;
+    private final List<HashMap<String, String>> controls;
     private final List<ImagePanel> imagePanels = new ArrayList<>();
 
-    private GameGUI gameGui;
+    private final GameGUI gameGui;
     private JRadioButton selectedMapRadioButton;
 
     public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
@@ -80,9 +77,9 @@ public class GameInitialScreenGUI extends JPanel {
         controls.add(player3Controls);
     }
 
-    public void setGameEngine(List<Player> players) {
-        this.gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
-    }
+//    public void setGameEngine(List<Player> players) {
+//        GameEngine gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
+//    }
 
     private final ButtonGroup mapGroup = new ButtonGroup();
 
@@ -92,7 +89,6 @@ public class GameInitialScreenGUI extends JPanel {
             public void doLayout() {
                 super.doLayout();
 
-                // Calculate the position of the checkbox after the layout
                 int radioButtonPosition = 70;
                 int x = getWidth() - radioButtonPosition + 25;
                 int y = getHeight() - radioButtonPosition + 15;
@@ -372,36 +368,20 @@ public class GameInitialScreenGUI extends JPanel {
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
                 String playerName = playerNameFields.get(i).getText();
-                //System.out.println("Player name: " + playerName);
 
                 int imageIndex = imagePanels.get(i).getImgIndex();
-                //System.out.println("Image index: " + imageIndex);
 
                 players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
                 System.out.println("Player added");
                 System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
 
-//                 Assuming 'frame' is a reference to the JFrame containing this panel
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-//                frame.getContentPane().removeAll(); // Remove the initial screen's UI components
-
-//                 Create the game map GUI with the selected map index
-                //setGameEngine(frame);
-//                GameMapGUI gameMapGUI = new GameMapGUI(getRoundCount(), getMapIndex(), 1);
-//                frame.add(gameMapGUI); // Add the game map GUI to the frame
-
-//                frame.validate();
-//                frame.repaint();
             }
-            // Get the parent of the selected JRadioButton, which is the JLayeredPane
+
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
-            // Initialize a variable to hold the ImagePanel
             ImagePanel imagePanel = null;
-            // Iterate over the components in the JLayeredPane
             for (Component component : mapPanel.getComponents()) {
-                // Check if the component is an ImagePanel
                 if (component instanceof ImagePanel) {
-                    // Cast the component to ImagePanel
                     imagePanel = (ImagePanel) component;
                     break;
                 }
@@ -409,18 +389,17 @@ public class GameInitialScreenGUI extends JPanel {
 
             if (imagePanel != null) {
                 mapIndex = imagePanel.getImgIndex();
-                //System.out.println("Map index IN: " + mapIndex);
             }
-            // Start the game
-            //gameEngine.startGame();
-            // This window needs to be closed after this line
+
             if (imagePanel != null) {
                 mapIndex = imagePanel.getImgIndex();
             }
-            System.out.println(getMapIndex());
 
             gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
             gameGui.startGame();
+            this.frame.setSize(990, 700);
+            this.frame.setLocationRelativeTo(null);
+
             System.out.println(players);
         } else {
             JDialog noMapSelected = new JDialog();
@@ -442,43 +421,50 @@ public class GameInitialScreenGUI extends JPanel {
 class ImagePanel extends JPanel {
     private Image image;
     private int imgIndex;
-    private final String[] characters = {
-            "/assets/nahid.jpg",
-            "/assets/mike.jpg",
-            "/assets/gosha.jpg",
-            "/assets/jamil.jpg",
+
+    private final Image[] characters = {
+            ResourceCollection.Images.JAMIL.getImage(),
+            ResourceCollection.Images.NAHID.getImage(),
+            ResourceCollection.Images.MIKE.getImage(),
+            ResourceCollection.Images.GOSHA.getImage()
     };
-    private final String[] maps = {
-            "/assets/dnipro.jpg",
-            "/assets/sumy.jpg",
-            "/assets/azer.jpg",
+
+    private final Image[] maps = {
+            ResourceCollection.Images.MAP1.getImage(),
+            ResourceCollection.Images.MAP2.getImage(),
+            ResourceCollection.Images.MAP3.getImage()
     };
+
     public ImagePanel(int img) {
         this.imgIndex = img;
-        try {
-            BufferedImage originalImage;
+        Image originalImage;
 
-            originalImage = switch (img) {
-                case 0 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[0])));
-                case 1 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[1])));
-                case 2 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[2])));
-                case 3 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[3])));
+        originalImage = switch (img) {
+            case 0 -> characters[0];
+            case 1 -> characters[1];
+            case 2 -> characters[2];
+            case 3 -> characters[3];
 
-                case 10 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[0])));
-                case 11 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[1])));
-                case 12 -> ImageIO.read(Objects.requireNonNull(getClass().getResource(maps[2])));
-                default -> throw new IllegalArgumentException("Invalid image name: " + img);
-            };
-            image = originalImage;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            case 10 -> maps[0];
+            case 11 -> maps[1];
+            case 12 -> maps[2];
+
+            default -> throw new IllegalArgumentException("Invalid image name: " + img);
+        };
+        image = originalImage;
     }
 
     public void updateImage(int imgIndex) {
+        String[] charact = {
+                "/assets/jamil.jpg",
+                "/assets/nahid.jpg",
+                "/assets/mike.jpg",
+                "/assets/gosha.jpg"
+        };
+
         this.imgIndex = imgIndex;
         try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(characters[imgIndex])));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(charact[imgIndex])));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -497,10 +483,12 @@ class ImagePanel extends JPanel {
         if (image != null) {
             Graphics2D g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            int cornerRadius = 20; // Adjust this value to change how rounded the corners are
-            g2d.setClip(new java.awt.geom.RoundRectangle2D.Float
-                    (0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius));
+
+            int cornerRadius = 20;
+            g2d.setClip(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius));
+
             Image scaledImage = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
+
             g2d.drawImage(scaledImage, 0, 0, this);
             g2d.dispose();
         }

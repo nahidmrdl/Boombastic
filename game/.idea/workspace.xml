@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="folder structure for power up, curse ,cell, entity added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ResourceCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

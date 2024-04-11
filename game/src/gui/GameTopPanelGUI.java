@@ -2,6 +2,7 @@ package gui;
 
 import entity.player.Player;
 import gameengine.GameEngine;
+import gui.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,9 +71,11 @@ public class GameTopPanelGUI {
         JPanel playerInfo = new JPanel();
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.X_AXIS));
 
+        ImagePanel imagePanel = new ImagePanel(playerIndex);
+        imagePanel.setPreferredSize(new Dimension(100, 100));
+
         JPanel pwUpsCurses = new JPanel();
         pwUpsCurses.setLayout(new BoxLayout(pwUpsCurses, BoxLayout.X_AXIS));
-
 
         JPanel bombsAndVictories = new JPanel();
         bombsAndVictories.setLayout(new BoxLayout(bombsAndVictories, BoxLayout.Y_AXIS));
@@ -86,6 +89,7 @@ public class GameTopPanelGUI {
         bombsAndVictories.add(bombs);
         bombsAndVictories.add(victories);
 
+        playerInfo.add(imagePanel);
         playerInfo.add(bombsAndVictories);
 
         playerPanel.add(playerInfo);
@@ -100,4 +104,6 @@ public class GameTopPanelGUI {
 
         return timerPanel;
     }
+
+
 }
