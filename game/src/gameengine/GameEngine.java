@@ -35,28 +35,46 @@ public class GameEngine {
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
-        this.playerCount = players.size(); // Assuming you set this up based on the selected players
+        this.playerCount = players.size();
         this.players = players;
         //this.frame = frame; // Store the frame for later
 
+        this.defineMap();
+
+        this.positionPlayersOnStartingPoint();
+
+        for (Player player : players) {
+            player.setGameMap(this.gameMap);
+        }
+    }
+
+
+    /**
+     * Read the map from the file and create the game map
+     */
+    private void defineMap() {
         try {
             Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
             this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-        int playerCount = 0;
+    /**
+     * Position players on the starting point of the map
+     */
+    private void positionPlayersOnStartingPoint() {
 
-        System.out.println(players.size());
+    int playerCount = 0;
+
+
 
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if(playerCount < players.size()) {
-                    System.out.println(cell.getVisitors());
-                    if(cell instanceof NormalCell) {
+                       if(cell instanceof NormalCell) {
                         if(((NormalCell) cell).isStartingPoint()) {
-                            System.out.println("Player " + playerCount + " is at starting point");
                             // Inverse for some reason
                             players.get(playerCount).setX(cell.getY());
                             players.get(playerCount).setY(cell.getX());
@@ -66,14 +84,19 @@ public class GameEngine {
                 }
 
             }
-            System.out.println();
+
         }
 
-        for (Player player : players) {
-            player.setGameMap(this.gameMap);
-        }
-    }
 
+        }
+
+    /**
+     * Run calculations for the game to get new state
+     */
+
+
+    // TODO, THIS IS RELATED TO THE BOMB BLAST CAUSING CONFLICTS
+   //TODO
     public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
@@ -121,7 +144,6 @@ public class GameEngine {
                             }
                         }
 
-                        System.out.println("Item removed");
                     }
                 }
             }
@@ -133,9 +155,14 @@ public class GameEngine {
 
 
 
-    private void setPlayersPositions() {
-
+    public List<Player> getPlayers() {
+        return this.players;
     }
+
+    public GameMap getMap() {
+        return this.gameMap;
+    }
+
 
     public int getRoundCount() {
         return this.roundCount;
@@ -146,31 +173,9 @@ public class GameEngine {
     }
 
 
-    public GameMap getMap() {
-        return this.gameMap;
-    }
 
     public int getPlayerCount() {
         return this.playerCount;
     }
 
-    public List<Player> getPlayers() {
-        return this.players;
-    }
-
-
-    public void startGame() throws IOException {
-        System.out.println("Game started");
-        System.out.println("Round Count: " + this.roundCount);
-        System.out.println("Map index: " + this.mapIndex);
-
-        // Remove the initial GUI
-        this.frame.getContentPane().removeAll();
-
-        // Create and add the game map GUI to the frame
-        GameMapGUI gameMapGUI = new GameMapGUI(this, frame);
-        this.frame.add(gameMapGUI);
-        this.frame.validate();
-        this.frame.repaint();
-    }
 }

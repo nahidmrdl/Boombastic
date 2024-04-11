@@ -20,11 +20,13 @@
     import java.io.IOException;
     import java.util.Objects;
     import java.util.Random;
-
+    import cell.box.BoxCell;
+    import cell.normalCell.NormalCell;
+    import cell.wall.WallCell;
+    import java.util.Map;
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-        private java.util.List<Player> players;
-        private GameMap gameMap;
+
 
         private GameEngine model;
         public Image wallImage;
@@ -38,20 +40,14 @@
             this.frame = frame;
             loadMapAssetsRandomly();
 
-//            this.wallImage = ImageIO.read(new File("src\\assets\\mapAssets\\map1\\map1wall.png"));
-//            this.walkableImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3walkable.png"));
-//            this.boxImage = ImageIO.read(new File("src\\assets\\mapAssets\\map3\\map3box.png"));
-//            this.playerImage = ImageIO.read(new File("src\\assets\\jamil.jpg"));
-
-            this.setFocusable(true);
-            this.frame.setLocationRelativeTo(null);
-            initializePlayer();
             setupKeyListener();
             updateGUI();
+            this.setFocusable(true);
+            this.frame.setLocationRelativeTo(null);
+
             System.out.println(model.getPlayers());
 
             int delay = 1000 / 24; // Approximately 41 milliseconds
-
             Timer timer = new Timer(delay, e -> {
                 try {
                     this.model.runGameUnit();
@@ -59,11 +55,13 @@
                     throw new RuntimeException(ex);
                 }
                 this.repaint();
+
             });
 
             timer.start();
         }
 
+        //CHECK TIMER (STARTGAMETIMER FROM COMMIT)
         private void loadMapAssetsRandomly() throws IOException {
             Random random = new Random();
 
@@ -93,37 +91,27 @@
 
         }
 
-
-        private void initializePlayer() {
-            // Initialize your player object here instead of in paintComponent
-
-            int x = 3;
-            int y = 2;
-
-//            this.players = model.getPlayers();
-//            this.players.get(0).setX(x);
-//            this.players.get(0).setY(y);
-//            this.players.get(0).setGameMap(model.getMap());
-//
-//
-//            this.players.get(1).setX(4);
-//            this.players.get(1).setY(10);
-//            this.players.get(1).setGameMap(model.getMap());
-
-
-
-            // Use the actual x and y values found
+        private void updateGUI() {
+            initializeLevel();
         }
+
+        public void initializeLevel(){
+            Timer moveTimer = new Timer(300, e -> repaint());
+            moveTimer.start();
+
+            moveTimer = new Timer(300, e -> {
+                repaint();
+            });
+        }
+
+
+        /**
+         * Sets up the key listener for the game.
+         */
 
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
 
-//                @Override
-//                public void keyPressed(KeyEvent e) {
-//                    Integer key = e.getKeyCode(); // Get the action based on key code
-//                    player.Move(key, model.getMap().getMap());
-//                    repaint();
-//                }
                 @Override
                 public void keyPressed(KeyEvent e) {
                     System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
@@ -224,26 +212,8 @@
 
 
 
-        private void updateGUI() {
-    //        this.setLayout(new BorderLayout());
-    //        JLabel mapLabel = new JLabel("Map " + map.getName() + " Displayed Here", SwingConstants.CENTER);
-    //        this.add(mapLabel, BorderLayout.CENTER);
-
-
-
-    //        GameTopPanelGUI topPanel = new GameTopPanelGUI();
-    //        this.add(topPanel, BorderLayout.NORTH); // Correctly adding the panel
-            initializeLevel();
-        }
-
-        public void initializeLevel(){
-            Timer moveTimer = new Timer(300, e -> repaint());
-            moveTimer.start();
-
-            moveTimer = new Timer(300, e -> {
-            repaint();
-            });
-        }
+// refactor paintcomponent pls
+        //TODO
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g); // Call the superclass method to ensure proper component painting
@@ -267,7 +237,7 @@
                         if (normalCell.hasPowerUp()) {
                             g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                         }
-                    } else if (cell.getType().equals("#")) { // Assuming '#' represents walls
+                    } else if (cell instanceof WallCell) { // Assuming '#' represents walls
                         g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     } else if (cell instanceof BoxCell) {
                         BoxCell boxCell = (BoxCell) cell;

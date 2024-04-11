@@ -9,6 +9,9 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import cell.box.BoxCell;
+import cell.wall.WallCell;
+
 
 public class Player extends Entity {
     private String name;
@@ -47,13 +50,6 @@ public class Player extends Entity {
         return Image;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setControls(HashMap<String, String> controls) {
-        Controls = controls;
-    }
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
@@ -67,9 +63,6 @@ public class Player extends Entity {
         this.y = y;
     }
 
-    public int getImageIndex() {
-        return imageIndex;
-    }
 
     public int getX(){
         return this.x;
@@ -80,17 +73,13 @@ public class Player extends Entity {
     }
 
 
-    public void setImageIndex(int imageIndex) {
-        this.imageIndex = imageIndex;
-    }
-
     public HashMap<String, String> getControls() {
         return Controls;
     }
 
     public void HandleAction(String keyCode, Cell[][] level ) throws IOException {
-        int newX = this.x; // Assuming 'x' is horizontal (columns)
-        int newY = this.y; // Assuming 'y' is vertical (rows)
+        int newX = this.x;
+        int newY = this.y;
 
         HashMap<String, String> playerControls = this.getControls();
 
@@ -124,16 +113,29 @@ public class Player extends Entity {
                 // Add more cases as needed for other actions
             }
 
-            // Check if the new position is within bounds and not blocked
-            if (newX >= 0 && newX < level[0].length && newY >= 0 && newY < level.length && !level[newY][newX].getType().equals("#") && !level[newY][newX].getType().equals("X")) {
-                this.x = newX;
-                this.y = newY;
-            }
+            this.move(newX, newY);
         }
-
-
-
     }
+
+    protected void move(int newX, int newY){
+
+        Cell[][] level = this.gameMap.getMap();
+
+        if (
+                newX >= 0
+                        && newY >= 0
+                        && newX < level[0].length
+                        && newY < level.length
+                        && !(level[newY][newX] instanceof WallCell)
+                        && !(level[newY][newX] instanceof BoxCell)
+        ) {
+            this.x = newX;
+            this.y = newY;
+        }
+    }
+
+
+
 
     public void placeBomb() throws IOException {
         Bomb bomb = new Bomb();
