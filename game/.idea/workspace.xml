@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="folder structure for power up, curse ,cell, entity added">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/box/BoxCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/wall/WallCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/wall/WallCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/levels/LevelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/LevelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +33,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2dYVJ1NUAl2QSM9oAhwM1m6NI9z" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "masterFix",
+    "git-widget-placeholder": "changeMapImgs",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/nahid/IdeaProjects/boombastic/game",
