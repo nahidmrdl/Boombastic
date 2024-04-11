@@ -18,6 +18,7 @@ public abstract class Entity {
         this.gameMap = gameMap;
     }
 
+    protected abstract void move(int x, int y);
     public Cell getCellPositioned(){
         return this.gameMap.getCell(x,y);
     }

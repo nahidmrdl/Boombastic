@@ -3,6 +3,7 @@ package item.bomb;
 import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
+import cell.wall.WallCell;
 import item.GameItem;
 import util.ResourceCollection;
 
@@ -30,6 +31,9 @@ public class Bomb extends GameItem {
 
         this.setFinishTime(System.currentTimeMillis() + 3000);
 
+        this.invokeDetonateAnimation();
+    }
+    private void invokeDetonateAnimation() {
         timer = new Timer(500, e -> {
             state++;
             switch (state) {
@@ -70,7 +74,7 @@ public class Bomb extends GameItem {
 
                             Cell targetCell = gameMap[targetX][targetY];
                             // Stop the blast if it hits a wall
-                            if (targetCell.getType().equals("#")) { // '#' represents a wall
+                            if (targetCell instanceof WallCell) { // '#' represents a wall
                                 break; // Stops extending the blast in this direction
                             }
 
@@ -78,7 +82,7 @@ public class Bomb extends GameItem {
                             if (targetCell instanceof BoxCell) {
                                 BoxCell boxCell = (BoxCell) targetCell;
                                 try {
-                                    NormalCell newCell = new NormalCell(targetX, targetY, ".");
+                                    NormalCell newCell = new NormalCell(targetX, targetY);
                                     newCell.setMap(this.getCell().getMap());
                                     if (boxCell.hasPowerUp()) {
                                         newCell.setHasPowerUp(true);
@@ -110,6 +114,10 @@ public class Bomb extends GameItem {
         timer.start();
     }
 
+    /**
+     * This method is used to change the image of the bomb
+     * @param imagePath
+     */
 
 
     private void changeImage(String imagePath) {

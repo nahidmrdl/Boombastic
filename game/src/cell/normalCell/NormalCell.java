@@ -11,15 +11,21 @@ import java.io.IOException;
 
 
 public class NormalCell extends Cell {
-    private Image image;
     private Image powerUpImage; // New attribute for the power-up image
     private boolean hasPowerUp; // Flag to indicate presence of a power-up
 
     boolean isStartingPoint = false;
 
-    public NormalCell(int row, int col, String type) throws IOException {
-        super(row, col, type);
+    public NormalCell(int row, int col) throws IOException {
+        super(row, col);
+        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1walkable.png"));
     }
+
+
+    public void removeFinishedItems() {
+        this.items.removeIf(item -> item.getFinishTime() < System.currentTimeMillis());
+    }
+
 
     // Getter and setter for the power-up image
     public Image getPowerUpImage() {
