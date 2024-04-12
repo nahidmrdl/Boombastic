@@ -7,6 +7,7 @@ import util.ResourceCollection;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameTopPanelGUI {
     private final GameEngine model;
@@ -180,20 +181,49 @@ public class GameTopPanelGUI {
 
     private JPanel addTimerAndPause() {
         JPanel timerPanel = new JPanel();
-        timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.X_AXIS));
-        timerPanel.setBackground(Color.red);
-
+        timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.Y_AXIS));
+        timerPanel.setBackground(background);
         timerPanel.setPreferredSize(new Dimension(200, 130));
         timerPanel.setMaximumSize(new Dimension(200, 130));
         timerPanel.setMinimumSize(new Dimension(200, 130));
 
         JButton pauseButton = new JButton("Pause");
+        pauseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         pauseButton.setPreferredSize(new Dimension(80, 40));
         pauseButton.setMaximumSize(new Dimension(80, 40));
         pauseButton.setMinimumSize(new Dimension(80, 40));
 
+        JLabel timerLabel = new JLabel("0:00");
+        timerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        timerLabel.setFont(new Font("Arial", Font.BOLD, 50));
+        timerLabel.setForeground(Color.BLACK);
+
+        timerPanel.add(Box.createVerticalStrut(20));
+        timerPanel.add(timerLabel);
         timerPanel.add(pauseButton);
+
+        // Timer setup
+        AtomicInteger elapsedSeconds = new AtomicInteger(0);
+        Timer timer = new Timer(1000, e -> {
+            int seconds = elapsedSeconds.incrementAndGet();
+            int minutes = seconds / 60;
+            seconds %= 60;
+            timerLabel.setText(String.format("%1$d:%2$02d", minutes, seconds));
+        });
+        timer.start();
+
+        // Add functionality to the pause button
+        pauseButton.addActionListener(event -> {
+            if (timer.isRunning()) {
+                timer.stop();
+                pauseButton.setText("Resume");
+            } else {
+                timer.start();
+                pauseButton.setText("Pause");
+            }
+        });
 
         return timerPanel;
     }
+
 }
