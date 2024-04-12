@@ -13,7 +13,7 @@ public class GameTopPanelGUI {
     private final GameEngine model;
     private final JPanel topPanel;
     private final JFrame frame;
-    private Color background = new Color(0, 102, 0);
+    private Color background;
 
     public GameTopPanelGUI(JFrame frame, GameEngine gameEngine) {
         this.frame = frame;
@@ -37,7 +37,6 @@ public class GameTopPanelGUI {
         background = color;
         this.topPanel.setOpaque(true);
         this.topPanel.setBackground(background);
-
     }
 
     private void addContent() {
