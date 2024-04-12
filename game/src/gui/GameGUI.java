@@ -43,7 +43,6 @@ public class GameGUI {
         }
 
         this.frame.add(gameTopPanelGUI.getTopPanel(), BorderLayout.NORTH);
-        System.out.println("topPan added");
 
         this.mapPanel = new GameMapGUI(this.model, this.frame);
         this.frame.add(this.mapPanel, BorderLayout.CENTER);

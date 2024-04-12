@@ -2,16 +2,17 @@ package gui;
 
 import entity.player.Player;
 import gameengine.GameEngine;
-import gui.ImagePanel;
+import util.ResourceCollection;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class GameTopPanelGUI {
-    private GameEngine model;
-    private JPanel topPanel;
-    private JFrame frame;
+    private final GameEngine model;
+    private final JPanel topPanel;
+    private final JFrame frame;
+    private Color background = new Color(0, 102, 0);
 
     public GameTopPanelGUI(JFrame frame, GameEngine gameEngine) {
         this.frame = frame;
@@ -29,16 +30,16 @@ public class GameTopPanelGUI {
         this.frame.repaint();
     }
 
-    public JPanel getTopPanel() {
-        return this.topPanel;
-    }
+    public JPanel getTopPanel() { return this.topPanel; }
 
     public void setColor(Color color) {
-        this.topPanel.setBackground(color);
+        background = color;
+        this.topPanel.setOpaque(true);
+        this.topPanel.setBackground(background);
+
     }
 
     private void addContent() {
-        System.out.println("ADD CONTENT CALLED");
 
         this.topPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -49,7 +50,6 @@ public class GameTopPanelGUI {
         constraints.gridy = 0;
 
         this.topPanel.add(createPlayerPanel(0), constraints);
-        System.out.println("player pannel 0");
 
         //Player 2
         constraints.gridx = 1;
@@ -68,81 +68,112 @@ public class GameTopPanelGUI {
 
     private JPanel createPlayerPanel(int playerIndex) {
         List<Player> players = model.getPlayers();
-        System.out.println(players.size());
-        System.out.println("CREATE player panel called");
 
-        // Setting up the playerPanel with a fixed width of 200 and height of 130 as per your request
         JPanel playerPanel = new JPanel();
+
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
-        playerPanel.setBackground(Color.GREEN);
-        playerPanel.setPreferredSize(new Dimension(200, 130)); // Set the preferred size as well
+        playerPanel.setBackground(background);
+        System.out.println("Player panel background: " + playerPanel.getBackground());
+
+        playerPanel.setPreferredSize(new Dimension(200, 130));
         playerPanel.setMaximumSize(new Dimension(200, 130));
         playerPanel.setMinimumSize(new Dimension(200, 130));
 
-        // The playerInfo panel will take up the full width and approximately half the height of playerPanel
         JPanel playerInfo = new JPanel();
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.X_AXIS));
-        playerInfo.setBackground(Color.RED);
+
+        playerInfo.setBackground(background);
         playerInfo.setMaximumSize(new Dimension(200, 100));
         playerInfo.setMinimumSize(new Dimension(200, 100));
 
-        // The imagePanel within playerInfo will be a square as indicated in the schema
         ImagePanel imagePanel = new ImagePanel(playerIndex);
         imagePanel.setLayout(new BoxLayout(imagePanel, BoxLayout.X_AXIS));
-        imagePanel.setBackground(Color.BLUE);
+        imagePanel.setBackground(background);
         imagePanel.setMaximumSize(new Dimension(100, 100));
         imagePanel.setMinimumSize(new Dimension(100, 100));
 
-        // The bombsAndVictories panel will occupy the space next to imagePanel within playerInfo
         JPanel bombsAndVictories = new JPanel();
         bombsAndVictories.setLayout(new BoxLayout(bombsAndVictories, BoxLayout.Y_AXIS));
-        bombsAndVictories.setBackground(Color.YELLOW);
+        bombsAndVictories.setBackground(background);
 
-        bombsAndVictories.setMaximumSize(new Dimension(100, 100)); // Assuming equal division of space
+        bombsAndVictories.setMaximumSize(new Dimension(100, 100));
         bombsAndVictories.setMinimumSize(new Dimension(100, 100));
 
-        // bombs and victories panels will be vertically stacked in bombsAndVictories
         JPanel bombs = new JPanel();
-        bombs.setBackground(Color.ORANGE);
+        bombs.setBackground(background);
         bombs.setLayout(new BoxLayout(bombs, BoxLayout.X_AXIS));
         bombs.setMaximumSize(new Dimension(100, 50));
         bombs.setMinimumSize(new Dimension(100, 50));
 
+        Image bombImage = ResourceCollection.Images.POWER_BOMBSTAGE1.getImage();
+        JLabel bombLabel = new JLabel(new ImageIcon(bombImage));
+
+        JLabel gap = new JLabel("   ");
+        JLabel gap2 = new JLabel("   ");
+
+        JLabel bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        bombCount.setFont(new Font("Arial", Font.BOLD, 30));
+        bombs.add(gap2);
+        bombs.add(bombLabel);
+        bombs.add(bombCount);
+
         JPanel victories = new JPanel();
-        victories.setBackground(Color.MAGENTA);
+        victories.setBackground(background);
         victories.setLayout(new BoxLayout(victories, BoxLayout.X_AXIS));
         victories.setMaximumSize(new Dimension(100, 50));
         victories.setMinimumSize(new Dimension(100, 50));
 
+        Image victoryImage = ResourceCollection.Images.TROPHY.getImage();
+        JLabel victoryLabel = new JLabel(new ImageIcon(victoryImage));
+
+        JLabel victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
+        victoryCount.setFont(new Font("Arial", Font.BOLD, 30));
+        victories.add(gap);
+        victories.add(victoryLabel);
+        victories.add(victoryCount);
+
         bombs.setPreferredSize(new Dimension(100, 50));
         victories.setPreferredSize(new Dimension(100, 50));
-        // Add the bombs and victories to the bombsAndVictories panel
+
         bombsAndVictories.add(bombs);
         bombsAndVictories.add(victories);
 
         imagePanel.setAlignmentY(Component.TOP_ALIGNMENT);
         bombsAndVictories.setAlignmentY(Component.TOP_ALIGNMENT);
 
-        // Add the imagePanel and bombsAndVictories to the playerInfo panel
         playerInfo.add(imagePanel);
         playerInfo.add(bombsAndVictories);
 
-        // pwUpsCurses will take up the remaining space within playerPanel below playerInfo
         JPanel pwUpsCurses = new JPanel();
         pwUpsCurses.setLayout(new BoxLayout(pwUpsCurses, BoxLayout.X_AXIS));
-        pwUpsCurses.setBackground(Color.CYAN);
+        pwUpsCurses.setBackground(background);
         pwUpsCurses.setMaximumSize(new Dimension(200, 30));
         pwUpsCurses.setMinimumSize(new Dimension(200, 30));
 
-        // Finally, add the playerInfo and pwUpsCurses to the playerPanel
+        // Will be removed, added for testing purposes
+        // Assume that player can have maximum 3 powerUps and 3 curses
+
+        for(int i = 0; i < 3; i++){
+            players.get(playerIndex).powerUps.add(ResourceCollection.Images.POWERUP_ICON.getImage());
+            players.get(playerIndex).curses.add(ResourceCollection.Images.CURSE_ICON.getImage());
+        }
+
+        for (Image powerUp : players.get(playerIndex).powerUps) {
+            JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp));
+            pwUpsCurses.add(powerUpLabel);
+        }
+
+        for (Image curse : players.get(playerIndex).curses) {
+            JLabel curseLabel = new JLabel(new ImageIcon(curse));
+            pwUpsCurses.add(curseLabel);
+        }
+
         playerPanel.add(playerInfo);
         playerPanel.add(pwUpsCurses);
 
-        // Ensure that the imagePanel is repainted and revalidated
-        imagePanel.repaint();
-        imagePanel.revalidate();
+        playerPanel.repaint();
+        playerPanel.revalidate();
 
-        // Return the complete player panel
         return playerPanel;
     }
 
@@ -150,10 +181,18 @@ public class GameTopPanelGUI {
     private JPanel addTimerAndPause() {
         JPanel timerPanel = new JPanel();
         timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.X_AXIS));
-        timerPanel.setBackground(Color.BLUE);
+        timerPanel.setBackground(Color.red);
+
         timerPanel.setPreferredSize(new Dimension(200, 130));
         timerPanel.setMaximumSize(new Dimension(200, 130));
         timerPanel.setMinimumSize(new Dimension(200, 130));
+
+        JButton pauseButton = new JButton("Pause");
+        pauseButton.setPreferredSize(new Dimension(80, 40));
+        pauseButton.setMaximumSize(new Dimension(80, 40));
+        pauseButton.setMinimumSize(new Dimension(80, 40));
+
+        timerPanel.add(pauseButton);
 
         return timerPanel;
     }

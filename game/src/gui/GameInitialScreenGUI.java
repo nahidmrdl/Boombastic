@@ -18,7 +18,6 @@ public class GameInitialScreenGUI extends JPanel {
     final int[] roundCountValueHolder = {5};
     private final JFrame frame;
 
-    //= new GameEngine(this, this.frame); // 1 player for testing for now
     public final List<Player> players = new ArrayList<>();
     private final List<JTextField> playerNameFields = new ArrayList<>();
 

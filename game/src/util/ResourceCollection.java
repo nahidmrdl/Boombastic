@@ -1,6 +1,7 @@
 package util;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class ResourceCollection {
         COLLECTIBLE,
         CURSE_ICON,
         POWERUP_ICON,
+        TROPHY,
 
         BLASTRANGE_EXTENSION,
         CANNOTPLACE_BOMB,
@@ -45,16 +47,14 @@ public class ResourceCollection {
         MAP3;
 
         private BufferedImage image = null;
-        public BufferedImage getImage() {
+        public Image getImage() {
             return this.image;
         }
     }
 
     public enum Files {
         DEFAULT_MAP;
-
         private InputStreamReader file = null;
-
         public InputStreamReader getFile() {
             return this.file;
         }
@@ -107,6 +107,7 @@ public class ResourceCollection {
             Images.LOWSPEED_CURSE.image = ImageIO.read(new File(basePath + "icons/LowSpeedCurse.png"));
             Images.OBSTACLE_POWERUP.image = ImageIO.read(new File(basePath + "icons/ObstaclePowerup.png"));
             Images.ROLLERSKATESPEED_POWERUP.image = ImageIO.read(new File(basePath + "icons/RollerSkateSpeedUpPowerup.png"));
+            Images.TROPHY.image = ImageIO.read(new File(basePath + "icons/trophy.png"));
 
         } catch (IOException e) {
             System.err.println(e + ": Cannot read image file");
