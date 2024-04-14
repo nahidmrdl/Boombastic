@@ -8,25 +8,18 @@
     import item.GameItem;
     import item.bomb.Bomb;
     import levels.LevelReader;
-    import map.GameMap;
     import util.ResourceCollection;
 
-    import javax.imageio.ImageIO;
     import javax.swing.*;
     import java.awt.*;
     import java.awt.event.KeyAdapter;
     import java.awt.event.KeyEvent;
-    import java.io.File;
     import java.io.IOException;
-    import java.util.Objects;
     import java.util.Random;
-    import cell.box.BoxCell;
-    import cell.normalCell.NormalCell;
     import cell.wall.WallCell;
-    import java.util.Map;
+
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-
 
         private GameEngine model;
         public Image wallImage;
@@ -34,7 +27,9 @@
         public Image boxImage;
         public Image playerImage;
         public Image powerUpImage;
+
         private LevelReader lr = new LevelReader();
+
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;
             this.frame = frame;
@@ -103,7 +98,6 @@
                 repaint();
             });
         }
-
 
         /**
          * Sets up the key listener for the game.
@@ -210,9 +204,7 @@
             SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
         }
 
-
-
-// refactor paintcomponent pls
+        // refactor paintcomponent pls
         //TODO
         @Override
         protected void paintComponent(Graphics g) {
@@ -268,7 +260,6 @@
             }
 
             // Draw foregrownd
-
             for (int i = 0; i < this.model.getMap().getMap().length; i++) {
                 for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
                     if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
@@ -276,8 +267,6 @@
                     }
                 }
             }
-
-            //g.drawImage(playerImage, player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
         }}
 
 

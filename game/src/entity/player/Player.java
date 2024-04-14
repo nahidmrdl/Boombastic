@@ -7,37 +7,33 @@ import map.GameMap;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import cell.box.BoxCell;
 import cell.wall.WallCell;
 
-
 public class Player extends Entity {
     private String name;
     private int imageIndex;
-
     private GameMap gameMap;
-
     private Image Image;
-
     private HashMap<String, String> Controls;
 
+    public List<Image> powerUps = new ArrayList<>();
+    public List<Image> curses = new ArrayList<>();
+    public int bombCount = 0;
+    public int victoryCount = 0;
+
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
-
-
         super(x, y, gameMap);
         this.name = name;
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
-
     }
-    //private HashMap<String, String> Controls;
 
-
-
-    // getters and setters
     public String getName() {
         return name;
     }
@@ -49,7 +45,6 @@ public class Player extends Entity {
     public Image getImage() {
         return Image;
     }
-
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
@@ -63,7 +58,6 @@ public class Player extends Entity {
         this.y = y;
     }
 
-
     public int getX(){
         return this.x;
     }
@@ -71,7 +65,6 @@ public class Player extends Entity {
     public int getY(){
         return this.y;
     }
-
 
     public HashMap<String, String> getControls() {
         return Controls;
@@ -83,44 +76,25 @@ public class Player extends Entity {
 
         HashMap<String, String> playerControls = this.getControls();
 
-        System.out.println(playerControls);
-        System.out.println(keyCode);
+//        System.out.println(playerControls);
+//        System.out.println(keyCode);
 
         String action = getKeyActionFromKeyCode(keyCode, playerControls);
 
         if (action != null) {
             switch (action) {
-                case "UP":
-                    // Move up
-                    newY = this.y - 1;
-                    break;
-                case "DOWN":
-                    // Move down
-                    newY = this.y + 1;
-                    break;
-                case "LEFT":
-                    // Move left
-                    newX = this.x - 1;
-                    break;
-                case "RIGHT":
-                    // Move right
-                    newX = this.x + 1;
-                    break;
-                case "BOMB":
-                    // Place bomb action
-                    placeBomb();
-                    break;
-                // Add more cases as needed for other actions
+                case "UP": newY = this.y - 1; break;
+                case "DOWN": newY = this.y + 1; break;
+                case "LEFT": newX = this.x - 1; break;
+                case "RIGHT": newX = this.x + 1; break;
+                case "BOMB": placeBomb(); break;
             }
-
             this.move(newX, newY);
         }
     }
 
     protected void move(int newX, int newY){
-
         Cell[][] level = this.gameMap.getMap();
-
         if (
                 newX >= 0
                         && newY >= 0
@@ -134,28 +108,20 @@ public class Player extends Entity {
         }
     }
 
-
-
-
     public void placeBomb() throws IOException {
         Bomb bomb = new Bomb();
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
     }
 
-
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
         for (Map.Entry<String, String> entry : playerControls.entrySet()) {
             if (String.valueOf(keyCode).equals(entry.getValue())) {
-                return entry.getKey(); // This is the action to perform
+                return entry.getKey();
             }
         }
-        return null; // No action found for this keyCode
+        return null;
     }
-
-
-
-
 
     @Override
     public String toString() {

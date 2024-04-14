@@ -1,13 +1,11 @@
 package gui;
 
-import entity.player.Player;
 import gameengine.GameEngine;
-import levels.LevelReader;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
-import java.util.List;
-
+import java.awt.Color;
 
 public class GameGUI {
     public JFrame frame;
@@ -15,31 +13,42 @@ public class GameGUI {
     private JPanel mapPanel;
     private GameEngine model;
 
-
+    public static final Color darkGreen = new Color(0,102,0);
+    public static final Color customOrange = new Color(255,153,0);
 
     public GameGUI() {
 
-            this.frame = new JFrame("Bombastic initial screen");
-            this.frame.setSize(1007, 582);
-            this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame = new JFrame("Bombastic initial screen");
+        this.frame.setSize(1007, 582);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, this);
+        this.model = null;
 
-            GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, this);
-            this.model = null;
-
-            this.frame.add(initialScreen);
-            this.frame.setLocationRelativeTo(null);
-            this.frame.setVisible(true);
+        this.frame.add(initialScreen);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
     }
 
     public void startGame() throws IOException {
         this.frame.getContentPane().removeAll();
+
+        final GameTopPanelGUI gameTopPanelGUI = new GameTopPanelGUI(frame, model);
+
+        if(model.getMapIndex() == 10 || model.getMapIndex() == 11) {
+            gameTopPanelGUI.setColor(darkGreen);
+        }
+        else {
+            gameTopPanelGUI.setColor(customOrange);
+        }
+
+        this.frame.add(gameTopPanelGUI.getTopPanel(), BorderLayout.NORTH);
+
         this.mapPanel = new GameMapGUI(this.model, this.frame);
-        this.frame.add(this.mapPanel);
+        this.frame.add(this.mapPanel, BorderLayout.CENTER);
+
         this.frame.revalidate();
         this.frame.repaint();
-
-
     }
 
     public void setGameEngine(GameEngine model) {
