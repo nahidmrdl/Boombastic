@@ -26,6 +26,7 @@ public class GameInitialScreenGUI extends JPanel {
 
     private final GameGUI gameGui;
     private JRadioButton selectedMapRadioButton;
+    private int mapIndex;
 
     public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -69,16 +70,11 @@ public class GameInitialScreenGUI extends JPanel {
         player3Controls.put("RIGHT", "76"); // L
         player3Controls.put("BOMB", "32"); // Space
 
-
         // Add the control maps to the controls list
         controls.add(player1Controls);
         controls.add(player2Controls);
         controls.add(player3Controls);
     }
-
-//    public void setGameEngine(List<Player> players) {
-//        GameEngine gameEngine = new GameEngine(players, getRoundCount(), getMapIndex());
-//    }
 
     private final ButtonGroup mapGroup = new ButtonGroup();
 
@@ -333,8 +329,8 @@ public class GameInitialScreenGUI extends JPanel {
 
         JButton startButton = new JButton("Start");
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startButton.setPreferredSize(new Dimension(250, 150)); // Set preferred size
-        startButton.setMaximumSize(new Dimension(200, 150)); // Set maximum size
+        startButton.setPreferredSize(new Dimension(250, 150));
+        startButton.setMaximumSize(new Dimension(200, 150));
 
         startButton.addActionListener(e -> {
             try {
@@ -353,8 +349,6 @@ public class GameInitialScreenGUI extends JPanel {
         add(playersAndRounds);
     }
 
-    private int mapIndex;
-
     private void startGame() throws IOException {
         Image[] images = new Image[4];
         images[0] = ResourceCollection.Images.NAHID.getImage();
@@ -367,7 +361,6 @@ public class GameInitialScreenGUI extends JPanel {
                 String playerName = playerNameFields.get(i).getText();
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
-                //JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             }
 
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();
@@ -381,18 +374,12 @@ public class GameInitialScreenGUI extends JPanel {
 
             if (imagePanel != null) {
                 mapIndex = imagePanel.getImgIndex();
-            }
-
-            if (imagePanel != null) {
-                mapIndex = imagePanel.getImgIndex();
+                setMapIndex(mapIndex);
             }
 
             gameGui.setGameEngine(new GameEngine(players, getRoundCount(), getMapIndex()));
             gameGui.startGame();
-            this.frame.setSize(990, 700);
-            this.frame.setLocationRelativeTo(null);
 
-            System.out.println(players);
         } else {
             JDialog noMapSelected = new JDialog();
             JLabel noMapLabel = new JLabel("Please select a map");
@@ -405,8 +392,17 @@ public class GameInitialScreenGUI extends JPanel {
         }
     }
 
+    public void reset(List<Player> players, int round, int map) throws IOException {
+        gameGui.setGameEngine(new GameEngine(players, round, map));
+        gameGui.startGame();
+    }
+
     public int getMapIndex() {
         return mapIndex;
+    }
+
+    public void setMapIndex(int mapIndex){
+        this.mapIndex = mapIndex;
     }
 }
 
@@ -463,7 +459,7 @@ class ImagePanel extends JPanel {
     }
 
     public int getImgIndex() {
-        return imgIndex; // This method returns the current image index
+        return imgIndex;
     }
 
     @Override

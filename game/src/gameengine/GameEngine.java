@@ -4,6 +4,7 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
+import gui.GameGUI;
 import gui.GameMapGUI;
 import item.GameItem;
 import levels.LevelReader;
@@ -24,10 +25,7 @@ public class GameEngine {
     private int roundCount;
     private int mapIndex;
     private int playerCount;
-
     private List<Player> players;
-    private JFrame frame; // Store the frame
-
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
 
@@ -36,10 +34,8 @@ public class GameEngine {
         this.mapIndex = mapIndex;
         this.playerCount = players.size();
         this.players = players;
-        //this.frame = frame; // Store the frame for later
 
         this.defineMap();
-
         this.positionPlayersOnStartingPoint();
 
         for (Player player : players) {
@@ -61,7 +57,6 @@ public class GameEngine {
      * Position players on the starting point of the map
      */
     private void positionPlayersOnStartingPoint() {
-
     int playerCount = 0;
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
@@ -79,7 +74,7 @@ public class GameEngine {
             }
 
         }
-        }
+    }
 
     /**
      * Run calculations for the game to get new state
@@ -93,17 +88,14 @@ public class GameEngine {
                 if (cell instanceof NormalCell) {
                     // Temporary list to hold items that need to be removed
                     List<GameItem> itemsToRemove = new ArrayList<>();
-
                     // First, determine which items need to be removed
                     for (GameItem item : cell.getItems()) {
-                        System.out.println("Item finish time: " + item.getFinishTime());
-                        System.out.println("Current time: " + System.currentTimeMillis());
+//                        System.out.println("Item finish time: " + item.getFinishTime());
+//                        System.out.println("Current time: " + System.currentTimeMillis());
                         if (item.getFinishTime() < System.currentTimeMillis()) {
                             itemsToRemove.add(item);
                         }
                     }
-
-
                     // Loop over items to remove
                     for (GameItem item : itemsToRemove) {
                         cell = item.getCell();

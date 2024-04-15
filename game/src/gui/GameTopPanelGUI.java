@@ -16,11 +16,17 @@ public class GameTopPanelGUI {
     private final JPanel topPanel;
     private final JFrame frame;
     private Color background;
+    List<Player> players;
+    private final int rounds;
+    private final int map;
 
-    public GameTopPanelGUI(JFrame frame, GameEngine gameEngine) {
+    public GameTopPanelGUI(JFrame frame, GameEngine gameEngine,  int map, int rounds) {
         this.frame = frame;
         this.topPanel = new JPanel();
         this.model = gameEngine;
+        this.players = model.getPlayers();
+        this.rounds = rounds;
+        this.map = map;
 
         this.topPanel.setPreferredSize(new Dimension(990, 130));
         this.topPanel.setMaximumSize(new Dimension(990, 130));
@@ -212,7 +218,6 @@ public class GameTopPanelGUI {
         });
         timer.start();
 
-        // Add functionality to the pause button
         pauseButton.addActionListener(event -> {
             if (timer.isRunning()) {
                 timer.stop();
@@ -230,8 +235,13 @@ public class GameTopPanelGUI {
                 JButton restartButton = new JButton("Restart");
                 restartButton.addActionListener(e -> {
                     dialog.dispose();
-                    frame.getContentPane().removeAll();
-
+                    frame.dispose();
+                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+                    try {
+                        initialScreen.reset(this.players, this.rounds, this.map);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 });
 
                 JButton exitButton = new JButton("Back to Menu");
