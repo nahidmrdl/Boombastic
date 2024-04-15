@@ -6,6 +6,7 @@ import util.ResourceCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,11 +15,17 @@ public class GameTopPanelGUI {
     private final JPanel topPanel;
     private final JFrame frame;
     private Color background;
+    List<Player> players;
+    private final int rounds;
+    private final int map;
 
-    public GameTopPanelGUI(JFrame frame, GameEngine gameEngine) {
+    public GameTopPanelGUI(JFrame frame, GameEngine gameEngine,  int map, int rounds) {
         this.frame = frame;
         this.topPanel = new JPanel();
         this.model = gameEngine;
+        this.players = model.getPlayers();
+        this.rounds = rounds;
+        this.map = map;
 
         this.topPanel.setPreferredSize(new Dimension(990, 130));
         this.topPanel.setMaximumSize(new Dimension(990, 130));
@@ -73,7 +80,6 @@ public class GameTopPanelGUI {
 
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
         playerPanel.setBackground(background);
-        System.out.println("Player panel background: " + playerPanel.getBackground());
 
         playerPanel.setPreferredSize(new Dimension(200, 130));
         playerPanel.setMaximumSize(new Dimension(200, 130));
@@ -211,11 +217,50 @@ public class GameTopPanelGUI {
         });
         timer.start();
 
-        // Add functionality to the pause button
         pauseButton.addActionListener(event -> {
             if (timer.isRunning()) {
                 timer.stop();
-                pauseButton.setText("Resume");
+                JDialog dialog = new JDialog(frame, "Game Paused", true);
+                dialog.setLayout(new GridLayout(3, 1));
+                dialog.setSize(200, 300);
+                dialog.setLocationRelativeTo(frame);
+
+                JButton resumeButton = new JButton("Resume");
+                resumeButton.addActionListener(e -> {
+                    dialog.dispose();
+                    timer.start();
+                });
+
+                JButton restartButton = new JButton("Restart");
+                restartButton.addActionListener(e -> {
+                    dialog.dispose();
+                    frame.dispose();
+                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+                    try {
+                        for (Player player : model.getPlayers()) {
+                            player.bombCount = 0;
+                            player.powerUps.clear();
+                            player.curses.clear();
+                        }
+                        initialScreen.reset(this.players, this.rounds, this.map);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+
+                JButton exitButton = new JButton("Back to Menu");
+                exitButton.addActionListener(e -> {
+                    dialog.dispose();
+                    frame.getContentPane().removeAll();
+                    frame.dispose();
+                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+                    frame.add(initialScreen);
+                });
+
+                dialog.add(resumeButton);
+                dialog.add(restartButton);
+                dialog.add(exitButton);
+                dialog.setVisible(true);
             } else {
                 timer.start();
                 pauseButton.setText("Pause");
