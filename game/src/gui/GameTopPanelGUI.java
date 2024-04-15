@@ -3,7 +3,6 @@ package gui;
 import entity.player.Player;
 import gameengine.GameEngine;
 import util.ResourceCollection;
-import gui.GameGUI;
 
 import javax.swing.*;
 import java.awt.*;

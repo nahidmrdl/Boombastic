@@ -191,13 +191,13 @@ public class GameInitialScreenGUI extends JPanel {
 
             switch (actionCommand) {
                 case "Player 1":
-                    showPlayerControls("Player 1 controls: W, A, S, D");
+                    showPlayerControls("Player 1 controls: W, A, S, D; B to place bomb");
                     break;
                 case "Player 2":
-                    showPlayerControls("Player 2 controls: Arrow keys");
+                    showPlayerControls("Player 2 controls: Arrow keys; Enter to place bomb");
                     break;
                 case "Player 3":
-                    showPlayerControls("Player 3 controls: I, J, K, L");
+                    showPlayerControls("Player 3 controls: I, J, K, L; Space to place bomb");
                     break;
             }
         });
@@ -234,7 +234,7 @@ public class GameInitialScreenGUI extends JPanel {
 
     private void showPlayerControls(String controls) {
         JDialog playerControlsDialog = new JDialog();
-        playerControlsDialog.setPreferredSize(new Dimension(250, 100));
+        playerControlsDialog.setPreferredSize(new Dimension(330, 100));
         JLabel playerControlsLabel = new JLabel(controls);
         playerControlsDialog.add(playerControlsLabel);
         playerControlsDialog.pack();
