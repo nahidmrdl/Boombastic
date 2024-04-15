@@ -3,6 +3,7 @@ package gameengine;
 import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
+import entity.monster.Monster;
 import entity.player.Player;
 import gui.GameMapGUI;
 import item.GameItem;
@@ -32,11 +33,13 @@ public class GameEngine {
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
 
+    private List<Monster> monsters;
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
         this.playerCount = players.size(); // Assuming you set this up based on the selected players
         this.players = players;
+        this.monsters = new ArrayList<Monster>();
         //this.frame = frame; // Store the frame for later
 
         try {
@@ -72,6 +75,13 @@ public class GameEngine {
         for (Player player : players) {
             player.setGameMap(this.gameMap);
         }
+
+        // for now static monsters!
+        Monster m1 = new Monster(0, 0, this.gameMap);
+
+        monsters.add(m1);
+
+
     }
 
     public void runGameUnit() throws IOException {
@@ -158,6 +168,9 @@ public class GameEngine {
         return this.players;
     }
 
+    public List<Monster> getMonsters() {
+        return this.monsters;
+    }
 
     public void startGame() throws IOException {
         System.out.println("Game started");

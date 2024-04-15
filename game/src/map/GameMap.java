@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameMap {
-    private Cell[][] map;
+    public Cell[][] map;
     private Image image;
     private String name;
 

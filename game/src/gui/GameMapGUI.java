@@ -3,6 +3,7 @@
     import cell.Cell;
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
+    import entity.monster.Monster;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -282,6 +283,11 @@
             // Use the player instance to draw the player's current position
             for (Player player : model.getPlayers()) {
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+
+            }
+                // for now static image
+            for (Monster monster : model.getMonsters()) {
+                g.drawImage(ResourceCollection.Images.INVINCIBLE_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
             }
 
