@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         ResourceCollection.readFiles();
         System.out.print("Bombastic game\n");
+        System.out.print("Welcome to the game\n");
         GameGUI game = new GameGUI();
     }
 }
