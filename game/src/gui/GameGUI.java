@@ -32,10 +32,8 @@ public class GameGUI {
 
     public void startGame() throws IOException {
         this.frame.getContentPane().removeAll();
-        this.frame.setSize(990, 700);
-        this.frame.setLocationRelativeTo(null);
 
-        final GameTopPanelGUI gameTopPanelGUI = new GameTopPanelGUI(frame, model, model.getMapIndex(), model.getRoundCount());
+        final GameTopPanelGUI gameTopPanelGUI = new GameTopPanelGUI(frame, model);
 
         if(model.getMapIndex() == 10 || model.getMapIndex() == 11) {
             gameTopPanelGUI.setColor(darkGreen);
@@ -55,5 +53,9 @@ public class GameGUI {
 
     public void setGameEngine(GameEngine model) {
         this.model = model;
+    }
+
+    public JFrame getMainFrame() {
+        return this.frame;
     }
 }
