@@ -356,25 +356,18 @@ public class GameInitialScreenGUI extends JPanel {
     private int mapIndex;
 
     private void startGame() throws IOException {
-
         Image[] images = new Image[4];
-        images[0] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/nahid.jpg")));
-        images[1] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/mike.jpg")));
-        images[2] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/gosha.jpg")));
-        images[3] = ImageIO.read(Objects.requireNonNull(getClass().getResource("/assets/jamil.jpg")));
-
+        images[0] = ResourceCollection.Images.NAHID.getImage();
+        images[1] = ResourceCollection.Images.MIKE.getImage();
+        images[2] = ResourceCollection.Images.GOSHA.getImage();
+        images[3] = ResourceCollection.Images.JAMIL.getImage();
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
                 String playerName = playerNameFields.get(i).getText();
-
                 int imageIndex = imagePanels.get(i).getImgIndex();
-
                 players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
-                System.out.println("Player added");
-                System.out.println("Player name: " + playerName + ", Image index: " + imageIndex);
-
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+                //JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
             }
 
             JLayeredPane mapPanel = (JLayeredPane) selectedMapRadioButton.getParent();

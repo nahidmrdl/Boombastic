@@ -3,9 +3,11 @@ package gui;
 import entity.player.Player;
 import gameengine.GameEngine;
 import util.ResourceCollection;
+import gui.GameGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -73,7 +75,6 @@ public class GameTopPanelGUI {
 
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
         playerPanel.setBackground(background);
-        System.out.println("Player panel background: " + playerPanel.getBackground());
 
         playerPanel.setPreferredSize(new Dimension(200, 130));
         playerPanel.setMaximumSize(new Dimension(200, 130));
@@ -215,7 +216,37 @@ public class GameTopPanelGUI {
         pauseButton.addActionListener(event -> {
             if (timer.isRunning()) {
                 timer.stop();
-                pauseButton.setText("Resume");
+                JDialog dialog = new JDialog(frame, "Game Paused", true);
+                dialog.setLayout(new GridLayout(3, 1));
+                dialog.setSize(200, 300);
+                dialog.setLocationRelativeTo(frame);
+
+                JButton resumeButton = new JButton("Resume");
+                resumeButton.addActionListener(e -> {
+                    dialog.dispose();
+                    timer.start();
+                });
+
+                JButton restartButton = new JButton("Restart");
+                restartButton.addActionListener(e -> {
+                    dialog.dispose();
+                    frame.getContentPane().removeAll();
+
+                });
+
+                JButton exitButton = new JButton("Back to Menu");
+                exitButton.addActionListener(e -> {
+                    dialog.dispose();
+                    frame.getContentPane().removeAll();
+                    frame.dispose();
+                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+                    frame.add(initialScreen);
+                });
+
+                dialog.add(resumeButton);
+                dialog.add(restartButton);
+                dialog.add(exitButton);
+                dialog.setVisible(true);
             } else {
                 timer.start();
                 pauseButton.setText("Pause");

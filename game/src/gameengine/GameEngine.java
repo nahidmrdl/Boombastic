@@ -25,7 +25,6 @@ public class GameEngine {
     private int mapIndex;
     private int playerCount;
 
-
     private List<Player> players;
     private JFrame frame; // Store the frame
 
@@ -47,8 +46,6 @@ public class GameEngine {
             player.setGameMap(this.gameMap);
         }
     }
-
-
     /**
      * Read the map from the file and create the game map
      */
@@ -60,16 +57,12 @@ public class GameEngine {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * Position players on the starting point of the map
      */
     private void positionPlayersOnStartingPoint() {
 
     int playerCount = 0;
-
-
-
         for (Cell[] row : this.gameMap.getMap()) {
             for (Cell cell : row) {
                 if(playerCount < players.size()) {
@@ -86,14 +79,11 @@ public class GameEngine {
             }
 
         }
-
-
         }
 
     /**
      * Run calculations for the game to get new state
      */
-
 
     // TODO, THIS IS RELATED TO THE BOMB BLAST CAUSING CONFLICTS
    //TODO
@@ -150,11 +140,6 @@ public class GameEngine {
         }
     }
 
-
-
-
-
-
     public List<Player> getPlayers() {
         return this.players;
     }
@@ -162,7 +147,6 @@ public class GameEngine {
     public GameMap getMap() {
         return this.gameMap;
     }
-
 
     public int getRoundCount() {
         return this.roundCount;
@@ -172,10 +156,7 @@ public class GameEngine {
         return this.mapIndex;
     }
 
-
-
     public int getPlayerCount() {
         return this.playerCount;
     }
-
 }
