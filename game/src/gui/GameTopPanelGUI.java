@@ -237,6 +237,11 @@ public class GameTopPanelGUI {
                     frame.dispose();
                     GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
                     try {
+                        for (Player player : model.getPlayers()) {
+                            player.bombCount = 0;
+                            player.powerUps.clear();
+                            player.curses.clear();
+                        }
                         initialScreen.reset(this.players, this.rounds, this.map);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
