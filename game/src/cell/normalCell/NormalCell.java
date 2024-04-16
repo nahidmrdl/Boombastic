@@ -1,6 +1,7 @@
 package cell.normalCell;
 
 import cell.Cell;
+import entity.Entity;
 import entity.player.Player;
 import item.GameItem;
 import item.powerup.PowerUp;
@@ -32,12 +33,31 @@ public class NormalCell extends Cell {
     }
 
     public void setRandomPowerUp() {
-        if (Math.random() < 0.5) {
+        // change from 1 to 0.5 to decrece the chance of power-up spawn
+        if (Math.random() < 1) {
             // power-up options list
             PowerUp[] powerUps = new PowerUp[]{new IncreasedNumberOfBombs(), new RollerSkate()};
             PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
             powerUp.setCell(this);
             this.items.add(powerUp);
+        }
+    }
+
+    public void CollectPowerUp() {
+        if(!this.getVisitors().isEmpty() && !this.getItems().isEmpty()) {
+            for (Entity visitor : this.getVisitors()) {
+                if (visitor instanceof Player) {
+                    Player player = (Player) visitor;
+                    for (GameItem item : this.getItems()) {
+                        if (item instanceof PowerUp) {
+                            PowerUp powerUp = (PowerUp) item;
+                            powerUp.apply(player);
+                            this.items.remove(item);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 

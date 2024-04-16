@@ -1,26 +1,17 @@
 package gameengine;
 
 import cell.Cell;
-import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
-import gui.GameGUI;
-import gui.GameMapGUI;
 import item.GameItem;
+import item.powerup.PowerUp;
 import levels.LevelReader;
 import map.GameMap;
-import item.bomb.Bomb;
-import util.ResourceCollection;
 
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GameEngine {
     private int roundCount;
@@ -90,9 +81,13 @@ public class GameEngine {
             // remove finished items
             for (Cell cell : row) {
                 if (cell instanceof NormalCell) {
+                    ((NormalCell) cell).CollectPowerUp();
+
                     ((NormalCell) cell).removeFinishedItems();
                 }
             }
+
+
         }
     }
 

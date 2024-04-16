@@ -3,6 +3,7 @@ package entity.player;
 import cell.Cell;
 import entity.Entity;
 import item.bomb.Bomb;
+import item.powerup.PowerUp;
 import map.GameMap;
 
 import java.awt.*;
@@ -22,8 +23,10 @@ public class Player extends Entity {
     private HashMap<String, String> Controls;
 
     public List<Image> powerUps = new ArrayList<>();
+
+    public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Image> curses = new ArrayList<>();
-    public int bombCount = 0;
+    public int bombCount = 3;
     public int victoryCount = 0;
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
@@ -60,6 +63,14 @@ public class Player extends Entity {
 
     public int getX(){
         return this.x;
+    }
+
+    public int getBombCount() {
+        return this.bombCount;
+    }
+
+    public void addPowerUp(PowerUp powerUp) {
+        this.powerUpsItems.add(powerUp);
     }
 
     public int getY(){
@@ -101,13 +112,18 @@ public class Player extends Entity {
         ) {
             this.x = newX;
             this.y = newY;
+            this.gameMap.getMap()[this.y][this.x].getVisitors().add(this);
         }
     }
 
     public void placeBomb() {
+        if (this.bombCount == 0) {
+            return;
+        }
         Bomb bomb = new Bomb();
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
+        this.bombCount--;
     }
 
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
