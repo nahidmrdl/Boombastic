@@ -26,6 +26,8 @@ public class Player extends Entity {
 
     private boolean isDetonator = false;
 
+    private boolean isGhost = false;
+
     private boolean isInvincible = false;
 
     private int speed = 300;
@@ -66,6 +68,14 @@ public class Player extends Entity {
 
     public void setDead(boolean dead) {
         isDead = dead;
+    }
+
+    public void setGhost(boolean ghost) {
+        isGhost = ghost;
+    }
+
+    public boolean isGhost() {
+        return isGhost;
     }
 
     public String getName() {
@@ -150,20 +160,27 @@ public class Player extends Entity {
     protected void move(int newX, int newY){
         Cell[][] level = this.gameMap.getMap();
         if (
-                newX >= 0
+                        newX >= 0
                         && newY >= 0
                         && newX < level[0].length
                         && newY < level.length
-                        && !(level[newY][newX] instanceof WallCell)
-                        && !(level[newY][newX] instanceof BoxCell)
         ) {
-            this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
-            this.x = newX;
-            this.y = newY;
-            this.gameMap.getMap()[this.y][this.x].addVisitor(this);
-            //System.out.println(this.gameMap.getMap()[this.y][this.x].getVisitors());
-
+            if( (level[newY][newX] instanceof WallCell) || (level[newY][newX] instanceof BoxCell)) {
+                // If the player is a ghost, they can move through walls and boxes
+                if(isGhost) {
+                    moveTo(newX, newY);
+                }
+            } else {
+                moveTo(newX, newY);
+            }
         }
+    }
+
+    private void moveTo(int newX, int newY) {
+        this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
+        this.x = newX;
+        this.y = newY;
+        this.gameMap.getMap()[this.y][this.x].addVisitor(this);
     }
 
    public int getBombBlastRange() {

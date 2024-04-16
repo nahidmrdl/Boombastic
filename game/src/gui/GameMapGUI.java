@@ -230,9 +230,19 @@
 
             for (Player player : model.getPlayers()) {
                 if (!player.isDead()) {
-                    g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+                    Graphics2D g2d = (Graphics2D) g;
+                    if (player.isGhost()) {
+                        float alpha = 0.5f;
+                        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                    } else {
+                        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                    }
+
+                    g2d.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+                    g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
                 }
             }
+
 
             for(int i = 0; i < this.model.getMap().getMap().length; i++){
                 for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {

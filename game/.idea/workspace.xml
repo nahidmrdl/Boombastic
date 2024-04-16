@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="player die from bomb">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="invincibility powerUp added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/powerup/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/ghost/Ghost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/item/powerup/invincibility/Invincibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/invincibility/Invincibility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -219,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713306527507</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="invincibility powerUp added">
+      <option name="closed" value="true" />
+      <created>1713306859530</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713306859530</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +261,8 @@
     <MESSAGE value="map argument added for cell constructor" />
     <MESSAGE value="detonator added" />
     <MESSAGE value="player die from bomb" />
-    <option name="LAST_COMMIT_MESSAGE" value="player die from bomb" />
+    <MESSAGE value="invincibility powerUp added" />
+    <option name="LAST_COMMIT_MESSAGE" value="invincibility powerUp added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

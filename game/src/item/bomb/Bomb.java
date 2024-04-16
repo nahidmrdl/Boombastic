@@ -125,7 +125,6 @@ public class Bomb extends GameItem {
     }
 
     private boolean isWithinBounds(int x, int y, Cell[][] map) {
-        System.out.println(x + " " + y + " " + map.length + " " + map[0].length);
         return !(x < 0 || x >= map.length || y < 0 || y >= map[0].length);
     }
 
