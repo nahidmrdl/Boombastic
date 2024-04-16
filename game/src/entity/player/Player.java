@@ -22,6 +22,8 @@ public class Player extends Entity {
 
     private Date lastMoveTime = new Date();
 
+    private int bombBlastRange = 1;
+
     private int speed = 300;
     private HashMap<String, String> Controls;
 
@@ -132,11 +134,19 @@ public class Player extends Entity {
         }
     }
 
+   public int getBombBlastRange() {
+        return bombBlastRange;
+    }
+    public void setBombBlastRange(int bombBlastRange) {
+        this.bombBlastRange = bombBlastRange;
+    }
+
     public void placeBomb() {
         if (this.bombCount == 0) {
             return;
         }
         Bomb bomb = new Bomb();
+        bomb.setBlastRadius(this.bombBlastRange);
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         bomb.setOwner(this);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);

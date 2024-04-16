@@ -22,7 +22,7 @@ public class Bomb extends GameItem {
         return blastRadius;
     }
 
-    private final int blastRadius = 1;
+    private int blastRadius = 1;
 
     public Bomb() {
         super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
@@ -31,6 +31,11 @@ public class Bomb extends GameItem {
 
         this.invokeDetonateAnimation();
     }
+
+    public void setBlastRadius(int blastRadius) {
+        this.blastRadius = blastRadius;
+    }
+
     private void invokeDetonateAnimation() {
         timer = new Timer(500, e -> {
             state++;
@@ -95,6 +100,7 @@ public class Bomb extends GameItem {
     }
 
     private boolean isWithinBounds(int x, int y, Cell[][] map) {
+        System.out.println(x + " " + y + " " + map.length + " " + map[0].length);
         return !(x < 0 || x >= map.length || y < 0 || y >= map[0].length);
     }
 
@@ -108,6 +114,7 @@ public class Bomb extends GameItem {
     private void updateCell(Cell cell, int x, int y, boolean setBlastImage) {
         if (cell instanceof BoxCell) {
             NormalCell newCell = new NormalCell(x, y);
+            newCell.setMap(cell.getMap());
             newCell.setRandomPowerUp();
             newCell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
             this.getCell().getMap().getMap()[x][y] = newCell;
