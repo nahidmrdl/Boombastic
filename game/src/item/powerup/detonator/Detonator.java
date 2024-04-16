@@ -1,6 +1,26 @@
 package item.powerup.detonator;
 
-//import item.powerup.PowerUp;
-//
-//public class Detonator extends PowerUp {
-//}
+import cell.Cell;
+import entity.player.Player;
+import item.GameItem;
+import item.bomb.Bomb;
+import item.powerup.PowerUp;
+import map.GameMap;
+import util.ResourceCollection;
+
+public class Detonator extends PowerUp {
+
+    public Detonator() {
+        super(ResourceCollection.Images.DETONATOR_POWERUP.getImage());
+    }
+
+    @Override
+    public void apply(Player p) {
+        p.setDetonator(true);
+    }
+
+    @Override
+    public void reset(Player p) {
+        p.setDetonator(false);
+    }
+}

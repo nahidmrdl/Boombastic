@@ -24,6 +24,8 @@ public class Player extends Entity {
 
     private int bombBlastRange = 1;
 
+    private boolean isDetonator = false;
+
     private int speed = 300;
     private HashMap<String, String> Controls;
 
@@ -40,6 +42,10 @@ public class Player extends Entity {
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
+    }
+
+    public void setDetonator(boolean detonator) {
+        isDetonator = detonator;
     }
 
     public String getName() {
@@ -143,9 +149,16 @@ public class Player extends Entity {
 
     public void placeBomb() {
         if (this.bombCount == 0) {
+            if (this.isDetonator) {
+                this.gameMap.DetonatePlayerBombs(this);
+
+                // Detonator is a one-time use item
+                this.setDetonator(false);
+            }
+
             return;
         }
-        Bomb bomb = new Bomb();
+        Bomb bomb = new Bomb(isDetonator);
         bomb.setBlastRadius(this.bombBlastRange);
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         bomb.setOwner(this);
