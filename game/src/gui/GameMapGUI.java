@@ -229,8 +229,9 @@
             }
 
             for (Player player : model.getPlayers()) {
-                g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
-
+                if (!player.isDead()) {
+                    g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+                }
             }
 
             for(int i = 0; i < this.model.getMap().getMap().length; i++){

@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="map argument added for cell constructor">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="detonator added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/powerup/detonator/Detonator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/detonator/Detonator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/GameMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713301822096</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="detonator added">
+      <option name="closed" value="true" />
+      <created>1713302830742</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713302830742</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,14 +241,15 @@
     <MESSAGE value="roller skate power up added" />
     <MESSAGE value="increased blast range added" />
     <MESSAGE value="map argument added for cell constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="map argument added for cell constructor" />
+    <MESSAGE value="detonator added" />
+    <option name="LAST_COMMIT_MESSAGE" value="detonator added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/item/bomb/Bomb.java</url>
-          <line>29</line>
+          <line>30</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

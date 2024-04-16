@@ -4,6 +4,7 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
+import entity.player.Player;
 import item.GameItem;
 import util.ResourceCollection;
 
@@ -100,8 +101,25 @@ public class Bomb extends GameItem {
                 }
 
                 updateCell(targetCell, targetX, targetY, setBlastImage);
+
+                // check for player on the cell
+
+                getCell().getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Player player) {
+                        player.setDead(true);
+                    }
+                });
+
+                getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Player player) {
+                        player.setDead(true);
+                    }
+                });
+
+
             }
         }
+
     }
 
     private boolean isWithinBounds(int x, int y, Cell[][] map) {
@@ -124,6 +142,7 @@ public class Bomb extends GameItem {
             this.getCell().getMap().getMap()[x][y] = newCell;
         } else if (cell != null) {
             cell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
+            //System.out.println(getCell().getVisitors());
         }
     }
 

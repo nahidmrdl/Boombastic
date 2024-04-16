@@ -74,8 +74,8 @@ public class Cell {
         return this.items;
     }
 
-    protected void setVisitor( List<Entity> visitors){
-        this.visitors = visitors;
+    public void addVisitor( Entity visitor){
+        this.visitors.add(visitor);
     }
 
     public Image getImage(){

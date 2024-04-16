@@ -34,6 +34,8 @@ public class Player extends Entity {
     public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Image> curses = new ArrayList<>();
     public int bombCount = 1;
+
+    private boolean isDead = false;
     public int victoryCount = 0;
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
@@ -46,6 +48,14 @@ public class Player extends Entity {
 
     public void setDetonator(boolean detonator) {
         isDetonator = detonator;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 
     public String getName() {
@@ -101,6 +111,9 @@ public class Player extends Entity {
     }
 
     public void HandleAction(String keyCode, Cell[][] level ) throws IOException {
+        if (this.isDead) {
+            return;
+        }
         int newX = this.x;
         int newY = this.y;
 
@@ -134,9 +147,12 @@ public class Player extends Entity {
                         && !(level[newY][newX] instanceof WallCell)
                         && !(level[newY][newX] instanceof BoxCell)
         ) {
+            this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
             this.x = newX;
             this.y = newY;
-            this.gameMap.getMap()[this.y][this.x].getVisitors().add(this);
+            this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+            //System.out.println(this.gameMap.getMap()[this.y][this.x].getVisitors());
+
         }
     }
 
