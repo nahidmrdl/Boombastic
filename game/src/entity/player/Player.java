@@ -26,6 +26,8 @@ public class Player extends Entity {
 
     private boolean isDetonator = false;
 
+    private boolean isInvincible = false;
+
     private int speed = 300;
     private HashMap<String, String> Controls;
 
@@ -48,6 +50,14 @@ public class Player extends Entity {
 
     public void setDetonator(boolean detonator) {
         isDetonator = detonator;
+    }
+
+    public void setInvincible(boolean invincible) {
+        isInvincible = invincible;
+    }
+
+    public boolean isInvincible() {
+        return isInvincible;
     }
 
     public boolean isDead() {

@@ -8,6 +8,7 @@ import item.powerup.PowerUp;
 import item.powerup.detonator.Detonator;
 import item.powerup.increasedblastrange.IncreasedBlastRange;
 import item.powerup.increasednumberffbombs.IncreasedNumberOfBombs;
+import item.powerup.invincibility.Invincibility;
 import item.powerup.rollerskate.RollerSkate;
 import map.GameMap;
 import util.ResourceCollection;
@@ -41,7 +42,7 @@ public class NormalCell extends Cell {
         if (Math.random() < 1) {
             // power-up options list
             //PowerUp[] powerUps = new PowerUp[]{new IncreasedNumberOfBombs(), new RollerSkate(), new IncreasedBlastRange()};
-            PowerUp[] powerUps = new PowerUp[]{ new Detonator(), new IncreasedNumberOfBombs()};
+            PowerUp[] powerUps = new PowerUp[]{ new Invincibility()};
             PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
             powerUp.setCell(this);
             this.items.add(powerUp);

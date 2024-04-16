@@ -8,11 +8,7 @@ import entity.player.Player;
 import item.GameItem;
 import util.ResourceCollection;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
 
 public class Bomb extends GameItem {
 
@@ -106,13 +102,19 @@ public class Bomb extends GameItem {
 
                 getCell().getVisitors().forEach(visitor -> {
                     if (visitor instanceof Player player) {
-                        player.setDead(true);
+                        if (!player.isInvincible()) {
+                            player.setDead(true);
+                        }
+
                     }
                 });
 
                 getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
                     if (visitor instanceof Player player) {
-                        player.setDead(true);
+                        if (!player.isInvincible()) {
+                            player.setDead(true);
+                        }
+
                     }
                 });
 
