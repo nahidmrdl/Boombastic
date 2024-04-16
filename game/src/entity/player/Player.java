@@ -75,10 +75,6 @@ public class Player extends Entity {
         int newY = this.y;
 
         HashMap<String, String> playerControls = this.getControls();
-
-//        System.out.println(playerControls);
-//        System.out.println(keyCode);
-
         String action = getKeyActionFromKeyCode(keyCode, playerControls);
 
         if (action != null) {
@@ -108,7 +104,7 @@ public class Player extends Entity {
         }
     }
 
-    public void placeBomb() throws IOException {
+    public void placeBomb() {
         Bomb bomb = new Bomb();
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
@@ -125,6 +121,6 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return "Player name: " + name + ", Image index: " + imageIndex + ", Controls: " + Controls + ", X: " + x + ", Y: " + y;
+        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}";
     }
 }

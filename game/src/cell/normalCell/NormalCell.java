@@ -27,7 +27,7 @@ public class NormalCell extends Cell {
 
 
     public void removeFinishedItems() {
-        this.items.removeIf(item -> item.getFinishTime() < System.currentTimeMillis());
+        this.items.removeIf(item -> item.getFinishTime() != 0 && item.getFinishTime()  < System.currentTimeMillis());
     }
 
     public void setRandomPowerUp() {
