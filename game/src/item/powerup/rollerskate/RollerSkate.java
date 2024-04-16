@@ -13,7 +13,7 @@ public class RollerSkate extends PowerUp {
 
     @Override
     public void apply(Player p) {
-        p.setSpeed(100);
+        p.setSpeed(35);
         setFinishTime(System.currentTimeMillis() + 5000);
     }
 

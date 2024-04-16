@@ -43,8 +43,17 @@ public class NormalCell extends Cell {
         // change from 1 to 0.5 to change the chance of power-up spawn
         if (Math.random() < 1) {
             // power-up options list
-            //PowerUp[] powerUps = new PowerUp[]{new IncreasedNumberOfBombs(), new RollerSkate(), new IncreasedBlastRange()};
-            PowerUp[] powerUps = new PowerUp[]{ new PlaceObstacle()};
+            PowerUp[] powerUps = new PowerUp[]{
+                    new IncreasedNumberOfBombs(),
+                    new RollerSkate(),
+                    new IncreasedBlastRange(),
+                    new Invincibility(),
+                    new Detonator(),
+                    new Ghost(),
+                    new PlaceObstacle()
+            };
+            // for tests
+            // PowerUp[] powerUps = new PowerUp[]{ new PlaceObstacle()};
             PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
             powerUp.setCell(this);
             this.items.add(powerUp);

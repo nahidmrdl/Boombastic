@@ -32,7 +32,7 @@ public class Player extends Entity {
 
     private int placeObsticleCount = 0;
 
-    private int speed = 300;
+    private int speed = 75;
     private HashMap<String, String> Controls;
 
     public List<Image> powerUps = new ArrayList<>();
@@ -93,7 +93,7 @@ public class Player extends Entity {
     }
 
     public void resetDefaultSpeed() {
-        this.speed = 300;
+        this.speed = 100;
     }
 
     public void setImage(Image image) {
@@ -175,7 +175,7 @@ public class Player extends Entity {
             this.gameMap.getMap()[this.y][this.x] = box;
             placeObsticleCount--;
         }
-            
+
     }
 
     protected void move(int newX, int newY){

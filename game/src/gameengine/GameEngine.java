@@ -53,6 +53,7 @@ public class GameEngine {
                             // Inverse for some reason
                             players.get(playerCount).setX(cell.getY());
                             players.get(playerCount).setY(cell.getX());
+                            cell.addVisitor(players.get(playerCount));
                             playerCount++;
                         }
                     }
