@@ -146,6 +146,7 @@ public class Player extends Entity {
                 case "DOWN": newY = this.y + 1; break;
                 case "LEFT": newX = this.x - 1; break;
                 case "RIGHT": newX = this.x + 1; break;
+                case "BOX" : placeBox(); break;
                 case "BOMB": placeBomb(); break;
             }
 
@@ -155,6 +156,12 @@ public class Player extends Entity {
             }
 
         }
+    }
+
+    private void placeBox() {
+            BoxCell box = new BoxCell(this.x, this.y, this.gameMap);
+            box.setOwner(this);
+            this.gameMap.getMap()[this.y][this.x] = box;
     }
 
     protected void move(int newX, int newY){

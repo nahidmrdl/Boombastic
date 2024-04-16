@@ -53,6 +53,7 @@ public class GameInitialScreenGUI extends JPanel {
         player1Controls.put("DOWN", "83"); // Down
         player1Controls.put("RIGHT", "68"); // Right
         player1Controls.put("BOMB", "66"); // Place bomb / B
+        player1Controls.put("BOX", "81"); // Detonate bomb / Q
 
         // Player 2 controls
         HashMap<String, String> player2Controls = new HashMap<>();
@@ -61,6 +62,7 @@ public class GameInitialScreenGUI extends JPanel {
         player2Controls.put("DOWN", "40"); // Down arrow key
         player2Controls.put("RIGHT", "39"); // Right arrow key
         player2Controls.put("BOMB", "10"); // Place bomb // ENTER
+        player2Controls.put("BOX", "93"); // Detonate bomb / ]
 
         // Player 3 controls
         HashMap<String, String> player3Controls = new HashMap<>();
@@ -69,6 +71,7 @@ public class GameInitialScreenGUI extends JPanel {
         player3Controls.put("DOWN", "75"); // K
         player3Controls.put("RIGHT", "76"); // L
         player3Controls.put("BOMB", "32"); // Space
+        player3Controls.put("BOX", "79"); // O
 
         // Add the control maps to the controls list
         controls.add(player1Controls);

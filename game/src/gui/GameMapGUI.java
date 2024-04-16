@@ -189,6 +189,22 @@
                                     player.HandleAction("32", model.getMap().getMap());
                                 }
                                 break;
+                                // box
+                            case KeyEvent.VK_Q: // Q key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("81", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_O:
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("79", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_CLOSE_BRACKET:
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("93", model.getMap().getMap());
+                                }
+                                break;
 
                             case KeyEvent.VK_ESCAPE: // Escape key
                                 frame.dispose();

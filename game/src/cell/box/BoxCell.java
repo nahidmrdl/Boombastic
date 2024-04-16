@@ -17,9 +17,9 @@ public class BoxCell extends Cell {
     private Player owner;
 
     private boolean hasPowerUp;
-    public BoxCell(int row, int col, GameMap map) throws IOException {
+    public BoxCell(int row, int col, GameMap map) {
         super(row, col, map);
-        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));;
+        this.image = ResourceCollection.Images.BOXMAP1.getImage();
         this.owner = null;
     }
 

@@ -138,7 +138,9 @@ public class Bomb extends GameItem {
     private void updateCell(Cell cell, int x, int y, boolean setBlastImage) {
         if (cell instanceof BoxCell) {
             NormalCell newCell = new NormalCell(x, y, cell.getMap());
-            newCell.setRandomPowerUp();
+            if(((BoxCell) cell).getOwner() == null) {
+                newCell.setRandomPowerUp();
+            }
             newCell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
             this.getCell().getMap().getMap()[x][y] = newCell;
         } else if (cell != null) {
