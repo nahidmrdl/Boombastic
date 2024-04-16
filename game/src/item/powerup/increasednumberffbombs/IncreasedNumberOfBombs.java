@@ -14,7 +14,7 @@ public class IncreasedNumberOfBombs extends PowerUp {
 
     @Override
     public void apply(Player p) {
-
+        p.bombCount++;
     }
 
     @Override

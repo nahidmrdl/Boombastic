@@ -37,6 +37,7 @@ public class Bomb extends GameItem {
             updateAnimationState();
             if (state == 4) {
                 clearExplosion();
+                getOwner().bombCount++;
                 timer.stop();
             }
         });

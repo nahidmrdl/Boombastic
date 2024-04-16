@@ -33,7 +33,7 @@ public class NormalCell extends Cell {
     }
 
     public void setRandomPowerUp() {
-        // change from 1 to 0.5 to decrece the chance of power-up spawn
+        // change from 1 to 0.5 to change the chance of power-up spawn
         if (Math.random() < 1) {
             // power-up options list
             PowerUp[] powerUps = new PowerUp[]{new IncreasedNumberOfBombs(), new RollerSkate()};

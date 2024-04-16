@@ -26,7 +26,7 @@ public class Player extends Entity {
 
     public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Image> curses = new ArrayList<>();
-    public int bombCount = 3;
+    public int bombCount = 1;
     public int victoryCount = 0;
 
     public Player(int x, int y, GameMap gameMap, String name, int imageIndex, HashMap<String, String> Controls, Image image) {
@@ -122,6 +122,7 @@ public class Player extends Entity {
         }
         Bomb bomb = new Bomb();
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
+        bomb.setOwner(this);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
         this.bombCount--;
     }
