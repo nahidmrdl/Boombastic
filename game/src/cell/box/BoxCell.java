@@ -3,6 +3,7 @@ package cell.box;
 import cell.Cell;
 import entity.player.Player;
 import item.powerup.PowerUp;
+import map.GameMap;
 import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
@@ -16,8 +17,8 @@ public class BoxCell extends Cell {
     private Player owner;
 
     private boolean hasPowerUp;
-    public BoxCell(int row, int col) throws IOException {
-        super(row, col);
+    public BoxCell(int row, int col, GameMap map) throws IOException {
+        super(row, col, map);
         this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));;
         this.owner = null;
     }

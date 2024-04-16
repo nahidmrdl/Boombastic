@@ -27,9 +27,10 @@ public class Cell {
     private boolean hasPowerUp;
     private String powerUpType;
 
-    public Cell(int row, int col) {
+    public Cell(int row, int col, GameMap map){
         this.row = row;
         this.col = col;
+        this.map = map;
         this.visitors = new ArrayList<>();
         this.items = new ArrayList<>();
 

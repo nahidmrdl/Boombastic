@@ -8,6 +8,7 @@ import item.powerup.PowerUp;
 import item.powerup.increasedblastrange.IncreasedBlastRange;
 import item.powerup.increasednumberffbombs.IncreasedNumberOfBombs;
 import item.powerup.rollerskate.RollerSkate;
+import map.GameMap;
 import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class NormalCell extends Cell {
@@ -23,8 +25,8 @@ public class NormalCell extends Cell {
 
     boolean isStartingPoint = false;
 
-    public NormalCell(int row, int col) {
-        super(row, col);
+    public NormalCell(int row, int col, GameMap map) {
+        super(row, col, map);
         this.image = ResourceCollection.Images.GROUNDMAP1.getImage();
     }
 

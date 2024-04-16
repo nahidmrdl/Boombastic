@@ -2,8 +2,10 @@ package map;
 
 import cell.Cell;
 import item.GameItem;
+import levels.LevelReader;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,14 @@ public class GameMap {
 
 
 
-    public GameMap(Cell[][] map, Image image, String name){
-        this.map = map;
+    public GameMap(Image image, String name, Integer mapIndex){
+        try {
+            Cell[][] mapCell = LevelReader.readLevelFromFile(STR."src/levels/\{mapIndex}.txt");
+            this.map = mapCell;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         for (Cell[] cells : map) {
             for (Cell cell : cells) {
                 cell.setMap(this);

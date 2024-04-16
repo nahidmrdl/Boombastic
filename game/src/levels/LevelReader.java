@@ -39,17 +39,17 @@ public class LevelReader {
             for (int j = 0; j < maxColCount; j++) {
                 if (j < mapRows[i].length()) {
                     if(mapRows[i].charAt(j) == 'X') {
-                        map[i][j] = new BoxCell(i,j);
+                        map[i][j] = new BoxCell(i,j, null);
                     }
                     if(mapRows[i].charAt(j) == '.') {
-                        map[i][j] = new NormalCell(i,j);
+                        map[i][j] = new NormalCell(i,j, null);
                     }
                     if(mapRows[i].charAt(j) == '#') {
-                        map[i][j] = new WallCell(i,j);
+                        map[i][j] = new WallCell(i,j, null);
                     }
 
                     if(mapRows[i].charAt(j) == 'S') {
-                        map[i][j] = new NormalCell(i,j);
+                        map[i][j] = new NormalCell(i,j, null);
                         if(map[i][j] instanceof NormalCell) {
                             ((NormalCell) map[i][j]).setStartingPoint(true);
                         }
@@ -57,7 +57,7 @@ public class LevelReader {
 
 
                 } else {
-                    map[i][j] = new Cell(i,j);
+                    map[i][j] = new Cell(i,j, null);
                 }
             }
         }

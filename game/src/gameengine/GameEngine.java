@@ -38,14 +38,7 @@ public class GameEngine {
      * Read the map from the file and create the game map
      */
     private void defineMap() {
-        try {
-            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
-            this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.gameMap = new GameMap(null, String.valueOf(this.mapIndex), this.mapIndex);
     }
     /**
      * Position players on the starting point of the map
