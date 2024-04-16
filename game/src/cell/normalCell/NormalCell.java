@@ -51,6 +51,7 @@ public class NormalCell extends Cell {
                     for (GameItem item : this.getItems()) {
                         if (item instanceof PowerUp) {
                             PowerUp powerUp = (PowerUp) item;
+                            player.addPowerUp(powerUp);
                             powerUp.apply(player);
                             this.items.remove(item);
                             break;

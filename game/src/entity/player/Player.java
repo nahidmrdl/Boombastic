@@ -8,10 +8,9 @@ import map.GameMap;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
+
 import cell.box.BoxCell;
 import cell.wall.WallCell;
 
@@ -20,6 +19,10 @@ public class Player extends Entity {
     private int imageIndex;
     private GameMap gameMap;
     private Image Image;
+
+    private Date lastMoveTime = new Date();
+
+    private int speed = 300;
     private HashMap<String, String> Controls;
 
     public List<Image> powerUps = new ArrayList<>();
@@ -39,6 +42,10 @@ public class Player extends Entity {
 
     public String getName() {
         return name;
+    }
+
+    public void resetDefaultSpeed() {
+        this.speed = 300;
     }
 
     public void setImage(Image image) {
@@ -69,6 +76,10 @@ public class Player extends Entity {
         return this.bombCount;
     }
 
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public void addPowerUp(PowerUp powerUp) {
         this.powerUpsItems.add(powerUp);
     }
@@ -96,7 +107,12 @@ public class Player extends Entity {
                 case "RIGHT": newX = this.x + 1; break;
                 case "BOMB": placeBomb(); break;
             }
-            this.move(newX, newY);
+
+            if(lastMoveTime.getTime() + speed < new Date().getTime()){
+                this.move(newX, newY);
+                lastMoveTime = new Date();
+            }
+
         }
     }
 
@@ -125,6 +141,22 @@ public class Player extends Entity {
         bomb.setOwner(this);
         this.gameMap.getMap()[this.y][this.x].addItem(bomb);
         this.bombCount--;
+    }
+
+
+    /**
+     * Remove finished power-ups (check the finish time) and if the power-up is finished, remove it from the player and apply the reset method
+     */
+    public void removeFinishedPowerUps() {
+        Iterator<PowerUp> iterator = this.powerUpsItems.iterator();
+        while (iterator.hasNext()) {
+            PowerUp powerUp = iterator.next();
+            if(powerUp.getFinishTime() != 0 && powerUp.getFinishTime() < System.currentTimeMillis()) {
+                iterator.remove();
+                powerUp.reset(this);
+                System.out.println("Power up removed");
+            }
+        }
     }
 
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {

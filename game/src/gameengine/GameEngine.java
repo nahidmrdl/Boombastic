@@ -82,12 +82,14 @@ public class GameEngine {
             for (Cell cell : row) {
                 if (cell instanceof NormalCell) {
                     ((NormalCell) cell).CollectPowerUp();
-
                     ((NormalCell) cell).removeFinishedItems();
                 }
             }
+        }
 
-
+        // remove finished power-ups form players
+        for (Player player : this.players) {
+            player.removeFinishedPowerUps();
         }
     }
 

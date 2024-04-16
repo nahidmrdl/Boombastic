@@ -8,6 +8,7 @@ import java.awt.*;
 
 
 public abstract class PowerUp extends GameItem {
+
     public PowerUp(Image image) {
         super(image);
         this.baseImage = ResourceCollection.Images.POWERUP_ICON.getImage();
