@@ -10,6 +10,7 @@ import item.GameItem;
 import levels.LevelReader;
 import map.GameMap;
 import item.bomb.Bomb;
+import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -49,6 +50,8 @@ public class GameEngine {
         try {
             Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + this.mapIndex + ".txt");
             this.gameMap = new GameMap(mapCell, null, String.valueOf(this.mapIndex));
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -92,8 +95,10 @@ public class GameEngine {
                     for (GameItem item : cell.getItems()) {
 //                        System.out.println("Item finish time: " + item.getFinishTime());
 //                        System.out.println("Current time: " + System.currentTimeMillis());
-                        if (item.getFinishTime() < System.currentTimeMillis()) {
-                            itemsToRemove.add(item);
+                        if(item.getFinishTime() != 0 ) {
+                            if (item.getFinishTime() < System.currentTimeMillis()) {
+                                itemsToRemove.add(item);
+                            }
                         }
                     }
                     // Loop over items to remove
@@ -102,29 +107,32 @@ public class GameEngine {
                         this.gameMap.getMap()[cell.getX()][cell.getY()].getItems().remove(item); // Remove the item from its current cell
 
                         // Assuming getBlastRadius() is a method that returns the blast radius
-                        int blastRadius =  ((Bomb) item).getBlastRadius();
+                        if (item instanceof Bomb) {
+                            int blastRadius =  ((Bomb) item).getBlastRadius();
 
-                        // Define directions for the blast pattern: up, down, left, right
-                        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+                            // Define directions for the blast pattern: up, down, left, right
+                            int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+                            // Loop through each direction to clear the foregroundImage
+                            for (int[] direction : directions) {
+                                for (int i = 1; i <= blastRadius; i++) {
+                                    int targetX = cell.getX() + i * direction[0];
+                                    int targetY = cell.getY() + i * direction[1];
 
-                        // Loop through each direction to clear the foregroundImage
-                        for (int[] direction : directions) {
-                            for (int i = 1; i <= blastRadius; i++) {
-                                int targetX = cell.getX() + i * direction[0];
-                                int targetY = cell.getY() + i * direction[1];
-
-                                // Ensure target coordinates are within map bounds
-                                if (targetX >= 0 && targetX < this.gameMap.getMap().length && targetY >= 0 && targetY < this.gameMap.getMap()[0].length) {
-                                    // Check if the cell is not null and then clear the foregroundImage
-                                    if (this.gameMap.getMap()[targetX][targetY] != null) {
-                                        this.gameMap.getMap()[targetX][targetY].setForegroundImage(null);
+                                    // Ensure target coordinates are within map bounds
+                                    if (targetX >= 0 && targetX < this.gameMap.getMap().length && targetY >= 0 && targetY < this.gameMap.getMap()[0].length) {
+                                        // Check if the cell is not null and then clear the foregroundImage
+                                        if (this.gameMap.getMap()[targetX][targetY] != null) {
+                                            this.gameMap.getMap()[targetX][targetY].setForegroundImage(null);
+                                        }
+                                    } else {
+                                        break;
                                     }
-                                } else {
-                                    // If target is out of bounds, break out of the loop for the current direction
-                                    break;
                                 }
                             }
                         }
+
+
+
 
                     }
                 }

@@ -6,10 +6,10 @@ import java.awt.*;
 
 
 public abstract class GameItem {
-    private Image baseImage;
-    private Image image;
-    private long finishTime;
-    private Cell cell;
+    protected Image baseImage;
+    protected Image image;
+    protected long finishTime;
+    protected Cell cell;
 
 
     public GameItem(Image image) {

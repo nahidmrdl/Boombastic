@@ -36,6 +36,12 @@ public class Bomb extends GameItem {
     private void invokeDetonateAnimation() {
         timer = new Timer(500, e -> {
             state++;
+
+            int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+            Cell[][] gameMap = this.getCell().getMap().getMap();
+            int x = this.getCell().getX();
+            int y = this.getCell().getY();
+
             switch (state) {
                 case 1:
                     // Transition to the second state
@@ -52,13 +58,12 @@ public class Bomb extends GameItem {
 
 
                     // change image in range
-                    Cell[][] gameMap = this.getCell().getMap().getMap();
-                    int x = this.getCell().getX();
-                    int y = this.getCell().getY();
+
+
                     // The blast extends this far in each direction unless blocked by a wall
 
 // Define directions: up, down, left, right
-                    int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
 
                     for (int[] direction : directions) {
                         for (int i = 1; i <= blastRadius; i++) {
@@ -80,20 +85,11 @@ public class Bomb extends GameItem {
 
                             // If it's a BoxCell, replace it with a NormalCell, possibly carrying over a power-up
                             if (targetCell instanceof BoxCell) {
-                                BoxCell boxCell = (BoxCell) targetCell;
-                                try {
                                     NormalCell newCell = new NormalCell(targetX, targetY);
-                                    newCell.setMap(this.getCell().getMap());
-                                    if (boxCell.hasPowerUp()) {
-                                        newCell.setHasPowerUp(true);
-                                        newCell.setPowerUpImage(boxCell.getPowerUpImage());
-                                    }
-                                    gameMap[targetX][targetY] = newCell;
+                                    newCell.setRandomPowerUp();
                                     newCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            } else if (!(targetCell instanceof BoxCell) && targetCell != null) {
+                                    gameMap[targetX][targetY] = newCell;
+                            } else if (targetCell != null) {
                                 targetCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
                             }
                         }
@@ -103,7 +99,44 @@ public class Bomb extends GameItem {
                     // After the blast, perform any necessary cleanup
                     break;
                 case 4:
-                    // Final state - stop the timer
+
+                    // Remove bomb form cell and clear blast
+
+
+                    for (int[] direction : directions) {
+                        for (int i = 1; i <= blastRadius; i++) {
+                            int targetX = x + i * direction[0];
+                            int targetY = y + i * direction[1];
+
+                            // Ensure target coordinates are within map bounds
+                            if (targetX < 0 || targetX >= gameMap.length || targetY < 0 || targetY >= gameMap[0].length) {
+                                System.out.println("Target X: " + targetX + ", Target Y: " + targetY);
+
+                                continue; // skip this iteration if target is out of bounds
+                            }
+
+                            Cell targetCell = gameMap[targetX][targetY];
+                            // Stop the blast if it hits a wall
+                            if (targetCell instanceof WallCell) { // '#' represents a wall
+                                break; // Stops extending the blast in this direction
+                            }
+
+                            // If it's a BoxCell, replace it with a NormalCell, possibly carrying over a power-up
+                            if (targetCell instanceof BoxCell) {
+                                NormalCell newCell = new NormalCell(targetX, targetY);
+                                newCell.setRandomPowerUp();
+                                newCell.setForegroundImage(null);
+                                gameMap[targetX][targetY] = newCell;
+                            } else if (targetCell != null) {
+                                targetCell.setForegroundImage(null);
+                            }
+                        }
+                    }
+
+                    this.getCell().setForegroundImage(null);
+                    this.getCell().getItems().remove(this);
+
+
                     timer.stop();
                     break;
             }

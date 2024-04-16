@@ -2,6 +2,7 @@ package cell.box;
 
 import cell.Cell;
 import entity.player.Player;
+import item.powerup.PowerUp;
 import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
@@ -13,6 +14,7 @@ import java.util.Random;
 public class BoxCell extends Cell {
     private Image powerUpImage;
     private Player owner;
+
     private boolean hasPowerUp;
     public BoxCell(int row, int col) throws IOException {
         super(row, col);
@@ -27,6 +29,10 @@ public class BoxCell extends Cell {
         return this.owner;
     }
 
+    public void setPowerUp(Image powerUpImage) {
+        this.powerUpImage = powerUpImage;
+        this.hasPowerUp = true;
+    }
 
 
     public boolean hasPowerUp() {

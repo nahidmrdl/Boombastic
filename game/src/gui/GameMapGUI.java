@@ -7,6 +7,7 @@
     import gameengine.GameEngine;
     import item.GameItem;
     import item.bomb.Bomb;
+    import item.powerup.PowerUp;
     import levels.LevelReader;
     import util.ResourceCollection;
 
@@ -217,31 +218,16 @@
             for (int i = 0; i < mapCell.length; i++) {
                 for (int j = 0; j < mapCell[i].length; j++) {
                     Cell cell = mapCell[i][j];
-
-                    // Check and draw the base type of each cell (wall, walkable, box)
                     if (cell instanceof NormalCell) {
-                        NormalCell normalCell = (NormalCell) cell;
-                        if (normalCell.isStartingPoint()) {
-                            // Optionally handle starting points differently
-                        }
-                        // Draw the walkable path or the power-up if the normal cell contains one
                         g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        if (normalCell.hasPowerUp()) {
-                            g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        }
-                    } else if (cell instanceof WallCell) { // Assuming '#' represents walls
+                    } else if (cell instanceof WallCell) {
                         g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     } else if (cell instanceof BoxCell) {
-                        BoxCell boxCell = (BoxCell) cell;
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        if (boxCell.hasPowerUp()) {
-                            // Optionally, indicate there's a power-up inside the box without showing what it is
-                        }
                     }
                 }
             }
 
-            // Use the player instance to draw the player's current position
             for (Player player : model.getPlayers()) {
                 g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
 
@@ -267,6 +253,27 @@
                     }
                 }
             }
+
+            // draw powerup
+
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    Cell cell = this.model.getMap().getMap()[i][j];
+                    if (cell instanceof NormalCell) {
+                        NormalCell normalCell = (NormalCell) cell;
+                        int finalJ = j;
+                        int finalI = i;
+                        normalCell.getItems().forEach(item -> {
+                            if (item instanceof PowerUp) {
+                                g.drawImage(item.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                            }
+                        });
+                    }
+                }
+            }
+
+
+
         }}
 
 
