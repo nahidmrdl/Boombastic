@@ -5,6 +5,7 @@ import entity.player.Player;
 import item.GameItem;
 import item.powerup.PowerUp;
 import item.powerup.increasednumberffbombs.IncreasedNumberOfBombs;
+import item.powerup.rollerskate.RollerSkate;
 import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
@@ -32,9 +33,11 @@ public class NormalCell extends Cell {
 
     public void setRandomPowerUp() {
         if (Math.random() < 0.5) {
-            IncreasedNumberOfBombs increasedNumberOfBombs = new IncreasedNumberOfBombs();
-            increasedNumberOfBombs.setCell(this);
-            this.items.add(increasedNumberOfBombs);
+            // power-up options list
+            PowerUp[] powerUps = new PowerUp[]{new IncreasedNumberOfBombs(), new RollerSkate()};
+            PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
+            powerUp.setCell(this);
+            this.items.add(powerUp);
         }
     }
 
