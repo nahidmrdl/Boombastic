@@ -141,6 +141,11 @@ public class Bomb extends GameItem {
             if(((BoxCell) cell).getOwner() == null) {
                 newCell.setRandomPowerUp();
             }
+
+            if(((BoxCell) cell).getOwner() != null) {
+                getOwner().setPlaceObsticleCount(getOwner().getPlaceObsticleCount() + 1);
+            }
+
             newCell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
             this.getCell().getMap().getMap()[x][y] = newCell;
         } else if (cell != null) {

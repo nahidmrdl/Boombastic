@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="ghost powerUP added">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="basic box powerUp added, additional keys for player defined">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cell/box/BoxCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/powerup/placeobstacle/PlaceObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/placeobstacle/PlaceObstacle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713307965730</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="basic box powerUp added, additional keys for player defined">
+      <option name="closed" value="true" />
+      <created>1713308834765</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713308834765</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +277,8 @@
     <MESSAGE value="player die from bomb" />
     <MESSAGE value="invincibility powerUp added" />
     <MESSAGE value="ghost powerUP added" />
-    <option name="LAST_COMMIT_MESSAGE" value="ghost powerUP added" />
+    <MESSAGE value="basic box powerUp added, additional keys for player defined" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic box powerUp added, additional keys for player defined" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

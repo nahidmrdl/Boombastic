@@ -30,6 +30,8 @@ public class Player extends Entity {
 
     private boolean isInvincible = false;
 
+    private int placeObsticleCount = 0;
+
     private int speed = 300;
     private HashMap<String, String> Controls;
 
@@ -48,6 +50,14 @@ public class Player extends Entity {
         this.Image = image;
         this.Controls = Controls;
         this.imageIndex = imageIndex;
+    }
+
+    public void setPlaceObsticleCount(int placeObsticle) {
+        placeObsticleCount = placeObsticle;
+    }
+
+    public int getPlaceObsticleCount() {
+        return placeObsticleCount;
     }
 
     public void setDetonator(boolean detonator) {
@@ -159,9 +169,13 @@ public class Player extends Entity {
     }
 
     private void placeBox() {
+        if(placeObsticleCount > 0) {
             BoxCell box = new BoxCell(this.x, this.y, this.gameMap);
             box.setOwner(this);
             this.gameMap.getMap()[this.y][this.x] = box;
+            placeObsticleCount--;
+        }
+            
     }
 
     protected void move(int newX, int newY){
