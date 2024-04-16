@@ -30,6 +30,7 @@ public class ResourceCollection {
         CURSE_ICON,
         POWERUP_ICON,
         TROPHY,
+        INCREACEDBOMBS,
 
         BLASTRANGE_EXTENSION,
         CANNOTPLACE_BOMB,
@@ -45,6 +46,8 @@ public class ResourceCollection {
         MAP1,
         MAP2,
         MAP3;
+
+
 
         private BufferedImage image = null;
         public Image getImage() {
@@ -100,6 +103,7 @@ public class ResourceCollection {
             Images.CANNOTPLACE_BOMB.image = ImageIO.read(new File(basePath + "icons/CannotPlaceBombCurse.png"));
             Images.DETONATOR_POWERUP.image = ImageIO.read(new File(basePath + "icons/detonatorPowerup.png"));
             Images.GHOST_POWERUP.image = ImageIO.read(new File(basePath + "icons/GhostPowerup.png"));
+            Images.INCREACEDBOMBS.image = ImageIO.read(new File(basePath + "icons/increasedNumberOfBombs.png"));
 
             Images.IMMEDIATE_BOMP_PLACEMENT_CURSE.image = ImageIO.read(new File(basePath + "icons/ImmediateBombPlacementCurse.png"));
             Images.INVINCIBLE_POWERUP.image = ImageIO.read(new File(basePath + "icons/InvinciblePowerup.png"));
@@ -108,6 +112,7 @@ public class ResourceCollection {
             Images.OBSTACLE_POWERUP.image = ImageIO.read(new File(basePath + "icons/ObstaclePowerup.png"));
             Images.ROLLERSKATESPEED_POWERUP.image = ImageIO.read(new File(basePath + "icons/RollerSkateSpeedUpPowerup.png"));
             Images.TROPHY.image = ImageIO.read(new File(basePath + "icons/trophy.png"));
+
 
         } catch (IOException e) {
             System.err.println(e + ": Cannot read image file");

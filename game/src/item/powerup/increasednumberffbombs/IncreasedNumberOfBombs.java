@@ -9,7 +9,7 @@ import java.awt.*;
 public class IncreasedNumberOfBombs extends PowerUp {
 
     public IncreasedNumberOfBombs() {
-        super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
+        super(ResourceCollection.Images.INCREACEDBOMBS.getImage());
     }
 
     @Override
