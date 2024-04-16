@@ -15,17 +15,8 @@ import item.powerup.rollerskate.RollerSkate;
 import map.GameMap;
 import util.ResourceCollection;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-
 
 public class NormalCell extends Cell {
-    private Image powerUpImage; // New attribute for the power-up image
-    private boolean hasPowerUp; // Flag to indicate presence of a power-up
 
     boolean isStartingPoint = false;
 
@@ -33,7 +24,6 @@ public class NormalCell extends Cell {
         super(row, col, map);
         this.image = ResourceCollection.Images.GROUNDMAP1.getImage();
     }
-
 
     public void removeFinishedItems() {
         this.items.removeIf(item -> item.getFinishTime() != 0 && item.getFinishTime()  < System.currentTimeMillis());
@@ -52,7 +42,7 @@ public class NormalCell extends Cell {
                     new Ghost(),
                     new PlaceObstacle()
             };
-            // for tests
+            // for tests this can be used
             // PowerUp[] powerUps = new PowerUp[]{ new PlaceObstacle()};
             PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
             powerUp.setCell(this);
@@ -77,25 +67,6 @@ public class NormalCell extends Cell {
                 }
             }
         }
-    }
-
-
-    // Getter and setter for the power-up image
-    public Image getPowerUpImage() {
-        return powerUpImage;
-    }
-
-    public void setPowerUpImage(Image powerUpImage) {
-        this.powerUpImage = powerUpImage;
-    }
-
-    // Getter and setter for the hasPowerUp flag
-    public boolean hasPowerUp() {
-        return hasPowerUp;
-    }
-
-    public void setHasPowerUp(boolean hasPowerUp) {
-        this.hasPowerUp = hasPowerUp;
     }
 
     public void setStartingPoint(boolean isStartingPoint) {

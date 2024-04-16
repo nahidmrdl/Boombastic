@@ -15,10 +15,6 @@ public class Bomb extends GameItem {
     private Timer timer;
     private int state = 0;
 
-    public int getBlastRadius() {
-        return blastRadius;
-    }
-
     private boolean isDetonator = false;
 
     private int blastRadius = 1;
@@ -98,8 +94,7 @@ public class Bomb extends GameItem {
 
                 updateCell(targetCell, targetX, targetY, setBlastImage);
 
-                // check for player on the cell
-
+                // check for player on the cell and set dead
                 getCell().getVisitors().forEach(visitor -> {
                     if (visitor instanceof Player player) {
                         if (!player.isInvincible()) {
@@ -108,20 +103,16 @@ public class Bomb extends GameItem {
 
                     }
                 });
-
+                // check for player on blast range and set dead
                 getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
                     if (visitor instanceof Player player) {
                         if (!player.isInvincible()) {
                             player.setDead(true);
                         }
-
                     }
                 });
-
-
             }
         }
-
     }
 
     private boolean isWithinBounds(int x, int y, Cell[][] map) {
@@ -138,10 +129,12 @@ public class Bomb extends GameItem {
     private void updateCell(Cell cell, int x, int y, boolean setBlastImage) {
         if (cell instanceof BoxCell) {
             NormalCell newCell = new NormalCell(x, y, cell.getMap());
+            // set random power-up if the box was not owned by a player
             if(((BoxCell) cell).getOwner() == null) {
                 newCell.setRandomPowerUp();
             }
 
+            // if the box was owned by a player, increment the placeObsticleCount
             if(((BoxCell) cell).getOwner() != null) {
                 getOwner().setPlaceObsticleCount(getOwner().getPlaceObsticleCount() + 1);
             }
@@ -150,7 +143,6 @@ public class Bomb extends GameItem {
             this.getCell().getMap().getMap()[x][y] = newCell;
         } else if (cell != null) {
             cell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
-            //System.out.println(getCell().getVisitors());
         }
     }
 

@@ -16,7 +16,6 @@ public class BoxCell extends Cell {
     private Image powerUpImage;
     private Player owner;
 
-    private boolean hasPowerUp;
     public BoxCell(int row, int col, GameMap map) {
         super(row, col, map);
         this.image = ResourceCollection.Images.BOXMAP1.getImage();
@@ -28,20 +27,6 @@ public class BoxCell extends Cell {
     }
     public Player getOwner() {
         return this.owner;
-    }
-
-    public void setPowerUp(Image powerUpImage) {
-        this.powerUpImage = powerUpImage;
-        this.hasPowerUp = true;
-    }
-
-
-    public boolean hasPowerUp() {
-        return hasPowerUp;
-    }
-
-    public Image getPowerUpImage() {
-        return powerUpImage;
     }
 
 }

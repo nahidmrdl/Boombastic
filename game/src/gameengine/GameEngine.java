@@ -58,9 +58,7 @@ public class GameEngine {
                         }
                     }
                 }
-
             }
-
         }
     }
 
@@ -68,8 +66,6 @@ public class GameEngine {
      * Run calculations for the game to get new state
      */
 
-    // TODO, THIS IS RELATED TO THE BOMB BLAST CAUSING CONFLICTS
-   //TODO
     public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             // remove finished items
