@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="basic monsters are now moving">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="basic monsters can now kill players">
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +126,7 @@
       <workItem from="1713216238138" duration="1342000" />
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713312527404" duration="30000" />
-      <workItem from="1713350874247" duration="2795000" />
+      <workItem from="1713350874247" duration="5583000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -321,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713353311070</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="basic monsters can now kill players">
+      <option name="closed" value="true" />
+      <created>1713353815199</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1713353815199</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +378,8 @@
     <MESSAGE value="Invoke on player step for bomb on detonator added" />
     <MESSAGE value="final works on monster class" />
     <MESSAGE value="basic monsters are now moving" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic monsters are now moving" />
+    <MESSAGE value="basic monsters can now kill players" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic monsters can now kill players" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

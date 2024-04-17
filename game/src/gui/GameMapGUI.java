@@ -4,11 +4,13 @@
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
     import entity.monster.Monster;
+    import entity.monster.monstertypes.GhostlyMonster;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
     import item.bomb.Bomb;
     import item.powerup.PowerUp;
+    import item.powerup.ghost.Ghost;
     import util.ResourceCollection;
 
     import javax.swing.*;
@@ -131,7 +133,14 @@
             }
 
             for (Monster monster : model.getMonsters()){
-                g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                if (monster instanceof GhostlyMonster){
+                    g.drawImage(ResourceCollection.Images.GHOST_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
+                else{
+                    g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
             }
 
 

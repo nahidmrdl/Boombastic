@@ -3,17 +3,15 @@ package gameengine;
 import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.monster.Monster;
+import entity.monster.monstertypes.GhostlyMonster;
+import entity.monster.monstertypes.SimpleMonster;
 import entity.player.Player;
-import item.GameItem;
-import item.bomb.Bomb;
-import item.powerup.PowerUp;
 import levels.LevelReader;
 import map.GameMap;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GameEngine {
     private int roundCount;
@@ -38,9 +36,9 @@ public class GameEngine {
         for (Player player : players) {
             player.setGameMap(this.gameMap);
         }
-        Monster m1 = new Monster(0, 0, this.gameMap);
-        Monster m2 = new Monster(0, 0, this.gameMap);
-        Monster m3 = new Monster(0, 0, this.gameMap);
+        SimpleMonster m1 = new SimpleMonster(0, 0, this.gameMap);
+        GhostlyMonster m2 = new GhostlyMonster(0, 0, this.gameMap);
+        SimpleMonster m3 = new SimpleMonster(0, 0, this.gameMap);
         monsters.add(m1);
         monsters.add(m2);
         monsters.add(m3);
