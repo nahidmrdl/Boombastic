@@ -88,17 +88,15 @@
         }
 
         public void initializeLevel(){
-            Timer moveTimer = new Timer(300, e -> repaint());
-            moveTimer.start();
 
-            moveTimer = new Timer(300, e -> {
+            this.moveTimer = new Timer(300, e -> {
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
                 }
-                System.out.println("sup");
                 repaint();
 
             });
+            moveTimer.start();
         }
 
         /**
