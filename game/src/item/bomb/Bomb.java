@@ -140,7 +140,7 @@ public class Bomb extends GameItem {
             NormalCell newCell = new NormalCell(x, y, cell.getMap());
             // set random power-up if the box was not owned by a player
             if(((BoxCell) cell).getOwner() == null) {
-                newCell.setRandomPowerUp();
+                newCell.setRandomItem();
             }
 
             // if the box was owned by a player, increment the placeObsticleCount

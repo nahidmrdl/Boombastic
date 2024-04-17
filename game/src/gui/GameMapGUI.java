@@ -7,6 +7,7 @@
     import gameengine.GameEngine;
     import item.GameItem;
     import item.bomb.Bomb;
+    import item.curse.Curse;
     import item.powerup.PowerUp;
     import util.ResourceCollection;
 
@@ -158,6 +159,25 @@
                 }
             }
 
+            //draw curses
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    Cell cell = this.model.getMap().getMap()[i][j];
+                    if (cell instanceof NormalCell) {
+                        NormalCell normalCell = (NormalCell) cell;
+                        int finalJ = j;
+                        int finalI = i;
+                        normalCell.getItems().forEach(item -> {
+                            if (item instanceof Curse) {
+                                // specific curse icons for debugging
+                               // g.drawImage(item.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                                g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                            }
+                        });
+                    }
+                }
+            }
+
             // draw powerups
             for (int i = 0; i < this.model.getMap().getMap().length; i++) {
                 for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
@@ -176,6 +196,8 @@
                 }
             }
         }
+
+
 
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {

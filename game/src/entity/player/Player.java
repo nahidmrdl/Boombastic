@@ -3,6 +3,7 @@ package entity.player;
 import cell.Cell;
 import entity.Entity;
 import item.bomb.Bomb;
+import item.curse.Curse;
 import item.powerup.PowerUp;
 import map.GameMap;
 
@@ -36,12 +37,14 @@ public class Player extends Entity {
     private HashMap<String, String> Controls;
 
     public List<Image> powerUps = new ArrayList<>();
+    public List<Image> curses = new ArrayList<>();
 
     public List<PowerUp> powerUpsItems = new ArrayList<>();
-    public List<Image> curses = new ArrayList<>();
+    public List<Curse> cursesItems = new ArrayList<>();
     public int bombCount = 1;
 
     private boolean hasStepFromBomb = false;
+    private boolean canPlaceBomb = true;
 
     private boolean isDead = false;
     public int victoryCount = 0;
@@ -103,7 +106,7 @@ public class Player extends Entity {
     }
 
     public void resetDefaultSpeed() {
-        this.speed = 100;
+        this.speed = 75;
     }
 
     public void setImage(Image image) {
@@ -138,9 +141,21 @@ public class Player extends Entity {
         this.speed = speed;
     }
 
+    public void setCanPlaceBomb(boolean canPlaceBomb) {
+        this.canPlaceBomb = canPlaceBomb;
+    }
+
+    public boolean getCanPlaceBomb() {
+        return this.canPlaceBomb;
+    }
+
     public void addPowerUp(PowerUp powerUp) {
         this.powerUpsItems.add(powerUp);
     }
+    public void addCurse(Curse curse) {
+        this.cursesItems.add(curse);
+    }
+
 
     public int getY(){
         return this.y;
@@ -236,22 +251,29 @@ public class Player extends Entity {
     }
 
     public void placeBomb() {
-        if (this.bombCount == 0) {
-            if (this.isDetonator) {
-                this.gameMap.DetonatePlayerBombs(this);
-                // Detonator is a one-time use item
-                this.setDetonator(false);
+        if (!canPlaceBomb) {
+            System.out.println("Cannot place bomb due to a curse!");
+            return; // Do not proceed if bomb placement is prohibited
+        }
+        if (canPlaceBomb) {
+            if (this.bombCount == 0) {
+                if (this.isDetonator) {
+                    this.gameMap.DetonatePlayerBombs(this);
+                    this.setDetonator(false); // Detonator is a one-time use item
+                }
+                return;
             }
 
-            return;
+            setHasStepFromBomb(true);
+            Bomb bomb = new Bomb(isDetonator);
+            bomb.setBlastRadius(this.bombBlastRange);
+            bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
+            bomb.setOwner(this);
+            this.gameMap.getMap()[this.y][this.x].addItem(bomb);
+            this.bombCount--;
         }
-        setHasStepFromBomb(true);
-        Bomb bomb = new Bomb(isDetonator);
-        bomb.setBlastRadius(this.bombBlastRange);
-        bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
-        bomb.setOwner(this);
-        this.gameMap.getMap()[this.y][this.x].addItem(bomb);
-        this.bombCount--;
+
+
     }
 
 
@@ -270,6 +292,18 @@ public class Player extends Entity {
         }
     }
 
+    public void removeFinishedCurses(){
+        Iterator<Curse> iterator = this.cursesItems.iterator();
+        while (iterator.hasNext()) {
+            Curse curse = iterator.next();
+            if(curse.getFinishTime() != 0 && curse.getFinishTime() < System.currentTimeMillis()) {
+                iterator.remove();
+                curse.reset(this);
+                System.out.println("Curse removed");
+            }
+        }
+    }
+
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
         for (Map.Entry<String, String> entry : playerControls.entrySet()) {
             if (String.valueOf(keyCode).equals(entry.getValue())) {
@@ -281,6 +315,8 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+       // STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+
+        return "Player name: " + name + ", Image index: " + imageIndex + ", Controls: " + Controls + ", X: " + x + ", Y: " + y + ", " + hasStepFromBomb;
     }
 }

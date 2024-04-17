@@ -19,7 +19,8 @@ public class GameMap {
 
     public GameMap(Image image, String name, Integer mapIndex){
         try {
-            Cell[][] mapCell = LevelReader.readLevelFromFile(STR."src/levels/\{mapIndex}.txt");
+            //(STR."src/levels/\{mapIndex}.txt");
+            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + mapIndex + ".txt");
             this.map = mapCell;
         } catch (IOException e) {
             throw new RuntimeException(e);
