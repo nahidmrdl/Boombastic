@@ -145,7 +145,7 @@
 
                 }
                 else if(monster instanceof SpeedyMonster){
-                    g.drawImage(ResourceCollection.Images.ArachNoTime_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
                 else{
