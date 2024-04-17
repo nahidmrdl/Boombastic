@@ -7,7 +7,9 @@ import item.GameItem;
 import item.bomb.Bomb;
 import item.curse.Curse;
 import item.curse.bombblastreduction.BombBlastReduction;
+import item.curse.instantbombplacement.InstantBombPlacement;
 import item.curse.lowspeed.LowSpeed;
+import item.curse.prohibitbombs.ProhibitBombs;
 import item.powerup.PowerUp;
 import item.powerup.detonator.Detonator;
 import item.powerup.ghost.Ghost;
@@ -67,7 +69,9 @@ public class NormalCell extends Cell {
     private void setRandomCurse() {
         Curse[] curses = new Curse[]{
                 new BombBlastReduction(),
-                new LowSpeed()
+                new LowSpeed(),
+                new ProhibitBombs(),
+                new InstantBombPlacement()
         };
         Curse curse = curses[(int) (Math.random() * curses.length)];
         curse.setCell(this);

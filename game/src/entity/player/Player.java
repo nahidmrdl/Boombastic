@@ -44,6 +44,7 @@ public class Player extends Entity {
     public int bombCount = 1;
 
     private boolean hasStepFromBomb = false;
+    private boolean canPlaceBomb = true;
 
     private boolean isDead = false;
     public int victoryCount = 0;
@@ -138,6 +139,14 @@ public class Player extends Entity {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public void setCanPlaceBomb(boolean canPlaceBomb) {
+        this.canPlaceBomb = canPlaceBomb;
+    }
+
+    public boolean getCanPlaceBomb() {
+        return this.canPlaceBomb;
     }
 
     public void addPowerUp(PowerUp powerUp) {
@@ -242,22 +251,29 @@ public class Player extends Entity {
     }
 
     public void placeBomb() {
-        if (this.bombCount == 0) {
-            if (this.isDetonator) {
-                this.gameMap.DetonatePlayerBombs(this);
-                // Detonator is a one-time use item
-                this.setDetonator(false);
+        if (!canPlaceBomb) {
+            System.out.println("Cannot place bomb due to a curse!");
+            return; // Do not proceed if bomb placement is prohibited
+        }
+        if (canPlaceBomb) {
+            if (this.bombCount == 0) {
+                if (this.isDetonator) {
+                    this.gameMap.DetonatePlayerBombs(this);
+                    this.setDetonator(false); // Detonator is a one-time use item
+                }
+                return;
             }
 
-            return;
+            setHasStepFromBomb(true);
+            Bomb bomb = new Bomb(isDetonator);
+            bomb.setBlastRadius(this.bombBlastRange);
+            bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
+            bomb.setOwner(this);
+            this.gameMap.getMap()[this.y][this.x].addItem(bomb);
+            this.bombCount--;
         }
-        setHasStepFromBomb(true);
-        Bomb bomb = new Bomb(isDetonator);
-        bomb.setBlastRadius(this.bombBlastRange);
-        bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
-        bomb.setOwner(this);
-        this.gameMap.getMap()[this.y][this.x].addItem(bomb);
-        this.bombCount--;
+
+
     }
 
 

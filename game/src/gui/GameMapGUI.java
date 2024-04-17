@@ -169,8 +169,9 @@
                         int finalI = i;
                         normalCell.getItems().forEach(item -> {
                             if (item instanceof Curse) {
-                                // image should be changed to baseImage for production
-                                g.drawImage(item.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                                // specific curse icons for debugging
+                               // g.drawImage(item.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                                g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
                             }
                         });
                     }
