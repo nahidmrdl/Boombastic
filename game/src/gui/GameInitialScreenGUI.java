@@ -354,10 +354,10 @@ public class GameInitialScreenGUI extends JPanel {
 
     private void startGame() throws IOException {
         Image[] images = new Image[4];
-        images[0] = ResourceCollection.Images.NAHID.getImage();
-        images[1] = ResourceCollection.Images.MIKE.getImage();
-        images[2] = ResourceCollection.Images.GOSHA.getImage();
-        images[3] = ResourceCollection.Images.JAMIL.getImage();
+        images[0] = ResourceCollection.Images.JAMIL.getImage();
+        images[1] = ResourceCollection.Images.NAHID.getImage();
+        images[2] = ResourceCollection.Images.MIKE.getImage();
+        images[3] = ResourceCollection.Images.GOSHA.getImage();
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {

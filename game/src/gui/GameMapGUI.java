@@ -126,7 +126,7 @@
 
 
             // Draw players
-            for (Player player : model.getPlayers()) {
+            for (Player player : model.getPlayers()){
                 if (!player.isDead()) {
                     Graphics2D g2d = (Graphics2D) g;
                     if (player.isGhost()) {
