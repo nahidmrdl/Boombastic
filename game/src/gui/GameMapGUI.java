@@ -79,7 +79,6 @@
                     ResourceCollection.Images.BOXMAP1.getImage(),
                     ResourceCollection.Images.BOXMAP2.getImage(),
                     ResourceCollection.Images.BOXMAP3.getImage(),
-                    ResourceCollection.Images.PLACED_BOX.getImage()
             };
 
             // Randomly select an asset for each type
