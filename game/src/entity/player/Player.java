@@ -16,8 +16,8 @@ import cell.box.BoxCell;
 import cell.wall.WallCell;
 
 public class Player extends Entity {
-    private String name;
-    private int imageIndex;
+    private final String name;
+    private final int imageIndex;
     private GameMap gameMap;
     private Image Image;
 
@@ -56,6 +56,7 @@ public class Player extends Entity {
         this.Controls = Controls;
         this.imageIndex = imageIndex;
     }
+    public int getImageIndex() {return imageIndex;}
 
     public void setPlaceObsticleCount(int placeObsticle) {
         placeObsticleCount = placeObsticle;

@@ -24,6 +24,7 @@ public class GameTopPanelGUI {
         this.topPanel = new JPanel();
         this.model = gameEngine;
         this.players = model.getPlayers();
+        //System.out.println(players);
         this.rounds = rounds;
         this.map = map;
 
@@ -56,16 +57,16 @@ public class GameTopPanelGUI {
         constraints.gridx = 0;
         constraints.gridy = 0;
 
-        this.topPanel.add(createPlayerPanel(0), constraints);
+        this.topPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
 
         //Player 2
         constraints.gridx = 1;
-        this.topPanel.add(createPlayerPanel(1), constraints);
+        this.topPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
 
         //Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
-            this.topPanel.add(createPlayerPanel(2), constraints);
+            this.topPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
         }
 
         //Timer
@@ -75,7 +76,7 @@ public class GameTopPanelGUI {
 
     private JPanel createPlayerPanel(int playerIndex) {
         List<Player> players = model.getPlayers();
-
+        System.out.println("pl index: " + playerIndex);
         JPanel playerPanel = new JPanel();
 
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
