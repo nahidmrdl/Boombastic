@@ -92,6 +92,11 @@
             this.moveTimer = new Timer(300, e -> {
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
+                    for(Player p: model.getPlayers()){
+                        if(ms.isNextToPlayer(p.getX(), p.getY())){
+                            p.setDead(true);
+                        }
+                    }
                 }
                 repaint();
 

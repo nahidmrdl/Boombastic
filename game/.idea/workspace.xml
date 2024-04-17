@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="final works on monster class">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="basic monsters are now moving">
       <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +119,7 @@
       <workItem from="1713216238138" duration="1342000" />
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713312527404" duration="30000" />
-      <workItem from="1713350874247" duration="2121000" />
+      <workItem from="1713350874247" duration="2795000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -313,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713352823193</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="basic monsters are now moving">
+      <option name="closed" value="true" />
+      <created>1713353311070</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1713353311070</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +362,8 @@
     <MESSAGE value="ghost powerUp : player die if the effect finished on wall or Box" />
     <MESSAGE value="Invoke on player step for bomb on detonator added" />
     <MESSAGE value="final works on monster class" />
-    <option name="LAST_COMMIT_MESSAGE" value="final works on monster class" />
+    <MESSAGE value="basic monsters are now moving" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic monsters are now moving" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
