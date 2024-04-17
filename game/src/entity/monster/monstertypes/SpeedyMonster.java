@@ -28,7 +28,7 @@ public class SpeedyMonster extends Monster {
         super(x, y, gameMap, players);
         findValidStartingPosition();
         direction = new Random().nextInt(4); // 0: left, 1: right, 2: up, 3: down
-        this.speed = 700;
+        this.speed = 300;
 //        setupNodes();
     }
 
