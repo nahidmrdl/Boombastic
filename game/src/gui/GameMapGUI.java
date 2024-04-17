@@ -5,6 +5,7 @@
     import cell.normalCell.NormalCell;
     import entity.monster.Monster;
     import entity.monster.monstertypes.GhostlyMonster;
+    import entity.monster.monstertypes.SpeedyMonster;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -93,10 +94,13 @@
 
             this.moveTimer = new Timer(300, e -> {
                 for(Monster ms : model.getMonsters()){
-                    ms.moveRandomly();
+                        ms.moveRandomly();
                     for(Player p: model.getPlayers()){
                         if(ms.isNextToPlayer(p.getX(), p.getY())){
-                            p.setDead(true);
+                            if(!p.isInvincible()){
+                                p.setDead(true);
+
+                            }
                         }
                     }
                 }
@@ -135,6 +139,10 @@
             for (Monster monster : model.getMonsters()){
                 if (monster instanceof GhostlyMonster){
                     g.drawImage(ResourceCollection.Images.GHOST_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
+                else if(monster instanceof SpeedyMonster){
+                    g.drawImage(ResourceCollection.Images.ROLLERSKATESPEED_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
                 else{

@@ -2,11 +2,13 @@ package entity.monster.monstertypes;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
 import entity.Entity;
 import entity.monster.Monster;
+import entity.player.Player;
 import map.GameMap;
 
 import javax.swing.*;
@@ -19,8 +21,8 @@ public class ConfusedMonster extends Monster {
     private int speed;
 
     // Constructor
-    public ConfusedMonster(int x, int y, GameMap gameMap) {
-        super(x, y, gameMap);
+    public ConfusedMonster(int x, int y, GameMap gameMap, List<Player> players) {
+        super(x, y, gameMap, players);
         findValidStartingPosition();
         direction = new Random().nextInt(4); // 0: left, 1: right, 2: up, 3: down
         this.speed = 450;
@@ -36,8 +38,7 @@ public class ConfusedMonster extends Monster {
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
         } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
-        System.out.println(this.x);
-        System.out.println(this.y);
+
 
     }
 

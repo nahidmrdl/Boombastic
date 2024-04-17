@@ -6,15 +6,20 @@ import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
 import entity.Entity;
 import map.GameMap;
+import entity.player.Player;
+import java.util.List;
 
     public class Monster extends Entity {
     private Image baseImage;
     private int direction;
     private int speed;
 
+    protected List<Player> players;
+
     // Constructor
-    public Monster(int x, int y, GameMap gameMap) {
+    public Monster(int x, int y, GameMap gameMap, List<Player> players) {
         super(x, y, gameMap);
+        this.players = players;
 
     }
 
