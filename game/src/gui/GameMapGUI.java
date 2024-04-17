@@ -141,11 +141,11 @@
 
             for (Monster monster : model.getMonsters()){
                 if (monster instanceof GhostlyMonster){
-                    g.drawImage(ResourceCollection.Images.GHOST_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    g.drawImage(ResourceCollection.Images.GHOSTLY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
                 else if(monster instanceof SpeedyMonster){
-                    g.drawImage(ResourceCollection.Images.ROLLERSKATESPEED_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    g.drawImage(ResourceCollection.Images.ArachNoTime_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
                 else{
