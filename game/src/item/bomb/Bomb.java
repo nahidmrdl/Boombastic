@@ -23,11 +23,16 @@ public class Bomb extends GameItem {
         super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
 
         this.setFinishTime(isDetonator ? 0 : System.currentTimeMillis() + 3000);
+        this.isDetonator = isDetonator;
 
         if(!isDetonator) {
             this.invokeDetonateAnimation();
         }
 
+    }
+
+    public boolean isDetonator() {
+        return isDetonator;
     }
 
     public void setBlastRadius(int blastRadius) {
@@ -46,6 +51,10 @@ public class Bomb extends GameItem {
         });
         timer.setRepeats(true);
         timer.start();
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     private void updateAnimationState() {
