@@ -36,9 +36,6 @@ public class Player extends Entity {
     private int speed = 75;
     private HashMap<String, String> Controls;
 
-    public List<Image> powerUps = new ArrayList<>();
-    public List<Image> curses = new ArrayList<>();
-
     public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Curse> cursesItems = new ArrayList<>();
     public int bombCount = 1;

@@ -17,7 +17,7 @@ public class GameTopPanelGUI {
     private final JPanel topPanel;
     private final JFrame frame;
     private Color background;
-    List<Player> players;
+    private final List<Player> players;
     private final int rounds;
     private final int map;
 
@@ -26,7 +26,6 @@ public class GameTopPanelGUI {
         this.topPanel = new JPanel();
         this.model = gameEngine;
         this.players = model.getPlayers();
-        //System.out.println(players);
         this.rounds = rounds;
         this.map = map;
 
@@ -59,16 +58,29 @@ public class GameTopPanelGUI {
         constraints.gridx = 0;
         constraints.gridy = 0;
 
-        this.topPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
+        if(!players.getFirst().isDead())
+            this.topPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
+        else {
+            this.topPanel.add(createPlayerPanel(4), constraints);
+        }
 
         //Player 2
         constraints.gridx = 1;
-        this.topPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
+
+        if(!players.get(1).isDead())
+            this.topPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
+        else {
+            this.topPanel.add(createPlayerPanel(4), constraints);
+        }
 
         //Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
-            this.topPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
+            if(!players.getLast().isDead())
+                this.topPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
+            else {
+                this.topPanel.add(createPlayerPanel(4), constraints);
+            }
         }
 
         //Timer
@@ -119,7 +131,9 @@ public class GameTopPanelGUI {
         JLabel gap = new JLabel("   ");
         JLabel gap2 = new JLabel("   ");
 
-        JLabel bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        JLabel bombCount;
+        if (playerIndex != 4) bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        else bombCount = new JLabel("  0");
         bombCount.setFont(new Font("Arial", Font.BOLD, 30));
         bombs.add(gap2);
         bombs.add(bombLabel);
@@ -134,8 +148,11 @@ public class GameTopPanelGUI {
         Image victoryImage = ResourceCollection.Images.TROPHY.getImage();
         JLabel victoryLabel = new JLabel(new ImageIcon(victoryImage));
 
-        JLabel victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
+        JLabel victoryCount;
+        if (playerIndex != 4) victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
+        else victoryCount = new JLabel("  0");
         victoryCount.setFont(new Font("Arial", Font.BOLD, 30));
+
         victories.add(gap);
         victories.add(victoryLabel);
         victories.add(victoryCount);
@@ -158,14 +175,17 @@ public class GameTopPanelGUI {
         pwUpsCurses.setMaximumSize(new Dimension(200, 30));
         pwUpsCurses.setMinimumSize(new Dimension(200, 30));
 
-        for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
-            JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getBaseImage()));
-            pwUpsCurses.add(powerUpLabel);
+        if (playerIndex != 4) {
+            for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
+                JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getBaseImage()));
+                pwUpsCurses.add(powerUpLabel);
+            }
         }
-
-        for (Curse curse : players.get(playerIndex).cursesItems) {
-            JLabel curseLabel = new JLabel(new ImageIcon(curse.getBaseImage()));
-            pwUpsCurses.add(curseLabel);
+        if (playerIndex != 4) {
+            for (Curse curse : players.get(playerIndex).cursesItems) {
+                JLabel curseLabel = new JLabel(new ImageIcon(curse.getBaseImage()));
+                pwUpsCurses.add(curseLabel);
+            }
         }
 
         playerPanel.add(playerInfo);
@@ -176,7 +196,6 @@ public class GameTopPanelGUI {
 
         return playerPanel;
     }
-
 
     private JPanel addTimerAndPause() {
         JPanel timerPanel = new JPanel();
@@ -233,8 +252,8 @@ public class GameTopPanelGUI {
                     try {
                         for (Player player : model.getPlayers()) {
                             player.bombCount = 0;
-                            player.powerUps.clear();
-                            player.curses.clear();
+                            player.powerUpsItems.clear();
+                            player.cursesItems.clear();
                         }
                         initialScreen.reset(this.players, this.rounds, this.map);
                     } catch (IOException ex) {
@@ -260,7 +279,6 @@ public class GameTopPanelGUI {
                 pauseButton.setText("Pause");
             }
         });
-
         return timerPanel;
     }
 
