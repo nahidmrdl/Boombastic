@@ -281,6 +281,8 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+//        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+//        return "Player name:" + " " + name + " " + "Image index:" + imageIndex + ", " + "Controls:" + " " + Controls + ", "
+        return "hi";
     }
 }

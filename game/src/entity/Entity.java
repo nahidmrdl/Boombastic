@@ -6,7 +6,7 @@ import map.GameMap;
 import java.awt.*;
 
 public abstract class Entity {
-    private GameMap gameMap;
+    protected GameMap gameMap;
     private Image baseImage;
     private Image image;
     protected int x;
