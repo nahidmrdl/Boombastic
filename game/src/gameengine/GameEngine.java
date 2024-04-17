@@ -2,6 +2,7 @@ package gameengine;
 
 import cell.Cell;
 import cell.normalCell.NormalCell;
+import entity.monster.Monster;
 import entity.player.Player;
 import item.GameItem;
 import item.bomb.Bomb;
@@ -22,18 +23,34 @@ public class GameEngine {
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
 
+    private List<Monster> monsters;
+
+
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
         this.playerCount = players.size();
         this.players = players;
-
+        this.monsters = new ArrayList<Monster>();
         this.defineMap();
         this.positionPlayersOnStartingPoint();
 
         for (Player player : players) {
             player.setGameMap(this.gameMap);
         }
+        Monster m1 = new Monster(0, 0, this.gameMap);
+        Monster m2 = new Monster(0, 0, this.gameMap);
+        Monster m3 = new Monster(0, 0, this.gameMap);
+        monsters.add(m1);
+        monsters.add(m2);
+        monsters.add(m3);
+    }
+
+
+
+
+    public List<Monster> getMonsters(){
+        return this.monsters;
     }
     /**
      * Read the map from the file and create the game map

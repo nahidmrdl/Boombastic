@@ -7,7 +7,7 @@ import cell.wall.WallCell;
 import entity.Entity;
 import map.GameMap;
 
-   abstract public class Monster extends Entity {
+    public class Monster extends Entity {
     private Image baseImage;
     private int direction;
     private int speed;
@@ -29,6 +29,9 @@ import map.GameMap;
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
         } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+        System.out.println(this.x);
+           System.out.println(this.y);
+
     }
 
     public void moveRandomly() {
@@ -49,7 +52,16 @@ import map.GameMap;
                 tries++;
             }
         }
+        System.out.println("moves");
     }
+
+    public int getX(){
+        return this.x;
+    }
+
+        public int getY(){
+            return this.y;
+        }
 
     // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {

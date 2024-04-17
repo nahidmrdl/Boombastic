@@ -3,6 +3,7 @@
     import cell.Cell;
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
+    import entity.monster.Monster;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -24,7 +25,7 @@
         public Image wallImage;
         public Image walkableImage;
         public Image boxImage;
-
+        public Timer moveTimer;
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;
             this.frame = frame;
@@ -81,6 +82,8 @@
         }
 
         private void updateGUI() {
+
+
             initializeLevel();
         }
 
@@ -89,7 +92,12 @@
             moveTimer.start();
 
             moveTimer = new Timer(300, e -> {
+                for(Monster ms : model.getMonsters()){
+                    ms.moveRandomly();
+                }
+                System.out.println("sup");
                 repaint();
+
             });
         }
 
@@ -117,6 +125,10 @@
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
                 }
+            }
+
+            for (Monster monster : model.getMonsters()){
+                g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
             }
 
 
