@@ -7,6 +7,7 @@ import item.bomb.Bomb;
 import item.powerup.PowerUp;
 import map.GameMap;
 import util.ResourceCollection;
+import gui.GameTopPanelGUI;
 
 public class Detonator extends PowerUp {
 

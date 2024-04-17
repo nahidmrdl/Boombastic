@@ -16,8 +16,8 @@ import cell.box.BoxCell;
 import cell.wall.WallCell;
 
 public class Player extends Entity {
-    private String name;
-    private int imageIndex;
+    private final String name;
+    private final int imageIndex;
     private GameMap gameMap;
     private Image Image;
 
@@ -36,9 +36,6 @@ public class Player extends Entity {
     private int speed = 75;
     private HashMap<String, String> Controls;
 
-    public List<Image> powerUps = new ArrayList<>();
-    public List<Image> curses = new ArrayList<>();
-
     public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Curse> cursesItems = new ArrayList<>();
     public int bombCount = 1;
@@ -56,6 +53,7 @@ public class Player extends Entity {
         this.Controls = Controls;
         this.imageIndex = imageIndex;
     }
+    public int getImageIndex() {return imageIndex;}
 
     public void setPlaceObsticleCount(int placeObsticle) {
         placeObsticleCount = placeObsticle;

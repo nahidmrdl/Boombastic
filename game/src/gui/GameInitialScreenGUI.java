@@ -354,10 +354,10 @@ public class GameInitialScreenGUI extends JPanel {
 
     private void startGame() throws IOException {
         Image[] images = new Image[4];
-        images[0] = ResourceCollection.Images.NAHID.getImage();
-        images[1] = ResourceCollection.Images.MIKE.getImage();
-        images[2] = ResourceCollection.Images.GOSHA.getImage();
-        images[3] = ResourceCollection.Images.JAMIL.getImage();
+        images[0] = ResourceCollection.Images.JAMIL.getImage();
+        images[1] = ResourceCollection.Images.NAHID.getImage();
+        images[2] = ResourceCollection.Images.MIKE.getImage();
+        images[3] = ResourceCollection.Images.GOSHA.getImage();
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
@@ -417,7 +417,8 @@ class ImagePanel extends JPanel {
             ResourceCollection.Images.JAMIL.getImage(),
             ResourceCollection.Images.NAHID.getImage(),
             ResourceCollection.Images.MIKE.getImage(),
-            ResourceCollection.Images.GOSHA.getImage()
+            ResourceCollection.Images.GOSHA.getImage(),
+            ResourceCollection.Images.DEAD.getImage(),
     };
 
     private final Image[] maps = {
@@ -435,6 +436,7 @@ class ImagePanel extends JPanel {
             case 1 -> characters[1];
             case 2 -> characters[2];
             case 3 -> characters[3];
+            case 4 -> characters[4];
 
             case 10 -> maps[0];
             case 11 -> maps[1];
@@ -450,7 +452,8 @@ class ImagePanel extends JPanel {
                 "/assets/jamil.jpg",
                 "/assets/nahid.jpg",
                 "/assets/mike.jpg",
-                "/assets/gosha.jpg"
+                "/assets/gosha.jpg",
+                "/assets/dead.jpeg"
         };
 
         this.imgIndex = imgIndex;

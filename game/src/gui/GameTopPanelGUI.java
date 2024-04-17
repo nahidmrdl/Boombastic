@@ -2,10 +2,13 @@ package gui;
 
 import entity.player.Player;
 import gameengine.GameEngine;
+import item.curse.Curse;
+import item.powerup.PowerUp;
 import util.ResourceCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,15 +16,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GameTopPanelGUI {
     private final GameEngine model;
     private final JPanel topPanel;
+    private final JPanel timer;
+    private final JPanel plPanel;
     private final JFrame frame;
     private Color background;
-    List<Player> players;
+    private final List<Player> players;
     private final int rounds;
     private final int map;
 
     public GameTopPanelGUI(JFrame frame, GameEngine gameEngine,  int map, int rounds) {
         this.frame = frame;
         this.topPanel = new JPanel();
+        this.timer = new JPanel();
+        this.plPanel = new JPanel();
         this.model = gameEngine;
         this.players = model.getPlayers();
         this.rounds = rounds;
@@ -31,8 +38,21 @@ public class GameTopPanelGUI {
         this.topPanel.setMaximumSize(new Dimension(990, 130));
         this.topPanel.setMinimumSize(new Dimension(990, 130));
         this.topPanel.setBounds(0, 0, 990, 130);
+        this.topPanel.setLayout(new BorderLayout());
+
+        this.timer.setPreferredSize(new Dimension(200, 130));
+        this.timer.setMaximumSize(new Dimension(200, 130));
+        this.timer.setMinimumSize(new Dimension(200, 130));
+
+        this.plPanel.setPreferredSize(new Dimension(790, 130));
+        this.plPanel.setMaximumSize(new Dimension(790, 130));
+        this.plPanel.setMinimumSize(new Dimension(790, 130));
+
+        this.timer.setBackground(background);
+        this.plPanel.setBackground(background);
 
         addContent();
+        addTimerAndPause();
 
         this.frame.revalidate();
         this.frame.repaint();
@@ -48,34 +68,41 @@ public class GameTopPanelGUI {
 
     private void addContent() {
 
-        this.topPanel.setLayout(new GridBagLayout());
+        this.plPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.weightx = 0.25;
+        constraints.weightx = 25;
 
         //Player 1
         constraints.gridx = 0;
-        constraints.gridy = 0;
-
-        this.topPanel.add(createPlayerPanel(0), constraints);
+        if(!players.getFirst().isDead())
+            this.plPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
+        else {
+            this.plPanel.add(createPlayerPanel(4), constraints);
+        }
 
         //Player 2
         constraints.gridx = 1;
-        this.topPanel.add(createPlayerPanel(1), constraints);
+        if(!players.get(1).isDead())
+            this.plPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
+        else {
+            this.plPanel.add(createPlayerPanel(4), constraints);
+        }
 
         //Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
-            this.topPanel.add(createPlayerPanel(2), constraints);
+            if(!players.getLast().isDead())
+                this.plPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
+            else {
+                this.plPanel.add(createPlayerPanel(4), constraints);
+            }
         }
 
-        //Timer
-        constraints.gridx = 3;
-        this.topPanel.add(addTimerAndPause(), constraints);
+        this.topPanel.add(this.plPanel, BorderLayout.WEST);
     }
 
     private JPanel createPlayerPanel(int playerIndex) {
         List<Player> players = model.getPlayers();
-
         JPanel playerPanel = new JPanel();
 
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
@@ -117,7 +144,9 @@ public class GameTopPanelGUI {
         JLabel gap = new JLabel("   ");
         JLabel gap2 = new JLabel("   ");
 
-        JLabel bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        JLabel bombCount;
+        if (playerIndex != 4) bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        else bombCount = new JLabel("  0");
         bombCount.setFont(new Font("Arial", Font.BOLD, 30));
         bombs.add(gap2);
         bombs.add(bombLabel);
@@ -132,8 +161,11 @@ public class GameTopPanelGUI {
         Image victoryImage = ResourceCollection.Images.TROPHY.getImage();
         JLabel victoryLabel = new JLabel(new ImageIcon(victoryImage));
 
-        JLabel victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
+        JLabel victoryCount;
+        if (playerIndex != 4) victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
+        else victoryCount = new JLabel("  0");
         victoryCount.setFont(new Font("Arial", Font.BOLD, 30));
+
         victories.add(gap);
         victories.add(victoryLabel);
         victories.add(victoryCount);
@@ -156,22 +188,31 @@ public class GameTopPanelGUI {
         pwUpsCurses.setMaximumSize(new Dimension(200, 30));
         pwUpsCurses.setMinimumSize(new Dimension(200, 30));
 
-        // Will be removed, added for testing purposes
-        // Assume that player can have maximum 3 powerUps and 3 curses
+        if (playerIndex != 4) {
+            for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
+                ImageIcon icon = new ImageIcon(powerUp.getImage());
 
-        for(int i = 0; i < 3; i++){
-            players.get(playerIndex).powerUps.add(ResourceCollection.Images.POWERUP_ICON.getImage());
-            players.get(playerIndex).curses.add(ResourceCollection.Images.CURSE_ICON.getImage());
+                if(powerUp.isPowerUpAboutToFinish()) {
+                    float transparencyLevel = 0.5f;
+                    icon = createTransparentIcon(icon.getImage(), transparencyLevel);
+                }
+
+                JLabel powerUpLabel = new JLabel(icon);
+                pwUpsCurses.add(powerUpLabel);
+            }
         }
+        if (playerIndex != 4) {
+            for (Curse curse : players.get(playerIndex).cursesItems) {
+                ImageIcon icon = new ImageIcon(curse.getImage());
 
-        for (Image powerUp : players.get(playerIndex).powerUps) {
-            JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp));
-            pwUpsCurses.add(powerUpLabel);
-        }
+                if(curse.isCurseAboutToFinish()) {
+                    float transparencyLevel = 0.5f;
+                    icon = createTransparentIcon(icon.getImage(), transparencyLevel);
+                }
 
-        for (Image curse : players.get(playerIndex).curses) {
-            JLabel curseLabel = new JLabel(new ImageIcon(curse));
-            pwUpsCurses.add(curseLabel);
+                JLabel curseLabel = new JLabel(icon);
+                pwUpsCurses.add(curseLabel);
+            }
         }
 
         playerPanel.add(playerInfo);
@@ -183,8 +224,7 @@ public class GameTopPanelGUI {
         return playerPanel;
     }
 
-
-    private JPanel addTimerAndPause() {
+    private void addTimerAndPause() {
         JPanel timerPanel = new JPanel();
         timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.Y_AXIS));
         timerPanel.setBackground(background);
@@ -238,9 +278,9 @@ public class GameTopPanelGUI {
                     GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
                     try {
                         for (Player player : model.getPlayers()) {
-                            player.bombCount = 0;
-                            player.powerUps.clear();
-                            player.curses.clear();
+                            player.bombCount = 1;
+                            player.powerUpsItems.clear();
+                            player.cursesItems.clear();
                         }
                         initialScreen.reset(this.players, this.rounds, this.map);
                     } catch (IOException ex) {
@@ -267,7 +307,25 @@ public class GameTopPanelGUI {
             }
         });
 
-        return timerPanel;
+        this.timer.add(timerPanel);
+        this.topPanel.add(this.timer, BorderLayout.EAST);
     }
 
+    public void updateTopPanel() {
+        this.plPanel.removeAll();
+        addContent();
+        this.topPanel.revalidate();
+        this.topPanel.repaint();
+    }
+
+    private ImageIcon createTransparentIcon(Image img, float alpha) {
+        BufferedImage bufferedImage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bufferedImage.createGraphics();
+
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2d.drawImage(img, 0, 0, null);
+        g2d.dispose();
+
+        return new ImageIcon(bufferedImage);
+    }
 }
