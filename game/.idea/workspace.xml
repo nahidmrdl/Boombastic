@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!">
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024__10_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024__10_14__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__15_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__15_21__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/curse/Curse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/curse/Curse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ResourceCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="updateTopPanel" />
+        <entry key="$PROJECT_DIR$/.." value="monsterFinal" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -41,32 +52,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;updTopPanel&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/boombastic/game/src/assets/icons&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;G:/soft-tech/boombastic/game/gameModule/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "MonsterToMaster",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "G:/boombastic/game/src/assets/icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\boombastic\game\src\assets\icons" />

@@ -2,6 +2,10 @@ package gameengine;
 
 import cell.Cell;
 import cell.normalCell.NormalCell;
+import entity.monster.Monster;
+import entity.monster.monstertypes.GhostlyMonster;
+import entity.monster.monstertypes.SimpleMonster;
+import entity.monster.monstertypes.SpeedyMonster;
 import entity.player.Player;
 import item.GameItem;
 import item.bomb.Bomb;
@@ -16,6 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class GameEngine {
     private int roundCount;
     private int mapIndex;
@@ -23,19 +32,27 @@ public class GameEngine {
     private List<Player> players;
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
-
+    private List<Monster> monsters;
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
         this.playerCount = players.size();
         this.players = players;
-
+        this.monsters = new ArrayList<Monster>();
         this.defineMap();
         this.positionPlayersOnStartingPoint();
 
         for (Player player : players) {
             player.setGameMap(this.gameMap);
         }
+
+        SimpleMonster m1 = new SimpleMonster(0, 0, this.gameMap, this.players);
+        GhostlyMonster m2 = new GhostlyMonster(0, 0, this.gameMap, this.players);
+        SpeedyMonster m3 = new SpeedyMonster(0, 0, this.gameMap, this.players);
+        monsters.add(m1);
+        monsters.add(m2);
+        monsters.add(m3);
+
     }
     /**
      * Read the map from the file and create the game map
@@ -46,6 +63,7 @@ public class GameEngine {
     /**
      * Position players on the starting point of the map
      */
+
     private void positionPlayersOnStartingPoint() {
     int playerCount = 0;
         for (Cell[] row : this.gameMap.getMap()) {
@@ -64,6 +82,11 @@ public class GameEngine {
             }
         }
     }
+
+    public List<Monster> getMonsters(){
+        return this.monsters;
+    }
+
 
     /**
      * Run calculations for the game to get new state

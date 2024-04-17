@@ -6,7 +6,7 @@ import map.GameMap;
 import java.awt.*;
 
 public abstract class Entity {
-    private GameMap gameMap;
+    protected GameMap gameMap;
     private Image baseImage;
     private Image image;
     protected int x;
@@ -18,7 +18,7 @@ public abstract class Entity {
         this.gameMap = gameMap;
     }
 
-    protected abstract void move(int x, int y);
+    // protected abstract void move(int x, int y);
     public Cell getCellPositioned(){
         return this.gameMap.getCell(x,y);
     }

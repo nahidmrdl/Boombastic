@@ -3,6 +3,9 @@
     import cell.Cell;
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
+    import entity.monster.Monster;
+    import entity.monster.monstertypes.GhostlyMonster;
+    import entity.monster.monstertypes.SpeedyMonster;
     import entity.player.Player;
     import gameengine.GameEngine;
     import item.GameItem;
@@ -27,7 +30,7 @@
         public Image walkableImage;
         public Image boxImage;
         private  GameTopPanelGUI topPanelGUI;
-
+        public Timer moveTimer;
         public GameMapGUI( GameEngine model, JFrame frame, GameTopPanelGUI topPanelGUI) throws IOException {
             this.model = model;
             this.frame = frame;
@@ -90,13 +93,25 @@
         }
 
         public void initializeLevel(){
-            Timer moveTimer = new Timer(300, e -> repaint());
-            moveTimer.start();
 
-            moveTimer = new Timer(300, e -> {
+            this.moveTimer = new Timer(300, e -> {
+                for(Monster ms : model.getMonsters()){
+                    ms.moveRandomly();
+                    for(Player p: model.getPlayers()){
+                        if(ms.isNextToPlayer(p.getX(), p.getY())){
+                            if(!p.isInvincible()){
+                                p.setDead(true);
+
+                            }
+                        }
+                    }
+                }
                 repaint();
+
             });
+            moveTimer.start();
         }
+
 
         /**
          * Sets up the key listener for the game.
@@ -121,6 +136,21 @@
                     } else if (cell instanceof BoxCell) {
                         g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
                     }
+                }
+            }
+
+            for (Monster monster : model.getMonsters()){
+                if (monster instanceof GhostlyMonster){
+                    g.drawImage(ResourceCollection.Images.GHOST_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
+                else if(monster instanceof SpeedyMonster){
+                    g.drawImage(ResourceCollection.Images.ROLLERSKATESPEED_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
+                else{
+                    g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
                 }
             }
 

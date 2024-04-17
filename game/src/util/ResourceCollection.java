@@ -13,7 +13,6 @@ public class ResourceCollection {
         NAHID,
         MIKE,
         GOSHA,
-        DEAD,
         BOXMAP1,
         BOXMAP2,
         BOXMAP3,
@@ -43,6 +42,11 @@ public class ResourceCollection {
         LOWSPEED_CURSE,
         OBSTACLE_POWERUP,
         ROLLERSKATESPEED_POWERUP,
+        BASIC_MONSTER,
+        SPEEDY_MONSTER,
+        CONFUSED_MONSTER,
+        GHOSTLY_MONSTER,
+        DEAD,
 
         MAP1,
         MAP2,
@@ -79,7 +83,6 @@ public class ResourceCollection {
             Images.NAHID.image = ImageIO.read(new File(basePath + "nahid.jpg"));
             Images.MIKE.image = ImageIO.read(new File(basePath + "mike.jpg"));
             Images.GOSHA.image = ImageIO.read(new File(basePath + "gosha.jpg"));
-            Images.DEAD.image = ImageIO.read(new File(basePath + "dead.jpeg"));
 
             Images.BOXMAP1.image = ImageIO.read(new File(basePath + "mapAssets/map1/map1box.png"));
             Images.BOXMAP2.image = ImageIO.read(new File(basePath + "mapAssets/map2/map2box.png"));
@@ -114,6 +117,9 @@ public class ResourceCollection {
             Images.OBSTACLE_POWERUP.image = ImageIO.read(new File(basePath + "icons/ObstaclePowerup.png"));
             Images.ROLLERSKATESPEED_POWERUP.image = ImageIO.read(new File(basePath + "icons/RollerSkateSpeedUpPowerup.png"));
             Images.TROPHY.image = ImageIO.read(new File(basePath + "icons/trophy.png"));
+            Images.BASIC_MONSTER.image = ImageIO.read(new File(basePath + "icons/monster1.png"));
+            Images.CONFUSED_MONSTER.image = ImageIO.read(new File(basePath + "icons/monster2.png"));
+            Images.DEAD.image = ImageIO.read(new File(basePath + "dead.jpeg"));
 
 
         } catch (IOException e) {
