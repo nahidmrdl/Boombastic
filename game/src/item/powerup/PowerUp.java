@@ -22,8 +22,4 @@ public abstract class PowerUp extends GameItem {
     public abstract void apply(Player p);
 
     public abstract void reset(Player p);
-
-    public Image getBaseImage() {
-        return this.baseImage;
-    }
 }

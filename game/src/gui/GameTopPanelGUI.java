@@ -189,13 +189,13 @@ public class GameTopPanelGUI {
 
         if (playerIndex != 4) {
             for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
-                JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getBaseImage()));
+                JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getImage()));
                 pwUpsCurses.add(powerUpLabel);
             }
         }
         if (playerIndex != 4) {
             for (Curse curse : players.get(playerIndex).cursesItems) {
-                JLabel curseLabel = new JLabel(new ImageIcon(curse.getBaseImage()));
+                JLabel curseLabel = new JLabel(new ImageIcon(curse.getImage()));
                 pwUpsCurses.add(curseLabel);
             }
         }
