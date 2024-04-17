@@ -15,6 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GameTopPanelGUI {
     private final GameEngine model;
     private final JPanel topPanel;
+    private final JPanel timer;
+    private final JPanel plPanel;
     private final JFrame frame;
     private Color background;
     private final List<Player> players;
@@ -24,6 +26,8 @@ public class GameTopPanelGUI {
     public GameTopPanelGUI(JFrame frame, GameEngine gameEngine,  int map, int rounds) {
         this.frame = frame;
         this.topPanel = new JPanel();
+        this.timer = new JPanel();
+        this.plPanel = new JPanel();
         this.model = gameEngine;
         this.players = model.getPlayers();
         this.rounds = rounds;
@@ -33,8 +37,21 @@ public class GameTopPanelGUI {
         this.topPanel.setMaximumSize(new Dimension(990, 130));
         this.topPanel.setMinimumSize(new Dimension(990, 130));
         this.topPanel.setBounds(0, 0, 990, 130);
+        this.topPanel.setLayout(new BorderLayout());
+
+        this.timer.setPreferredSize(new Dimension(200, 130));
+        this.timer.setMaximumSize(new Dimension(200, 130));
+        this.timer.setMinimumSize(new Dimension(200, 130));
+
+        this.plPanel.setPreferredSize(new Dimension(790, 130));
+        this.plPanel.setMaximumSize(new Dimension(790, 130));
+        this.plPanel.setMinimumSize(new Dimension(790, 130));
+
+        this.timer.setBackground(background);
+        this.plPanel.setBackground(background);
 
         addContent();
+        addTimerAndPause();
 
         this.frame.revalidate();
         this.frame.repaint();
@@ -50,42 +67,37 @@ public class GameTopPanelGUI {
 
     private void addContent() {
 
-        this.topPanel.setLayout(new GridBagLayout());
+        this.plPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.weightx = 0.25;
+        constraints.weightx = 25;
 
         //Player 1
         constraints.gridx = 0;
-        constraints.gridy = 0;
-
         if(!players.getFirst().isDead())
-            this.topPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
+            this.plPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
         else {
-            this.topPanel.add(createPlayerPanel(4), constraints);
+            this.plPanel.add(createPlayerPanel(4), constraints);
         }
 
         //Player 2
         constraints.gridx = 1;
-
         if(!players.get(1).isDead())
-            this.topPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
+            this.plPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
         else {
-            this.topPanel.add(createPlayerPanel(4), constraints);
+            this.plPanel.add(createPlayerPanel(4), constraints);
         }
 
         //Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
             if(!players.getLast().isDead())
-                this.topPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
+                this.plPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
             else {
-                this.topPanel.add(createPlayerPanel(4), constraints);
+                this.plPanel.add(createPlayerPanel(4), constraints);
             }
         }
 
-        //Timer
-        constraints.gridx = 3;
-        this.topPanel.add(addTimerAndPause(), constraints);
+        this.topPanel.add(this.plPanel, BorderLayout.WEST);
     }
 
     private JPanel createPlayerPanel(int playerIndex) {
@@ -197,7 +209,7 @@ public class GameTopPanelGUI {
         return playerPanel;
     }
 
-    private JPanel addTimerAndPause() {
+    private void addTimerAndPause() {
         JPanel timerPanel = new JPanel();
         timerPanel.setLayout(new BoxLayout(timerPanel, BoxLayout.Y_AXIS));
         timerPanel.setBackground(background);
@@ -279,11 +291,13 @@ public class GameTopPanelGUI {
                 pauseButton.setText("Pause");
             }
         });
-        return timerPanel;
+
+        this.timer.add(timerPanel);
+        this.topPanel.add(this.timer, BorderLayout.EAST);
     }
 
     public void updateTopPanel() {
-        this.topPanel.removeAll();
+        this.plPanel.removeAll();
         addContent();
         this.topPanel.revalidate();
         this.topPanel.repaint();

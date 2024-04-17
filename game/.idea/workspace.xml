@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
