@@ -8,7 +8,7 @@ import cell.wall.WallCell;
 import entity.Entity;
 import entity.monster.Monster;
 import map.GameMap;
-//TODO: NOT READY!! SHORTEST PATH IMPLEMENTATION.
+//TODO NOT READY!! SHORTEST PATH IMPLEMENTATION.
 public class SpeedyMonster extends Monster {
     private Image baseImage;
     private int direction;
@@ -36,7 +36,6 @@ public class SpeedyMonster extends Monster {
         } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
         System.out.println(this.x);
         System.out.println(this.y);
-
     }
 
     public void moveRandomly() {
