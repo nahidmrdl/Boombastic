@@ -43,7 +43,7 @@ public class NormalCell extends Cell {
                     new PlaceObstacle()
             };
             // for tests this can be used
-            // PowerUp[] powerUps = new PowerUp[]{ new PlaceObstacle()};
+            //PowerUp[] powerUps = new PowerUp[]{ new Detonator()};
             PowerUp powerUp = powerUps[(int) (Math.random() * powerUps.length)];
             powerUp.setCell(this);
             this.items.add(powerUp);

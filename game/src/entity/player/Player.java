@@ -41,6 +41,8 @@ public class Player extends Entity {
     public List<Image> curses = new ArrayList<>();
     public int bombCount = 1;
 
+    private boolean hasStepFromBomb = false;
+
     private boolean isDead = false;
     public int victoryCount = 0;
 
@@ -58,6 +60,14 @@ public class Player extends Entity {
 
     public int getPlaceObsticleCount() {
         return placeObsticleCount;
+    }
+
+    public void setHasStepFromBomb(boolean hasStepFromBomb) {
+        this.hasStepFromBomb = hasStepFromBomb;
+    }
+
+    public boolean getHasStepFromBomb() {
+        return hasStepFromBomb;
     }
 
     public void setDetonator(boolean detonator) {
@@ -194,6 +204,10 @@ public class Player extends Entity {
             } else {
                 moveTo(newX, newY);
             }
+
+
+
+            setHasStepFromBomb(false);
         }
     }
 
@@ -202,6 +216,16 @@ public class Player extends Entity {
         this.x = newX;
         this.y = newY;
         this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
+        // Invoke the detonate animation if the player is on a bomb with a detonator
+        this.gameMap.getMap()[this.y][this.x].getItems().forEach(item -> {
+            if (item instanceof Bomb && ((Bomb) item).isDetonator() && !getHasStepFromBomb() ) {
+                ((Bomb) item).setState(2);
+                ((Bomb) item).invokeDetonateAnimation();
+            }
+        });
+
+
     }
 
    public int getBombBlastRange() {
@@ -215,13 +239,13 @@ public class Player extends Entity {
         if (this.bombCount == 0) {
             if (this.isDetonator) {
                 this.gameMap.DetonatePlayerBombs(this);
-
                 // Detonator is a one-time use item
                 this.setDetonator(false);
             }
 
             return;
         }
+        setHasStepFromBomb(true);
         Bomb bomb = new Bomb(isDetonator);
         bomb.setBlastRadius(this.bombBlastRange);
         bomb.setCell(this.gameMap.getMap()[this.y][this.x]);
@@ -257,6 +281,6 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}";
+        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
     }
 }

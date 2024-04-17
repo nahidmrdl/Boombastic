@@ -4,6 +4,7 @@ import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
 import item.GameItem;
+import item.bomb.Bomb;
 import item.powerup.PowerUp;
 import levels.LevelReader;
 import map.GameMap;
