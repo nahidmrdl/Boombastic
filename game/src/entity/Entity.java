@@ -25,6 +25,8 @@ public abstract class Entity {
 
 //    public boolean move(){}
 
+    public void moveTowardsPlayer() { }
+
     public Image getImage(){
         return this.image;
     }

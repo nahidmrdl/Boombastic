@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Working on SpeedyMonster">
-      <change afterPath="$PROJECT_DIR$/src/util/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +123,8 @@
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713312527404" duration="30000" />
       <workItem from="1713350874247" duration="6855000" />
-      <workItem from="1713363532557" duration="4974000" />
+      <workItem from="1713363532557" duration="5136000" />
+      <workItem from="1713378150098" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -379,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713357736230</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Working on SpeedyMonster">
+      <option name="closed" value="true" />
+      <created>1713368730736</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1713368730736</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

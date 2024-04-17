@@ -4,6 +4,7 @@
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
     import entity.monster.Monster;
+    import entity.monster.monstertypes.ConfusedMonster;
     import entity.monster.monstertypes.GhostlyMonster;
     import entity.monster.monstertypes.SpeedyMonster;
     import entity.player.Player;

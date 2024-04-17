@@ -137,6 +137,10 @@ public class SpeedyMonster extends Monster {
         
     }
 
+
+
+
+
     public void moveRandomly() {
         if(lastMoveTime.getTime() + speed < new Date().getTime()) {
             lastMoveTime = new Date();
