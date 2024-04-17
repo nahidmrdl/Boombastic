@@ -10,7 +10,6 @@ public class RollerSkate extends PowerUp {
             super(ResourceCollection.Images.ROLLERSKATESPEED_POWERUP.getImage());
         }
 
-
     @Override
     public void apply(Player p) {
         p.setSpeed(35);

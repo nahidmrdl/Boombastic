@@ -10,6 +10,7 @@
     import item.curse.Curse;
     import item.powerup.PowerUp;
     import util.ResourceCollection;
+    import gui.GameTopPanelGUI;
 
     import javax.swing.*;
     import java.awt.*;
@@ -25,10 +26,12 @@
         public Image wallImage;
         public Image walkableImage;
         public Image boxImage;
+        private  GameTopPanelGUI topPanelGUI;
 
-        public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
+        public GameMapGUI( GameEngine model, JFrame frame, GameTopPanelGUI topPanelGUI) throws IOException {
             this.model = model;
             this.frame = frame;
+            this.topPanelGUI = topPanelGUI;
             loadMapAssetsRandomly();
 
             setupKeyListener();
@@ -42,6 +45,7 @@
             Timer timer = new Timer(delay, e -> {
                 try {
                     this.model.runGameUnit();
+                    this.topPanelGUI.updateTopPanel();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

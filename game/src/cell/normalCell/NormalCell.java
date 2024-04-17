@@ -89,6 +89,7 @@ public class NormalCell extends Cell {
                         GameItem item = itemIterator.next();
                         if (item instanceof PowerUp) {
                             PowerUp powerUp = (PowerUp) item;
+                            System.out.println("Player collected a power-up" + item.getClass().getSimpleName());
                             player.addPowerUp(powerUp);
                             powerUp.apply(player);
                             itemIterator.remove();

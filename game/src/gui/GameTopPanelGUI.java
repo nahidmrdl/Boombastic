@@ -2,6 +2,8 @@ package gui;
 
 import entity.player.Player;
 import gameengine.GameEngine;
+import item.curse.Curse;
+import item.powerup.PowerUp;
 import util.ResourceCollection;
 
 import javax.swing.*;
@@ -76,7 +78,6 @@ public class GameTopPanelGUI {
 
     private JPanel createPlayerPanel(int playerIndex) {
         List<Player> players = model.getPlayers();
-        System.out.println("pl index: " + playerIndex);
         JPanel playerPanel = new JPanel();
 
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
@@ -157,21 +158,13 @@ public class GameTopPanelGUI {
         pwUpsCurses.setMaximumSize(new Dimension(200, 30));
         pwUpsCurses.setMinimumSize(new Dimension(200, 30));
 
-        // Will be removed, added for testing purposes
-        // Assume that player can have maximum 3 powerUps and 3 curses
-
-        for(int i = 0; i < 3; i++){
-            players.get(playerIndex).powerUps.add(ResourceCollection.Images.POWERUP_ICON.getImage());
-            players.get(playerIndex).curses.add(ResourceCollection.Images.CURSE_ICON.getImage());
-        }
-
-        for (Image powerUp : players.get(playerIndex).powerUps) {
-            JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp));
+        for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
+            JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getBaseImage()));
             pwUpsCurses.add(powerUpLabel);
         }
 
-        for (Image curse : players.get(playerIndex).curses) {
-            JLabel curseLabel = new JLabel(new ImageIcon(curse));
+        for (Curse curse : players.get(playerIndex).cursesItems) {
+            JLabel curseLabel = new JLabel(new ImageIcon(curse.getBaseImage()));
             pwUpsCurses.add(curseLabel);
         }
 
@@ -271,4 +264,10 @@ public class GameTopPanelGUI {
         return timerPanel;
     }
 
+    public void updateTopPanel() {
+        this.topPanel.removeAll();
+        addContent();
+        this.topPanel.revalidate();
+        this.topPanel.repaint();
+    }
 }
