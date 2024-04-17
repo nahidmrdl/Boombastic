@@ -3,6 +3,7 @@ package entity.player;
 import cell.Cell;
 import entity.Entity;
 import item.bomb.Bomb;
+import item.curse.Curse;
 import item.powerup.PowerUp;
 import map.GameMap;
 
@@ -36,9 +37,10 @@ public class Player extends Entity {
     private HashMap<String, String> Controls;
 
     public List<Image> powerUps = new ArrayList<>();
+    public List<Image> curses = new ArrayList<>();
 
     public List<PowerUp> powerUpsItems = new ArrayList<>();
-    public List<Image> curses = new ArrayList<>();
+    public List<Curse> cursesItems = new ArrayList<>();
     public int bombCount = 1;
 
     private boolean hasStepFromBomb = false;
@@ -103,7 +105,7 @@ public class Player extends Entity {
     }
 
     public void resetDefaultSpeed() {
-        this.speed = 100;
+        this.speed = 75;
     }
 
     public void setImage(Image image) {
@@ -141,6 +143,10 @@ public class Player extends Entity {
     public void addPowerUp(PowerUp powerUp) {
         this.powerUpsItems.add(powerUp);
     }
+    public void addCurse(Curse curse) {
+        this.cursesItems.add(curse);
+    }
+
 
     public int getY(){
         return this.y;
@@ -270,6 +276,18 @@ public class Player extends Entity {
         }
     }
 
+    public void removeFinishedCurses(){
+        Iterator<Curse> iterator = this.cursesItems.iterator();
+        while (iterator.hasNext()) {
+            Curse curse = iterator.next();
+            if(curse.getFinishTime() != 0 && curse.getFinishTime() < System.currentTimeMillis()) {
+                iterator.remove();
+                curse.reset(this);
+                System.out.println("Curse removed");
+            }
+        }
+    }
+
     private String getKeyActionFromKeyCode(String keyCode, HashMap<String, String> playerControls) {
         for (Map.Entry<String, String> entry : playerControls.entrySet()) {
             if (String.valueOf(keyCode).equals(entry.getValue())) {
@@ -281,6 +299,8 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+       // STR."Player name: \{name}, Image index: \{imageIndex}, Controls: \{Controls}, X: \{x}, Y: \{y}, \{hasStepFromBomb}";
+
+        return "Player name: " + name + ", Image index: " + imageIndex + ", Controls: " + Controls + ", X: " + x + ", Y: " + y + ", " + hasStepFromBomb;
     }
 }

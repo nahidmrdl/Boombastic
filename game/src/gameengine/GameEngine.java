@@ -6,6 +6,7 @@ import entity.player.Player;
 import item.GameItem;
 import item.bomb.Bomb;
 import item.powerup.PowerUp;
+
 import levels.LevelReader;
 import map.GameMap;
 
@@ -72,8 +73,10 @@ public class GameEngine {
             // remove finished items
             for (Cell cell : row) {
                 if (cell instanceof NormalCell) {
-                    ((NormalCell) cell).CollectPowerUp();
+                    ((NormalCell) cell).collectItems();
                     ((NormalCell) cell).removeFinishedItems();
+
+
                 }
             }
         }
@@ -81,6 +84,7 @@ public class GameEngine {
         // remove finished power-ups form players
         for (Player player : this.players) {
             player.removeFinishedPowerUps();
+            player.removeFinishedCurses();
         }
     }
 

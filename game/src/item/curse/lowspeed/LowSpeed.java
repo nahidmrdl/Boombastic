@@ -1,7 +1,24 @@
 package item.curse.lowspeed;
 
-//import item.curse.Curse;
-//
-//public class LowSpeed extends Curse {
-//
-//}
+import entity.player.Player;
+import item.curse.Curse;
+import util.ResourceCollection;
+
+public class LowSpeed extends Curse {
+
+    public LowSpeed() {
+        super(ResourceCollection.Images.LOWSPEED_CURSE.getImage());
+    }
+
+
+    @Override
+    public void apply(Player p) {
+        p.setSpeed(135);
+        setFinishTime(System.currentTimeMillis() + 5000);
+    }
+
+    @Override
+    public void reset(Player p) {
+        p.resetDefaultSpeed();
+    }
+}
