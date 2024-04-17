@@ -18,7 +18,7 @@ public class BoxCell extends Cell {
 
     public BoxCell(int row, int col, GameMap map) {
         super(row, col, map);
-        this.image = ResourceCollection.Images.BOXMAP1.getImage();
+        this.image = ResourceCollection.Images.PLACED_BOX.getImage();
         this.owner = null;
     }
 
