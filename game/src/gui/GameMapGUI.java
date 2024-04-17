@@ -71,7 +71,7 @@
 
             Image[] walkablePaths = {
                     ResourceCollection.Images.GROUNDMAP1.getImage(),
-                   // ResourceCollection.Images.GROUNDMAP2.getImage(),
+                   // ResourceCollection.Images.GROUNDMAP2.getImage(), // this image is not visually appealing
                     ResourceCollection.Images.GROUNDMAP3.getImage()
             };
 
@@ -79,6 +79,7 @@
                     ResourceCollection.Images.BOXMAP1.getImage(),
                     ResourceCollection.Images.BOXMAP2.getImage(),
                     ResourceCollection.Images.BOXMAP3.getImage(),
+                    ResourceCollection.Images.PLACED_BOX.getImage()
             };
 
             // Randomly select an asset for each type
