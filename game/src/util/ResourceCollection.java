@@ -42,6 +42,10 @@ public class ResourceCollection {
         LOWSPEED_CURSE,
         OBSTACLE_POWERUP,
         ROLLERSKATESPEED_POWERUP,
+        BASIC_MONSTER,
+        SPEEDY_MONSTER,
+        CONFUSED_MONSTER,
+        GHOSTLY_MONSTER,
 
         MAP1,
         MAP2,
@@ -112,6 +116,9 @@ public class ResourceCollection {
             Images.OBSTACLE_POWERUP.image = ImageIO.read(new File(basePath + "icons/ObstaclePowerup.png"));
             Images.ROLLERSKATESPEED_POWERUP.image = ImageIO.read(new File(basePath + "icons/RollerSkateSpeedUpPowerup.png"));
             Images.TROPHY.image = ImageIO.read(new File(basePath + "icons/trophy.png"));
+            Images.BASIC_MONSTER.image = ImageIO.read(new File(basePath + "icons/monster1.png"));
+            Images.CONFUSED_MONSTER.image = ImageIO.read(new File(basePath + "icons/monster2.png"));
+
 
 
         } catch (IOException e) {

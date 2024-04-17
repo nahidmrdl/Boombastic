@@ -131,14 +131,14 @@
                     }
                 }
             }
-
+            // draw monsters
             for (Monster monster : model.getMonsters()){
                 if (monster instanceof GhostlyMonster){
                     g.drawImage(ResourceCollection.Images.GHOST_POWERUP.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
                 else{
-                    g.drawImage(ResourceCollection.Images.CURSE_ICON.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
             }
