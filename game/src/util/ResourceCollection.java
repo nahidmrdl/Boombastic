@@ -47,6 +47,7 @@ public class ResourceCollection {
         CONFUSED_MONSTER,
         GHOSTLY_MONSTER,
         DEAD,
+        PLACED_BOX,
 
         MAP1,
         MAP2,
@@ -123,6 +124,7 @@ public class ResourceCollection {
             Images.SPEEDY_MONSTER.image = ImageIO.read(new File(basePath + "icons/ArachNoTime.png"));
             Images.GHOSTLY_MONSTER.image = ImageIO.read(new File(basePath + "icons/ghostgaldag.png"));
            
+            Images.PLACED_BOX.image = ImageIO.read(new File(basePath + "icons/placedBox.png"));
 
 
         } catch (IOException e) {
