@@ -16,7 +16,7 @@ public abstract class PowerUp extends GameItem {
 
     // can be used for displaying clock icon or something in powerUps array
     public boolean isPowerUpAboutToFinish() {
-        return System.currentTimeMillis() > getFinishTime() - 3000;
+        return System.currentTimeMillis() > getFinishTime() - 3000 && getFinishTime() != 0;
     }
 
     public abstract void apply(Player p);

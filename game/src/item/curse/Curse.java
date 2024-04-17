@@ -16,7 +16,7 @@ public abstract class Curse extends GameItem {
 
     // can be used for displaying clock icon or something in Curse array
     public boolean isCurseAboutToFinish() {
-        return System.currentTimeMillis() > getFinishTime() - 3000;
+        return System.currentTimeMillis() > getFinishTime() - 3000 && getFinishTime() != 0;
     }
 
     public abstract void apply(Player p);

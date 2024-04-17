@@ -8,6 +8,7 @@ import util.ResourceCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -189,13 +190,27 @@ public class GameTopPanelGUI {
 
         if (playerIndex != 4) {
             for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
-                JLabel powerUpLabel = new JLabel(new ImageIcon(powerUp.getImage()));
+                ImageIcon icon = new ImageIcon(powerUp.getImage());
+
+                if(powerUp.isPowerUpAboutToFinish()) {
+                    float transparencyLevel = 0.5f;
+                    icon = createTransparentIcon(icon.getImage(), transparencyLevel);
+                }
+
+                JLabel powerUpLabel = new JLabel(icon);
                 pwUpsCurses.add(powerUpLabel);
             }
         }
         if (playerIndex != 4) {
             for (Curse curse : players.get(playerIndex).cursesItems) {
-                JLabel curseLabel = new JLabel(new ImageIcon(curse.getImage()));
+                ImageIcon icon = new ImageIcon(curse.getImage());
+
+                if(curse.isCurseAboutToFinish()) {
+                    float transparencyLevel = 0.5f;
+                    icon = createTransparentIcon(icon.getImage(), transparencyLevel);
+                }
+
+                JLabel curseLabel = new JLabel(icon);
                 pwUpsCurses.add(curseLabel);
             }
         }
@@ -263,7 +278,7 @@ public class GameTopPanelGUI {
                     GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
                     try {
                         for (Player player : model.getPlayers()) {
-                            player.bombCount = 0;
+                            player.bombCount = 1;
                             player.powerUpsItems.clear();
                             player.cursesItems.clear();
                         }
@@ -301,5 +316,16 @@ public class GameTopPanelGUI {
         addContent();
         this.topPanel.revalidate();
         this.topPanel.repaint();
+    }
+
+    private ImageIcon createTransparentIcon(Image img, float alpha) {
+        BufferedImage bufferedImage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bufferedImage.createGraphics();
+
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2d.drawImage(img, 0, 0, null);
+        g2d.dispose();
+
+        return new ImageIcon(bufferedImage);
     }
 }
