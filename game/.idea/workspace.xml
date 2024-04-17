@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="wrong monster image fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024__10_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024__10_14__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__15_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__15_21__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ResourceCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +169,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713384763277</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths.">
+      <option name="closed" value="true" />
+      <created>1713385755905</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385755905</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1713385861222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385861222</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths.">
+      <option name="closed" value="true" />
+      <created>1713385905659</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385905659</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +219,9 @@
     <MESSAGE value="game engine and bomb code cleaned up" />
     <MESSAGE value="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!" />
     <MESSAGE value="wrong monster image fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrong monster image fixed" />
+    <MESSAGE value="." />
+    <MESSAGE value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

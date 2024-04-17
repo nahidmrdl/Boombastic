@@ -48,6 +48,7 @@ public class ResourceCollection {
         GHOSTLY_MONSTER,
         DEAD,
         PLACED_BOX,
+        DEAD_NEW,
 
         MAP1,
         MAP2,
@@ -125,6 +126,7 @@ public class ResourceCollection {
             Images.GHOSTLY_MONSTER.image = ImageIO.read(new File(basePath + "icons/ghostgaldag.png"));
            
             Images.PLACED_BOX.image = ImageIO.read(new File(basePath + "icons/placedBox.png"));
+            Images.DEAD_NEW.image = ImageIO.read(new File(basePath + "deadNew.jpg"));
 
 
         } catch (IOException e) {

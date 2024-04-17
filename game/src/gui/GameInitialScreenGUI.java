@@ -418,7 +418,7 @@ class ImagePanel extends JPanel {
             ResourceCollection.Images.NAHID.getImage(),
             ResourceCollection.Images.MIKE.getImage(),
             ResourceCollection.Images.GOSHA.getImage(),
-            ResourceCollection.Images.DEAD.getImage(),
+            ResourceCollection.Images.DEAD_NEW.getImage(),
     };
 
     private final Image[] maps = {
