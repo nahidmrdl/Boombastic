@@ -7,7 +7,7 @@
     import gameengine.GameEngine;
     import item.GameItem;
     import item.bomb.Bomb;
-    import levels.LevelReader;
+    import item.powerup.PowerUp;
     import util.ResourceCollection;
 
     import javax.swing.*;
@@ -20,15 +20,10 @@
 
     public class GameMapGUI extends JPanel {
         private JFrame frame;
-
         private GameEngine model;
         public Image wallImage;
         public Image walkableImage;
         public Image boxImage;
-        public Image playerImage;
-        public Image powerUpImage;
-
-        private LevelReader lr = new LevelReader();
 
         public GameMapGUI( GameEngine model, JFrame frame) throws IOException {
             this.model = model;
@@ -42,7 +37,7 @@
 
             System.out.println(model.getPlayers());
 
-            int delay = 1000 / 24; // Approximately 41 milliseconds
+            int delay = 1000 / 24;
             Timer timer = new Timer(delay, e -> {
                 try {
                     this.model.runGameUnit();
@@ -56,7 +51,6 @@
             timer.start();
         }
 
-        //CHECK TIMER (STARTGAMETIMER FROM COMMIT)
         private void loadMapAssetsRandomly() throws IOException {
             Random random = new Random();
 
@@ -103,12 +97,92 @@
          * Sets up the key listener for the game.
          */
 
+        // refactor paintcomponent pls
+        //TODO
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            Cell[][] mapCell = this.model.getMap().getMap();
+            int cellSize = 32;
+
+            for (int i = 0; i < mapCell.length; i++) {
+                for (int j = 0; j < mapCell[i].length; j++) {
+                    Cell cell = mapCell[i][j];
+                    if (cell instanceof NormalCell) {
+                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    } else if (cell instanceof WallCell) {
+                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    } else if (cell instanceof BoxCell) {
+                        g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    }
+                }
+            }
+
+
+            // Draw players
+            for (Player player : model.getPlayers()) {
+                if (!player.isDead()) {
+                    Graphics2D g2d = (Graphics2D) g;
+                    if (player.isGhost()) {
+                        float alpha = 0.5f;
+                        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                    } else {
+                        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                    }
+
+                    g2d.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
+                    g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                }
+            }
+
+            // Draw bombs
+            for(int i = 0; i < this.model.getMap().getMap().length; i++){
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
+                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
+                            if (item instanceof Bomb) {
+                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Draw foregrownd
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
+                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                    }
+                }
+            }
+
+            // draw powerups
+            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
+                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
+                    Cell cell = this.model.getMap().getMap()[i][j];
+                    if (cell instanceof NormalCell) {
+                        NormalCell normalCell = (NormalCell) cell;
+                        int finalJ = j;
+                        int finalI = i;
+                        normalCell.getItems().forEach(item -> {
+                            if (item instanceof PowerUp) {
+                                // image should be changed to baseImage for production
+                                g.drawImage(item.getImage(), finalJ * cellSize, finalI * cellSize, cellSize, cellSize, this);
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
         private void setupKeyListener() {
             this.addKeyListener(new KeyAdapter() {
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
+                    //System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
                     try {
                         switch (e.getKeyCode()) {
                             case KeyEvent.VK_W: // W key
@@ -188,6 +262,22 @@
                                     player.HandleAction("32", model.getMap().getMap());
                                 }
                                 break;
+                            // box
+                            case KeyEvent.VK_Q: // Q key
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("81", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_O:
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("79", model.getMap().getMap());
+                                }
+                                break;
+                            case KeyEvent.VK_CLOSE_BRACKET:
+                                for (Player player : model.getPlayers()) {
+                                    player.HandleAction("93", model.getMap().getMap());
+                                }
+                                break;
 
                             case KeyEvent.VK_ESCAPE: // Escape key
                                 frame.dispose();
@@ -203,70 +293,6 @@
             frame.setVisible(true);
             SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
         }
-
-        // refactor paintcomponent pls
-        //TODO
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g); // Call the superclass method to ensure proper component painting
-
-            Cell[][] mapCell = this.model.getMap().getMap();
-            int cellSize = 32; // Size of each cell for drawing purposes
-
-            // Loop through each cell in the map to determine what to draw
-            for (int i = 0; i < mapCell.length; i++) {
-                for (int j = 0; j < mapCell[i].length; j++) {
-                    Cell cell = mapCell[i][j];
-
-                    // Check and draw the base type of each cell (wall, walkable, box)
-                    if (cell instanceof NormalCell) {
-                        NormalCell normalCell = (NormalCell) cell;
-                        if (normalCell.isStartingPoint()) {
-                            // Optionally handle starting points differently
-                        }
-                        // Draw the walkable path or the power-up if the normal cell contains one
-                        g.drawImage(walkableImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        if (normalCell.hasPowerUp()) {
-                            g.drawImage(normalCell.getPowerUpImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        }
-                    } else if (cell instanceof WallCell) { // Assuming '#' represents walls
-                        g.drawImage(wallImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                    } else if (cell instanceof BoxCell) {
-                        BoxCell boxCell = (BoxCell) cell;
-                        g.drawImage(boxImage, j * cellSize, i * cellSize, cellSize, cellSize, this);
-                        if (boxCell.hasPowerUp()) {
-                            // Optionally, indicate there's a power-up inside the box without showing what it is
-                        }
-                    }
-                }
-            }
-
-            // Use the player instance to draw the player's current position
-            for (Player player : model.getPlayers()) {
-                g.drawImage(player.getImage(), player.getX() * cellSize, player.getY() * cellSize, cellSize, cellSize, this);
-
-            }
-
-            for(int i = 0; i < this.model.getMap().getMap().length; i++){
-                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
-                    if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
-                        for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
-                            if (item instanceof Bomb) {
-                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Draw foregrownd
-            for (int i = 0; i < this.model.getMap().getMap().length; i++) {
-                for (int j = 0; j < this.model.getMap().getMap()[0].length; j++) {
-                    if (this.model.getMap().getMap()[i][j].getForegroundImage() != null) {
-                        g.drawImage(this.model.getMap().getMap()[i][j].getForegroundImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
-                    }
-                }
-            }
-        }}
+    }
 
 

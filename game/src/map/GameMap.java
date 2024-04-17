@@ -1,9 +1,14 @@
 package map;
 
 import cell.Cell;
+import cell.normalCell.NormalCell;
+import entity.player.Player;
 import item.GameItem;
+import item.bomb.Bomb;
+import levels.LevelReader;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +17,14 @@ public class GameMap {
     private Image image;
     private String name;
 
+    public GameMap(Image image, String name, Integer mapIndex){
+        try {
+            Cell[][] mapCell = LevelReader.readLevelFromFile(STR."src/levels/\{mapIndex}.txt");
+            this.map = mapCell;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-
-
-    public GameMap(Cell[][] map, Image image, String name){
-        this.map = map;
         for (Cell[] cells : map) {
             for (Cell cell : cells) {
                 cell.setMap(this);
@@ -27,9 +35,6 @@ public class GameMap {
 
     }
 
-//    public void resetMap(){}
-
-//    public void shuffleBonuses(){}
     public Cell[][] getMap(){
         return this.map;
     }
@@ -38,7 +43,22 @@ public class GameMap {
         return this.map[x][y];
     }
 
-
+    public void DetonatePlayerBombs(Player player) {
+        for (Cell[] cells : map) {
+            for (Cell cell : cells) {
+                if (cell instanceof NormalCell) {
+                    cell.getItems().forEach(item -> {
+                        if (item instanceof Bomb) {
+                            Bomb bomb = (Bomb) item;
+                            if (bomb.getOwner() == player) {
+                                bomb.invokeDetonateAnimation();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
 
     public Image getImage(){
         return this.image;

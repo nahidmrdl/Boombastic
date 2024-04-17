@@ -1,15 +1,18 @@
 package item;
 
 import cell.Cell;
+import entity.player.Player;
 
 import java.awt.*;
 
 
 public abstract class GameItem {
-    private Image baseImage;
-    private Image image;
-    private long finishTime;
-    private Cell cell;
+    protected Image baseImage;
+    protected Image image;
+    protected long finishTime;
+    protected Cell cell;
+
+    private Player owner;
 
 
     public GameItem(Image image) {
@@ -38,6 +41,14 @@ public abstract class GameItem {
 
     public Image getBaseImage(){
         return this.baseImage;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public Player getOwner() {
+        return this.owner;
     }
 
     public Image getImage(){

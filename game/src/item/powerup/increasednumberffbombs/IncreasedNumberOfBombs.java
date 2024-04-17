@@ -1,6 +1,24 @@
 package item.powerup.increasednumberffbombs;
 
-//import item.powerup.PowerUp;
-//
-//public class IncreasedNumberOfBombs extends PowerUp {
-//}
+import entity.player.Player;
+import item.powerup.PowerUp;
+import util.ResourceCollection;
+
+import java.awt.*;
+
+public class IncreasedNumberOfBombs extends PowerUp {
+
+    public IncreasedNumberOfBombs() {
+        super(ResourceCollection.Images.INCREACEDBOMBS.getImage());
+    }
+
+    @Override
+    public void apply(Player p) {
+        p.bombCount++;
+    }
+
+    @Override
+    public void reset(Player p) {
+
+    }
+}

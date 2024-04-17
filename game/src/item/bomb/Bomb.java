@@ -4,127 +4,156 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
+import entity.player.Player;
 import item.GameItem;
 import util.ResourceCollection;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
 
 public class Bomb extends GameItem {
 
     private Timer timer;
     private int state = 0;
 
-    public int getBlastRadius() {
-        return blastRadius;
-    }
+    private boolean isDetonator = false;
 
-    private final int blastRadius = 1;
+    private int blastRadius = 1;
 
-
-
-    public Bomb() throws IOException {
+    public Bomb(boolean isDetonator) {
         super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
 
-        this.setFinishTime(System.currentTimeMillis() + 3000);
+        this.setFinishTime(isDetonator ? 0 : System.currentTimeMillis() + 3000);
+        this.isDetonator = isDetonator;
 
-        this.invokeDetonateAnimation();
+        if(!isDetonator) {
+            this.invokeDetonateAnimation();
+        }
+
     }
-    private void invokeDetonateAnimation() {
+
+    public boolean isDetonator() {
+        return isDetonator;
+    }
+
+    public void setBlastRadius(int blastRadius) {
+        this.blastRadius = blastRadius;
+    }
+
+    public void invokeDetonateAnimation() {
         timer = new Timer(500, e -> {
             state++;
-            switch (state) {
-                case 1:
-                    // Transition to the second state
-                    this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE2.getImage());
-                    break;
-                case 2:
-                    // Transition to the third state
-                    this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE3.getImage());
-
-                    break;
-                case 3:
-                    // Trigger the blast
-                    this.setImage(ResourceCollection.Images.BLAST.getImage());
-
-
-                    // change image in range
-                    Cell[][] gameMap = this.getCell().getMap().getMap();
-                    int x = this.getCell().getX();
-                    int y = this.getCell().getY();
-                    // The blast extends this far in each direction unless blocked by a wall
-
-// Define directions: up, down, left, right
-                    int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-
-                    for (int[] direction : directions) {
-                        for (int i = 1; i <= blastRadius; i++) {
-                            int targetX = x + i * direction[0];
-                            int targetY = y + i * direction[1];
-
-                            // Ensure target coordinates are within map bounds
-                            if (targetX < 0 || targetX >= gameMap.length || targetY < 0 || targetY >= gameMap[0].length) {
-                                System.out.println("Target X: " + targetX + ", Target Y: " + targetY);
-
-                                continue; // skip this iteration if target is out of bounds
-                            }
-
-                            Cell targetCell = gameMap[targetX][targetY];
-                            // Stop the blast if it hits a wall
-                            if (targetCell instanceof WallCell) { // '#' represents a wall
-                                break; // Stops extending the blast in this direction
-                            }
-
-                            // If it's a BoxCell, replace it with a NormalCell, possibly carrying over a power-up
-                            if (targetCell instanceof BoxCell) {
-                                BoxCell boxCell = (BoxCell) targetCell;
-                                try {
-                                    NormalCell newCell = new NormalCell(targetX, targetY);
-                                    newCell.setMap(this.getCell().getMap());
-                                    if (boxCell.hasPowerUp()) {
-                                        newCell.setHasPowerUp(true);
-                                        newCell.setPowerUpImage(boxCell.getPowerUpImage());
-                                    }
-                                    gameMap[targetX][targetY] = newCell;
-                                    newCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            } else if (!(targetCell instanceof BoxCell) && targetCell != null) {
-                                targetCell.setForegroundImage(ResourceCollection.Images.BLAST.getImage());
-                            }
-                        }
-                    }
-
-
-                    // After the blast, perform any necessary cleanup
-                    break;
-                case 4:
-                    // Final state - stop the timer
-                    timer.stop();
-                    break;
+            updateAnimationState();
+            if (state == 4) {
+                clearExplosion();
+                getOwner().bombCount++;
+                timer.stop();
             }
         });
-        // Ensure the timer only runs once
         timer.setRepeats(true);
-        // Start the timer
         timer.start();
     }
 
-    /**
-     * This method is used to change the image of the bomb
-     * @param imagePath
-     */
+    public void setState(int state) {
+        this.state = state;
+    }
 
-
-    private void changeImage(String imagePath) {
-        try {
-            this.setImage(ImageIO.read(new File(imagePath)));
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
+    private void updateAnimationState() {
+        switch (state) {
+            case 1:
+                this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE2.getImage());
+                break;
+            case 2:
+                this.setImage(ResourceCollection.Images.POWER_BOMBSTAGE3.getImage());
+                break;
+            case 3:
+                this.setImage(ResourceCollection.Images.BLAST.getImage());
+                processExplosionEffect(true);
+                break;
         }
     }
+
+    private void clearExplosion() {
+        processExplosionEffect(false);
+        this.getCell().setForegroundImage(null);
+        this.getCell().getItems().remove(this);
+    }
+
+    /**
+     * Process the explosion effect in radius range
+     * @param setBlastImage
+     */
+    private void processExplosionEffect(boolean setBlastImage) {
+        Cell[][] gameMap = this.getCell().getMap().getMap();
+        int x = this.getCell().getX();
+        int y = this.getCell().getY();
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+        for (int[] direction : directions) {
+            for (int i = 1; i <= blastRadius; i++) {
+                int targetX = x + direction[0] * i;
+                int targetY = y + direction[1] * i;
+                if (!isWithinBounds(targetX, targetY, gameMap)) {
+                    break;
+                }
+
+                Cell targetCell = gameMap[targetX][targetY];
+                if (targetCell instanceof WallCell) {
+                    break;
+                }
+
+                updateCell(targetCell, targetX, targetY, setBlastImage);
+
+                // check for player on the cell and set dead
+                getCell().getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Player player) {
+                        if (!player.isInvincible()) {
+                            player.setDead(true);
+                        }
+
+                    }
+                });
+                // check for player on blast range and set dead
+                getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Player player) {
+                        if (!player.isInvincible()) {
+                            player.setDead(true);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    private boolean isWithinBounds(int x, int y, Cell[][] map) {
+        return !(x < 0 || x >= map.length || y < 0 || y >= map[0].length);
+    }
+
+    /**
+     * Set the cell to a new cell with a random power-up and updating blast image
+     * @param cell
+     * @param x
+     * @param y
+     * @param setBlastImage
+     */
+    private void updateCell(Cell cell, int x, int y, boolean setBlastImage) {
+        if (cell instanceof BoxCell) {
+            NormalCell newCell = new NormalCell(x, y, cell.getMap());
+            // set random power-up if the box was not owned by a player
+            if(((BoxCell) cell).getOwner() == null) {
+                newCell.setRandomPowerUp();
+            }
+
+            // if the box was owned by a player, increment the placeObsticleCount
+            if(((BoxCell) cell).getOwner() != null) {
+                getOwner().setPlaceObsticleCount(getOwner().getPlaceObsticleCount() + 1);
+            }
+
+            newCell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
+            this.getCell().getMap().getMap()[x][y] = newCell;
+        } else if (cell != null) {
+            cell.setForegroundImage(setBlastImage ? ResourceCollection.Images.BLAST.getImage() : null);
+        }
+    }
+
+
 }

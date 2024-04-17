@@ -2,6 +2,8 @@ package cell.box;
 
 import cell.Cell;
 import entity.player.Player;
+import item.powerup.PowerUp;
+import map.GameMap;
 import util.ResourceCollection;
 
 import javax.imageio.ImageIO;
@@ -13,10 +15,10 @@ import java.util.Random;
 public class BoxCell extends Cell {
     private Image powerUpImage;
     private Player owner;
-    private boolean hasPowerUp;
-    public BoxCell(int row, int col) throws IOException {
-        super(row, col);
-        this.image = ImageIO.read(new File("src/assets/mapAssets/map1/map1box.png"));;
+
+    public BoxCell(int row, int col, GameMap map) {
+        super(row, col, map);
+        this.image = ResourceCollection.Images.BOXMAP1.getImage();
         this.owner = null;
     }
 
@@ -25,16 +27,6 @@ public class BoxCell extends Cell {
     }
     public Player getOwner() {
         return this.owner;
-    }
-
-
-
-    public boolean hasPowerUp() {
-        return hasPowerUp;
-    }
-
-    public Image getPowerUpImage() {
-        return powerUpImage;
     }
 
 }

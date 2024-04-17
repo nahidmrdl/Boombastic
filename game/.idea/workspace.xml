@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="folder structure for power up, curse ,cell, entity added">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Invoke on player step for bomb on detonator added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,33 +39,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-22",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nahid/IdeaProjects/boombastic/game",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Basic-collectible-powerups&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/boombastic/game/src/assets/icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;G:/soft-tech/boombastic/game/gameModule/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\boombastic\game\src\assets\icons" />
       <recent name="G:\boombastic\game\src\entity" />
     </key>
   </component>
@@ -115,6 +117,9 @@
       <workItem from="1713171978787" duration="325000" />
       <workItem from="1713213474912" duration="348000" />
       <workItem from="1713214868959" duration="59000" />
+      <workItem from="1713216238138" duration="1342000" />
+      <workItem from="1713260467846" duration="3824000" />
+      <workItem from="1713312527404" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -132,7 +137,167 @@
       <option name="project" value="LOCAL" />
       <updated>1710186653117</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="basic power up drop after box destruction added">
+      <option name="closed" value="true" />
+      <created>1713263088807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713263088807</updated>
+    </task>
+    <task id="LOCAL-00004" summary="game engine and bomb code cleaned up">
+      <option name="closed" value="true" />
+      <created>1713263650958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713263650958</updated>
+    </task>
+    <task id="LOCAL-00005" summary="RollerSkate power up basic added">
+      <option name="closed" value="true" />
+      <created>1713295671860</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713295671860</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Collect powerUps added">
+      <option name="closed" value="true" />
+      <created>1713298372175</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713298372175</updated>
+    </task>
+    <task id="LOCAL-00007" summary="bomb count powerUp added">
+      <option name="closed" value="true" />
+      <created>1713298692862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713298692862</updated>
+    </task>
+    <task id="LOCAL-00008" summary="roller skate power up added">
+      <option name="closed" value="true" />
+      <created>1713300300117</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713300300117</updated>
+    </task>
+    <task id="LOCAL-00009" summary="increased blast range added">
+      <option name="closed" value="true" />
+      <created>1713301309027</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713301309027</updated>
+    </task>
+    <task id="LOCAL-00010" summary="map argument added for cell constructor">
+      <option name="closed" value="true" />
+      <created>1713301822096</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713301822096</updated>
+    </task>
+    <task id="LOCAL-00011" summary="detonator added">
+      <option name="closed" value="true" />
+      <created>1713302830742</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713302830742</updated>
+    </task>
+    <task id="LOCAL-00012" summary="player die from bomb">
+      <option name="closed" value="true" />
+      <created>1713306527507</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713306527507</updated>
+    </task>
+    <task id="LOCAL-00013" summary="invincibility powerUp added">
+      <option name="closed" value="true" />
+      <created>1713306859530</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713306859530</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ghost powerUP added">
+      <option name="closed" value="true" />
+      <created>1713307965730</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713307965730</updated>
+    </task>
+    <task id="LOCAL-00015" summary="basic box powerUp added, additional keys for player defined">
+      <option name="closed" value="true" />
+      <created>1713308834765</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713308834765</updated>
+    </task>
+    <task id="LOCAL-00016" summary="place obstacle powerUp added">
+      <option name="closed" value="true" />
+      <created>1713309489520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713309489520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="speed adjusted, players added as a visitors by default">
+      <option name="closed" value="true" />
+      <created>1713309904610</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713309904610</updated>
+    </task>
+    <task id="LOCAL-00018" summary="code cleaned up">
+      <option name="closed" value="true" />
+      <created>1713310345315</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713310345315</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ghost powerUp : player die if the effect finished on wall or Box">
+      <option name="closed" value="true" />
+      <created>1713310901289</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1713310901289</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Invoke on player step for bomb on detonator added">
+      <option name="closed" value="true" />
+      <created>1713312369774</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1713312369774</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Invoke on player step for bomb on detonator added">
+      <option name="closed" value="true" />
+      <created>1713312391958</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713312391958</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Invoke on player step for bomb on detonator added">
+      <option name="closed" value="true" />
+      <created>1713312413947</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1713312413947</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,14 +319,32 @@
     <MESSAGE value="clean project created" />
     <MESSAGE value="folder structure for power up, curse ,cell, entity added" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="basic power up drop after box destruction added" />
+    <MESSAGE value="game engine and bomb code cleaned up" />
+    <MESSAGE value="RollerSkate power up basic added" />
+    <MESSAGE value="Collect powerUps added" />
+    <MESSAGE value="bomb count powerUp added" />
+    <MESSAGE value="roller skate power up added" />
+    <MESSAGE value="increased blast range added" />
+    <MESSAGE value="map argument added for cell constructor" />
+    <MESSAGE value="detonator added" />
+    <MESSAGE value="player die from bomb" />
+    <MESSAGE value="invincibility powerUp added" />
+    <MESSAGE value="ghost powerUP added" />
+    <MESSAGE value="basic box powerUp added, additional keys for player defined" />
+    <MESSAGE value="place obstacle powerUp added" />
+    <MESSAGE value="speed adjusted, players added as a visitors by default" />
+    <MESSAGE value="code cleaned up" />
+    <MESSAGE value="ghost powerUp : player die if the effect finished on wall or Box" />
+    <MESSAGE value="Invoke on player step for bomb on detonator added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invoke on player step for bomb on detonator added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/item/bomb/Bomb.java</url>
-          <line>29</line>
+          <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
