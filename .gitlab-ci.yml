@@ -12,20 +12,22 @@ cache:
 build:
   stage: build
   script:
+    - cd game
     - mvn compile
 
 test:
   stage: test
   script:
+    - cd game
     - mvn test
 
 # Documentation
 pages:
   stage: deploy
   script:
+    - cd game
     - mvn javadoc:javadoc
-    - mkdir public
-    - cp -r target/site/apidocs/ public/
+    - cp -r target/site/apidocs/. public/
   artifacts:
     paths:
       - public
