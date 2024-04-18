@@ -28,7 +28,8 @@ public class Ghost extends PowerUp {
             return;
         }
 
-        Cell cell = getCell().getMap().getCell(p.getX(), p.getY());
+        // reversed x and y
+        Cell cell = getCell().getMap().getCell(p.getY(), p.getX());
 
         if(!(cell instanceof NormalCell)) {
             p.setDead(true);
