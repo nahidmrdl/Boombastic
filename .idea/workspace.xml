@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="licence ADA" />
+    <list default="true" id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="deploy doc test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,26 +42,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bl3ss/IdeaProjects/boombastic/game&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "CI-CD",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bl3ss/IdeaProjects/boombastic/game",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\boombastic" />
     </key>
   </component>
   <component name="RunManager">
@@ -72,6 +75,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -94,6 +104,7 @@
       <workItem from="1713216227069" duration="609000" />
       <workItem from="1713259732402" duration="688000" />
       <workItem from="1713379172203" duration="14000" />
+      <workItem from="1713448999517" duration="396000" />
     </task>
     <task id="LOCAL-00001" summary="created basic java project">
       <option name="closed" value="true" />
@@ -119,7 +130,31 @@
       <option name="project" value="LOCAL" />
       <updated>1710099682916</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ci cd try">
+      <option name="closed" value="true" />
+      <created>1713449046876</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713449046876</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ci cd path dir changed">
+      <option name="closed" value="true" />
+      <created>1713449179550</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713449179550</updated>
+    </task>
+    <task id="LOCAL-00006" summary="deploy doc test">
+      <option name="closed" value="true" />
+      <created>1713449392312</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713449392312</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +187,9 @@
     <MESSAGE value="created basic java project" />
     <MESSAGE value="new line added" />
     <MESSAGE value="licence ADA" />
-    <option name="LAST_COMMIT_MESSAGE" value="licence ADA" />
+    <MESSAGE value="ci cd try" />
+    <MESSAGE value="ci cd path dir changed" />
+    <MESSAGE value="deploy doc test" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy doc test" />
   </component>
 </project>

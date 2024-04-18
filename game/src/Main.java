@@ -6,7 +6,7 @@ import util.ResourceCollection;
 //Main File
 public class Main {
     public static void main(String[] args) {
-        ResourceCollection.readFiles();
+        ResourceCollfecfestion.readFiles();
         System.out.print("Bombastic game\n");
         System.out.print("Welcome to the game\n");
         GameGUI game = new GameGUI();

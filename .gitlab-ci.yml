@@ -22,15 +22,15 @@ test:
     - mvn test
 
 # Documentation
-pages:
-  stage: deploy
-  script:
-    - cd game
-    - mvn javadoc:javadoc
-    - cp -r target/site/apidocs/. public/
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 day
+#pages:
+#  stage: deploy
+#  script:
+#    - cd game
+#    - mvn javadoc:javadoc
+#    - cp -r target/site/apidocs/. public/
+#  artifacts:
+#    paths:
+#      - public
+#    expire_in: 1 day
 #  only:
 #    - master
