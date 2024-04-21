@@ -96,9 +96,6 @@
 
         public void initializeLevel(){
             this.moveTimer = new Timer(300, e -> {
-                this.model.removeDeadMonsters(this.model.monsters);
-//                this.model.removeDeadPlayers(this.model.getPlayers());
-
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
                     for(Player p: model.getPlayers()){
@@ -144,22 +141,20 @@
             }
 
             for (Monster monster : model.getMonsters()){
-                if(!monster.isDead()){
-                    if (monster instanceof GhostlyMonster){
-                        g.drawImage(ResourceCollection.Images.GHOSTLY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                if (monster instanceof GhostlyMonster){
+                    g.drawImage(ResourceCollection.Images.GHOSTLY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                    }
-                    else if(monster instanceof SpeedyMonster){
-                        g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                }
+                else if(monster instanceof SpeedyMonster){
+                    g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                    }
-                    else if(monster instanceof ConfusedMonster){
-                        g.drawImage(ResourceCollection.Images.CONFUSED_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                }
+                else if(monster instanceof ConfusedMonster){
+                    g.drawImage(ResourceCollection.Images.CONFUSED_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                    }
-                    else{
-                        g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
-                    }
+                }
+                else{
+                    g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
                 }
             }
 
@@ -186,7 +181,7 @@
                     if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
                         for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
                             if (item instanceof Bomb) {
-                                    g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
                         }
                     }
