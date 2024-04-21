@@ -4,6 +4,7 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
+import entity.monster.Monster;
 import entity.player.Player;
 import item.GameItem;
 import util.ResourceCollection;
@@ -110,6 +111,12 @@ public class Bomb extends GameItem {
                             player.setDead(true);
                         }
 
+                    }
+                });
+
+                getCell().getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Monster m) {
+                            m.setDead(true);
                     }
                 });
                 // check for player on blast range and set dead

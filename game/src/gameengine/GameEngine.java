@@ -15,6 +15,7 @@ import gui.GameTopPanelGUI;
 
 import levels.LevelReader;
 import map.GameMap;
+import java.util.Iterator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class GameEngine {
     private List<Player> players;
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
-    private List<Monster> monsters;
+    public List<Monster> monsters;
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
@@ -53,9 +54,9 @@ public class GameEngine {
         ConfusedMonster m4 = new ConfusedMonster(0, 0, this.gameMap, this.players);
 
         monsters.add(m1);
-        monsters.add(m2);
-        monsters.add(m3);
-        monsters.add(m4);
+//        monsters.add(m2);
+//        monsters.add(m3);
+//        monsters.add(m4);
 
     }
     /**
@@ -90,6 +91,7 @@ public class GameEngine {
     public List<Monster> getMonsters(){
         return this.monsters;
     }
+
 
 
     /**

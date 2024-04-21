@@ -8,18 +8,30 @@ import entity.Entity;
 import map.GameMap;
 import entity.player.Player;
 import java.util.List;
+// TODO: NOT READY!!! NEED SAFELY DELETE OF MONSTER
 
 public class Monster extends Entity {
     private Image baseImage;
     private int direction;
     private int speed;
 
+    protected boolean isDead;
+
+
+    public void setDead(boolean state){
+        this.isDead = state;
+    }
+
+    public boolean isDead(){
+        return this.isDead;
+    }
     protected List<Player> players;
 
     // Constructor
     public Monster(int x, int y, GameMap gameMap, List<Player> players) {
         super(x, y, gameMap);
         this.players = players;
+        this.isDead = false;
 
     }
 

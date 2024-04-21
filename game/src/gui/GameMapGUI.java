@@ -141,20 +141,22 @@
             }
 
             for (Monster monster : model.getMonsters()){
-                if (monster instanceof GhostlyMonster){
-                    g.drawImage(ResourceCollection.Images.GHOSTLY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                if(!monster.isDead()){
+                    if (monster instanceof GhostlyMonster){
+                        g.drawImage(ResourceCollection.Images.GHOSTLY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                }
-                else if(monster instanceof SpeedyMonster){
-                    g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    }
+                    else if(monster instanceof SpeedyMonster){
+                        g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                }
-                else if(monster instanceof ConfusedMonster){
-                    g.drawImage(ResourceCollection.Images.CONFUSED_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    }
+                    else if(monster instanceof ConfusedMonster){
+                        g.drawImage(ResourceCollection.Images.CONFUSED_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
-                }
-                else{
-                    g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    }
+                    else{
+                        g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+                    }
                 }
             }
 

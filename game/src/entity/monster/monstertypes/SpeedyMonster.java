@@ -84,11 +84,13 @@ public class SpeedyMonster extends Monster {
             int newX = this.x + dx[direction];
             int newY = this.y + dy[direction];
 
-            if (newX >= 0 && newX < gameMap.getMap()[0].length &&
-                    newY >= 0 && newY < gameMap.getMap().length &&
-                    gameMap.getMap()[newY][newX] instanceof NormalCell) {
+            if (newX >= 0 && newX < gameMap.getMap()[0].length && newY >= 0 && newY < gameMap.getMap().length && gameMap.getMap()[newY][newX] instanceof NormalCell) {
+                this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
+
                 this.x = newX;
                 this.y = newY;
+                this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
             }
             else {
                 if(gameMap.getMap()[newY][newX] instanceof WallCell || gameMap.getMap()[newY][newX] instanceof BoxCell){

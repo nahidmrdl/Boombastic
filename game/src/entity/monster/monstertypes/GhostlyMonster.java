@@ -53,8 +53,13 @@ public class GhostlyMonster extends Monster {
 
             if (newX > 0 && newX < gameMap.getMap()[0].length - 1 &&
                     newY > 0 && newY < gameMap.getMap().length - 1) {
+                this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
+
                 this.x = newX;
                 this.y = newY;
+                this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
+
             } else {
 
                 direction = rand.nextInt(4);
