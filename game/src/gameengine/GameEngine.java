@@ -73,18 +73,18 @@ public class GameEngine {
     }
 
 
-
-    public void removeDeadPlayers(List<Player> players) {
-        synchronized(players) {
-            Iterator<Player> iterator = players.iterator();
-            while (iterator.hasNext()) {
-                Player player = iterator.next();
-                if (player.isDead()) {
-                    iterator.remove(); // Safely remove the current player from the list
-                }
-            }
-        }
-    }
+        // TODO: FIX THIS
+//    public void removeDeadPlayers(List<Player> players) {
+//        synchronized(players) {
+//            Iterator<Player> iterator = players.iterator();
+//            while (iterator.hasNext()) {
+//                Player player = iterator.next();
+//                if (player.isDead()) {
+//                    iterator.remove(); // Safely remove the current player from the list
+//                }
+//            }
+//        }
+//    }
 
 
 
