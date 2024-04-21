@@ -14,7 +14,6 @@ import entity.player.Player;
 import map.GameMap;
 
 import javax.swing.*;
-// TODO: NOT READY!!! CONFUSED MONSTER
 public class ConfusedMonster extends Monster {
     private Image baseImage;
     private int direction;
@@ -84,21 +83,27 @@ public class ConfusedMonster extends Monster {
             int newX = this.x + dx[direction];
             int newY = this.y + dy[direction];
             if (newX >= 0 && newX < gameMap.getMap()[0].length && newY >= 0 && newY < gameMap.getMap().length && gameMap.getMap()[newY][newX] instanceof NormalCell) {
-                    newVal = rand.nextInt(4);
+                this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
+
+                newVal = rand.nextInt(4);
                         if(dy[newVal] == 0 && dy[direction] != 0 || dy[newVal] != 0 && dy[direction] == 0 || dx[newVal] == 0 && dx[direction] != 0 || dx[newVal] != 0 && dx[direction] == 0){
                             if(gameMap.getMap()[this.y + dy[newVal]][this.x + dx[newVal]] instanceof NormalCell){
 //                                System.out.println("Turned");
-                                if(rand.nextInt(4) == 3) {
+                                if(rand.nextInt(3) == 2) {
 //                                    System.out.println("Turned!!");
 
                                     this.x = this.x + dx[newVal];
                                     this.y = this.y + dy[newVal];
+                                    this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
                                 }
                             }
                         }
                 else{
                     this.x = newX;
                     this.y = newY;
+                    this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
                 }
             }
             else {

@@ -54,9 +54,9 @@ public class GameEngine {
         ConfusedMonster m4 = new ConfusedMonster(0, 0, this.gameMap, this.players);
 
         monsters.add(m1);
-        monsters.add(m2);
-        monsters.add(m3);
-        monsters.add(m4);
+//        monsters.add(m2);
+//        monsters.add(m3);
+//        monsters.add(m4);
 
     }
 // to safely delete monsters

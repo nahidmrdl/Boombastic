@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="NEW dead image for top pnel">
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="More debugging, involving forkroad turn.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,32 +46,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "MonsterAI",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-22",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/boombastic/game/src/assets/icons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;MonsterAI&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/boombastic/game/src/assets/icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;G:/soft-tech/boombastic/game/gameModule/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\boombastic\game\src\assets\icons" />
@@ -121,7 +128,8 @@
       <workItem from="1713216238138" duration="1342000" />
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713426538719" duration="129000" />
-      <workItem from="1713713402442" duration="1528000" />
+      <workItem from="1713713402442" duration="9209000" />
+      <workItem from="1713723208559" duration="1645000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -203,7 +211,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713387039974</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Monster AI tracking implemented">
+      <option name="closed" value="true" />
+      <created>1713715152549</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713715152549</updated>
+    </task>
+    <task id="LOCAL-00012" summary="More debugging, involving forkroad turn.">
+      <option name="closed" value="true" />
+      <created>1713723153741</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713723153741</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,14 +256,17 @@
     <MESSAGE value="." />
     <MESSAGE value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
     <MESSAGE value="NEW dead image for top pnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW dead image for top pnel" />
+    <MESSAGE value="Monster AI tracking implemented" />
+    <MESSAGE value="Monster AI tracking debugging" />
+    <MESSAGE value="More debugging, involving forkroad turn." />
+    <option name="LAST_COMMIT_MESSAGE" value="More debugging, involving forkroad turn." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/item/bomb/Bomb.java</url>
-          <line>22</line>
+          <line>23</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

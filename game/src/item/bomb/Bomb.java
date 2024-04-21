@@ -10,7 +10,6 @@ import item.GameItem;
 import util.ResourceCollection;
 
 import javax.swing.*;
-import java.util.Iterator;
 
 public class Bomb extends GameItem {
 
@@ -115,19 +114,11 @@ public class Bomb extends GameItem {
                     }
                 });
 
-
                 getCell().getVisitors().forEach(visitor -> {
                     if (visitor instanceof Monster m) {
                             m.setDead(true);
                     }
                 });
-
-                getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
-                    if (visitor instanceof Monster m) {
-                        m.setDead(true);
-                    }
-                });
-
                 // check for player on blast range and set dead
                 getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
                     if (visitor instanceof Player player) {
