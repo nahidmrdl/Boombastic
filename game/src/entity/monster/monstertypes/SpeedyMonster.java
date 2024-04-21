@@ -102,11 +102,8 @@ public class SpeedyMonster extends Monster {
                             direction = directionNew;
                         }
                         else{
-                            System.out.println("bad");
-
                             direction = rand.nextInt(4);
                         }
-                        System.out.println("Going UP");
                         break;
                     case "DOWN":
                         directionNew = 2;
@@ -114,12 +111,8 @@ public class SpeedyMonster extends Monster {
                             direction = directionNew;
                         }
                         else{
-                            System.out.println("bad");
-
                             direction = rand.nextInt(4);
                         }
-                        System.out.println("Going DOWN");
-
                         break;
                     case "LEFT":
                         directionNew = 1;
@@ -127,12 +120,8 @@ public class SpeedyMonster extends Monster {
                             direction = directionNew;
                         }
                         else{
-                            System.out.println("bad");
-
                             direction = rand.nextInt(4);
                         }
-                        System.out.println("Going LEFT");
-
                         break;
                     case "RIGHT":
                         directionNew = 0;
@@ -140,11 +129,8 @@ public class SpeedyMonster extends Monster {
                             direction = directionNew;
                         }
                         else{
-                            System.out.println("bad");
-
                             direction = rand.nextInt(4);
                         }
-                        System.out.println("Going RIGHT");
                         break;
                 }
             }
