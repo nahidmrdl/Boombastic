@@ -12,7 +12,17 @@ public abstract class GameItem {
     protected long finishTime;
     protected Cell cell;
 
+    protected boolean isBlown;
     private Player owner;
+
+    public boolean isBlown(){
+        return this.isBlown;
+    }
+
+    public void setBlown(boolean state){
+        this.isBlown = true;
+    }
+
 
 
     public GameItem(Image image) {

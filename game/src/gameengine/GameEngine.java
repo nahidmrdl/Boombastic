@@ -54,11 +54,40 @@ public class GameEngine {
         ConfusedMonster m4 = new ConfusedMonster(0, 0, this.gameMap, this.players);
 
         monsters.add(m1);
-//        monsters.add(m2);
-//        monsters.add(m3);
-//        monsters.add(m4);
+        monsters.add(m2);
+        monsters.add(m3);
+        monsters.add(m4);
 
     }
+// to safely delete monsters
+    public void removeDeadMonsters(List<Monster> monsters) {
+        synchronized(monsters) {
+            Iterator<Monster> iterator = monsters.iterator();
+            while (iterator.hasNext()) {
+                Monster monster = iterator.next();
+                if (monster.isDead()) {
+                    iterator.remove(); // Safely remove the current monster from the list
+                }
+            }
+        }
+    }
+
+
+
+    public void removeDeadPlayers(List<Player> players) {
+        synchronized(players) {
+            Iterator<Player> iterator = players.iterator();
+            while (iterator.hasNext()) {
+                Player player = iterator.next();
+                if (player.isDead()) {
+                    iterator.remove(); // Safely remove the current player from the list
+                }
+            }
+        }
+    }
+
+
+
     /**
      * Read the map from the file and create the game map
      */

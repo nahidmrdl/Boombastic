@@ -96,6 +96,9 @@
 
         public void initializeLevel(){
             this.moveTimer = new Timer(300, e -> {
+                this.model.removeDeadMonsters(this.model.monsters);
+//                this.model.removeDeadPlayers(this.model.getPlayers());
+
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
                     for(Player p: model.getPlayers()){
@@ -183,7 +186,7 @@
                     if (!this.model.getMap().getMap()[i][j].getItems().isEmpty()) {
                         for (GameItem item : this.model.getMap().getMap()[i][j].getItems()) {
                             if (item instanceof Bomb) {
-                                g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
+                                    g.drawImage(item.getImage(), j * cellSize, i * cellSize, cellSize, cellSize, this);
                             }
                         }
                     }
