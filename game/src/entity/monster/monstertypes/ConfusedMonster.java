@@ -30,6 +30,29 @@ public class ConfusedMonster extends Monster {
 
 
 
+    public String determineMonsterDirection() {
+        Player p = findNearestPlayer();
+        int upDistance = this.getY() > p.getY() ? this.getY() - p.getY() - 1 : Integer.MAX_VALUE;
+        int downDistance = this.getY() < p.getY() ? p.getY() - this.getY() - 1 : Integer.MAX_VALUE;
+        int leftDistance = this.getX() > p.getX() ? this.getX() - p.getX() - 1 : Integer.MAX_VALUE;
+        int rightDistance = this.getX() < p.getX() ? p.getX() - this.getX() - 1 : Integer.MAX_VALUE;
+
+        int minDistance = Math.min(Math.min(upDistance, downDistance), Math.min(leftDistance, rightDistance));
+
+        if (minDistance == upDistance && upDistance != 0) {
+            return "UP";
+        } else if (minDistance == downDistance && downDistance != 0) {
+            return "DOWN";
+        } else if (minDistance == leftDistance && leftDistance != 0) {
+            return "LEFT";
+        } else if (minDistance == rightDistance && rightDistance != 0) {
+            return "RIGHT";
+        } else {
+            return "sup";
+        }
+    }
+
+
     private void findValidStartingPosition() {
         int maxX = gameMap.getMap().length;
         int maxY = gameMap.getMap()[0].length;
@@ -39,8 +62,11 @@ public class ConfusedMonster extends Monster {
             this.y = rand.nextInt(maxX);
         } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
 
-
     }
+
+
+
+
 
     public void moveRandomly() {
         if(lastMoveTime.getTime() + speed < new Date().getTime()) {
@@ -58,9 +84,44 @@ public class ConfusedMonster extends Monster {
                 this.x = newX;
                 this.y = newY;
             } else {
-                direction = rand.nextInt(4);
+                switch (determineMonsterDirection()){
+                    case "UP":
+                        direction = 3;
+                        System.out.println("Going UP");
+                        break;
+                    case "DOWN":
+                        direction = 2;
+                        System.out.println("Going DOWN");
+
+                        break;
+                    case "LEFT":
+                        direction = 1;
+                        System.out.println("Going LEFT");
+
+                        break;
+                    case "RIGHT":
+                        direction = 0;
+                        System.out.println("Going RIGHT");
+                        break;
+                }
+
             }
         }
+    }
+
+    private Player findNearestPlayer() {
+        Player nearestPlayer = null;
+        double minDistance = Double.MAX_VALUE;  // Start with the largest possible value
+
+        for (Player player : this.players) {
+            double distance = Math.sqrt(Math.pow(this.x - player.getX(), 2) + Math.pow(this.y - player.getY(), 2));
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestPlayer = player;
+            }
+        }
+
+        return nearestPlayer;
     }
 
     public int getX(){

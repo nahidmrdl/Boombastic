@@ -29,101 +29,32 @@ public class SpeedyMonster extends Monster {
         findValidStartingPosition();
         direction = new Random().nextInt(4); // 0: left, 1: right, 2: up, 3: down
         this.speed = 300;
-//        setupNodes();
     }
 
-//    private void setupNodes() {
-//        int width = gameMap.getMap().length;
-//        int height = gameMap.getMap()[0].length;
-//        this.nodes = new Node[width][height];  // Assuming 'nodes' is a class variable
-//
-//        for (int x = 0; x < width; x++) {
-//            for (int y = 0; y < height; y++) {
-//                 nodes[x][y] = new Node(x, y);
-//
-//                // Only proceed to connect nodes if the current cell is a NormalCell
-//                if (gameMap.getCell(x, y) instanceof NormalCell) {
-//                    if (x > 0 && gameMap.getCell(x - 1, y) instanceof NormalCell) {
-//                        nodes[x][y].edges.add(new Edge(nodes[x - 1][y], 1));
-//                    }
-//                    if (y > 0 && gameMap.getCell(x, y - 1) instanceof NormalCell) {
-//                        nodes[x][y].edges.add(new Edge(nodes[x][y - 1], 1));
-//                    }
-//                    if (x < width - 1 && gameMap.getCell(x + 1, y) instanceof NormalCell) {
-//                        nodes[x][y].edges.add(new Edge(nodes[x + 1][y], 1));
-//                    }
-//                    if (y < height - 1 && gameMap.getCell(x, y + 1) instanceof NormalCell) {
-//                        nodes[x][y].edges.add(new Edge(nodes[x][y + 1], 1));
-//                    }
-//                }
-//            }
-//        }
-//    }
 
-//    public void moveTowardNearestPlayer() {
-//        Player nearestPlayer = findNearestPlayer();
-//        if (nearestPlayer != null) {
-//            Node start = nodes[this.getX()][this.getY()];
-//            Node end = nodes[nearestPlayer.getX()][nearestPlayer.getY()];
-//            List<Node> path = dijkstra(start, end);
-//            if (!path.isEmpty() && path.size() > 1) {
-//                // Move to the first node in the path that isn't the current node
-//                Node nextStep = path.get(1);
-//                this.setX(nextStep.x);
-//                this.setY(nextStep.y);
-//            }
-//        }
-//    }
 
-//    private List<Node> dijkstra(Node start, Node end) {
-//        PriorityQueue<Node> queue = new PriorityQueue<>(Comparator.comparingDouble(n -> n.minDistance));
-//        Map<Node, Double> bestDistances = new HashMap<>();  // This map will track the best known distances
-//
-//        start.minDistance = 0;
-//        queue.add(start);
-//        bestDistances.put(start, 0.0);
-//
-//        while (!queue.isEmpty()) {
-//            Node u = queue.poll();
-//            for (Edge e :u.edges){
-//                System.out.println(e.target + " " + e.cost);
-//
-//            }
-//
-//
-//            // If this distance is not the best known distance, skip processing for this node
-//            if (u.minDistance > bestDistances.getOrDefault(u, Double.POSITIVE_INFINITY)) {
-//                continue;
-//            }
-//
-//            if (u.equals(end)) break;
-//
-//            for (Edge e : u.edges) {
-//                Node v = e.target;
-//                double distanceThroughU = u.minDistance + e.cost;
-//
-//                // Only update if the found distance is better
-//                if (distanceThroughU < v.minDistance) {
-//                    v.minDistance = distanceThroughU;
-//                    v.predecessor = u;
-//                    queue.add(v);
-//                    bestDistances.put(v, distanceThroughU);  // Update the best known distance
-//                }
-//            }
-//        }
-//
-//        return reconstructPath(end);
-//    }
-//
-//
-//    private List<Node> reconstructPath(Node target) {
-//        List<Node> path = new ArrayList<>();
-//        for (Node at = target; at != null; at = at.predecessor) {
-//            path.add(at);
-//        }
-//        Collections.reverse(path);
-//        return path;
-//    }
+
+    public String determineMonsterDirection() {
+        Player p = findNearestPlayer();
+        int upDistance = this.getY() > p.getY() ? this.getY() - p.getY() - 1 : Integer.MAX_VALUE;
+        int downDistance = this.getY() < p.getY() ? p.getY() - this.getY() - 1 : Integer.MAX_VALUE;
+        int leftDistance = this.getX() > p.getX() ? this.getX() - p.getX() - 1 : Integer.MAX_VALUE;
+        int rightDistance = this.getX() < p.getX() ? p.getX() - this.getX() - 1 : Integer.MAX_VALUE;
+
+        int minDistance = Math.min(Math.min(upDistance, downDistance), Math.min(leftDistance, rightDistance));
+
+        if (minDistance == upDistance && upDistance != 0) {
+            return "UP";
+        } else if (minDistance == downDistance && downDistance != 0) {
+            return "DOWN";
+        } else if (minDistance == leftDistance && leftDistance != 0) {
+            return "LEFT";
+        } else if (minDistance == rightDistance && rightDistance != 0) {
+            return "RIGHT";
+        } else {
+            return "sup";
+        }
+    }
 
 
     private void findValidStartingPosition() {
@@ -157,7 +88,27 @@ public class SpeedyMonster extends Monster {
                 this.x = newX;
                 this.y = newY;
             } else {
-                direction = rand.nextInt(4);
+                switch (determineMonsterDirection()){
+                    case "UP":
+                        direction = 3;
+                        System.out.println("Going UP");
+                        break;
+                    case "DOWN":
+                        direction = 2;
+                        System.out.println("Going DOWN");
+
+                        break;
+                    case "LEFT":
+                        direction = 1;
+                        System.out.println("Going LEFT");
+
+                        break;
+                    case "RIGHT":
+                        direction = 0;
+                        System.out.println("Going RIGHT");
+                        break;
+                }
+
             }
         }
     }
