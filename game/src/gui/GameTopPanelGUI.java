@@ -74,34 +74,34 @@ public class GameTopPanelGUI {
 
         //Player 1
         constraints.gridx = 0;
-        if(!players.getFirst().isDead())
-            this.plPanel.add(createPlayerPanel(players.getFirst().getImageIndex()), constraints);
+        if(!players.get(0).isDead())
+            this.plPanel.add(createPlayerPanel(players.getFirst().getImageIndex(), 0), constraints);
         else {
-            this.plPanel.add(createPlayerPanel(4), constraints);
+            this.plPanel.add(createPlayerPanel(4, 0), constraints);
         }
 
         //Player 2
         constraints.gridx = 1;
         if(!players.get(1).isDead())
-            this.plPanel.add(createPlayerPanel((players.get(1).getImageIndex())), constraints);
+            this.plPanel.add(createPlayerPanel((players.get(1).getImageIndex()), 1), constraints);
         else {
-            this.plPanel.add(createPlayerPanel(4), constraints);
+            this.plPanel.add(createPlayerPanel(4, 1), constraints);
         }
 
         //Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
             if(!players.getLast().isDead())
-                this.plPanel.add(createPlayerPanel((players.getLast().getImageIndex())), constraints);
+                this.plPanel.add(createPlayerPanel((players.get(2).getImageIndex()), 2), constraints);
             else {
-                this.plPanel.add(createPlayerPanel(4), constraints);
+                this.plPanel.add(createPlayerPanel(4, 2), constraints);
             }
         }
 
         this.topPanel.add(this.plPanel, BorderLayout.WEST);
     }
 
-    private JPanel createPlayerPanel(int playerIndex) {
+    private JPanel createPlayerPanel(int playerIndex, int playerNumber) {
         List<Player> players = model.getPlayers();
         JPanel playerPanel = new JPanel();
 
@@ -145,7 +145,7 @@ public class GameTopPanelGUI {
         JLabel gap2 = new JLabel("   ");
 
         JLabel bombCount;
-        if (playerIndex != 4) bombCount = new JLabel("  " + players.get(playerIndex).bombCount);
+        if (playerIndex != 4) bombCount = new JLabel("  " + players.get(playerNumber).bombCount);
         else bombCount = new JLabel("  0");
         bombCount.setFont(new Font("Arial", Font.BOLD, 30));
         bombs.add(gap2);
@@ -162,8 +162,7 @@ public class GameTopPanelGUI {
         JLabel victoryLabel = new JLabel(new ImageIcon(victoryImage));
 
         JLabel victoryCount;
-        if (playerIndex != 4) victoryCount = new JLabel("  " + players.get(playerIndex).victoryCount);
-        else victoryCount = new JLabel("  0");
+        victoryCount = new JLabel("  " + players.get(playerNumber).victoryCount);
         victoryCount.setFont(new Font("Arial", Font.BOLD, 30));
 
         victories.add(gap);
@@ -189,7 +188,7 @@ public class GameTopPanelGUI {
         pwUpsCurses.setMinimumSize(new Dimension(200, 30));
 
         if (playerIndex != 4) {
-            for (PowerUp powerUp : players.get(playerIndex).powerUpsItems) {
+            for (PowerUp powerUp : players.get(playerNumber).powerUpsItems) {
                 ImageIcon icon = new ImageIcon(powerUp.getImage());
 
                 if(powerUp.isPowerUpAboutToFinish()) {
@@ -202,7 +201,7 @@ public class GameTopPanelGUI {
             }
         }
         if (playerIndex != 4) {
-            for (Curse curse : players.get(playerIndex).cursesItems) {
+            for (Curse curse : players.get(playerNumber).cursesItems) {
                 ImageIcon icon = new ImageIcon(curse.getImage());
 
                 if(curse.isCurseAboutToFinish()) {
