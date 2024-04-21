@@ -4,6 +4,7 @@
     import cell.box.BoxCell;
     import cell.normalCell.NormalCell;
     import entity.monster.Monster;
+    import entity.monster.monstertypes.ConfusedMonster;
     import entity.monster.monstertypes.GhostlyMonster;
     import entity.monster.monstertypes.SpeedyMonster;
     import entity.player.Player;
@@ -94,7 +95,6 @@
         }
 
         public void initializeLevel(){
-
             this.moveTimer = new Timer(300, e -> {
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
@@ -149,9 +149,12 @@
                     g.drawImage(ResourceCollection.Images.SPEEDY_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
 
                 }
+                else if(monster instanceof ConfusedMonster){
+                    g.drawImage(ResourceCollection.Images.CONFUSED_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
+
+                }
                 else{
                     g.drawImage(ResourceCollection.Images.BASIC_MONSTER.getImage(), monster.getX() * cellSize, monster.getY() * cellSize, cellSize, cellSize, this);
-
                 }
             }
 

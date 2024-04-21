@@ -3,6 +3,7 @@ package gameengine;
 import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.monster.Monster;
+import entity.monster.monstertypes.ConfusedMonster;
 import entity.monster.monstertypes.GhostlyMonster;
 import entity.monster.monstertypes.SimpleMonster;
 import entity.monster.monstertypes.SpeedyMonster;
@@ -49,9 +50,12 @@ public class GameEngine {
         SimpleMonster m1 = new SimpleMonster(0, 0, this.gameMap, this.players);
         GhostlyMonster m2 = new GhostlyMonster(0, 0, this.gameMap, this.players);
         SpeedyMonster m3 = new SpeedyMonster(0, 0, this.gameMap, this.players);
+        ConfusedMonster m4 = new ConfusedMonster(0, 0, this.gameMap, this.players);
+
         monsters.add(m1);
         monsters.add(m2);
         monsters.add(m3);
+        monsters.add(m4);
 
     }
     /**

@@ -3,6 +3,7 @@ package entity.monster.monstertypes;
 import java.awt.*;
 import java.util.*;
 
+import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
 import entity.Entity;
@@ -12,6 +13,7 @@ import map.GameMap;
 import util.Edge;
 import util.Node;
 
+import javax.swing.*;
 import java.util.List;
 
 //TODO NOT READY!! SHORTEST PATH IMPLEMENTATION.
@@ -36,10 +38,10 @@ public class SpeedyMonster extends Monster {
 
     public String determineMonsterDirection() {
         Player p = findNearestPlayer();
-        int upDistance = this.getY() > p.getY() ? this.getY() - p.getY() - 1 : Integer.MAX_VALUE;
-        int downDistance = this.getY() < p.getY() ? p.getY() - this.getY() - 1 : Integer.MAX_VALUE;
-        int leftDistance = this.getX() > p.getX() ? this.getX() - p.getX() - 1 : Integer.MAX_VALUE;
-        int rightDistance = this.getX() < p.getX() ? p.getX() - this.getX() - 1 : Integer.MAX_VALUE;
+        int upDistance = this.getY() > p.getY() ? this.getY() - p.getY() : Integer.MAX_VALUE;
+        int downDistance = this.getY() < p.getY() ? p.getY() - this.getY() : Integer.MAX_VALUE;
+        int leftDistance = this.getX() > p.getX() ? this.getX() - p.getX() : Integer.MAX_VALUE;
+        int rightDistance = this.getX() < p.getX() ? p.getX() - this.getX() : Integer.MAX_VALUE;
 
         int minDistance = Math.min(Math.min(upDistance, downDistance), Math.min(leftDistance, rightDistance));
 
@@ -78,7 +80,7 @@ public class SpeedyMonster extends Monster {
             Random rand = new Random();
             int[] dx = {1, -1, 0, 0};
             int[] dy = {0, 0, 1, -1};
-
+            int directionNew;
             int newX = this.x + dx[direction];
             int newY = this.y + dy[direction];
 
@@ -87,28 +89,62 @@ public class SpeedyMonster extends Monster {
                     gameMap.getMap()[newY][newX] instanceof NormalCell) {
                 this.x = newX;
                 this.y = newY;
-            } else {
+            }
+            else {
+                if(gameMap.getMap()[newY][newX] instanceof WallCell || gameMap.getMap()[newY][newX] instanceof BoxCell){
+                }
                 switch (determineMonsterDirection()){
                     case "UP":
-                        direction = 3;
+                        directionNew = 3;
+                        if(directionNew != direction){
+                            direction = directionNew;
+                        }
+                        else{
+                            System.out.println("bad");
+
+                            direction = rand.nextInt(4);
+                        }
                         System.out.println("Going UP");
                         break;
                     case "DOWN":
-                        direction = 2;
+                        directionNew = 2;
+                        if(directionNew != direction){
+                            direction = directionNew;
+                        }
+                        else{
+                            System.out.println("bad");
+
+                            direction = rand.nextInt(4);
+                        }
                         System.out.println("Going DOWN");
 
                         break;
                     case "LEFT":
-                        direction = 1;
+                        directionNew = 1;
+                        if(directionNew != direction){
+                            direction = directionNew;
+                        }
+                        else{
+                            System.out.println("bad");
+
+                            direction = rand.nextInt(4);
+                        }
                         System.out.println("Going LEFT");
 
                         break;
                     case "RIGHT":
-                        direction = 0;
+                        directionNew = 0;
+                        if(directionNew != direction){
+                            direction = directionNew;
+                        }
+                        else{
+                            System.out.println("bad");
+
+                            direction = rand.nextInt(4);
+                        }
                         System.out.println("Going RIGHT");
                         break;
                 }
-
             }
         }
     }
@@ -128,16 +164,15 @@ public class SpeedyMonster extends Monster {
         return this.y;
     }
 
-    // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {
         return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
     }
 
     private Player findNearestPlayer() {
         Player nearestPlayer = null;
-        double minDistance = Double.MAX_VALUE;  // Start with the largest possible value
+        double minDistance = Double.MAX_VALUE;
 
-        for (Player player : this.players) {  // Iterate through the list of players
+        for (Player player : this.players) {
             double distance = Math.sqrt(Math.pow(this.x - player.getX(), 2) + Math.pow(this.y - player.getY(), 2));
             if (distance < minDistance) {
                 minDistance = distance;
@@ -145,7 +180,7 @@ public class SpeedyMonster extends Monster {
             }
         }
 
-        return nearestPlayer;  // Return the nearest player found, or null if no players are in the list
+        return nearestPlayer;
     }
 }
 
