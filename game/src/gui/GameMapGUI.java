@@ -96,6 +96,7 @@
 
         public void initializeLevel(){
             this.moveTimer = new Timer(300, e -> {
+                this.model.removeDeadMonsters(this.model.monsters);
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
                     for(Player p: model.getPlayers()){

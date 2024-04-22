@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Monsters can change their direction by their own volition">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_06__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_15__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024__16_35__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024__16_35__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
-    </list>
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Changed probability of turning the direction of monster" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +122,7 @@
       <workItem from="1713713402442" duration="9209000" />
       <workItem from="1713723208559" duration="2317000" />
       <workItem from="1713734439186" duration="2119000" />
-      <workItem from="1713810418513" duration="662000" />
+      <workItem from="1713810418513" duration="970000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -274,7 +268,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713811029728</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Monsters can change their direction by their own volition">
+      <option name="closed" value="true" />
+      <created>1713811266774</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1713811266774</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changed probability of turning the direction of monster">
+      <option name="closed" value="true" />
+      <created>1713811394814</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1713811394814</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +321,8 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="Monster kills now in the same cell" />
     <MESSAGE value="Monsters can change their direction by their own volition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Monsters can change their direction by their own volition" />
+    <MESSAGE value="Changed probability of turning the direction of monster" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed probability of turning the direction of monster" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
