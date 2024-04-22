@@ -78,5 +78,6 @@ public class SimpleMonster extends Monster {
     }
 
 
+
 }
 

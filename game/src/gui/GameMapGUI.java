@@ -103,7 +103,6 @@
                         if(ms.isNextToPlayer(p.getX(), p.getY())){
                             if(!p.isInvincible()){
                                 p.setDead(true);
-
                             }
                         }
                     }
