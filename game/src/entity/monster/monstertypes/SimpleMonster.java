@@ -54,6 +54,10 @@ public class SimpleMonster extends Monster {
                 this.y = newY;
                 this.gameMap.getMap()[this.y][this.x].addVisitor(this);
 
+                if (rand.nextInt(4) == 3){
+                    direction = rand.nextInt(4);
+                }
+
             } else {
                 direction = rand.nextInt(4);
             }

@@ -89,7 +89,7 @@ public class ConfusedMonster extends Monster {
                         if(dy[newVal] == 0 && dy[direction] != 0 || dy[newVal] != 0 && dy[direction] == 0 || dx[newVal] == 0 && dx[direction] != 0 || dx[newVal] != 0 && dx[direction] == 0){
                             if(gameMap.getMap()[this.y + dy[newVal]][this.x + dx[newVal]] instanceof NormalCell){
 //                                System.out.println("Turned");
-                                if(rand.nextInt(7) == 2) {
+                                if(rand.nextInt(4) == 2) {
 //                                    System.out.println("Turned!!");
 
                                     this.x = this.x + dx[newVal];
