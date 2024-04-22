@@ -280,6 +280,7 @@ public class GameTopPanelGUI {
                             player.bombCount = 1;
                             player.powerUpsItems.clear();
                             player.cursesItems.clear();
+                            player.setDead(false);
                         }
                         initialScreen.reset(this.players, this.rounds, this.map);
                     } catch (IOException ex) {
