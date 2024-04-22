@@ -59,7 +59,7 @@ public class GhostlyMonster extends Monster {
                 this.y = newY;
                 this.gameMap.getMap()[this.y][this.x].addVisitor(this);
 
-                if (rand.nextInt(4) == 3){
+                if (rand.nextInt(10) == 3){
                     direction = rand.nextInt(4);
                 }
 
