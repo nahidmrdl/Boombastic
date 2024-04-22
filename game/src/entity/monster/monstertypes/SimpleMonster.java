@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.monster.Monster;
 import entity.player.Player;
@@ -33,9 +35,21 @@ public class SimpleMonster extends Monster {
         do {
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
-        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell) || !isFarFromPlayers(5));
 
 
+    }
+
+    private boolean isFarFromPlayers(int distance) {
+        for (Player player : players) {
+            int playerX = player.getX();
+            int playerY = player.getY();
+            double dist = Math.sqrt(Math.pow(playerX - this.x, 2) + Math.pow(playerY - this.y, 2));
+            if (dist < distance) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void moveRandomly() {
@@ -63,6 +77,9 @@ public class SimpleMonster extends Monster {
             }
         }
     }
+
+
+
 
     public int getX(){
         return this.x;

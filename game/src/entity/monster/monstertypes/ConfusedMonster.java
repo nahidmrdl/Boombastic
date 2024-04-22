@@ -62,8 +62,21 @@ public class ConfusedMonster extends Monster {
         do {
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
-        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell) || !isFarFromPlayers(5));
 
+
+    }
+
+    private boolean isFarFromPlayers(int distance) {
+        for (Player player : players) {
+            int playerX = player.getX();
+            int playerY = player.getY();
+            double dist = Math.sqrt(Math.pow(playerX - this.x, 2) + Math.pow(playerY - this.y, 2));
+            if (dist < distance) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
