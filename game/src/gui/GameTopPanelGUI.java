@@ -273,7 +273,7 @@ public class GameTopPanelGUI {
 
                 JButton restartButton = new JButton("Restart");
                 restartButton.addActionListener(e -> {
-                    restartDialog(dialog);
+                    restartDialog(dialog, false);
                 });
 
                 JButton exitButton = new JButton("Back to Menu");
@@ -321,7 +321,7 @@ public class GameTopPanelGUI {
         frame.add(initialScreen);
     }
 
-    public void restartDialog(JDialog dialog) {
+    public void restartDialog(JDialog dialog, boolean gameResult) {
         dialog.dispose();
         frame.dispose();
         GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
@@ -331,6 +331,7 @@ public class GameTopPanelGUI {
                 player.powerUpsItems.clear();
                 player.cursesItems.clear();
                 player.setDead(false);
+                if (gameResult) {player.victoryCount = 0;}
             }
             initialScreen.reset(this.players, this.rounds, this.map);
         } catch (IOException ex) {

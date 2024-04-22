@@ -16,13 +16,10 @@
 
     import javax.swing.*;
     import java.awt.*;
-    import java.awt.event.ActionListener;
     import java.awt.event.KeyAdapter;
     import java.awt.event.KeyEvent;
     import java.io.IOException;
     import java.util.Random;
-    import java.util.concurrent.atomic.AtomicInteger;
-
     import cell.wall.WallCell;
 
     public class GameMapGUI extends JPanel {
@@ -34,6 +31,7 @@
         private final GameTopPanelGUI topPanelGUI;
         public Timer moveTimer;
         private Timer timer;
+
         public GameMapGUI( GameEngine model, JFrame frame, GameTopPanelGUI topPanelGUI) throws IOException {
             this.model = model;
             this.frame = frame;
@@ -45,19 +43,16 @@
             this.setFocusable(true);
             this.frame.setLocationRelativeTo(null);
 
-            System.out.println(model.getPlayers());
-            int playerCount = model.getPlayers().size();
-            System.out.println("Player count: " + playerCount);
-
             int delay = 1000 / 24;
             timer = new Timer(delay, e -> {
                 try {
                     this.model.runGameUnit();
                     this.topPanelGUI.updateTopPanel();
                     long countDeadPlayers = model.getPlayers().stream().filter(Player::isDead).count();
-                    if (countDeadPlayers == model.getPlayers().size()) {
+
+                    if (countDeadPlayers == model.getPlayers().size() - 1) {
                         timer.stop();
-                        SwingUtilities.invokeLater(this::showGameOverDialog);
+                        showGameOverDialog();
                     }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
@@ -71,17 +66,32 @@
         private void showGameOverDialog() {
             topPanelGUI.timerObj.stop();
             JDialog dialog = new JDialog(frame, "Game over!", true);
-            dialog.setLayout(new GridLayout(3, 1));
             dialog.setSize(200, 300);
             dialog.setLocationRelativeTo(frame);
 
-            JLabel label = new JLabel("Game over!");
-            label.setHorizontalAlignment(SwingConstants.CENTER);
-            dialog.add(label);
+            for(Player player : model.getPlayers()){
+                if(!player.isDead()){
+                    player.victoryCount++;
+                    topPanelGUI.updateTopPanel();
+                    JLabel label = new JLabel();
+                    label.setFont(new Font("Arial", Font.BOLD, 12));
+                    if (!isGameOver()) {
+                        dialog.setLayout(new GridLayout(3, 1));
+                        label.setText("Player " + player.getName() + " won this round!");
+                    } else {
+                        JLabel trophyLabel = new JLabel(new ImageIcon(ResourceCollection.Images.TROPHY.getImage()));
+                        dialog.setLayout(new GridLayout(4, 1));
+                        dialog.add(trophyLabel);
+                        label.setText("Player " + player.getName() + " won the game!");
+                    }
+                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                    dialog.add(label);
+                }
+            }
 
             JButton restart = new JButton("Restart");
             restart.addActionListener(e -> {
-                topPanelGUI.restartDialog(dialog);
+                topPanelGUI.restartDialog(dialog, isGameOver());
                 dialog.dispose();
                 frame.dispose();
             });
@@ -97,6 +107,17 @@
             dialog.add(menuButton);
 
             dialog.setVisible(true);
+        }
+
+        public boolean isGameOver() {
+            boolean isGameOver = false;
+            for (Player player : model.getPlayers()) {
+                if (player.victoryCount == model.getRoundCount()) {
+                    isGameOver = true;
+                    break;
+                }
+            }
+            return isGameOver;
         }
 
         private void loadMapAssetsRandomly() throws IOException {
@@ -134,7 +155,6 @@
         }
 
         public void initializeLevel(){
-
             this.moveTimer = new Timer(300, e -> {
                 for(Monster ms : model.getMonsters()){
                     ms.moveRandomly();
@@ -148,11 +168,9 @@
                     }
                 }
                 repaint();
-
             });
             moveTimer.start();
         }
-
 
         /**
          * Sets up the key listener for the game.
