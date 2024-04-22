@@ -5,7 +5,7 @@ import gameengine.GameEngine;
 import item.curse.Curse;
 import item.powerup.PowerUp;
 import util.ResourceCollection;
-
+import gui.GameMapGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -260,6 +260,7 @@ public class GameTopPanelGUI {
         pauseButton.addActionListener(event -> {
             if (timerObj.isRunning()) {
                 timerObj.stop();
+                GameMapGUI.stopTimer();
                 JDialog dialog = new JDialog(frame, "Game Paused", true);
                 dialog.setLayout(new GridLayout(3, 1));
                 dialog.setSize(200, 300);
@@ -269,11 +270,15 @@ public class GameTopPanelGUI {
                 resumeButton.addActionListener(e -> {
                     dialog.dispose();
                     timerObj.start();
+                    GameMapGUI.startTimer();
+                    GameMapGUI gameMapGUI = GameMapGUI.getInstance();
+                    gameMapGUI.requestFocusInWindow();
                 });
 
                 JButton restartButton = new JButton("Restart");
                 restartButton.addActionListener(e -> {
                     restartDialog(dialog, false);
+                    GameMapGUI.startTimer();
                 });
 
                 JButton exitButton = new JButton("Back to Menu");

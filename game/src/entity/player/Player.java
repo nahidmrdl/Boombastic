@@ -164,11 +164,13 @@ public class Player extends Entity {
     }
 
     public void HandleAction(String keyCode, Cell[][] level ) throws IOException {
+
         if (this.isDead) {
             return;
         }
         int newX = this.x;
         int newY = this.y;
+        //System.out.println("Attempting to move to: " + newX + ", " + newY + " from: " + this.x + ", " + this.y);
 
         HashMap<String, String> playerControls = this.getControls();
         String action = getKeyActionFromKeyCode(keyCode, playerControls);
@@ -217,9 +219,6 @@ public class Player extends Entity {
             } else {
                 moveTo(newX, newY);
             }
-
-
-
             setHasStepFromBomb(false);
         }
     }
@@ -237,8 +236,6 @@ public class Player extends Entity {
                 ((Bomb) item).invokeDetonateAnimation();
             }
         });
-
-
     }
 
    public int getBombBlastRange() {
@@ -273,8 +270,6 @@ public class Player extends Entity {
 
 
     }
-
-
     /**
      * Remove finished power-ups (check the finish time) and if the power-up is finished, remove it from the player and apply the reset method
      */

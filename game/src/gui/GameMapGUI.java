@@ -29,13 +29,16 @@
         public Image walkableImage;
         public Image boxImage;
         private final GameTopPanelGUI topPanelGUI;
-        public Timer moveTimer;
-        private Timer timer;
+        public static Timer moveTimer;
+        private static Timer timer;
+        private static GameMapGUI instance;
 
         public GameMapGUI( GameEngine model, JFrame frame, GameTopPanelGUI topPanelGUI) throws IOException {
             this.model = model;
             this.frame = frame;
             this.topPanelGUI = topPanelGUI;
+            instance = this;
+
             loadMapAssetsRandomly();
 
             setupKeyListener();
@@ -61,6 +64,10 @@
             });
 
             timer.start();
+        }
+
+        public static GameMapGUI getInstance() {
+            return instance;
         }
 
         private void showGameOverDialog() {
@@ -119,6 +126,9 @@
             }
             return isGameOver;
         }
+
+        public static void stopTimer() {timer.stop(); moveTimer.stop();}
+        public static void startTimer() {timer.restart(); moveTimer.restart();}
 
         private void loadMapAssetsRandomly() throws IOException {
             Random random = new Random();
