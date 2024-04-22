@@ -77,7 +77,7 @@ public class GhostlyMonster extends Monster {
 
     // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {
-        return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
+        return this.x == px && this.y == py;
     }
 }
 

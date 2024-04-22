@@ -89,7 +89,7 @@ public class ConfusedMonster extends Monster {
                         if(dy[newVal] == 0 && dy[direction] != 0 || dy[newVal] != 0 && dy[direction] == 0 || dx[newVal] == 0 && dx[direction] != 0 || dx[newVal] != 0 && dx[direction] == 0){
                             if(gameMap.getMap()[this.y + dy[newVal]][this.x + dx[newVal]] instanceof NormalCell){
 //                                System.out.println("Turned");
-                                if(rand.nextInt(3) == 2) {
+                                if(rand.nextInt(7) == 2) {
 //                                    System.out.println("Turned!!");
 
                                     this.x = this.x + dx[newVal];
@@ -159,7 +159,7 @@ public class ConfusedMonster extends Monster {
 
     // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {
-        return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
+        return this.x == px && this.y == py;
     }
 }
 
