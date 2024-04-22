@@ -80,7 +80,7 @@ public class SpeedyMonster extends Monster {
             Random rand = new Random();
             int[] dx = {1, -1, 0, 0};
             int[] dy = {0, 0, 1, -1};
-            int directionNew;
+            int directionNew = -1;
             int newX = this.x + dx[direction];
             int newY = this.y + dy[direction];
 
@@ -97,59 +97,26 @@ public class SpeedyMonster extends Monster {
 
             }
             else {
-                if(gameMap.getMap()[newY][newX] instanceof WallCell || gameMap.getMap()[newY][newX] instanceof BoxCell){
-                }
                 switch (determineMonsterDirection()){
                     case "UP":
                         directionNew = 3;
-                        if(directionNew != direction){
-                            direction = directionNew;
-                        }
-                        else{
-                            System.out.println("bad");
-
-                            direction = rand.nextInt(4);
-                        }
-                        System.out.println("Going UP");
                         break;
                     case "DOWN":
                         directionNew = 2;
-                        if(directionNew != direction){
-                            direction = directionNew;
-                        }
-                        else{
-                            System.out.println("bad");
-
-                            direction = rand.nextInt(4);
-                        }
-                        System.out.println("Going DOWN");
-
                         break;
                     case "LEFT":
                         directionNew = 1;
-                        if(directionNew != direction){
-                            direction = directionNew;
-                        }
-                        else{
-                            System.out.println("bad");
-
-                            direction = rand.nextInt(4);
-                        }
-                        System.out.println("Going LEFT");
-
                         break;
                     case "RIGHT":
                         directionNew = 0;
-                        if(directionNew != direction){
-                            direction = directionNew;
-                        }
-                        else{
-                            System.out.println("bad");
-
-                            direction = rand.nextInt(4);
-                        }
-                        System.out.println("Going RIGHT");
                         break;
+                }
+
+                if(directionNew != direction){
+                    direction = directionNew;
+                }
+                else{
+                    direction = rand.nextInt(4);
                 }
             }
         }

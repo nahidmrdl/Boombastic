@@ -64,7 +64,6 @@ public class GhostlyMonster extends Monster {
                 }
 
             } else {
-
                 direction = rand.nextInt(4);
             }
         }

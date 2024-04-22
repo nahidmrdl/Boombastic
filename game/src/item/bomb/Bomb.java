@@ -127,6 +127,12 @@ public class Bomb extends GameItem {
                         }
                     }
                 });
+
+                getCell().getMap().getMap()[targetX][targetY].getVisitors().forEach(visitor -> {
+                    if (visitor instanceof Monster m) {
+                        m.setDead(true);
+                    }
+                });
             }
         }
     }
