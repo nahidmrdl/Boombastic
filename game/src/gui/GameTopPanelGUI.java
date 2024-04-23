@@ -5,7 +5,7 @@ import gameengine.GameEngine;
 import item.curse.Curse;
 import item.powerup.PowerUp;
 import util.ResourceCollection;
-
+import gui.GameMapGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,6 +23,7 @@ public class GameTopPanelGUI {
     private final List<Player> players;
     private final int rounds;
     private final int map;
+    public Timer timerObj;
 
     public GameTopPanelGUI(JFrame frame, GameEngine gameEngine,  int map, int rounds) {
         this.frame = frame;
@@ -248,17 +249,18 @@ public class GameTopPanelGUI {
 
         // Timer setup
         AtomicInteger elapsedSeconds = new AtomicInteger(0);
-        Timer timer = new Timer(1000, e -> {
+        timerObj = new Timer(1000, e -> {
             int seconds = elapsedSeconds.incrementAndGet();
             int minutes = seconds / 60;
             seconds %= 60;
             timerLabel.setText(String.format("%1$d:%2$02d", minutes, seconds));
         });
-        timer.start();
+        timerObj.start();
 
         pauseButton.addActionListener(event -> {
-            if (timer.isRunning()) {
-                timer.stop();
+            if (timerObj.isRunning()) {
+                timerObj.stop();
+                GameMapGUI.stopTimer();
                 JDialog dialog = new JDialog(frame, "Game Paused", true);
                 dialog.setLayout(new GridLayout(3, 1));
                 dialog.setSize(200, 300);
@@ -267,33 +269,21 @@ public class GameTopPanelGUI {
                 JButton resumeButton = new JButton("Resume");
                 resumeButton.addActionListener(e -> {
                     dialog.dispose();
-                    timer.start();
+                    timerObj.start();
+                    GameMapGUI.startTimer();
+                    GameMapGUI gameMapGUI = GameMapGUI.getInstance();
+                    gameMapGUI.requestFocusInWindow();
                 });
 
                 JButton restartButton = new JButton("Restart");
                 restartButton.addActionListener(e -> {
-                    dialog.dispose();
-                    frame.dispose();
-                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
-                    try {
-                        for (Player player : model.getPlayers()) {
-                            player.bombCount = 1;
-                            player.powerUpsItems.clear();
-                            player.cursesItems.clear();
-                        }
-                        initialScreen.reset(this.players, this.rounds, this.map);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    restartDialog(dialog, false);
+                    GameMapGUI.startTimer();
                 });
 
                 JButton exitButton = new JButton("Back to Menu");
                 exitButton.addActionListener(e -> {
-                    dialog.dispose();
-                    frame.getContentPane().removeAll();
-                    frame.dispose();
-                    GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
-                    frame.add(initialScreen);
+                    backToMenu(dialog);
                 });
 
                 dialog.add(resumeButton);
@@ -301,7 +291,7 @@ public class GameTopPanelGUI {
                 dialog.add(exitButton);
                 dialog.setVisible(true);
             } else {
-                timer.start();
+                timerObj.start();
                 pauseButton.setText("Pause");
             }
         });
@@ -326,5 +316,31 @@ public class GameTopPanelGUI {
         g2d.dispose();
 
         return new ImageIcon(bufferedImage);
+    }
+
+    public void backToMenu(JDialog dialog) {
+        dialog.dispose();
+        frame.getContentPane().removeAll();
+        frame.dispose();
+        GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+        frame.add(initialScreen);
+    }
+
+    public void restartDialog(JDialog dialog, boolean gameResult) {
+        dialog.dispose();
+        frame.dispose();
+        GameInitialScreenGUI initialScreen = new GameInitialScreenGUI(frame, new GameGUI());
+        try {
+            for (Player player : model.getPlayers()) {
+                player.bombCount = 1;
+                player.powerUpsItems.clear();
+                player.cursesItems.clear();
+                player.setDead(false);
+                if (gameResult) {player.victoryCount = 0;}
+            }
+            initialScreen.reset(this.players, this.rounds, this.map);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

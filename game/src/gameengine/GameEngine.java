@@ -34,7 +34,7 @@ public class GameEngine {
     private List<Player> players;
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
-    public List<Monster> monsters;
+    private List<Monster> monsters;
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
@@ -120,7 +120,6 @@ public class GameEngine {
     public List<Monster> getMonsters(){
         return this.monsters;
     }
-
 
 
     /**
