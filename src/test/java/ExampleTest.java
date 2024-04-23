@@ -25,4 +25,10 @@ public class ExampleTest {
         String name = "Gosha";
         Assertions.assertTrue(name.contains("os"), "Gosha should contain 'os'");
     }
+
+    @Test
+    void failTest() {
+        String name = "Fail";
+        Assertions.assertTrue(name.contains("os"), "Fail test :-)");
+    }
 }
