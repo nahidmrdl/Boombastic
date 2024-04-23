@@ -73,13 +73,14 @@ public class GameTopPanelGUI {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weightx = 25;
 
-        //Player 1
+        // Player 1
         constraints.gridx = 0;
-        if(!players.get(0).isDead())
-            this.plPanel.add(createPlayerPanel(players.getFirst().getImageIndex(), 0), constraints);
+        if (!players.get(0).isDead())
+            this.plPanel.add(createPlayerPanel(players.get(0).getImageIndex(), 0), constraints);
         else {
             this.plPanel.add(createPlayerPanel(4, 0), constraints);
         }
+
 
         //Player 2
         constraints.gridx = 1;
@@ -89,15 +90,16 @@ public class GameTopPanelGUI {
             this.plPanel.add(createPlayerPanel(4, 1), constraints);
         }
 
-        //Player 3
+        // Player 3
         if (model.getPlayerCount() == 3) {
             constraints.gridx = 2;
-            if(!players.getLast().isDead())
+            if (!players.get(model.getPlayerCount() - 1).isDead())
                 this.plPanel.add(createPlayerPanel((players.get(2).getImageIndex()), 2), constraints);
             else {
                 this.plPanel.add(createPlayerPanel(4, 2), constraints);
             }
         }
+
 
         this.topPanel.add(this.plPanel, BorderLayout.WEST);
     }
