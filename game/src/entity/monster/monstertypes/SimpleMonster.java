@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.monster.Monster;
 import entity.player.Player;
@@ -33,9 +35,21 @@ public class SimpleMonster extends Monster {
         do {
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
-        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell) || !isFarFromPlayers(5));
 
 
+    }
+
+    private boolean isFarFromPlayers(int distance) {
+        for (Player player : players) {
+            int playerX = player.getX();
+            int playerY = player.getY();
+            double dist = Math.sqrt(Math.pow(playerX - this.x, 2) + Math.pow(playerY - this.y, 2));
+            if (dist < distance) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void moveRandomly() {
@@ -48,16 +62,24 @@ public class SimpleMonster extends Monster {
             int newX = this.x + dx[direction];
             int newY = this.y + dy[direction];
 
-            if (newX >= 0 && newX < gameMap.getMap()[0].length &&
-                    newY >= 0 && newY < gameMap.getMap().length &&
-                    gameMap.getMap()[newY][newX] instanceof NormalCell) {
+            if (newX >= 0 && newX < gameMap.getMap()[0].length && newY >= 0 && newY < gameMap.getMap().length && gameMap.getMap()[newY][newX] instanceof NormalCell) {
+                this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
                 this.x = newX;
                 this.y = newY;
+                this.gameMap.getMap()[this.y][this.x].addVisitor(this);
+
+                if (rand.nextInt(10) == 3){
+                    direction = rand.nextInt(4);
+                }
+
             } else {
                 direction = rand.nextInt(4);
             }
         }
     }
+
+
+
 
     public int getX(){
         return this.x;
@@ -69,8 +91,9 @@ public class SimpleMonster extends Monster {
 
     // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {
-        return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
+        return this.x == px && this.y == py;
     }
+
 
 
 }

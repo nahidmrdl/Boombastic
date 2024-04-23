@@ -28,6 +28,18 @@ public class GhostlyMonster extends Monster {
 
 
 
+//    private void findValidStartingPosition() {
+//        int maxX = gameMap.getMap().length;
+//        int maxY = gameMap.getMap()[0].length;
+//        Random rand = new Random();
+//        do {
+//            this.x = rand.nextInt(maxY);
+//            this.y = rand.nextInt(maxX);
+//        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+//
+//
+//    }
+
     private void findValidStartingPosition() {
         int maxX = gameMap.getMap().length;
         int maxY = gameMap.getMap()[0].length;
@@ -35,9 +47,21 @@ public class GhostlyMonster extends Monster {
         do {
             this.x = rand.nextInt(maxY);
             this.y = rand.nextInt(maxX);
-        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell));
+        } while (!(gameMap.getMap()[this.y][this.x] instanceof NormalCell) || !isFarFromPlayers(5));
 
 
+    }
+
+    private boolean isFarFromPlayers(int distance) {
+        for (Player player : players) {
+            int playerX = player.getX();
+            int playerY = player.getY();
+            double dist = Math.sqrt(Math.pow(playerX - this.x, 2) + Math.pow(playerY - this.y, 2));
+            if (dist < distance) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -53,10 +77,17 @@ public class GhostlyMonster extends Monster {
 
             if (newX > 0 && newX < gameMap.getMap()[0].length - 1 &&
                     newY > 0 && newY < gameMap.getMap().length - 1) {
+                this.gameMap.getMap()[this.y][this.x].getVisitors().remove(this);
+
                 this.x = newX;
                 this.y = newY;
-            } else {
+                this.gameMap.getMap()[this.y][this.x].addVisitor(this);
 
+                if (rand.nextInt(10) == 3){
+                    direction = rand.nextInt(4);
+                }
+
+            } else {
                 direction = rand.nextInt(4);
             }
         }
@@ -72,7 +103,7 @@ public class GhostlyMonster extends Monster {
 
     // Method to check if next to player
     public boolean isNextToPlayer(int px, int py) {
-        return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
+        return this.x == px && this.y == py;
     }
 }
 
