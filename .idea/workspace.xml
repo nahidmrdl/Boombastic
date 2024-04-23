@@ -4,220 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="NEW dead image for top pnel">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/azer.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/dead.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/deadNew.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/dnipro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/gosha.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/ArachNoTime.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/CannotPlaceBombCurse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/GhostPowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/ImmediateBombPlacementCurse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/InvinciblePowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/LowBlastRangeCurse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/LowSpeedCurse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/ObstaclePowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/RollerSkateSpeedUpPowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/blast.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/blastRangeExtensionPowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/bombfirststate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/bombsecondstate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/bombthirdstate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/collectible.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/curseicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/detonatorPowerup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/ghostgaldag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/increasedNumberOfBombs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/monster1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/monster2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/placedBox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/powerupicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/trophy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/jamil.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map1/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map1/map1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map1/map1box.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map1/map1walkable.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map1/map1wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map2/map2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map2/map2box.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map2/map2walkable.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map2/map2wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map3/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map3/map3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map3/map3box.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map3/map3walkable.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mapAssets/map3/map3wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/mike.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/nahid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sumy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/box/BoxCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/normalCell/NormalCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cell/wall/WallCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/GhostlyMonster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SimpleMonster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/monster/monstertypes/SpeedyMonster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameengine/GameEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/GameGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/GameInitialScreenGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/GameMapGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/GameTopPanelGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/GameItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/bomb/Bomb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/Curse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/PowerUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/detonator/Detonator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/ghost/Ghost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/increasedblastrange/IncreasedBlastRange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/invincibility/Invincibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/placeobstacle/PlaceObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/item/powerup/rollerskate/RollerSkate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levels/10.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levels/11.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levels/12.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levels/LevelReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levels/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/GameMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/mapname1/Map1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/mapname2/Map2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/mapname3/Map3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/ResourceCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024,_10_14_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_04_2024__10_14__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024,_15_21_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024,_22_06_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024,_22_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__15_21__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_06__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__22_15__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024,_16_35_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024__16_35__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]3/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/shelf/Uncommitted_changes_before_rebase__Changes_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/game.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/azer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/dead.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/deadNew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/dnipro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/gosha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/ArachNoTime.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/CannotPlaceBombCurse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/GhostPowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/ImmediateBombPlacementCurse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/InvinciblePowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/LowBlastRangeCurse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/LowSpeedCurse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/ObstaclePowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/RollerSkateSpeedUpPowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/blast.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/blastRangeExtensionPowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/bombfirststate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/bombsecondstate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/bombthirdstate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/collectible.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/curseicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/detonatorPowerup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/ghostgaldag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/increasedNumberOfBombs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/monster1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/monster2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/placedBox.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/powerupicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/icons/trophy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/jamil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map1/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map1/map1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map1/map1box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map1/map1walkable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map1/map1wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map2/map2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map2/map2box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map2/map2walkable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map2/map2wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map3/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map3/map3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map3/map3box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map3/map3walkable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mapAssets/map3/map3wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/mike.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/nahid.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/assets/sumy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/cell/Cell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/cell/box/BoxCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/cell/normalCell/NormalCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/cell/wall/WallCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/Entity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/monster/Monster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/monster/monstertypes/GhostlyMonster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/monster/monstertypes/SimpleMonster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/monster/monstertypes/SpeedyMonster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/entity/player/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/gameengine/GameEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/gui/GameGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/gui/GameInitialScreenGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/gui/GameMapGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/gui/GameTopPanelGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/GameItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/bomb/Bomb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/curse/Curse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/curse/bombblastreduction/BombBlastReduction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/curse/instantbombplacement/InstantBombPlacement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/curse/lowspeed/LowSpeed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/curse/prohibitbombs/ProhibitBombs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/PowerUp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/detonator/Detonator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/ghost/Ghost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/increasedblastrange/IncreasedBlastRange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/invincibility/Invincibility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/placeobstacle/PlaceObstacle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/item/powerup/rollerskate/RollerSkate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/levels/10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/levels/11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/levels/12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/levels/LevelReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/levels/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/map/GameMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/map/mapname1/Map1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/map/mapname2/Map2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/map/mapname3/Map3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/util/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/util/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/util/ResourceCollection.java" beforeDir="false" />
-    </list>
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="test-no-docker" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,7 +58,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
@@ -334,7 +121,7 @@
       <workItem from="1713216238138" duration="1342000" />
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713788696944" duration="411000" />
-      <workItem from="1713909847819" duration="45000" />
+      <workItem from="1713909847819" duration="432000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -416,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713387039974</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="test">
+      <option name="closed" value="true" />
+      <created>1713910054522</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910054522</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test-no-docker">
+      <option name="closed" value="true" />
+      <created>1713910182431</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910182431</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +251,9 @@
     <MESSAGE value="." />
     <MESSAGE value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
     <MESSAGE value="NEW dead image for top pnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW dead image for top pnel" />
+    <MESSAGE value="test" />
+    <MESSAGE value="test-no-docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="test-no-docker" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
