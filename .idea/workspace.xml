@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="test-no-docker" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="support java 8 syntax added">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ExampleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +125,7 @@
       <workItem from="1713216238138" duration="1342000" />
       <workItem from="1713260467846" duration="3824000" />
       <workItem from="1713788696944" duration="411000" />
-      <workItem from="1713909847819" duration="432000" />
+      <workItem from="1713909847819" duration="1110000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -219,7 +223,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713910182431</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="maven framework support added">
+      <option name="closed" value="true" />
+      <created>1713910335104</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910335104</updated>
+    </task>
+    <task id="LOCAL-00014" summary="other setup file added">
+      <option name="closed" value="true" />
+      <created>1713910503346</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910503346</updated>
+    </task>
+    <task id="LOCAL-00015" summary="support java 8 syntax added">
+      <option name="closed" value="true" />
+      <created>1713910623262</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910623262</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,13 +281,16 @@
     <MESSAGE value="NEW dead image for top pnel" />
     <MESSAGE value="test" />
     <MESSAGE value="test-no-docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="test-no-docker" />
+    <MESSAGE value="maven framework support added" />
+    <MESSAGE value="other setup file added" />
+    <MESSAGE value="support java 8 syntax added" />
+    <option name="LAST_COMMIT_MESSAGE" value="support java 8 syntax added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/item/bomb/Bomb.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java</url>
           <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

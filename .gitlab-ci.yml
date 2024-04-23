@@ -11,9 +11,12 @@ cache:
 build:
   stage: build
   script:
+    - echo "Misha,Gosha,Nahid,Jamil building the project..."
     - mvn compile
 
 test:
   stage: test
   script:
+    - echo "Misha,Gosha,Nahid,Jamil testing the project..."
+    - cd src/test/java
     - mvn test
