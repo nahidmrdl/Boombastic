@@ -1,40 +1,19 @@
 image: maven:latest
 
 variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-stages:
-  - build
-  - test
-  - package
-  - deploy
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 cache:
+  key: maven-build
   paths:
     - .m2/repository
-    - out
-    - src
 
-build_job:
+build:
   stage: build
   script:
-    - echo "Maven compile started"
     - mvn compile
 
-test_job:
+test:
   stage: test
   script:
-    - echo "Maven test started"
     - mvn test
-
-package_job:
-  stage: package
-  script:
-    - echo "Maven packaging started"
-    - mvn package
-
-deploy_job:
-  stage: deploy
-  script:
-    - echo "Maven deploy started"
-    - mvn deploy
