@@ -18,5 +18,4 @@ test:
   stage: test
   script:
     - echo "Misha,Gosha,Nahid,Jamil testing the project..."
-    - cd src/test/java
     - mvn test
