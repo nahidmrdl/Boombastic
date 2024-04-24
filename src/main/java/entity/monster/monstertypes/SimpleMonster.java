@@ -11,6 +11,9 @@ import entity.monster.Monster;
 import entity.player.Player;
 import map.GameMap;
 
+/**
+ * Represents a simple monster in the game map.
+ */
 public class SimpleMonster extends Monster {
     private Image baseImage;
     private int direction;
@@ -18,7 +21,13 @@ public class SimpleMonster extends Monster {
 
     private int speed;
 
-    // Constructor
+    /**
+     * Constructor for SimpleMonster
+     * @param x x-coordinate of the monster
+     * @param y y-coordinate of the monster
+     * @param gameMap map that the monster is in
+     * @param players list of players in the game
+     */
     public SimpleMonster(int x, int y, GameMap gameMap, List<Player> players) {
         super(x, y, gameMap, players);
         findValidStartingPosition();
@@ -28,6 +37,9 @@ public class SimpleMonster extends Monster {
 
 
 
+    /**
+     * Finds a valid starting position for the monster
+     */
     private void findValidStartingPosition() {
         int maxX = gameMap.getMap().length;
         int maxY = gameMap.getMap()[0].length;
@@ -40,6 +52,11 @@ public class SimpleMonster extends Monster {
 
     }
 
+    /**
+     * Determines if the monster is far from the players
+     * @param distance
+     * @return true if the monster is far from the players, false otherwise
+     */
     private boolean isFarFromPlayers(int distance) {
         for (Player player : players) {
             int playerX = player.getX();
@@ -52,6 +69,9 @@ public class SimpleMonster extends Monster {
         return true;
     }
 
+    /**
+     * Moves the monster randomly
+     */
     public void moveRandomly() {
         if(lastMoveTime.getTime() + speed < new Date().getTime()) {
             lastMoveTime = new Date();
@@ -79,17 +99,29 @@ public class SimpleMonster extends Monster {
     }
 
 
-
-
+    /**
+     * Gets the x-coordinate of the monster
+     * @return x-coordinate of the monster
+     */
     public int getX(){
         return this.x;
     }
 
+    /**
+     * Gets the y-coordinate of the monster
+     * @return y-coordinate of the monster
+     */
     public int getY(){
         return this.y;
     }
 
-    // Method to check if next to player
+
+    /**
+     * Method to check if the monster is next to the player
+     * @param px x-coordinate of the player
+     * @param py y-coordinate of the player
+     * @return true if the monster is next to the player, false otherwise
+     */
     public boolean isNextToPlayer(int px, int py) {
         return this.x == px && this.y == py;
     }
