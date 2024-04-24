@@ -18,6 +18,10 @@ public class Bomb extends GameItem {
 
     private boolean isDetonator = false;
 
+    public int getBlastRadius() {
+        return blastRadius;
+    }
+
     private int blastRadius = 1;
 
     public Bomb(boolean isDetonator) {
