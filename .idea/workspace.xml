@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added some tests for Cell" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added some tests for Box">
+      <change afterPath="$PROJECT_DIR$/src/test/java/cell/normalCell/NormalCellTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,11 +82,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cell.normalCell" />
+      <recent name="cell.box" />
       <recent name="gameengine" />
       <recent name="item" />
       <recent name="entity.player" />
-      <recent name="entity" />
-      <recent name="cell" />
     </key>
   </component>
   <component name="RunManager" selected="Maven.game [test]">
@@ -175,7 +178,7 @@
       <workItem from="1713954120479" duration="346000" />
       <workItem from="1713958099753" duration="468000" />
       <workItem from="1713968571928" duration="13000" />
-      <workItem from="1713982676337" duration="3872000" />
+      <workItem from="1713982676337" duration="4643000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -353,7 +356,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713986435374</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added some tests for Box">
+      <option name="closed" value="true" />
+      <created>1713986708277</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1713986708277</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +408,8 @@
     <MESSAGE value="Some tests for setters and getters added" />
     <MESSAGE value="Added some tests for GameItem" />
     <MESSAGE value="Added some tests for Cell" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for Cell" />
+    <MESSAGE value="Added some tests for Box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for Box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
