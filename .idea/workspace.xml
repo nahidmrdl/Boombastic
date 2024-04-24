@@ -4,122 +4,268 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="licence ADA" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="test path corrected">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cell/wall/WallCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cell/wall/WallCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/map/GameMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="branch-test" />
+        <entry key="$PROJECT_DIR$/.." value="topPanelIssues" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/Main.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/gameengine/GameEngine.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/gui/GameGUI.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/gui/GameInitialScreenGUI.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/gui/GameMapGUI.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/gui/GameTopPanelGUI.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/map/Map.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/map/mapname1/Map1.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/map/mapname2/Map2.java" root0="SKIP_INSPECTION" />
-    <setting file="vcs:///Users/shepelenkomykhailo/ELTE/Java/Boombastic/boombastic/game/src/map/mapname3/Map3.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2dVcLxx7JrKtFcyNhWd2DInDRiT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2dYVJ1NUAl2QSM9oAhwM1m6NI9z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "CI-CD-check",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bl3ss/IdeaProjects/boombastic/game",
+    "last_opened_file_path": "G:/boombastic/game/src/assets/icons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\boombastic\game\src\assets\icons" />
+      <recent name="G:\boombastic\game\src\entity" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="GameEngine" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GameEngine" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boombastic" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false">
+      <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-22" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="boombastic" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Unnamed" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a7931cf-3f2b-4ca3-bb7b-6a718acab755" name="Changes" comment="" />
-      <created>1710096636350</created>
+      <changelist id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="" />
+      <created>1710185004978</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710096636350</updated>
-      <workItem from="1710096641703" duration="3057000" />
-      <workItem from="1710184550562" duration="454000" />
-      <workItem from="1710234408366" duration="347000" />
-      <workItem from="1710234772318" duration="75000" />
-      <workItem from="1710521444674" duration="2000" />
-      <workItem from="1712772279940" duration="15000" />
-      <workItem from="1712820187600" duration="34000" />
-      <workItem from="1713216227069" duration="609000" />
-      <workItem from="1713259732402" duration="688000" />
-      <workItem from="1713379172203" duration="14000" />
+      <updated>1710185004978</updated>
+      <workItem from="1710185006035" duration="2873000" />
+      <workItem from="1712772296831" duration="704000" />
+      <workItem from="1712820223602" duration="2463000" />
+      <workItem from="1713165836496" duration="5723000" />
+      <workItem from="1713171978787" duration="325000" />
+      <workItem from="1713213474912" duration="348000" />
+      <workItem from="1713214868959" duration="59000" />
+      <workItem from="1713216238138" duration="1342000" />
+      <workItem from="1713260467846" duration="3824000" />
+      <workItem from="1713788696944" duration="411000" />
+      <workItem from="1713909847819" duration="1989000" />
     </task>
-    <task id="LOCAL-00001" summary="created basic java project">
+    <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
-      <created>1710096989818</created>
+      <created>1710185096556</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1710096989818</updated>
+      <updated>1710185096556</updated>
     </task>
-    <task id="LOCAL-00002" summary="new line added">
+    <task id="LOCAL-00002" summary="folder structure for power up, curse ,cell, entity added">
       <option name="closed" value="true" />
-      <created>1710097618496</created>
+      <created>1710186653117</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1710097618496</updated>
+      <updated>1710186653117</updated>
     </task>
-    <task id="LOCAL-00003" summary="licence ADA">
+    <task id="LOCAL-00003" summary="basic power up drop after box destruction added">
       <option name="closed" value="true" />
-      <created>1710099682916</created>
+      <created>1713263088807</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1710099682916</updated>
+      <updated>1713263088807</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="game engine and bomb code cleaned up">
+      <option name="closed" value="true" />
+      <created>1713263650958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713263650958</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!">
+      <option name="closed" value="true" />
+      <created>1713350312430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713350312430</updated>
+    </task>
+    <task id="LOCAL-00006" summary="wrong monster image fixed">
+      <option name="closed" value="true" />
+      <created>1713384763277</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713384763277</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths.">
+      <option name="closed" value="true" />
+      <created>1713385755905</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385755905</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1713385861222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385861222</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths.">
+      <option name="closed" value="true" />
+      <created>1713385905659</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713385905659</updated>
+    </task>
+    <task id="LOCAL-00010" summary="NEW dead image for top pnel">
+      <option name="closed" value="true" />
+      <created>1713387039974</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713387039974</updated>
+    </task>
+    <task id="LOCAL-00011" summary="test">
+      <option name="closed" value="true" />
+      <created>1713910054522</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910054522</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test-no-docker">
+      <option name="closed" value="true" />
+      <created>1713910182431</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910182431</updated>
+    </task>
+    <task id="LOCAL-00013" summary="maven framework support added">
+      <option name="closed" value="true" />
+      <created>1713910335104</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910335104</updated>
+    </task>
+    <task id="LOCAL-00014" summary="other setup file added">
+      <option name="closed" value="true" />
+      <created>1713910503346</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910503346</updated>
+    </task>
+    <task id="LOCAL-00015" summary="support java 8 syntax added">
+      <option name="closed" value="true" />
+      <created>1713910623262</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713910623262</updated>
+    </task>
+    <task id="LOCAL-00016" summary="test attempt">
+      <option name="closed" value="true" />
+      <created>1713911054858</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713911054858</updated>
+    </task>
+    <task id="LOCAL-00017" summary="test path corrected">
+      <option name="closed" value="true" />
+      <created>1713911243465</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713911243465</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,28 +276,54 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created basic java project" />
-    <MESSAGE value="new line added" />
-    <MESSAGE value="licence ADA" />
-    <option name="LAST_COMMIT_MESSAGE" value="licence ADA" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="clean project created" />
+    <MESSAGE value="folder structure for power up, curse ,cell, entity added" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="basic power up drop after box destruction added" />
+    <MESSAGE value="game engine and bomb code cleaned up" />
+    <MESSAGE value="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!" />
+    <MESSAGE value="wrong monster image fixed" />
+    <MESSAGE value="." />
+    <MESSAGE value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
+    <MESSAGE value="NEW dead image for top pnel" />
+    <MESSAGE value="test" />
+    <MESSAGE value="test-no-docker" />
+    <MESSAGE value="maven framework support added" />
+    <MESSAGE value="other setup file added" />
+    <MESSAGE value="support java 8 syntax added" />
+    <MESSAGE value="test attempt" />
+    <MESSAGE value="test path corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="test path corrected" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gameModule/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

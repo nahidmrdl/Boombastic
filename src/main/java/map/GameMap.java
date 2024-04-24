@@ -20,9 +20,11 @@ public class GameMap {
     public GameMap(Image image, String name, Integer mapIndex){
         try {
             //(STR."src/levels/\{mapIndex}.txt");
-            Cell[][] mapCell = LevelReader.readLevelFromFile("src/levels/" + mapIndex + ".txt");
+            Cell[][] mapCell = LevelReader.readLevelFromFile("src/main/java/levels/" + mapIndex + ".txt");
             this.map = mapCell;
         } catch (IOException e) {
+            // log the path that caused the error
+            System.out.println("src/main/java/levels/" + mapIndex + ".txt");
             throw new RuntimeException(e);
         }
 
