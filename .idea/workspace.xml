@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="unresolved files added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="player change issue fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +124,7 @@
       <workItem from="1713788696944" duration="411000" />
       <workItem from="1713909847819" duration="2727000" />
       <workItem from="1713954120479" duration="927000" />
-      <workItem from="1713957123124" duration="1342000" />
+      <workItem from="1713957123124" duration="1773000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -290,7 +286,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713954546981</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="player change issue fixed">
+      <option name="closed" value="true" />
+      <created>1713990450015</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713990450015</updated>
+    </task>
+    <task id="LOCAL-00022" summary="player change issue fixed">
+      <option name="closed" value="true" />
+      <created>1713990505386</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1713990505386</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +344,8 @@
     <MESSAGE value="code path for maven changed" />
     <MESSAGE value="fail test added" />
     <MESSAGE value="unresolved files added" />
-    <option name="LAST_COMMIT_MESSAGE" value="unresolved files added" />
+    <MESSAGE value="player change issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="player change issue fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
