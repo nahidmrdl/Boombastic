@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Represents the game engine that runs the game.
+ */
 public class GameEngine {
     private int roundCount;
     private int mapIndex;
@@ -35,6 +38,13 @@ public class GameEngine {
     private LevelReader lr = new LevelReader();
     private GameMap gameMap;
     public List<Monster> monsters;
+
+    /**
+     * Constructor for GameEngine
+     * @param players list of players in the game
+     * @param roundCount number of rounds in the game
+     * @param mapIndex index of the map
+     */
     public GameEngine(List<Player> players, int roundCount, int mapIndex) {
         this.roundCount = roundCount;
         this.mapIndex = mapIndex;
@@ -59,7 +69,11 @@ public class GameEngine {
         monsters.add(m4);
 
     }
-// to safely delete monsters
+
+    /**
+     * Remove dead monsters from the list of monsters
+     * @param monsters list of monsters in the game
+     */
     public void removeDeadMonsters(List<Monster> monsters) {
         synchronized(monsters) {
             Iterator<Monster> iterator = monsters.iterator();
@@ -94,10 +108,10 @@ public class GameEngine {
     private void defineMap() {
         this.gameMap = new GameMap(null, String.valueOf(this.mapIndex), this.mapIndex);
     }
+
     /**
      * Position players on the starting point of the map
      */
-
     private void positionPlayersOnStartingPoint() {
     int playerCount = 0;
         for (Cell[] row : this.gameMap.getMap()) {
@@ -117,6 +131,10 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Get the list of monsters in the game
+     * @return list of monsters in the game
+     */
     public List<Monster> getMonsters(){
         return this.monsters;
     }
@@ -125,7 +143,6 @@ public class GameEngine {
     /**
      * Run calculations for the game to get new state
      */
-
     public void runGameUnit() throws IOException {
         for (Cell[] row : this.gameMap.getMap()) {
             // remove finished items
@@ -146,22 +163,42 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Get the list of players in the game
+     * @return list of players in the game
+     */
     public List<Player> getPlayers() {
         return this.players;
     }
 
+    /**
+     * Get the game map
+     * @return game map
+     */
     public GameMap getMap() {
         return this.gameMap;
     }
 
+    /**
+     * Get the round count
+     * @return round count
+     */
     public int getRoundCount() {
         return this.roundCount;
     }
 
+    /**
+     * Get the map index
+     * @return map index
+     */
     public int getMapIndex() {
         return this.mapIndex;
     }
 
+    /**
+     * Get the player count
+     * @return player count
+     */
     public int getPlayerCount() {
         return this.playerCount;
     }
