@@ -10,13 +10,15 @@ import entity.player.Player;
 import java.util.List;
 // TODO: NOT READY!!! NEED SAFELY DELETE OF MONSTER
 
+/**
+ * Represents a monster in the game map.
+ */
 public class Monster extends Entity {
     private Image baseImage;
     private int direction;
     private int speed;
 
     protected boolean isDead;
-
 
     public void setDead(boolean state){
         this.isDead = state;
@@ -27,7 +29,13 @@ public class Monster extends Entity {
     }
     protected List<Player> players;
 
-    // Constructor
+    /**
+     * Constructor for Monster
+     * @param x x-coordinate of the monster
+     * @param y y-coordinate of the monster
+     * @param gameMap map that the monster is in
+     * @param players list of players in the game
+     */
     public Monster(int x, int y, GameMap gameMap, List<Player> players) {
         super(x, y, gameMap);
         this.players = players;
@@ -44,15 +52,28 @@ public class Monster extends Entity {
 
     }
 
+    /**
+     * Gets the x-coordinate of the monster
+     * @return
+     */
     public int getX(){
         return this.x;
     }
 
+    /**
+     * Gets the y-coordinate of the monster
+     * @return
+     */
     public int getY(){
         return this.y;
     }
 
-    // Method to check if next to player
+    /**
+     * Method to check if the monster is next to the player
+     * @param px
+     * @param py
+     * @return true if the monster is next to the player, false otherwise
+     */
     public boolean isNextToPlayer(int px, int py) {
         return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
     }
