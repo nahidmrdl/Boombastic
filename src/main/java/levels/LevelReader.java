@@ -14,7 +14,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads a level from a file and creates a 2D array of cells.
+ */
 public class LevelReader {
+
+    /**
+     * Reads a level from a file and creates a 2D array of cells.
+     * @param filePath path to the file
+     * @return 2D array of cells
+     * @throws IOException if the file is not found
+     */
     public static Cell[][] readLevelFromFile(String filePath) throws IOException {
         FileReader fileReader = new FileReader(filePath);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
