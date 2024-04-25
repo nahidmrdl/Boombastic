@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -21,6 +22,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/.." value="topPanelIssues" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,13 +73,23 @@
       <recent name="G:\boombastic\game\src\assets\icons" />
       <recent name="G:\boombastic\game\src\entity" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="item.bomb" />
+      <recent name="cell.normalCell" />
+      <recent name="cell.box" />
+      <recent name="gameengine" />
+      <recent name="item" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Maven.game [test]">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false">
       <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="boombastic" />
+      <module name="game" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,10 +103,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="game [test]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="test" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Maven.game [test]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.game [test]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -324,11 +371,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="clean project created" />
-    <MESSAGE value="folder structure for power up, curse ,cell, entity added" />
-    <MESSAGE value="changes" />
-    <MESSAGE value="basic power up drop after box destruction added" />
-    <MESSAGE value="game engine and bomb code cleaned up" />
     <MESSAGE value="Logic improved for setting, collecting items ingame. (Combined curse and powerup logic). Added LowSpeed and BombBlastReduction curses!" />
     <MESSAGE value="wrong monster image fixed" />
     <MESSAGE value="." />
@@ -352,7 +394,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java</url>
-          <line>22</line>
+          <line>26</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

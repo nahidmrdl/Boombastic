@@ -7,7 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Represents a collection of resources used in the game.
+ */
 public class ResourceCollection {
+
+    /**
+     * Represents the images used in the game.
+     */
     public enum Images {
         JAMIL,
         NAHID,
@@ -62,6 +69,9 @@ public class ResourceCollection {
         }
     }
 
+    /**
+     * Represents the files used in the game.
+     */
     public enum Files {
         DEFAULT_MAP;
         private InputStreamReader file = null;

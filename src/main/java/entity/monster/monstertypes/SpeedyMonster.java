@@ -17,6 +17,10 @@ import javax.swing.*;
 import java.util.List;
 
 //TODO NOT READY!! SHORTEST PATH IMPLEMENTATION.
+
+/**
+ * Represents a speedy monster in the game map.
+ */
 public class SpeedyMonster extends Monster {
     private Image baseImage;
     private int direction;
@@ -25,7 +29,13 @@ public class SpeedyMonster extends Monster {
     private Node[][] nodes;
     private int speed;
 
-    // Constructor
+    /**
+     * Constructor for SpeedyMonster
+     * @param x x-coordinate of the monster
+     * @param y y-coordinate of the monster
+     * @param gameMap map that the monster is in
+     * @param players list of players in the game
+     */
     public SpeedyMonster(int x, int y, GameMap gameMap, List<Player> players) {
         super(x, y, gameMap, players);
         findValidStartingPosition();
@@ -33,9 +43,10 @@ public class SpeedyMonster extends Monster {
         this.speed = 300;
     }
 
-
-
-
+    /**
+     * Determines the direction of the monster based on the nearest player
+     * @return the direction of the monster
+     */
     public String determineMonsterDirection() {
         Player p = findNearestPlayer();
         int upDistance = this.getY() > p.getY() ? this.getY() - p.getY() : Integer.MAX_VALUE;
@@ -59,6 +70,9 @@ public class SpeedyMonster extends Monster {
     }
 
 
+    /**
+     * Finds valid starting position for the monster
+     */
     private void findValidStartingPosition() {
         int maxX = gameMap.getMap().length;
         int maxY = gameMap.getMap()[0].length;
@@ -71,6 +85,11 @@ public class SpeedyMonster extends Monster {
 
     }
 
+    /**
+     * Checks if the monster is far from the players
+     * @param distance the distance to check
+     * @return true if the monster is far from the players, false otherwise
+     */
     private boolean isFarFromPlayers(int distance) {
         for (Player player : players) {
             int playerX = player.getX();
@@ -84,9 +103,9 @@ public class SpeedyMonster extends Monster {
     }
 
 
-
-
-
+    /**
+     * Moves the monster randomly
+     */
     public void moveRandomly() {
         if(lastMoveTime.getTime() + speed < new Date().getTime()) {
             lastMoveTime = new Date();
@@ -135,25 +154,52 @@ public class SpeedyMonster extends Monster {
         }
     }
 
+    /**
+     * Sets the x-coordinate of the monster
+     * @param x what to set the x-coordinate to
+     */
     public void setX(int x){
         this.x = x;
     }
 
+    /**
+     * Sets the y-coordinate of the monster
+     * @param y what to set the y-coordinate to
+     */
     public void setY(int y){
         this.y = y;
     }
+
+    /**
+     * Gets the x-coordinate of the monster
+     * @return the x-coordinate of the monster
+     */
     public int getX(){
         return this.x;
     }
 
+    /**
+     * Gets the y-coordinate of the monster
+     * @return the y-coordinate of the monster
+     */
     public int getY(){
         return this.y;
     }
 
+    /**
+     * Checks if the monster is next to the player
+     * @param px
+     * @param py
+     * @return true if the monster is next to the player, false otherwise
+     */
     public boolean isNextToPlayer(int px, int py) {
         return this.x == px && this.y == py;
     }
 
+    /**
+     * Finds the nearest player to the monster
+     * @return the nearest player to the monster
+     */
     private Player findNearestPlayer() {
         Player nearestPlayer = null;
         double minDistance = Double.MAX_VALUE;
