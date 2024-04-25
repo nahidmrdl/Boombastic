@@ -24,19 +24,34 @@ import util.ResourceCollection;
 import java.util.Iterator;
 
 
+/**
+ * Represents a normal cell in the game map.
+ */
 public class NormalCell extends Cell {
 
     boolean isStartingPoint = false;
 
+    /**
+     * Constructor for NormalCell
+     * @param row row of the cell
+     * @param col column of the cell
+     * @param map map that the cell is in
+     */
     public NormalCell(int row, int col, GameMap map) {
         super(row, col, map);
         this.image = ResourceCollection.Images.GROUNDMAP1.getImage();
     }
 
+    /**
+     * Removes the items that have finished their time
+     */
     public void removeFinishedItems() {
         this.items.removeIf(item -> item.getFinishTime() != 0 && item.getFinishTime()  < System.currentTimeMillis());
     }
 
+    /**
+     * Sets a random item to the cell
+     */
     public void setRandomItem() {
         double random = Math.random();
         if (random < 0.33) {
@@ -51,6 +66,9 @@ public class NormalCell extends Cell {
         }
     }
 
+    /**
+     * Sets a random power-up to the cell
+     */
     private void setRandomPowerUp() {
         PowerUp[] powerUps = new PowerUp[]{
                 new IncreasedNumberOfBombs(),
@@ -66,6 +84,9 @@ public class NormalCell extends Cell {
         this.items.add(powerUp);
     }
 
+    /**
+     * Sets a random curse to the cell
+     */
     private void setRandomCurse() {
         Curse[] curses = new Curse[]{
                 new BombBlastReduction(),
@@ -79,6 +100,9 @@ public class NormalCell extends Cell {
     }
 
 
+    /**
+     * Collects the items in the cell
+     */
    public void collectItems() {
         if(!this.getVisitors().isEmpty() && !this.getItems().isEmpty()) {
             for (Entity visitor : this.getVisitors()) {
@@ -106,10 +130,18 @@ public class NormalCell extends Cell {
     }
 
 
+    /**
+     * Sets the cell as a starting point
+     * @param isStartingPoint true if the cell is a starting point
+     */
     public void setStartingPoint(boolean isStartingPoint) {
         this.isStartingPoint = isStartingPoint;
     }
 
+    /**
+     * Checks if the cell is a starting point
+     * @return true if the cell is a starting point
+     */
     public boolean isStartingPoint() {
         return isStartingPoint;
     }

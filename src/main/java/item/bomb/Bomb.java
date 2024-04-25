@@ -11,6 +11,9 @@ import util.ResourceCollection;
 
 import javax.swing.*;
 
+/**
+ * Represents a bomb in the game map.
+ */
 public class Bomb extends GameItem {
 
     private Timer timer;
@@ -18,8 +21,20 @@ public class Bomb extends GameItem {
 
     private boolean isDetonator = false;
 
+    /**
+     * Gets the blast radius of the bomb
+     * @return the blast radius of the bomb
+     */
+    public int getBlastRadius() {
+        return blastRadius;
+    }
+
     private int blastRadius = 1;
 
+    /**
+     * Constructor for Bomb
+     * @param isDetonator whether the bomb is a detonator
+     */
     public Bomb(boolean isDetonator) {
         super(ResourceCollection.Images.POWER_BOMBSTAGE1.getImage());
 
@@ -32,14 +47,26 @@ public class Bomb extends GameItem {
 
     }
 
+
+    /**
+     * Gets whether the bomb is a detonator
+     * @return whether the bomb is a detonator
+     */
     public boolean isDetonator() {
         return isDetonator;
     }
 
+    /**
+     * Sets the blast radius of the bomb
+     * @param blastRadius the blast radius of the bomb
+     */
     public void setBlastRadius(int blastRadius) {
         this.blastRadius = blastRadius;
     }
 
+    /**
+     * Invokes the detonate animation of the bomb
+     */
     public void invokeDetonateAnimation() {
         timer = new Timer(500, e -> {
             state++;
@@ -54,10 +81,17 @@ public class Bomb extends GameItem {
         timer.start();
     }
 
+    /**
+     * Sets the state of the bomb
+     * @param state the state of the bomb
+     */
     public void setState(int state) {
         this.state = state;
     }
 
+    /**
+     * Updates the animation state of the bomb
+     */
     private void updateAnimationState() {
         switch (state) {
             case 1:
@@ -73,6 +107,9 @@ public class Bomb extends GameItem {
         }
     }
 
+    /**
+     * Clears the explosion of the bomb
+     */
     private void clearExplosion() {
         processExplosionEffect(false);
         this.getCell().setForegroundImage(null);
@@ -137,6 +174,13 @@ public class Bomb extends GameItem {
         }
     }
 
+    /**
+     * Check if the cell is within the bounds of the map
+     * @param x
+     * @param y
+     * @param map
+     * @return true if the cell is within the bounds of the map, false otherwise
+     */
     private boolean isWithinBounds(int x, int y, Cell[][] map) {
         return !(x < 0 || x >= map.length || y < 0 || y >= map[0].length);
     }
