@@ -7,11 +7,13 @@ import util.ResourceCollection;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 
 public class GameInitialScreenGUI extends JPanel {
@@ -156,7 +158,7 @@ public class GameInitialScreenGUI extends JPanel {
             }
             imagePanel.updateImage(imgIndexHolder[0]);
             imagePanel.repaint();
-            System.out.println(imgIndexHolder[0]);
+
         });
 
         JButton rightArrow = new JButton("->");
@@ -448,17 +450,19 @@ class ImagePanel extends JPanel {
     }
 
     public void updateImage(int imgIndex) {
+
         String[] charact = {
-                "/assets/jamil.jpg",
-                "/assets/nahid.jpg",
-                "/assets/mike.jpg",
-                "/assets/gosha.jpg",
-                "/assets/dead.jpeg"
+                "src/main/java/assets/jamil.jpg",
+                "src/main/java/assets/nahid.jpg",
+                "src/main/java/assets/mike.jpg",
+                "src/main/java/assets/gosha.jpg",
+                "src/main/java/assets/dead.jpeg"
         };
+
 
         this.imgIndex = imgIndex;
         try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(charact[imgIndex])));
+            image = ImageIO.read(new File((charact[imgIndex])) );
         } catch (IOException e) {
             e.printStackTrace();
         }
