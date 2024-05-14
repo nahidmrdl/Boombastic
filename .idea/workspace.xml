@@ -4,30 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="add files pushed">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024,_16_35_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_04_2024__16_35__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]3/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_3.xml" beforeDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="unused code in entity cleaned">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/monster/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/monster/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/ConfusedMonster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/ConfusedMonster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/GhostlyMonster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/GhostlyMonster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/SimpleMonster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/SimpleMonster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/SpeedyMonster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/monster/monstertypes/SpeedyMonster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gameengine/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gameengine/GameEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/GameItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/GameItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/bomb/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/bomb/Bomb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/curse/Curse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/Curse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/detonator/Detonator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/detonator/Detonator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/ghost/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/increasedblastrange/IncreasedBlastRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/increasedblastrange/IncreasedBlastRange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/invincibility/Invincibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/invincibility/Invincibility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/placeobstacle/PlaceObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/placeobstacle/PlaceObstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/rollerskate/RollerSkate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/rollerskate/RollerSkate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gui/GameTopPanelGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gui/GameTopPanelGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/curse/bombblastreduction/BombBlastReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/bombblastreduction/BombBlastReduction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/curse/instantbombplacement/InstantBombPlacement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/instantbombplacement/InstantBombPlacement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/curse/lowspeed/LowSpeed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/lowspeed/LowSpeed.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/curse/prohibitbombs/ProhibitBombs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/prohibitbombs/ProhibitBombs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/PowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/PowerUp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/detonator/Detonator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/detonator/Detonator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/ghost/Ghost.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/ghost/Ghost.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/increasedblastrange/IncreasedBlastRange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/increasedblastrange/IncreasedBlastRange.class" afterDir="false" />
@@ -35,11 +32,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/invincibility/Invincibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/invincibility/Invincibility.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/placeobstacle/PlaceObstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/placeobstacle/PlaceObstacle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/rollerskate/RollerSkate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/rollerskate/RollerSkate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levels/LevelReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levels/LevelReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/map/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/map/GameMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/ResourceCollection$Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/ResourceCollection$Files.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/ResourceCollection$Images.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/ResourceCollection$Images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/ResourceCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/ResourceCollection.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +50,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/.." value="topPanelIssues" />
-        <entry key="$PROJECT_DIR$" value="CI-CD-check" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,33 +69,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.game [test].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/boombastic/game/src/assets/icons&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;G:/soft-tech/boombastic/game/gameModule/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Maven.game [test].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "clean-up",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "G:/boombastic/game/src/assets/icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\boombastic\game\src\assets\icons" />
@@ -210,6 +202,7 @@
       <workItem from="1713954120479" duration="927000" />
       <workItem from="1713957123124" duration="1773000" />
       <workItem from="1714641905237" duration="53000" />
+      <workItem from="1715702986998" duration="957000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -387,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713990505386</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="unused code in entity cleaned">
+      <option name="closed" value="true" />
+      <created>1715703248426</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1715703248426</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +426,8 @@
     <MESSAGE value="fail test added" />
     <MESSAGE value="unresolved files added" />
     <MESSAGE value="player change issue fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="player change issue fixed" />
+    <MESSAGE value="unused code in entity cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="unused code in entity cleaned" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

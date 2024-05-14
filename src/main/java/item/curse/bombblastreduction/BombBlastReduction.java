@@ -35,5 +35,6 @@ public class BombBlastReduction extends Curse {
     @Override
     public void reset(Player p) {
         p.setBombBlastRange(1);
+        setFinishTime(System.currentTimeMillis());
     }
 }

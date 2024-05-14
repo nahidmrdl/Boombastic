@@ -36,5 +36,6 @@ public class Detonator extends PowerUp {
     @Override
     public void reset(Player p) {
         p.setDetonator(false);
+        setFinishTime(System.currentTimeMillis());
     }
 }

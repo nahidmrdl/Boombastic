@@ -36,5 +36,6 @@ public class LowSpeed extends Curse {
     @Override
     public void reset(Player p) {
         p.resetDefaultSpeed();
+        setFinishTime(System.currentTimeMillis());
     }
 }

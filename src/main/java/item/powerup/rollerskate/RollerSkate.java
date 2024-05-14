@@ -34,5 +34,6 @@ public class RollerSkate extends PowerUp {
     @Override
     public void reset(Player p) {
         p.resetDefaultSpeed();
+        setFinishTime(System.currentTimeMillis());
     }
 }

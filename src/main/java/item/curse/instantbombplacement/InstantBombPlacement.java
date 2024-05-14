@@ -39,6 +39,6 @@ public class InstantBombPlacement extends Curse {
      */
     @Override
     public void reset(Player p) {
-       // Do nothing
+       setFinishTime(System.currentTimeMillis());
     }
 }

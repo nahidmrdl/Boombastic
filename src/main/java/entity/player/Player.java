@@ -219,6 +219,18 @@ public class Player extends Entity {
         this.y = y;
     }
 
+    public void cleanItems(){
+        for (PowerUp powerUp : powerUpsItems) {
+            powerUp.reset(this);
+        }
+        for (Curse curse : cursesItems) {
+            curse.reset(this);
+        }
+
+        powerUpsItems.clear();
+        cursesItems.clear();
+    }
+
 
     /**
      * Gets the x-coordinate of the player

@@ -37,5 +37,6 @@ public class ProhibitBombs extends Curse {
     @Override
     public void reset(Player p) {
         p.setCanPlaceBomb(true);
+        setFinishTime(System.currentTimeMillis());
     }
 }

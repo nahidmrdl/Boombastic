@@ -34,5 +34,6 @@ public class IncreasedBlastRange extends PowerUp {
     @Override
     public void reset(Player p) {
         p.setBombBlastRange(p.getBombBlastRange() - 1);
+        setFinishTime(System.currentTimeMillis());
     }
 }

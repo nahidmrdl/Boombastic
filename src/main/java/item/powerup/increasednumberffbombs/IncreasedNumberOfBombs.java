@@ -33,6 +33,6 @@ public class IncreasedNumberOfBombs extends PowerUp {
      */
     @Override
     public void reset(Player p) {
-
+        setFinishTime(System.currentTimeMillis());
     }
 }

@@ -335,9 +335,8 @@ public class GameTopPanelGUI {
         try {
             for (Player player : model.getPlayers()) {
                 player.bombCount = 1;
-                player.powerUpsItems.clear();
-                player.cursesItems.clear();
                 player.setDead(false);
+                player.cleanItems();
                 if (gameResult) {player.victoryCount = 0;}
             }
             initialScreen.reset(this.players, this.rounds, this.map);
