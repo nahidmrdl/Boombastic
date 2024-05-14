@@ -37,6 +37,8 @@ public class Ghost extends PowerUp {
 
         p.setGhost(false);
 
+        setFinishTime(System.currentTimeMillis());
+
         if(p.getX() < 0 || p.getY() < 0 || p.getX() >= getCell().getMap().getMap()[0].length || p.getY() >= getCell().getMap().getMap().length) {
             p.setDead(true);
             return;
@@ -48,5 +50,7 @@ public class Ghost extends PowerUp {
         if(!(cell instanceof NormalCell)) {
             p.setDead(true);
         }
+
+
     }
 }

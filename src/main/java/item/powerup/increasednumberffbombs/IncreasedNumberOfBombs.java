@@ -4,8 +4,6 @@ import entity.player.Player;
 import item.powerup.PowerUp;
 import util.ResourceCollection;
 
-import java.awt.*;
-
 /**
  * Represents a power-up that increases the number of bombs the player can place.
  */
@@ -33,6 +31,6 @@ public class IncreasedNumberOfBombs extends PowerUp {
      */
     @Override
     public void reset(Player p) {
-
+        setFinishTime(System.currentTimeMillis());
     }
 }

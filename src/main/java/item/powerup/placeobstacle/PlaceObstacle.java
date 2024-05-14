@@ -31,6 +31,6 @@ public class PlaceObstacle extends PowerUp {
          */
         @Override
         public void reset(Player p) {
-
+                setFinishTime(System.currentTimeMillis());
         }
 }
