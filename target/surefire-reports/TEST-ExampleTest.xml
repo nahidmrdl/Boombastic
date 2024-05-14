@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ExampleTest" time="0.123" tests="5" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ExampleTest" time="0.005" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="G:\boombastic\target\test-classes;G:\boombastic\target\classes;C:\Users\m16-george\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\m16-george\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.0-M1\junit-jupiter-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0-M1\junit-jupiter-api-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\m16-george\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0-M1\junit-platform-commons-1.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0-M1\junit-jupiter-params-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0-M1\junit-jupiter-engine-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0-M1\junit-platform-engine-1.11.0-M1.jar;"/>
+    <property name="java.class.path" value="C:\Users\bl3ss\IdeaProjects\boombastic\target\test-classes;C:\Users\bl3ss\IdeaProjects\boombastic\target\classes;C:\Users\bl3ss\.m2\repository\org\mockito\mockito-core\3.12.4\mockito-core-3.12.4.jar;C:\Users\bl3ss\.m2\repository\net\bytebuddy\byte-buddy\1.11.13\byte-buddy-1.11.13.jar;C:\Users\bl3ss\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.13\byte-buddy-agent-1.11.13.jar;C:\Users\bl3ss\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\bl3ss\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\bl3ss\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\bl3ss\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0-M1\junit-jupiter-api-5.11.0-M1.jar;C:\Users\bl3ss\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\bl3ss\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0-M1\junit-platform-commons-1.11.0-M1.jar;C:\Users\bl3ss\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="java.vm.vendor" value="GraalVM Community"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://www.graalvm.org/"/>
     <property name="user.timezone" value="Europe/Budapest"/>
-    <property name="user.country.format" value="001"/>
     <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="22"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="C:\Users\m16-george\.jdks\graalvm-ce-22.0.0\bin"/>
-    <property name="sun.java.command" value="C:\Users\m16-george\AppData\Local\Temp\surefire857356225546774437\surefirebooter-20240424132546408_3.jar C:\Users\m16-george\AppData\Local\Temp\surefire857356225546774437 2024-04-24T13-25-44_978-jvmRun1 surefire-20240424132546408_1tmp surefire_0-20240424132546408_2tmp"/>
+    <property name="sun.boot.library.path" value="C:\Users\bl3ss\.jdks\graalvm-ce-22.0.0\bin"/>
+    <property name="sun.java.command" value="C:\Users\bl3ss\AppData\Local\Temp\surefire17478485568629992942\surefirebooter-20240514212505012_3.jar C:\Users\bl3ss\AppData\Local\Temp\surefire17478485568629992942 2024-05-14T21-25-04_911-jvmRun1 surefire-20240514212505012_1tmp surefire_0-20240514212505012_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="G:\boombastic\target\test-classes;G:\boombastic\target\classes;C:\Users\m16-george\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\m16-george\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.0-M1\junit-jupiter-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0-M1\junit-jupiter-api-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\m16-george\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0-M1\junit-platform-commons-1.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0-M1\junit-jupiter-params-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0-M1\junit-jupiter-engine-5.11.0-M1.jar;C:\Users\m16-george\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0-M1\junit-platform-engine-1.11.0-M1.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\bl3ss\IdeaProjects\boombastic\target\test-classes;C:\Users\bl3ss\IdeaProjects\boombastic\target\classes;C:\Users\bl3ss\.m2\repository\org\mockito\mockito-core\3.12.4\mockito-core-3.12.4.jar;C:\Users\bl3ss\.m2\repository\net\bytebuddy\byte-buddy\1.11.13\byte-buddy-1.11.13.jar;C:\Users\bl3ss\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.13\byte-buddy-agent-1.11.13.jar;C:\Users\bl3ss\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\bl3ss\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\bl3ss\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\bl3ss\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0-M1\junit-jupiter-api-5.11.0-M1.jar;C:\Users\bl3ss\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\bl3ss\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0-M1\junit-platform-commons-1.11.0-M1.jar;C:\Users\bl3ss\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\m16-george"/>
+    <property name="user.home" value="C:\Users\bl3ss"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2024-03-19"/>
-    <property name="java.home" value="C:\Users\m16-george\.jdks\graalvm-ce-22.0.0"/>
+    <property name="java.home" value="C:\Users\bl3ss\.jdks\graalvm-ce-22.0.0"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="G:\boombastic"/>
+    <property name="basedir" value="C:\Users\bl3ss\IdeaProjects\boombastic"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="jdk.internal.vm.ci.enabled" value="true"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\m16-george\AppData\Local\Temp\surefire857356225546774437\surefirebooter-20240424132546408_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\bl3ss\AppData\Local\Temp\surefire17478485568629992942\surefirebooter-20240514212505012_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22+36-jvmci-b02"/>
-    <property name="user.name" value="m16-george"/>
+    <property name="user.name" value="bl3ss"/>
     <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
@@ -44,17 +43,17 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="java.vendor.version" value="GraalVM CE 22+36.1"/>
-    <property name="localRepository" value="C:\Users\m16-george\.m2\repository"/>
+    <property name="localRepository" value="C:\Users\bl3ss\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://github.com/oracle/graal/issues"/>
-    <property name="java.io.tmpdir" value="C:\Users\M16-GE~1\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2023.3.6"/>
+    <property name="java.io.tmpdir" value="C:\Users\bl3ss\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2023.2.5"/>
     <property name="java.version" value="22"/>
-    <property name="user.dir" value="G:\boombastic"/>
+    <property name="user.dir" value="C:\Users\bl3ss\IdeaProjects\boombastic"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Users\m16-george\.jdks\graalvm-ce-22.0.0\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Alire\bin;C:\Program Files\Git\cmd;C:\Users\m16-george\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2023.3.4\bin;C:\Program Files\JetBrains\WebStorm 2023.3.4\bin;C:\Users\m16-george\AppData\Roaming\npm;C:\Program Files\JetBrains\CLion 2023.3.4\bin;C:\Users\m16-george\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Alire\bin;G:\msys\ucrt64\bin;C:\Users\m16-george\AppData\Local\GitHubDesktop\bin;C:\Users\m16-george\AppData\Local\Programs\php;C:\Users\m16-george\AppData\Local\Programs\composer;;C:\Program Files\JetBrains\PhpStorm 2024.1\bin;;."/>
+    <property name="java.library.path" value="C:\Users\bl3ss\.jdks\graalvm-ce-22.0.0\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;P:\PDFtk\bin\;P:\;C:\Program Files\dotnet\;C:\MinGW\bin;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;P:\VSCodium\bin;C:\Program Files\Java\jdk-17\bin;P:\Git\cmd;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\bl3ss\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\bl3ss\AppData\Local\Programs\Python\Python312\;C:\Users\bl3ss\AppData\Local\Microsoft\WindowsApps;C:\Users\bl3ss\.dotnet\tools;P:\Microsoft VS Code\bin;C:\Users\bl3ss\AppData\Roaming\npm;C:\Users\bl3ss\AppData\Local\GitHubDesktop\bin;P:\PyCharm 2023.2.3\bin;;P:\WebStorm 2023.2.4\bin;;P:\PhpStorm 2023.2.4\bin;;C:\Users\bl3ss\AppData\Local\Programs\php;C:\Users\bl3ss\AppData\Local\Programs\composer;C:\Program Files\JetBrains\CLion 2023.3.4\bin;;C:\Users\bl3ss\.dotnet\tools;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="GraalVM Community"/>
@@ -62,21 +61,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testGosha" classname="ExampleTest" time="0.062"/>
-  <testcase name="testJamil" classname="ExampleTest" time="0.003"/>
-  <testcase name="testMisha" classname="ExampleTest" time="0.002"/>
-  <testcase name="testNahid" classname="ExampleTest" time="0.006"/>
-  <testcase name="failTest" classname="ExampleTest" time="0.01">
-    <failure message="Fail test :-) ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Fail test :-) ==> expected: <true> but was: <false>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
-	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
-	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
-	at ExampleTest.failTest(ExampleTest.java:32)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-]]></failure>
-  </testcase>
+  <testcase name="testGosha" classname="ExampleTest" time="0.001"/>
+  <testcase name="testJamil" classname="ExampleTest" time="0"/>
+  <testcase name="testMisha" classname="ExampleTest" time="0"/>
+  <testcase name="testNahid" classname="ExampleTest" time="0.001"/>
 </testsuite>
