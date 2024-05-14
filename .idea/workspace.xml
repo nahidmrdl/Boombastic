@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="system out cleaned">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="all system out cleaned, code refactored">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gui/GameGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gui/GameGUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +68,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.build",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -185,7 +178,8 @@
       <workItem from="1713954120479" duration="927000" />
       <workItem from="1713957123124" duration="1773000" />
       <workItem from="1714641905237" duration="53000" />
-      <workItem from="1715702986998" duration="1356000" />
+      <workItem from="1715702986998" duration="1991000" />
+      <workItem from="1715705149992" duration="1059000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -403,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715704241271</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="all system out cleaned, code refactored">
+      <option name="closed" value="true" />
+      <created>1715704377622</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704377622</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +448,8 @@
     <MESSAGE value="import fixed" />
     <MESSAGE value="useless import removed" />
     <MESSAGE value="system out cleaned" />
-    <option name="LAST_COMMIT_MESSAGE" value="system out cleaned" />
+    <MESSAGE value="all system out cleaned, code refactored" />
+    <option name="LAST_COMMIT_MESSAGE" value="all system out cleaned, code refactored" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
