@@ -91,10 +91,10 @@ public class ResourceCollection {
             Images.MAP2.image = ImageIO.read(new File(basePath + "mapAssets/map2/map2.png"));
             Images.MAP3.image = ImageIO.read(new File(basePath + "mapAssets/map3/map3.png"));
 
-            Images.JAMIL.image = ImageIO.read(new File(basePath + "jamil.jpg"));
-            Images.NAHID.image = ImageIO.read(new File(basePath + "nahid.jpg"));
-            Images.MIKE.image = ImageIO.read(new File(basePath + "mike.jpg"));
-            Images.GOSHA.image = ImageIO.read(new File(basePath + "gosha.jpg"));
+            Images.JAMIL.image = ImageIO.read(new File(basePath + "jamil.png"));
+            Images.NAHID.image = ImageIO.read(new File(basePath + "nahid.png"));
+            Images.MIKE.image = ImageIO.read(new File(basePath + "mike.png"));
+            Images.GOSHA.image = ImageIO.read(new File(basePath + "gosha.png"));
 
             Images.BOXMAP1.image = ImageIO.read(new File(basePath + "mapAssets/map1/map1box.png"));
             Images.BOXMAP2.image = ImageIO.read(new File(basePath + "mapAssets/map2/map2box.png"));
