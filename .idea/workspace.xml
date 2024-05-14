@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="player change issue fixed" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="system out cleaned">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "CI-CD-check",
+    "git-widget-placeholder": "clean-up",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-22",
     "kotlin-language-version-configured": "true",
@@ -84,7 +95,7 @@
       <recent name="item" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.game [test]">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false">
       <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -118,6 +129,7 @@
                 <option value="test" />
               </list>
             </option>
+            <option name="multimoduleDir" />
             <option name="pomFileName" value="pom.xml" />
             <option name="profilesMap">
               <map />
@@ -172,6 +184,8 @@
       <workItem from="1713909847819" duration="2727000" />
       <workItem from="1713954120479" duration="927000" />
       <workItem from="1713957123124" duration="1773000" />
+      <workItem from="1714641905237" duration="53000" />
+      <workItem from="1715702986998" duration="1356000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -349,7 +363,47 @@
       <option name="project" value="LOCAL" />
       <updated>1713990505386</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="unused code in entity cleaned">
+      <option name="closed" value="true" />
+      <created>1715703248426</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1715703248426</updated>
+    </task>
+    <task id="LOCAL-00024" summary="items (powerups , curses) not resetting in the next round issue fixed">
+      <option name="closed" value="true" />
+      <created>1715704052805</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704052805</updated>
+    </task>
+    <task id="LOCAL-00025" summary="import fixed">
+      <option name="closed" value="true" />
+      <created>1715704104935</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704104935</updated>
+    </task>
+    <task id="LOCAL-00026" summary="useless import removed">
+      <option name="closed" value="true" />
+      <created>1715704175367</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704175367</updated>
+    </task>
+    <task id="LOCAL-00027" summary="system out cleaned">
+      <option name="closed" value="true" />
+      <created>1715704241271</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704241271</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,23 +441,12 @@
     <MESSAGE value="fail test added" />
     <MESSAGE value="unresolved files added" />
     <MESSAGE value="player change issue fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="player change issue fixed" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/gameModule/src/Main.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="unused code in entity cleaned" />
+    <MESSAGE value="items (powerups , curses) not resetting in the next round issue fixed" />
+    <MESSAGE value="import fixed" />
+    <MESSAGE value="useless import removed" />
+    <MESSAGE value="system out cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="system out cleaned" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

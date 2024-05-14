@@ -219,6 +219,18 @@ public class Player extends Entity {
         this.y = y;
     }
 
+    public void cleanItems(){
+        for (PowerUp powerUp : powerUpsItems) {
+            powerUp.reset(this);
+        }
+        for (Curse curse : cursesItems) {
+            curse.reset(this);
+        }
+
+        powerUpsItems.clear();
+        cursesItems.clear();
+    }
+
 
     /**
      * Gets the x-coordinate of the player
@@ -306,8 +318,6 @@ public class Player extends Entity {
         }
         int newX = this.x;
         int newY = this.y;
-
-        //System.out.println("Attempting to move to: " + newX + ", " + newY + " from: " + this.x + ", " + this.y);
 
         HashMap<String, String> playerControls = this.getControls();
         String action = getKeyActionFromKeyCode(keyCode, playerControls);
@@ -409,7 +419,6 @@ public class Player extends Entity {
      */
     public void placeBomb() {
         if (!canPlaceBomb) {
-            System.out.println("Cannot place bomb due to a curse!");
             return; // Do not proceed if bomb placement is prohibited
         }
         if (canPlaceBomb) {
@@ -429,8 +438,6 @@ public class Player extends Entity {
             this.gameMap.getMap()[this.y][this.x].addItem(bomb);
             this.bombCount--;
         }
-
-
     }
     /**
      * Remove finished power-ups (check the finish time) and if the power-up is finished, remove it from the player and apply the reset method
@@ -442,7 +449,6 @@ public class Player extends Entity {
             if(powerUp.getFinishTime() != 0 && powerUp.getFinishTime() < System.currentTimeMillis()) {
                 iterator.remove();
                 powerUp.reset(this);
-                System.out.println("Power up removed");
             }
         }
     }
@@ -457,7 +463,6 @@ public class Player extends Entity {
             if(curse.getFinishTime() != 0 && curse.getFinishTime() < System.currentTimeMillis()) {
                 iterator.remove();
                 curse.reset(this);
-                System.out.println("Curse removed");
             }
         }
     }

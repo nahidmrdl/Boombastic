@@ -86,9 +86,6 @@ public class ResourceCollection {
     public static void readFiles() {
         try {
             String basePath = "src/main/java/assets/";
-            // Assigning images to enum values
-            // log the link
-            System.out.println(basePath + "mapAssets/map1/map1.png");
             Images.MAP1.image = ImageIO.read(new File(basePath + "mapAssets/map1/map1.png"));
 
             Images.MAP2.image = ImageIO.read(new File(basePath + "mapAssets/map2/map2.png"));

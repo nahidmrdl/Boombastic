@@ -33,5 +33,6 @@ public class Invincibility extends PowerUp {
     @Override
     public void reset(Player p) {
         p.setInvincible(false);
+        setFinishTime(System.currentTimeMillis());
     }
 }

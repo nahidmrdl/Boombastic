@@ -1,15 +1,12 @@
 package cell;
 
 import entity.Entity;
-import entity.player.Player;
 import item.GameItem;
 import map.GameMap;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -44,8 +41,6 @@ public class Cell {
         this.visitors = new ArrayList<>();
         this.items = new ArrayList<>();
     }
-
-
 
 /**
      * Adds an item to the cell
@@ -134,24 +129,5 @@ public class Cell {
     public Image getImage(){
         return this.image;
     }
-
-
-
-
-//    public boolean isPlayerAndMonsterOnCell() {
-//        boolean playerFound = false;
-//        boolean monsterFound = false;
-//
-//        for (Entity visitor : visitors) {
-//            if(visitor.type.equals("Player")){
-//                playerFound = true;
-//            }
-//            if(visitor.type.equals("Monster")){
-//                monsterFound = true;
-//            }
-//        }
-//
-//        return playerFound && monsterFound;
-//    }
 
 }

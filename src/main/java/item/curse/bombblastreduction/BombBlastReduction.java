@@ -4,7 +4,6 @@ import entity.player.Player;
 import item.curse.Curse;
 import util.ResourceCollection;
 
-import java.awt.*;
 /**
  * Represents a curse that reduces the bomb blast range of the player for some time.
  */
@@ -24,7 +23,6 @@ public class BombBlastReduction extends Curse {
     @Override
     public void apply(Player p) {
         p.setBombBlastRange(0);
-        System.out.println("Bomb blast range reduced");
         setFinishTime(System.currentTimeMillis() + 5000);
     }
 
@@ -35,5 +33,6 @@ public class BombBlastReduction extends Curse {
     @Override
     public void reset(Player p) {
         p.setBombBlastRange(1);
+        setFinishTime(System.currentTimeMillis());
     }
 }

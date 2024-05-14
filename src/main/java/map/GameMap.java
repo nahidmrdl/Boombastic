@@ -3,14 +3,11 @@ package map;
 import cell.Cell;
 import cell.normalCell.NormalCell;
 import entity.player.Player;
-import item.GameItem;
 import item.bomb.Bomb;
 import levels.LevelReader;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a game map.
@@ -28,12 +25,9 @@ public class GameMap {
      */
     public GameMap(Image image, String name, Integer mapIndex){
         try {
-            //(STR."src/levels/\{mapIndex}.txt");
             Cell[][] mapCell = LevelReader.readLevelFromFile("src/main/java/levels/" + mapIndex + ".txt");
             this.map = mapCell;
         } catch (IOException e) {
-            // log the path that caused the error
-            System.out.println("src/main/java/levels/" + mapIndex + ".txt");
             throw new RuntimeException(e);
         }
 
@@ -101,7 +95,4 @@ public class GameMap {
     public String getName(){
         return this.name;
     }
-
-
-
 }

@@ -170,7 +170,6 @@ public class GameInitialScreenGUI extends JPanel {
             }
             imagePanel.updateImage(imgIndexHolder[0]);
             imagePanel.repaint();
-            System.out.println(imgIndexHolder[0]);
         });
 
         playerCharacter.add(leftArrow);

@@ -5,15 +5,10 @@ import cell.Cell;
 import cell.box.BoxCell;
 import cell.normalCell.NormalCell;
 import cell.wall.WallCell;
-import entity.Entity;
-import entity.player.Player;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Reads a level from a file and creates a 2D array of cells.
  */
