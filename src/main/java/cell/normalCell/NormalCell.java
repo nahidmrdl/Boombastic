@@ -4,7 +4,6 @@ import cell.Cell;
 import entity.Entity;
 import entity.player.Player;
 import item.GameItem;
-import item.bomb.Bomb;
 import item.curse.Curse;
 import item.curse.bombblastreduction.BombBlastReduction;
 import item.curse.instantbombplacement.InstantBombPlacement;
@@ -113,7 +112,6 @@ public class NormalCell extends Cell {
                         GameItem item = itemIterator.next();
                         if (item instanceof PowerUp) {
                             PowerUp powerUp = (PowerUp) item;
-                            System.out.println("Player collected a power-up" + item.getClass().getSimpleName());
                             player.addPowerUp(powerUp);
                             powerUp.apply(player);
                             itemIterator.remove();
