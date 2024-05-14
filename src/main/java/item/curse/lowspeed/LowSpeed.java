@@ -13,8 +13,6 @@ public class LowSpeed extends Curse {
      */
     public LowSpeed() {
         super(ResourceCollection.Images.LOWSPEED_CURSE.getImage());
-    //    super(ResourceCollection.Images.CURSE_ICON.getImage()); // Specific image for this curse
-
     }
 
 

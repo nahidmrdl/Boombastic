@@ -4,7 +4,6 @@ import entity.player.Player;
 import item.curse.Curse;
 import util.ResourceCollection;
 
-import java.awt.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

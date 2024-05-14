@@ -4,7 +4,6 @@ import entity.player.Player;
 import item.curse.Curse;
 import util.ResourceCollection;
 
-import java.awt.*;
 /**
  * Represents a curse that reduces the bomb blast range of the player for some time.
  */
