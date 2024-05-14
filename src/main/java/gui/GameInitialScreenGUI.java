@@ -451,10 +451,10 @@ class ImagePanel extends JPanel {
     public void updateImage(int imgIndex) {
 
         String[] charact = {
-                "src/main/java/assets/jamil.jpg",
-                "src/main/java/assets/nahid.jpg",
-                "src/main/java/assets/mike.jpg",
-                "src/main/java/assets/gosha.jpg",
+                "src/main/java/assets/jamil.png",
+                "src/main/java/assets/nahid.png",
+                "src/main/java/assets/mike.png",
+                "src/main/java/assets/gosha.png",
                 "src/main/java/assets/dead.jpeg"
         };
 
