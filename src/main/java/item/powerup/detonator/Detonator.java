@@ -1,13 +1,9 @@
 package item.powerup.detonator;
 
-import cell.Cell;
 import entity.player.Player;
-import item.GameItem;
-import item.bomb.Bomb;
 import item.powerup.PowerUp;
-import map.GameMap;
 import util.ResourceCollection;
-import gui.GameTopPanelGUI;
+
 /**
  * Represents a power-up that allows the player to detonate bombs.
  */

@@ -6,7 +6,6 @@ import entity.player.Player;
 
 import util.ResourceCollection;
 
-import java.awt.*;
 /**
  * Represents a curse that prohibits the player from placing bombs for some time.
  */

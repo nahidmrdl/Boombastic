@@ -4,8 +4,6 @@ import entity.player.Player;
 import item.powerup.PowerUp;
 import util.ResourceCollection;
 
-import java.awt.*;
-
 /**
  * Represents a power-up that increases the blast range of the player's bombs.
  */
