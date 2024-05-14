@@ -313,7 +313,6 @@
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    //System.out.println("Key pressed: " + e.getKeyCode()); // Debugging
                     try {
                         switch (e.getKeyCode()) {
                             case KeyEvent.VK_W: // W key

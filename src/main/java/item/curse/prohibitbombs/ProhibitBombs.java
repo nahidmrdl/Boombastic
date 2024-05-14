@@ -25,7 +25,6 @@ public class ProhibitBombs extends Curse {
     @Override
     public void apply(Player p) {
         p.setCanPlaceBomb(false);
-        System.out.println("Player cannot place bomb for some time");
         setFinishTime(System.currentTimeMillis() + 5000);
     }
 

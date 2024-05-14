@@ -4,34 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="unused code in entity cleaned">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="system out cleaned">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/monster/monstertypes/ConfusedMonster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/bombblastreduction/BombBlastReduction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/instantbombplacement/InstantBombPlacement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/lowspeed/LowSpeed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/curse/prohibitbombs/ProhibitBombs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/detonator/Detonator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/detonator/Detonator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/ghost/Ghost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/increasedblastrange/IncreasedBlastRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/increasedblastrange/IncreasedBlastRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/invincibility/Invincibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/invincibility/Invincibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/placeobstacle/PlaceObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/placeobstacle/PlaceObstacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/rollerskate/RollerSkate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/rollerskate/RollerSkate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gui/GameTopPanelGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gui/GameTopPanelGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/curse/bombblastreduction/BombBlastReduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/bombblastreduction/BombBlastReduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/curse/instantbombplacement/InstantBombPlacement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/instantbombplacement/InstantBombPlacement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/curse/lowspeed/LowSpeed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/lowspeed/LowSpeed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/curse/prohibitbombs/ProhibitBombs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/curse/prohibitbombs/ProhibitBombs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/detonator/Detonator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/detonator/Detonator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/ghost/Ghost.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/ghost/Ghost.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/increasedblastrange/IncreasedBlastRange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/increasedblastrange/IncreasedBlastRange.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/invincibility/Invincibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/invincibility/Invincibility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/placeobstacle/PlaceObstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/placeobstacle/PlaceObstacle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/rollerskate/RollerSkate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/rollerskate/RollerSkate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ResourceCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +185,7 @@
       <workItem from="1713954120479" duration="927000" />
       <workItem from="1713957123124" duration="1773000" />
       <workItem from="1714641905237" duration="53000" />
-      <workItem from="1715702986998" duration="957000" />
+      <workItem from="1715702986998" duration="1356000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -388,7 +371,39 @@
       <option name="project" value="LOCAL" />
       <updated>1715703248426</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="items (powerups , curses) not resetting in the next round issue fixed">
+      <option name="closed" value="true" />
+      <created>1715704052805</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704052805</updated>
+    </task>
+    <task id="LOCAL-00025" summary="import fixed">
+      <option name="closed" value="true" />
+      <created>1715704104935</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704104935</updated>
+    </task>
+    <task id="LOCAL-00026" summary="useless import removed">
+      <option name="closed" value="true" />
+      <created>1715704175367</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704175367</updated>
+    </task>
+    <task id="LOCAL-00027" summary="system out cleaned">
+      <option name="closed" value="true" />
+      <created>1715704241271</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704241271</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +442,11 @@
     <MESSAGE value="unresolved files added" />
     <MESSAGE value="player change issue fixed" />
     <MESSAGE value="unused code in entity cleaned" />
-    <option name="LAST_COMMIT_MESSAGE" value="unused code in entity cleaned" />
+    <MESSAGE value="items (powerups , curses) not resetting in the next round issue fixed" />
+    <MESSAGE value="import fixed" />
+    <MESSAGE value="useless import removed" />
+    <MESSAGE value="system out cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="system out cleaned" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

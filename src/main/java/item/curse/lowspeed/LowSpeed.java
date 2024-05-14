@@ -23,7 +23,6 @@ public class LowSpeed extends Curse {
     @Override
     public void apply(Player p) {
         p.setSpeed(135);
-        System.out.println("Player speed reduced");
         setFinishTime(System.currentTimeMillis() + 5000);
     }
 

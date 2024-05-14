@@ -23,7 +23,6 @@ public class BombBlastReduction extends Curse {
     @Override
     public void apply(Player p) {
         p.setBombBlastRange(0);
-        System.out.println("Bomb blast range reduced");
         setFinishTime(System.currentTimeMillis() + 5000);
     }
 

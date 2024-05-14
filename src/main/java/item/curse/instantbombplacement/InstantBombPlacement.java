@@ -28,8 +28,7 @@ public class InstantBombPlacement extends Curse {
                     p.placeBomb();
             }, 150, TimeUnit.MILLISECONDS);
             scheduler.shutdown();
-        System.out.println("Bomb placed instantly, If the player has a bomb/can place a bomb");
-        setFinishTime(System.currentTimeMillis() + 3000); // Set the curse duration
+        setFinishTime(System.currentTimeMillis() + 3000);
     }
 
     /**
