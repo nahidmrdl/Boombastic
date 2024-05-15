@@ -1,33 +1,31 @@
 package cell.box;
 
+import cell.box.BoxCell;
 import entity.player.Player;
 import map.GameMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 class BoxCellTest {
-    private BoxCell boxCell;
-    private GameMap gameMap;
+    private BoxCell cell;
+    private GameMap map;
+    private Player owner;
 
     @BeforeEach
-    void setUp() {
-        //mock gamemap
-        gameMap = mock(GameMap.class);
-        boxCell = new BoxCell(0, 0, gameMap);
+    void setup() {
+        map = mock(GameMap.class);
+        owner = mock(Player.class);
+        cell = new BoxCell(0, 0, map);
     }
 
     @Test
-    void testConstructor() {
-        assertNotNull(boxCell);
-        assertNull(boxCell.getOwner());
-    }
-
-    @Test
-    void testSetOwnerAndGetOwner() {
-        Player player = new Player(0, 0, gameMap, "Player", 1, null, null);
-        boxCell.setOwner(player);
-        assertEquals(player, boxCell.getOwner());
+    void setAndGetOwner() {
+        assertNull(cell.getOwner()); // Ensure no owner initially
+        cell.setOwner(owner);
+        assertEquals(owner, cell.getOwner());
     }
 }
