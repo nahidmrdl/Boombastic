@@ -41,6 +41,11 @@ public class Player extends Entity {
 
     public List<PowerUp> powerUpsItems = new ArrayList<>();
     public List<Curse> cursesItems = new ArrayList<>();
+
+    public void setBombCount(int bombCount) {
+        this.bombCount = bombCount;
+    }
+
     public int bombCount = 1;
 
     private boolean hasStepFromBomb = false;

@@ -90,6 +90,14 @@ public class Bomb extends GameItem {
     }
 
     /**
+     * Gets the state of the bomb
+     * @return the state of the bomb
+     */
+    public int getState() {
+        return state;
+    }
+
+    /**
      * Updates the animation state of the bomb
      */
     private void updateAnimationState() {

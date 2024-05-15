@@ -22,8 +22,10 @@ public class IncreasedNumberOfBombs extends PowerUp {
      */
     @Override
     public void apply(Player p) {
-        p.bombCount++;
+        p.setBombCount(p.getBombCount() + 1);
     }
+
+
 
     /**
      * Resets the power-up for the player
