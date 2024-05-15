@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added some EntityTest and PlayerTest">
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/curse/bombblastreduction/BombBlastReductionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/curse/instantbombplacement/InstantBombPlacementTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/curse/lowspeed/LowSpeedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/curse/prohibitbombs/ProhibitBombsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/detonator/DetonatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/ghost/GhostTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/increasedblastrange/IncreasedBlastRangeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/invincibility/InvincibilityTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/placeobstacle/PlaceObstacleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/item/powerup/rollerskate/RollerSkateTest.java" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added some Curse and Powerups tests. Added some getters and setters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/bomb/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/item/bomb/BombTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/item/bomb/BombTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/item/bomb/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/bomb/Bomb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/item/powerup/ghost/GhostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/item/powerup/ghost/GhostTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/item/powerup/invincibility/InvincibilityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/item/powerup/invincibility/InvincibilityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/item/powerup/placeobstacle/PlaceObstacleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/item/powerup/placeobstacle/PlaceObstacleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/powerup/increasednumberffbombs/IncreasedNumberOfBombs.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ExampleTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ExampleTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ExampleTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ExampleTest.xml" afterDir="false" />
     </list>
@@ -62,35 +50,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Maven.game [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-22",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/boombastic/game/src/assets/icons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "G:/soft-tech/boombastic/game/gameModule/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.game [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/boombastic/game/src/assets/icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;G:/soft-tech/boombastic/game/gameModule/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\boombastic\game\src\assets\icons" />
@@ -199,7 +187,7 @@
       <workItem from="1715702986998" duration="1991000" />
       <workItem from="1715705149992" duration="1059000" />
       <workItem from="1715792477249" duration="615000" />
-      <workItem from="1715802251395" duration="4197000" />
+      <workItem from="1715802251395" duration="4828000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -457,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715804616631</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added some Curse and Powerups tests. Added some getters and setters">
+      <option name="closed" value="true" />
+      <created>1715806611066</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1715806611066</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +487,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="wrong monster image fixed" />
     <MESSAGE value="." />
     <MESSAGE value="Removed a walkable tile from walkablepaths, because it was not visually appealing.&#10;&#10;Added a new Box asset to boxPaths." />
     <MESSAGE value="NEW dead image for top pnel" />
@@ -516,7 +511,8 @@
     <MESSAGE value="Added a boxCellTest" />
     <MESSAGE value="Added NormalCellTest and CellTest" />
     <MESSAGE value="Added some EntityTest and PlayerTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some EntityTest and PlayerTest" />
+    <MESSAGE value="Added some Curse and Powerups tests. Added some getters and setters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some Curse and Powerups tests. Added some getters and setters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
