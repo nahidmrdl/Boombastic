@@ -489,9 +489,23 @@ public class GameMapGUI extends JPanel {
                             frame.dispose();
                             break;
                     }
+
+                    //check if the player moves to a cell where there is a monster
+                    for (Player player : model.getPlayers()) {
+                        for (Monster monster : model.getMonsters()) {
+                            if (player.getX() == monster.getX() && player.getY() == monster.getY()) {
+                                if (!player.isInvincible()) {
+                                    player.setDead(true);
+                                }
+                            }
+                        }
+                    }
+
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+
+
 
                 repaint();
             }
