@@ -9,20 +9,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-
+/**
+ * The GameInitialScreenGUI class represents the initial screen of the game where players configure game settings.
+ */
 public class GameInitialScreenGUI extends JPanel {
+    // Holder for round count value
     final int[] roundCountValueHolder = {5};
     private final JFrame frame;
 
+    // Lists to store players, text fields for player names, control mappings, and image panels
     public final List<Player> players = new ArrayList<>();
     private final List<JTextField> playerNameFields = new ArrayList<>();
-
     private final List<HashMap<String, String>> controls;
     private final List<ImagePanel> imagePanels = new ArrayList<>();
 
@@ -30,6 +31,12 @@ public class GameInitialScreenGUI extends JPanel {
     private JRadioButton selectedMapRadioButton;
     private int mapIndex;
 
+    /**
+     * Constructs a new GameInitialScreenGUI instance.
+     * Initializes the initial screen GUI components.
+     * @param frame The main JFrame of the game.
+     * @param gameGui The GameGUI instance controlling the game's GUI.
+     */
     public GameInitialScreenGUI(JFrame frame, GameGUI gameGui) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.frame = frame;
@@ -47,6 +54,7 @@ public class GameInitialScreenGUI extends JPanel {
         addPlayers();
     }
 
+    // Setup control mappings for players
     public void setupControls() {
         // Player 1 controls
         HashMap<String, String> player1Controls = new HashMap<>();
@@ -81,14 +89,16 @@ public class GameInitialScreenGUI extends JPanel {
         controls.add(player3Controls);
     }
 
+    // Create a map panel with map image and selection radio button
     private final ButtonGroup mapGroup = new ButtonGroup();
-
     private JLayeredPane createMapPanel(int imgIndex) {
+        // Customized JLayeredPane to hold map image and radio button
         JLayeredPane mapPanel = new JLayeredPane() {
             @Override
             public void doLayout() {
                 super.doLayout();
 
+                // Position the radio button at the bottom right corner of the map image
                 int radioButtonPosition = 70;
                 int x = getWidth() - radioButtonPosition + 25;
                 int y = getHeight() - radioButtonPosition + 15;
@@ -103,9 +113,11 @@ public class GameInitialScreenGUI extends JPanel {
             }
         };
 
+        // Add map image to the layered pane
         ImagePanel imagePanel = new ImagePanel(imgIndex);
         mapPanel.add(imagePanel, JLayeredPane.DEFAULT_LAYER);
 
+        // Add radio button for map selection
         JRadioButton mapRadioButton = new JRadioButton();
         mapRadioButton.setPreferredSize(new Dimension(300, 300));
         mapGroup.add(mapRadioButton);
@@ -116,6 +128,7 @@ public class GameInitialScreenGUI extends JPanel {
         return mapPanel;
     }
 
+    // Add map selection panels to the initial screen
     private void addMaps() {
         JPanel maps = new JPanel();
         maps.setPreferredSize(new Dimension(900, 400));
@@ -132,36 +145,41 @@ public class GameInitialScreenGUI extends JPanel {
         add(maps);
     }
 
+    // Create panel for each player with character selection, name input, and controls display
     private JButton addPlayerButton;
-
     private JPanel createPlayerPanel(String playerName, int imgIndex) {
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
         playerPanel.setPreferredSize(new Dimension(250, playerPanel.getPreferredSize().height));
 
+        // Panel for selecting character image
         JPanel playerCharacter = new JPanel();
         playerCharacter.setPreferredSize(new Dimension(250, 200));
         playerCharacter.setLayout(new BoxLayout(playerCharacter, BoxLayout.X_AXIS));
 
+        // Image panel for character selection
         ImagePanel imagePanel = new ImagePanel(imgIndex);
         imagePanel.setMaximumSize(new Dimension(100, 100));
         imagePanels.add(imagePanel);
 
+        // Buttons for changing character image
         JButton leftArrow = new JButton("<-");
-
+        JButton rightArrow = new JButton("->");
         final int[] imgIndexHolder = {imgIndex};
+
+        // Action listeners for changing character image
         leftArrow.addActionListener(e -> {
             if (imgIndexHolder[0] == 0) {
                 imgIndexHolder[0] = 3;      // 3 is the last index of the array
             } else {
                 imgIndexHolder[0]--;
             }
-            imagePanel.updateImage(imgIndexHolder[0]);
-            imagePanel.repaint();
+            imagePanel.updateImage(imgIndexHolder[
 
+                    0]);
+            imagePanel.repaint();
         });
 
-        JButton rightArrow = new JButton("->");
         rightArrow.addActionListener(e -> {
             if (imgIndexHolder[0] == 3) {
                 imgIndexHolder[0] = 0;
@@ -175,24 +193,21 @@ public class GameInitialScreenGUI extends JPanel {
         playerCharacter.add(leftArrow);
         playerCharacter.add(imagePanel);
         playerCharacter.add(rightArrow);
-
         playerPanel.add(playerCharacter);
 
+        // Panel for entering player name and displaying controls
         JPanel playerNamePanel = new JPanel();
         playerNamePanel.setPreferredSize(new Dimension(250, 100));
         playerNamePanel.setLayout(new BoxLayout(playerNamePanel, BoxLayout.X_AXIS));
 
-
         JTextField playerNameField = new JTextField(playerName);
-        playerNameField.setMaximumSize(new Dimension
-                (playerNameField.getPreferredSize().width + 40, playerNameField.getPreferredSize().height));
+        playerNameField.setMaximumSize(new Dimension(playerNameField.getPreferredSize().width + 40, playerNameField.getPreferredSize().height));
         playerNameFields.add(playerNameField);
 
         JButton playerControls = new JButton("W");
         playerControls.setActionCommand(playerName);
         playerControls.addActionListener(e -> {
             String actionCommand = e.getActionCommand();
-
             switch (actionCommand) {
                 case "Player 1":
                     showPlayerControls("Player 1 controls: W, A, S, D; B to place bomb");
@@ -206,12 +221,12 @@ public class GameInitialScreenGUI extends JPanel {
             }
         });
 
+        // Button to remove player
         if (playerName.equals("Player 3")) {
             JButton removePlayerButton = new JButton("Remove");
-
             removePlayerButton.setForeground(Color.RED);
 
-
+            // Action listener to remove player
             removePlayerButton.addActionListener(e -> {
                 if (playerNameFields.size() == 3) {
                     playerNameFields.remove(2);
@@ -221,7 +236,6 @@ public class GameInitialScreenGUI extends JPanel {
                 addPlayerButton.setVisible(true);
                 playerPanel.repaint();
             });
-
 
             playerNamePanel.add(playerNameField);
             playerNamePanel.add(playerControls);
@@ -236,6 +250,7 @@ public class GameInitialScreenGUI extends JPanel {
         return playerPanel;
     }
 
+    // Display dialog with player controls
     private void showPlayerControls(String controls) {
         JDialog playerControlsDialog = new JDialog();
         playerControlsDialog.setPreferredSize(new Dimension(330, 100));
@@ -246,6 +261,7 @@ public class GameInitialScreenGUI extends JPanel {
         playerControlsDialog.setVisible(true);
     }
 
+    // Create panel for selecting round count
     private JPanel createRoundCountPanel() {
         JPanel roundCount = new JPanel();
         roundCount.setPreferredSize(new Dimension(250, 150));
@@ -255,14 +271,14 @@ public class GameInitialScreenGUI extends JPanel {
         final int minRoundCount = 1;
 
         JTextArea roundCountArea = new JTextArea(String.valueOf(roundCountValueHolder[0]));
-
-        roundCountArea.setMaximumSize(new Dimension
-                (roundCountArea.getPreferredSize().width, roundCountArea.getPreferredSize().height));
+        roundCountArea.setMaximumSize(new Dimension(roundCountArea.getPreferredSize().width, roundCountArea.getPreferredSize().height));
         roundCountArea.setEditable(false);
 
+        // Buttons to increase/decrease round count
         JButton decreaseRoundCount = new JButton("-");
         JButton increaseRoundCount = new JButton("+");
 
+        // Action listeners to adjust round count
         decreaseRoundCount.addActionListener(e -> {
             if (roundCountValueHolder[0] > minRoundCount) {
                 roundCountValueHolder[0]--;
@@ -284,10 +300,12 @@ public class GameInitialScreenGUI extends JPanel {
         return roundCount;
     }
 
+    // Get the selected round count
     public int getRoundCount() {
         return roundCountValueHolder[0];
     }
 
+    // Add player panels and round count panel to the initial screen
     private void addPlayers() {
         JPanel playersAndRounds = new JPanel();
         playersAndRounds.setLayout(new GridBagLayout());
@@ -298,7 +316,6 @@ public class GameInitialScreenGUI extends JPanel {
         // Player 1 Panel
         constraints.gridx = 0;
         constraints.gridy = 0;
-
         constraints.weightx = 0.25;
         constraints.fill = GridBagConstraints.BOTH;
         playersAndRounds.add(createPlayerPanel("Player 1", 0), constraints);
@@ -312,9 +329,8 @@ public class GameInitialScreenGUI extends JPanel {
         addPlayerButton = new JButton("+");
         addPlayerButton.setPreferredSize(new Dimension(50, 50));
 
-
+        // Action listener to add new player
         playersAndRounds.add(addPlayerButton);
-
         addPlayerButton.addActionListener(e -> {
             constraints.gridx = 2;
             addPlayerButton.setVisible(false);
@@ -327,15 +343,18 @@ public class GameInitialScreenGUI extends JPanel {
         roundsAndStart.setLayout(new BoxLayout(roundsAndStart, BoxLayout.Y_AXIS));
         roundsAndStart.setPreferredSize(new Dimension(250, 150));
 
+        // Label for round count
         JLabel roundCountLabel = new JLabel("Round count");
         roundCountLabel.setFont(new Font(roundCountLabel.getFont().getName(), Font.BOLD, 15));
         roundCountLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        // Button to start the game
         JButton startButton = new JButton("Start");
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startButton.setPreferredSize(new Dimension(250, 150));
         startButton.setMaximumSize(new Dimension(200, 150));
 
+        // Action listener to start the game
         startButton.addActionListener(e -> {
             try {
                 startGame();
@@ -353,6 +372,7 @@ public class GameInitialScreenGUI extends JPanel {
         add(playersAndRounds);
     }
 
+    // Method to start the game with selected settings
     private void startGame() throws IOException {
         Image[] images = new Image[4];
         images[0] = ResourceCollection.Images.JAMIL.getImage();
@@ -362,7 +382,9 @@ public class GameInitialScreenGUI extends JPanel {
 
         if (selectedMapRadioButton != null) {
             for (int i = 0; i < playerNameFields.size(); i++) {
-                String playerName = playerNameFields.get(i).getText();
+                String playerName = playerNameFields.get(i
+
+                ).getText();
                 int imageIndex = imagePanels.get(i).getImgIndex();
                 players.add(new Player(0, 0, null, playerName, imageIndex, controls.get(i), images[imageIndex]));
             }
@@ -396,24 +418,32 @@ public class GameInitialScreenGUI extends JPanel {
         }
     }
 
+    // Reset game with new settings
     public void reset(List<Player> players, int round, int map) throws IOException {
         gameGui.setGameEngine(new GameEngine(players, round, map));
         gameGui.startGame();
     }
 
+    // Get the index of the selected map
     public int getMapIndex() {
         return mapIndex;
     }
 
+    // Set the index of the selected map
     public void setMapIndex(int mapIndex){
         this.mapIndex = mapIndex;
     }
 }
 
+/**
+ * This class represents a JPanel used for displaying images.
+ * It allows for dynamic updating of the displayed image.
+ */
 class ImagePanel extends JPanel {
-    private Image image;
-    private int imgIndex;
+    private Image image; // The image to be displayed
+    private int imgIndex; // Index of the image in the array
 
+    // Arrays containing images for characters and maps
     private final Image[] characters = {
             ResourceCollection.Images.JAMIL.getImage(),
             ResourceCollection.Images.NAHID.getImage(),
@@ -421,35 +451,41 @@ class ImagePanel extends JPanel {
             ResourceCollection.Images.GOSHA.getImage(),
             ResourceCollection.Images.DEAD_NEW.getImage(),
     };
-
     private final Image[] maps = {
             ResourceCollection.Images.MAP1.getImage(),
             ResourceCollection.Images.MAP2.getImage(),
             ResourceCollection.Images.MAP3.getImage()
     };
 
+    /**
+     * Constructs an ImagePanel with the specified image index.
+     * @param img The index of the image to be displayed
+     */
     public ImagePanel(int img) {
         this.imgIndex = img;
         Image originalImage;
 
+        // Selects the image based on the provided index
         originalImage = switch (img) {
             case 0 -> characters[0];
             case 1 -> characters[1];
             case 2 -> characters[2];
             case 3 -> characters[3];
             case 4 -> characters[4];
-
             case 10 -> maps[0];
             case 11 -> maps[1];
             case 12 -> maps[2];
-
             default -> throw new IllegalArgumentException("Invalid image name: " + img);
         };
         image = originalImage;
     }
 
+    /**
+     * Updates the displayed image based on the provided image index.
+     * @param imgIndex The index of the new image to be displayed
+     */
     public void updateImage(int imgIndex) {
-
+        // Array containing file paths for character images
         String[] charact = {
                 "src/main/java/assets/jamil.png",
                 "src/main/java/assets/nahid.png",
@@ -458,24 +494,37 @@ class ImagePanel extends JPanel {
                 "src/main/java/assets/dead.jpeg"
         };
 
-
         this.imgIndex = imgIndex;
         try {
-            image = ImageIO.read(new File((charact[imgIndex])) );
+            // Reads the image from file and sets it as the displayed image
+            image = ImageIO.read(new File((charact[imgIndex])));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Retrieves the index of the currently displayed image.
+     * @return The index of the currently displayed image
+     */
     public int getImgIndex() {
         return imgIndex;
     }
 
+    /**
+     * Overrides the method to return the preferred size of the panel.
+     * @return The preferred size of the panel
+     */
     @Override
     public Dimension getPreferredSize() {
         return getParent().getSize();
     }
 
+    /**
+     * Overrides the method to paint the component.
+     * Draws the scaled image with rounded corners on the panel.
+     * @param g The Graphics object used for painting
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
