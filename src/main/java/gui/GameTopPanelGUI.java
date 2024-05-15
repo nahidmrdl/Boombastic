@@ -1,9 +1,5 @@
 package gui;
 
-import entity.monster.monstertypes.ConfusedMonster;
-import entity.monster.monstertypes.GhostlyMonster;
-import entity.monster.monstertypes.SimpleMonster;
-import entity.monster.monstertypes.SpeedyMonster;
 import entity.player.Player;
 import gameengine.GameEngine;
 import item.curse.Curse;
@@ -339,7 +335,6 @@ public class GameTopPanelGUI {
                 JButton restartButton = new JButton("Restart");
                 restartButton.addActionListener(e -> {
                     restartDialog(dialog, false);
-
                     GameMapGUI.startTimer();
                 });
 
@@ -422,17 +417,6 @@ public class GameTopPanelGUI {
                     player.victoryCount = 0;
                 }
             }
-            System.out.println("hi");
-//            this.model.monsters = null;
-//            SimpleMonster m1 = new SimpleMonster(0, 0, this.model.getMap(), this.players);
-//            GhostlyMonster m2 = new GhostlyMonster(0, 0, this.model.getMap(), this.players);
-//            SpeedyMonster m3 = new SpeedyMonster(0, 0, this.model.getMap(), this.players);
-//            ConfusedMonster m4 = new ConfusedMonster(0, 0, this.model.getMap(), this.players);
-//
-//            this.model.monsters.add(m1);
-//            this.model.monsters.add(m2);
-//            this.model.monsters.add(m3);
-//            this.model.monsters.add(m4);
             initialScreen.reset(this.players, this.rounds, this.map);
         } catch (IOException ex) {
             throw new RuntimeException(ex);

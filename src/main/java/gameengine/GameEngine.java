@@ -67,9 +67,7 @@ public class GameEngine {
         monsters.add(m2);
         monsters.add(m3);
         monsters.add(m4);
-        for (Player player : players) {
-            player.monsters = monsters;
-        }
+
     }
 
     /**
