@@ -1,41 +1,63 @@
 package cell.normalCell;
 
-import cell.Cell;
+import cell.normalCell.NormalCell;
 import entity.player.Player;
-import item.GameItem;
 import item.curse.Curse;
+import item.curse.lowspeed.LowSpeed;
 import item.powerup.PowerUp;
+import item.powerup.increasednumberffbombs.IncreasedNumberOfBombs;
 import map.GameMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+public class NormalCellTest {
 
-class NormalCellTest {
-    private NormalCell normalCell;
-    private GameMap gameMap;
+    @Mock
+    private GameMap map;
+    @Mock
+    private Player player;
+    private NormalCell cell;
 
     @BeforeEach
-    void setUp() {
-        // Mock GameMap
-        gameMap = mock(GameMap.class);
+    void setup() {
+        MockitoAnnotations.openMocks(this);
+        cell = new NormalCell(0, 0, map);
+        when(player.getX()).thenReturn(0);
+        when(player.getY()).thenReturn(0);
+        cell.addVisitor(player);
+    }
 
-        // Create NormalCell
-        normalCell = new NormalCell(0, 0, gameMap);
+
+
+    @Test
+    void testCollectItemsByPlayer() {
+        PowerUp powerUp = new IncreasedNumberOfBombs();
+        cell.addItem(powerUp);
+        cell.collectItems();
+
+        verify(player, times(1)).addPowerUp(powerUp);
+        assertTrue(cell.getItems().isEmpty()); // Items should be collected
     }
 
     @Test
-    void testConstructor() {
-        assertEquals(normalCell.getX(), 0);
-        assertEquals(normalCell.getY(), 0);
-        assertEquals(normalCell.getMap(), gameMap);
+    void testCollectCurseByPlayer() {
+        Curse curse = new LowSpeed();
+        cell.addItem(curse);
+        cell.collectItems();
+
+        verify(player, times(1)).addCurse(curse);
+        assertTrue(cell.getItems().isEmpty()); // Items should be collected
     }
 
-
-
+    @Test
+    void testStartingPoint() {
+        assertFalse(cell.isStartingPoint());
+        cell.setStartingPoint(true);
+        assertTrue(cell.isStartingPoint());
+    }
 }

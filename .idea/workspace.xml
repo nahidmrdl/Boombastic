@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="all system out cleaned, code refactored">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="Added a boxCellTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ExampleTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cell/CellTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cell/box/BoxCellTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cell/normalCell/NormalCellTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/entity/EntityTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/entity/player/PlayerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gameengine/GameEngineTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/item/GameItemTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/item/bomb/BombTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ExampleTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ExampleTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ExampleTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ExampleTest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,6 +181,7 @@
       <workItem from="1715702986998" duration="1991000" />
       <workItem from="1715705149992" duration="1059000" />
       <workItem from="1715792477249" duration="615000" />
+      <workItem from="1715802251395" duration="949000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />
@@ -417,7 +407,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715704377622</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed a bug related to player collision with a monster">
+      <option name="closed" value="true" />
+      <created>1715802477654</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1715802477654</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added a boxCellTest">
+      <option name="closed" value="true" />
+      <created>1715802635147</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1715802635147</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,7 +479,9 @@
     <MESSAGE value="useless import removed" />
     <MESSAGE value="system out cleaned" />
     <MESSAGE value="all system out cleaned, code refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="all system out cleaned, code refactored" />
+    <MESSAGE value="fixed a bug related to player collision with a monster" />
+    <MESSAGE value="Added a boxCellTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a boxCellTest" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
