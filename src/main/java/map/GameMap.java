@@ -49,6 +49,21 @@ public class GameMap {
         return this.map;
     }
 
+
+
+    /**
+     * Sets the map
+     * @param newMap new map
+     */
+    public void setMap(Cell[][] newMap) {
+        this.map = newMap;
+        for (Cell[] cells : map) {
+            for (Cell cell : cells) {
+                cell.setMap(this);
+            }
+        }
+    }
+
     /**
      * Returns the cell at the given coordinates
      * @param x x-coordinate

@@ -17,6 +17,7 @@ item\curse\instantbombplacement\InstantBombPlacementTest.class
 item\powerup\placeobstacle\PlaceObstacleTest.class
 entity\monster\MonsterTest.class
 cell\box\BoxCellTest.class
-ExampleTest.class
+util\ResourceCollectionTest.class
 cell\CellTest.class
+util\NodeEdgeTest.class
 item\GameItemTest.class
