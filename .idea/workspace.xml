@@ -7,8 +7,9 @@
     <list default="true" id="85837388-d273-450b-890f-047dd5729de4" name="Changes" comment="all system out cleaned, code refactored">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameInitialScreenGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameengine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameengine/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameMapGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GameTopPanelGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ExampleTest.java" beforeDir="false" />
@@ -134,7 +135,6 @@
                 <option value="test" />
               </list>
             </option>
-            <option name="multimoduleDir" />
             <option name="pomFileName" value="pom.xml" />
             <option name="profilesMap">
               <map />
@@ -193,6 +193,7 @@
       <workItem from="1715702986998" duration="1991000" />
       <workItem from="1715705149992" duration="1059000" />
       <workItem from="1715792477249" duration="615000" />
+      <workItem from="1715798294015" duration="2353000" />
     </task>
     <task id="LOCAL-00001" summary="clean project created">
       <option name="closed" value="true" />

@@ -7,6 +7,7 @@ import cell.wall.WallCell;
 import entity.monster.Monster;
 import entity.monster.monstertypes.ConfusedMonster;
 import entity.monster.monstertypes.GhostlyMonster;
+import entity.monster.monstertypes.SimpleMonster;
 import entity.monster.monstertypes.SpeedyMonster;
 import entity.player.Player;
 import gameengine.GameEngine;
@@ -159,6 +160,7 @@ public class GameMapGUI extends JPanel {
             topPanelGUI.restartDialog(dialog, isGameOver());
             dialog.dispose();
             frame.dispose();
+
         });
         dialog.add(restart);
 
@@ -253,16 +255,16 @@ public class GameMapGUI extends JPanel {
     public void initializeLevel() {
         this.moveTimer = new Timer(300, e -> {
             this.model.removeDeadMonsters(this.model.monsters);
-            for (Monster ms : model.getMonsters()) {
-                ms.moveRandomly();
-                for (Player p : model.getPlayers()) {
-                    if (ms.isNextToPlayer(p.getX(), p.getY())) {
-                        if (!p.isInvincible()) {
-                            p.setDead(true);
-                        }
-                    }
-                }
-            }
+//            for (Monster ms : model.getMonsters()) {
+//                ms.moveRandomly();
+//                for (Player p : model.getPlayers()) {
+//                    if (ms.isNextToPlayer(p.getX(), p.getY())) {
+//                        if (!p.isInvincible()) {
+//                            p.setDead(true);
+//                        }
+//                    }
+//                }
+//            }
             repaint();
         });
         moveTimer.start();

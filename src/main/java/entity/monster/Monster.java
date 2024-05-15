@@ -75,6 +75,6 @@ public class Monster extends Entity {
      * @return true if the monster is next to the player, false otherwise
      */
     public boolean isNextToPlayer(int px, int py) {
-        return Math.abs(this.x - px) <= 1 && Math.abs(this.y - py) <= 1;
+        return this.x == px && this.y == py;
     }
 }

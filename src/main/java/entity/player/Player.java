@@ -2,6 +2,7 @@ package entity.player;
 
 import cell.Cell;
 import entity.Entity;
+import entity.monster.Monster;
 import item.bomb.Bomb;
 import item.curse.Curse;
 import item.powerup.PowerUp;
@@ -28,6 +29,7 @@ public class Player extends Entity {
 
     private int bombBlastRange = 1;
 
+    public List <Monster> monsters;
     private boolean isDetonator = false;
 
     private boolean isGhost = false;
@@ -324,7 +326,7 @@ public class Player extends Entity {
 
         if (action != null) {
             switch (action) {
-                case "UP": newY = this.y - 1; break;
+                case "UP": newY = this.y - 1;  break;
                 case "DOWN": newY = this.y + 1; break;
                 case "LEFT": newX = this.x - 1; break;
                 case "RIGHT": newX = this.x + 1; break;
@@ -376,6 +378,7 @@ public class Player extends Entity {
             }
             setHasStepFromBomb(false);
         }
+
     }
 
     /**
@@ -396,6 +399,13 @@ public class Player extends Entity {
                 ((Bomb) item).invokeDetonateAnimation();
             }
         });
+        for (Monster ms : this.monsters) {
+            if (ms.isNextToPlayer(this.getX(), this.getY())) {
+                if (!this.isInvincible()) {
+                    this.setDead(true);
+                }
+            }
+        }
     }
 
     /**
