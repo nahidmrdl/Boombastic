@@ -6,13 +6,13 @@ item\powerup\rollerskate\RollerSkateTest.class
 cell\normalCell\NormalCellTest.class
 entity\EntityTest.class
 entity\player\PlayerTest.class
-item\GameItemTest$MockGameItem.class
 item\curse\prohibitbombs\ProhibitBombsTest.class
 item\powerup\increasednumberffbombs\IncreasedNumberOfBombsTest.class
 entity\EntityTest$1.class
 item\curse\lowspeed\LowSpeedTest.class
 item\powerup\increasedblastrange\IncreasedBlastRangeTest.class
 item\powerup\invincibility\InvincibilityTest.class
+item\GameItemTest$1.class
 item\curse\instantbombplacement\InstantBombPlacementTest.class
 item\powerup\placeobstacle\PlaceObstacleTest.class
 entity\monster\MonsterTest.class

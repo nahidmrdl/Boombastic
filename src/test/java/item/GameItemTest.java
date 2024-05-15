@@ -1,91 +1,61 @@
 package item;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import cell.Cell;
 import entity.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.awt.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import java.awt.Image;
 
 class GameItemTest {
-
-    @Mock
-    private Player player;
+    private GameItem gameItem;
+    private Cell mockCell;
+    private Player mockPlayer;
+    private Image mockImage;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+        mockCell = mock(Cell.class);
+        mockPlayer = mock(Player.class);
+        mockImage = mock(Image.class);
 
-    @Test
-    void testIsBlown() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
 
-        assertFalse(gameItem.isBlown());
-    }
-
-    @Test
-    void testSetBlown() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
-
-        gameItem.setBlown(true);
-
-        assertTrue(gameItem.isBlown());
+        gameItem = new GameItem(mockImage) {};
     }
 
     @Test
     void testSetAndGetImage() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
-
-        gameItem.setImage(image);
-
-        assertEquals(image, gameItem.getImage());
-    }
-
-    @Test
-    void testSetAndGetFinishTime() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
-        long finishTime = System.currentTimeMillis() + 1000;
-
-        gameItem.setFinishTime(finishTime);
-
-        assertEquals(finishTime, gameItem.getFinishTime());
+        Image newImage = mock(Image.class);
+        gameItem.setImage(newImage);
+        assertEquals(newImage, gameItem.getImage(), "The image should be updated to the new image.");
     }
 
     @Test
     void testSetAndGetCell() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
-        Cell cell = mock(Cell.class);
-
-        gameItem.setCell(cell);
-
-        assertEquals(cell, gameItem.getCell());
+        gameItem.setCell(mockCell);
+        assertSame(mockCell, gameItem.getCell(), "The cell should be the one that was set.");
     }
 
     @Test
     void testSetAndGetOwner() {
-        Image image = mock(Image.class);
-        GameItem gameItem = new MockGameItem(image);
-
-        gameItem.setOwner(player);
-
-        assertEquals(player, gameItem.getOwner());
+        gameItem.setOwner(mockPlayer);
+        assertSame(mockPlayer, gameItem.getOwner(), "The owner should be the one that was set.");
     }
 
-    // MockGameItem class to facilitate testing
-    private static class MockGameItem extends GameItem {
-        public MockGameItem(Image image) {
-            super(image);
-        }
+    @Test
+    void testSetAndGetFinishTime() {
+        long finishTime = System.currentTimeMillis() + 1000;
+        gameItem.setFinishTime(finishTime);
+        assertEquals(finishTime, gameItem.getFinishTime(), "The finish time should be the one that was set.");
+    }
+
+    @Test
+    void testBlownState() {
+        assertFalse(gameItem.isBlown(), "Initially, isBlown should be false.");
+        gameItem.setBlown(true);
+        assertTrue(gameItem.isBlown(), "After setting to true, isBlown should return true.");
     }
 }
