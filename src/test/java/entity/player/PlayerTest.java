@@ -1,8 +1,5 @@
 package entity.player;
 
-import cell.Cell;
-import item.bomb.Bomb;
-import item.curse.Curse;
 import item.powerup.PowerUp;
 import map.GameMap;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,63 +8,44 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class PlayerTest {
-
     @Mock
     private GameMap gameMap;
-
-    private Player player;
+    @Mock private Player player;
+    @Mock private Image image;
+    @Mock private HashMap<String, String> controls;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-        HashMap<String, String> controls = new HashMap<>();
-        controls.put("UP", "W");
-        controls.put("DOWN", "S");
-        controls.put("LEFT", "A");
-        controls.put("RIGHT", "D");
-        controls.put("BOX", "Q");
-        controls.put("BOMB", "E");
-
-        Image image = mock(Image.class);
-        player = new Player(0, 0, gameMap, "TestPlayer", 1, controls, image);
+        MockitoAnnotations.initMocks(this);
+        player = new Player(0, 0, gameMap, "Player1", 1, controls, image);
     }
 
     @Test
-    void testGetName() {
-        assertEquals("TestPlayer", player.getName());
-    }
-
-    @Test
-    void testGetX() {
-        player.setX(12);
-        assertEquals(12, player.getX());
-    }
-
-    @Test
-    void testGetY() {
-        player.setY(10);
-        assertEquals(10, player.getY());
-    }
-
-    @Test
-    void testSetX() {
-        player.setX(6);
-        assertEquals(6, player.getX());
-    }
-
-    @Test
-    void testSetY() {
+    void testMoveSetsCoordinates() {
+        player.setX(5);
         player.setY(5);
+        assertEquals(5, player.getX());
         assertEquals(5, player.getY());
     }
 
+    @Test
+    void testAddPowerUpIncreasesCount() {
+        PowerUp powerUp = mock(PowerUp.class);
+        player.addPowerUp(powerUp);
+        assertFalse(player.powerUpsItems.isEmpty());
+        assertTrue(player.powerUpsItems.contains(powerUp));
+    }
+
+    @Test
+    void testIsDead() {
+        assertFalse(player.isDead());
+        player.setDead(true);
+        assertTrue(player.isDead());
+    }
 }

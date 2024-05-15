@@ -1,44 +1,40 @@
 package entity;
 
-import map.GameMap;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import entity.Entity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import map.GameMap;
+import cell.Cell;
 
 class EntityTest {
-    private EntityTest1 entity;
+    private Entity entity;
     private GameMap gameMap;
+    private final int x = 5;
+    private final int y = 5;
 
     @BeforeEach
     void setUp() {
-        gameMap = mock(GameMap.class); // create a mock GameMap object
-        entity = new EntityTest1(3, 5, gameMap);
+        gameMap = mock(GameMap.class);
+        Cell cell = mock(Cell.class);
+        when(gameMap.getCell(x, y)).thenReturn(cell);
+        entity = new Entity(x, y, gameMap) {};  // Anonymous subclass for testing
     }
 
     @Test
-    void getCellPositioned() {
-        assertEquals(entity.getCellPositioned(), gameMap.getCell(3, 5));
+    void testGetCellPositioned() {
+        assertEquals(gameMap.getCell(x, y), entity.getCellPositioned());
     }
 
     @Test
-    void getImage() {
-        // since the image is not initialized in the test, we should expect null
-        assertEquals(null, entity.getImage());
+    void testGetImage() {
+        assertNull(entity.getImage());
     }
 
     @Test
-    void getBaseImage() {
-        // since the baseImage is not initialized in the test, we should expect null
-        assertEquals(null, entity.getBaseImage());
-    }
-}
-
-
-class EntityTest1 extends Entity {
-    public EntityTest1(int x, int y, GameMap gameMap) {
-        super(x, y, gameMap);
+    void testGetBaseImage() {
+        assertNull(entity.getBaseImage());
     }
 }

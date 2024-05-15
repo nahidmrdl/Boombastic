@@ -1,5 +1,5 @@
-entity\EntityTest1.class
 item\bomb\BombTest.class
+entity\monster\MonsterTest.class
 cell\box\BoxCellTest.class
 cell\normalCell\NormalCellTest.class
 ExampleTest.class
@@ -7,4 +7,5 @@ entity\EntityTest.class
 entity\player\PlayerTest.class
 cell\CellTest.class
 item\GameItemTest$MockGameItem.class
+entity\EntityTest$1.class
 item\GameItemTest.class
