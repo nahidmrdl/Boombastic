@@ -34,8 +34,7 @@ This project is a competitive multiplayer Bomberman game, developed as part of t
     - Players can select their characters before the game starts.
 
 2. **Controls**
-    - Default controls can be customized through the settings menu.
-    - Use the arrow keys (or customized keys) to move and the spacebar (or customized key) to place bombs.
+    - There is a W button next to each player's name to see the controls.
 
 3. **Gameplay**
     - Navigate the game field, placing bombs to destroy obstacles and enemies.
