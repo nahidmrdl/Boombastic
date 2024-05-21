@@ -1,7 +1,7 @@
 # Multiplayer Bomberman Game
 
 ## Overview
-This project is a competitive multiplayer Bomberman game, developed as part of the Software Technology course at the ELTE Faculty of Informatics. Inspired by classic Bomberman games like Dyna Blaster, this game features 2D gameplay with destructible and indestructible obstacles, power-ups, and various game modes. The game is designed for 2 players, with the goal of being the last player standing.
+This project is a competitive multiplayer Bomberman game, developed as part of the Software Technology course at the ELTE Faculty of Informatics. Inspired by classic Bomberman games like Dyna Blaster, this game features 2D gameplay with destructible and indestructible obstacles, power-ups, and various game modes. The game is designed for 2 or 3 players, with the goal of being the last player standing.
 
 ## Features
 ### Core Features
@@ -11,22 +11,10 @@ This project is a competitive multiplayer Bomberman game, developed as part of t
     - Various power-ups that enhance player abilities, such as increasing bomb count and blast range.
 3. **Hindering Curses** (0.5 complexity)
     - Random curses that temporarily disadvantage players, like reduced speed or inability to place bombs.
-4. **Customizable Controls** (0.5 complexity)
-    - Players can customize their control keys, and these settings are saved between sessions.
-5. **HP Feature, Damage, HP Powerup**
-    - Players have health points (HP), can take damage, and can collect HP power-ups to recover health.
-6. **Character Selection**
-    - Players can choose from different Bomberman characters at the start of the game.
-
-### Backup Subtasks
-1. **Three Players** (1 complexity)
+4. **Three Players** (1 complexity)
     - The game supports up to three players, with the last player standing declared the winner.
-2. **Battle Royale** (0.5 complexity)
-    - A mode where the game area shrinks over time, forcing players into closer proximity and increasing the challenge.
-3. **Level Editor** (1 complexity)
-    - A tool for creating custom game levels, including walls, boxes, and player starting positions.
-4. **Continuous Movement** (0.5 complexity)
-    - Smooth, continuous movement for both players and monsters, enhancing the gameplay experience.
+5. **Character Selection**
+    - Players can choose from different Bomberman characters at the start of the game.
 
 ## How to Play
 1. **Starting the Game**
